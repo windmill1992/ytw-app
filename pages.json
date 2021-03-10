@@ -13,7 +13,7 @@
 		"path": "pages/cart/cart/cart",
 		"style": {
 			"navigationBarTitleText": "购物车"
-		},
+		}
 	}, {
 		"path": "pages/index/publicPage/publicPage",
 		"style": {
@@ -99,7 +99,7 @@
 		"path": "pages/cart/cart2/cart2",
 		"style": {
 			"navigationBarTitleText": "填写订单",
-			"enablePullDownRefresh": false,
+			"enablePullDownRefresh": false
 		}
 	}, {
 		"path": "pages/cart/cart4/cart4",
@@ -175,7 +175,7 @@
 				"path": "dealerPage/dealerPage",
 				"style": {
 					"navigationBarTitleText": "壹童网",
-					"enablePullDownRefresh": false,
+					"enablePullDownRefresh": false
 				}
 			}, {
 				"path": "creditOrder/creditOrder",
@@ -199,7 +199,8 @@
 			"pages": [{
 				"path": "DIYshop/DIYshop",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "店铺设置",
+					"enablePullDownRefresh": false
 				}
 			}, {
 				"path": "DIYshopPoster/DIYshopPoster",
@@ -456,22 +457,28 @@
 			"pages": [{
 				"path": "retail_order/retail_order",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "订单列表",
+					"navigationBarBackgroundColor": "#3abdb7",
+					"navigationBarTextStyle": "white",
+					"onReachBottomDistance": 100
 				}
 			}, {
 				"path": "team_list/team_list",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "我的团队"
 				}
 			}, {
 				"path": "index/index",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarBackgroundColor": "#3abdb7",
+					"navigationBarTitleText": "分销中心",
+					"onReachBottomDistance": 100,
+					"navigationBarTextStyle": "white"
 				}
 			}, {
 				"path": "poster/poster",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "推广海报"
 				}
 			}, {
 				"path": "distribut_list/distribut_list",
@@ -483,22 +490,31 @@
 			}, {
 				"path": "good_list/good_list",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "分销商品列表",
+					"onReachBottomDistance": 100
 				}
 			}, {
 				"path": "set_store/set_store",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "店铺设置",
+					"enablePullDownRefresh": false
 				}
 			}, {
 				"path": "team_commission/team_commission",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "分销佣金",
+					"navigationBarBackgroundColor": "#fff",
+					"navigationBarTextStyle": "black"
 				}
 			}, {
 				"path": "withdrawals/withdrawals",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "佣金提现"
+				},
+			}, {
+				"path": "order/order",
+				"style": {
+					"navigationBarTitleText": "订单列表"
 				}
 			}]
 		},
