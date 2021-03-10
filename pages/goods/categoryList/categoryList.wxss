@@ -1,0 +1,96 @@
+.container{
+    flex-direction: row;
+}
+.nav{
+    width: 20%;
+    height:100%;
+    font-size: 26rpx;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    background-color: #ffffff;
+    padding-bottom: 105rpx;
+}
+.content-box:last-of-type{
+    margin-bottom:134rpx;
+}
+nav-item:last-of-type{
+    margin-bottom:134rpx;
+}
+.nav-item{
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 25rpx 10rpx;
+    border-bottom: 1rpx solid #f3f3f3;
+    background-color: white;
+    text-overflow: ellipsis;
+    font-size: 28rpx;
+}
+.nav-item-on{
+  color: #ff3b3b;
+  position: relative;
+  /* border-left: 8rpx solid #ff3b3b; */
+  /* padding: 25rpx 10rpx 25rpx 2rpx; */
+}
+.nav-item-on::after{
+  content: "";
+  width: 8rpx;
+  height: 100%;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  background: #ff3b3b;
+}
+.content{
+    width: 80%;
+    height:100%;
+    font-size: 28rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow-x: hidden;
+}
+.cate-img{
+    width: 100%;
+    height: 200rpx;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+}
+.content-name{
+    margin: 30rpx 0 20rpx;
+    padding-left: 10rpx;
+}
+.content-items{
+    background-color: white;
+    padding: 10rpx 20rpx;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 10rpx;
+}
+.content-item{
+    width: 33.333333%;
+    box-sizing: border-box;
+    padding: 10rpx;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+}
+.item-image{
+    width: 100rpx;
+    height: 100rpx;
+}
+.item-name{
+    padding: 10rpx 0 0;
+}

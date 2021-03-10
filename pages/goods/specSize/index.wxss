@@ -1,0 +1,264 @@
+page {
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #999;
+  background-color: #fff;
+}
+
+.plus-wrap {
+  position: relative;
+  width: 95%;
+  height: 95%; }
+
+.plus {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; 
+  border: 1rpx solid rgb(224, 217, 217);
+}
+  .plus::before {
+  content: '';
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  height: 60rpx;
+  margin-top: -30rpx;
+  margin-left: -2rpx;
+  border-left: 4rpx solid #cccccc; 
+}
+  .plus::after {
+  content: '';
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  width: 60rpx;
+  margin-left: -30rpx;
+  margin-top: -2rpx;
+  border-top: 4rpx solid #cccccc; 
+}
+.imageNumtips {
+  position: absolute;
+  bottom: 0rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 35rpx;
+  width: 163rpx;
+  text-align: center;
+  line-height: 35rpx;
+  border: none;
+  border-radius: 3rpx;
+  color: #cccccc;
+  font-size: 26rpx;
+}
+.radio {
+  overflow-x: auto;
+  white-space: nowrap; 
+}
+
+.extra {
+  background: #cccccc;
+  color: #3F82FD;
+  font-size: 24rpx;
+  padding: 10rpx;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden; 
+}
+
+/* 公共颜色 */
+.col18 {
+  color: #18c2ba;
+}
+.col888 {
+  color: #444;
+  font-size: 35rpx;
+}
+.fll {
+  float: left;
+}
+.flr {
+  float: right;
+}
+.col323233 {
+  color: #323233;
+}
+.rela {
+  position: relative;
+}
+.abs {
+  position: absolute;
+}
+.colf10215 {
+  color: #eb4079;
+}
+/* =========== */
+.sortBtnBox {
+  padding: 15rpx 16px;
+  padding-right: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #f3fffe;
+}
+.sortBtn {
+  display: inline-block;
+  padding: 0rpx 50rpx;
+  margin-right: -40rpx;
+  height: 48rpx;
+  font-size: 26rpx;
+  color: #fff;
+  background-color: #18c2ba;
+  line-height: 48rpx;
+  border-radius: 24rpx;
+}
+
+/* 映射价格、库存部分 */
+.attrTitle {
+  margin: 15rpx 0;
+  padding-left: 16px;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #f3fffe;
+}
+.priceSumItem {
+  margin: 15rpx 0;
+  padding: 12rpx 35rpx 12rpx 12rpx;
+  border: 2rpx solid #18c2ba;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.preImgTips {
+  flex: 0.8;
+  font-size: 28rpx;
+}
+.priceSumItemImg {
+  flex: 1;
+}
+.xianxianxian {
+  flex: 0.4;
+  position: relative;
+}
+.xianxianxian::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 1rpx;
+  height: 70rpx;
+  background-color: #e0d9d9;
+}
+.xianxianxian2::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 1rpx;
+  height: 30rpx;
+  background-color: #e0d9d9;
+}
+.itemInfoBox {
+  display: flex;
+  flex-direction: row;
+  line-height: 180rpx;
+}
+.itemInfoBox image {
+  height: 140rpx;
+  width: 140rpx;
+  vertical-align: middle;
+}
+.switch {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1.5;
+  line-height: 30rpx;
+}
+.switchHasGoods {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 50rpx;
+}
+.priceSumInputs {
+  padding: 10rpx 25rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-top: 1rpx solid #eaeaea;
+  font-size: 30rpx;
+  color: #555;
+}
+.priceSumInputs .rela {
+  text-align: left;
+  color: #555;
+}
+.priceSumInputs input {
+  display: inline-block;
+  width: 136rpx;
+  box-sizing: border-box;
+  padding-right: 45rpx;
+  text-align: right;
+}
+.mapSpecInput {
+  right: -20rpx;
+  top: -1rpx;
+}
+.inputAfter::after{
+  content: '手';
+  position: absolute;
+  right: 10rpx;
+  top: 0;
+}
+
+/* 确定 */
+.sureSub {
+  margin: 0 auto;
+  width: 480rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  color: #fff;
+  background-color: #18c2ba;
+  border-radius: 29rpx;
+  text-align: center;
+}
+
+.proposalAge {
+  position: relative;
+  padding: 0 16px;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: right;
+  font-size: 28rpx;
+  font-weight: 300;
+  background-color: #fff;
+}
+.proposalAge .fll {
+  float: left;
+  color: #555;
+}
+.proposalAge input {
+  position: absolute;
+  right: 85rpx;
+  top: 19rpx;
+  padding: 0;
+  margin: 0;
+  width: 100rpx;
+  height: 45rpx;
+  text-align: center;
+}
+.num2Input {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 130rpx;
+  height: 45rpx;
+  border: 2rpx solid #18c2ba;
+  text-align: center;
+  color: #000;
+}

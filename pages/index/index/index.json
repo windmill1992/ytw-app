@@ -1,0 +1,14 @@
+{
+    "navigationBarBackgroundColor": "#3abdb7",
+    "navigationBarTextStyle": "white",
+    "onReachBottomDistance": 100,
+    "usingComponents":{
+        "van-icon": "../../../dist/icon/index",
+        "van-dialog": "../../../dist/dialog/index",
+        "van-divider": "../../../dist/divider/index",
+        "van-tab": "../../../dist/tab/index",
+        "van-tabs": "../../../dist/tabs/index",
+        "van-sticky": "../../../dist/sticky/index",
+        "footbar": "/pages/components/index_footbar/indexFootBar"
+    }
+}

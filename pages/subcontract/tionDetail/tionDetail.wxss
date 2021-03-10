@@ -1,0 +1,356 @@
+.allDetailBox  {
+  padding-top: 0!important;
+
+}
+page {
+  background-color: #fff;
+  color: #333;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 28rpx;
+  padding-bottom: 100rpx!important;
+} 
+
+.coltheme {
+  color: #18c2ba;
+}
+.flr {
+  float: right;
+}
+.displayInlineBlock {
+  display: inline-block;
+}
+.vts {
+  vertical-align: super;
+}
+.fs20 {
+  font-size: 20rpx;
+}
+.fw550 {
+  font-weight: 550;
+}
+.col444 {
+  color: #444;
+  font-weight: 500;
+  font-size: 24rpx;
+}
+
+/* 新版本头部 */
+.absTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 335rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  z-index: 3;
+}
+.detailTop {
+  padding: 10px;
+}
+.topSearch {
+  position: relative;
+  display: inline-block;
+  padding-left: 80rpx;
+  width: 450rpx;
+  height: 62rpx;
+  background-color: #f0f0f4;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+}
+.topSearch::before { 
+  content: '';
+  position: absolute;
+  height: 50rpx;
+  width: 50rpx;
+  left: 10rpx;
+  top: 10rpx;
+  border-radius: 50%;
+  background: url('https://www.yitongwang.com/public/static/images/minniapp/subcontract-icon-search.png') no-repeat center center;
+  background-size: 50rpx 50rpx;
+}
+.detailLevel2 {
+  padding: 0 16px;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  font-weight: 550;
+  box-sizing: border-box;
+}
+.callImg {
+  height: 30rpx;
+  width: 30rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.someOrderInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 90rpx;
+  font-size: 28rpx;
+  color: #555;
+}
+.someOrderInfo1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 90rpx;
+  text-align: center;
+}
+.colfe751b {
+  color: #fe751b;
+}
+.colff4848 {
+  color: #ff4848;
+}
+
+.detailLevel3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10px;
+  height: 60rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  font-weight: 550;
+}
+.screenBtn {
+  padding: 7rpx 22rpx;
+  color: #18c2ba;
+  border: 1rpx solid #18c2ba;
+  border-radius: 16rpx;
+  font-weight: normal;
+}
+.operationBoxx {
+  position: fixed;
+  padding: 15rpx 20rpx;
+  top: 270rpx;
+  right: 30rpx;
+  border-radius: 15rpx;
+  background-color: #f0f0f4;
+  text-align: center;
+  z-index: 3;
+}
+.operationBoxx::before {
+  content: '';
+  position: absolute;
+  top: -10rpx;
+  right: 15rpx;
+  width: 20rpx;
+  height: 20rpx;
+  transform: rotate(45deg);
+  background-color: #f0f0f4;
+}
+.operationItem {
+  position: relative;
+  padding-right: 30rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  border-bottom: 1rpx solid #cbcbcd;
+  color: #333;
+}
+.operationItem:last-child {
+  border-bottom: none;
+}
+.modifyPopupscroll {
+  margin: 0 auto;
+  height: 100%;
+  width: 670rpx;
+  background-color: #fff;
+}
+/* 1级遮罩 */
+.mask1 {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .6);
+}
+.mask22 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 100%;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, .6);
+}
+.detailFacBox {
+  margin: 0 auto;
+  padding: 0 10rpx;
+  width: 750rpx;
+  line-height: 40rpx;
+  background-color: #e5fffe;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.detailFacTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 5rpx;
+  height: 60rpx;
+  font-size: 26rpx;
+  font-weight: 550;
+  color: #333;
+  box-sizing: border-box;
+}
+.titleItem {
+  position: relative;
+  text-align: center;
+  height: 60rpx;
+}
+.titleItem:nth-child(-n + 4)::after {
+  position: absolute;
+  content: '';
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20rpx;
+  width: 1px;
+  background-color: #18c2ba;
+}
+.titleItem .displayInlineBlock {
+  position: relative;
+  height: 40rpx;
+  width: 10rpx;
+}
+.absupdown {
+  position: absolute;
+  left: 0;
+  height: 10rpx;
+  width: 10rpx;
+}
+.bllur {
+  filter: grayscale(50%);
+}
+.displayInlineBlock .absupdown:nth-child(1) {
+  top: 10rpx;
+}
+.displayInlineBlock .absupdown:nth-child(2) {
+  top: 24rpx;
+}
+.dotedLine {
+  margin: 5px 0;
+  width: 100%;
+  height: 1rpx;
+  border-top: 2rpx dotted #18c2ba;
+}
+/*  每个Item  */
+.facItem {
+  margin: 5px auto;
+  width: 97%;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-size: 24rpx;
+}
+.facItemL {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #fff;
+  border-radius: 5rpx;
+  text-align: center;
+}
+.facItemR {
+  position: relative;
+}
+.facItemName {
+  font-weight: 550;
+  color: #333;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.facCancelCode {
+  margin-left: 12rpx;
+  height: 100%;
+  width: 80%;
+  text-align: center;
+  color: #333;
+  font-weight: 550;
+  background: #fbd071;
+  border-radius: 10rpx;
+}
+.w80 {
+  display: inline-block;
+  width: 80rpx;
+  line-height: 35rpx;
+}
+.facNameCenter {
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 5rpx 10rpx;
+  color: #18c2ba;
+  font-weight: 550;
+}
+
+
+/* 底部Bar */
+.detailBottomBar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 5rpx 90rpx 8rpx 180rpx;
+  width: 750rpx;
+  height: 90rpx;
+  box-sizing: border-box;
+  z-index: 2;
+  background-color: #e5fffe;
+  text-align: center;
+}
+.detailBottomBarItem {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.allOperationItem2 {
+  margin-top: 18rpx;
+  width: 150rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+.detailBottomBarL,.detailBottomBarR {
+  position: absolute;
+  bottom: 0;
+  height: 90rpx;
+}
+.detailBottomBarL {
+  width: 180rpx;
+  left: 0;
+}
+.detailBottomBarR {
+  width: 90rpx;
+  right: 0;
+}
+.bottomBac1,.bottomBac2 {
+  border-radius: 8rpx;
+}
+.bottomBac1 {
+  background-color: #18c2ba;
+  color: #fff;
+}
+.bottomBac2 {
+  background-color: #e5fffe;
+  color: #18c2ba;
+  box-sizing: border-box;
+  border: 1rpx solid #18c2ba;
+}
+.bottomBac3 {
+  background-color: #fcd76f;
+  color: #333;
+  border-radius: 8rpx;
+  width: 250rpx;
+  font-size: 26rpx;
+}
+
+@import '../myTions/mytions.wxss'

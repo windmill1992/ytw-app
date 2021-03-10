@@ -1,0 +1,93 @@
+<view class="top1">
+  <view class="topTitle">管理我的vip客户</view>
+  <van-sticky>
+    <view style="padding:10rpx 0;"><input class="addInput" placeholder-class="phClass" value="{{inputValue}}" bindinput="inputChange" placeholder="请输入姓名或手机号"/><text class="addButton" bindtap="addMember">添加VIP客户</text></view>
+  </van-sticky>
+</view>
+<van-tabs color="#18c2ba" active="{{ active1 }}" bind:change="onNavChange" custom-class="navrootclass">
+  <van-tab title="我的VIP客户">
+    <van-row custom-class="passtitle">
+      <!-- <van-col span="2">序号</van-col> -->
+      <!-- <van-col span="4">名称</van-col> -->
+      <van-col span="11">手机号</van-col>
+      <van-col span="5">通过日期</van-col>
+      <van-col span="8">操作</van-col>
+    </van-row>
+    <view> 
+      <van-row custom-class="memberItem" style="height:80rpx;" wx:for="{{ passList }}" wx:key="index">
+        <!-- <van-col span="2">{{  index - 0 + 1 }}</van-col> -->
+        <!-- <van-col span="4">{{ item.nickname }}</van-col> -->
+        <van-col span="11" style="height:80rpx;line-height:{{ item.remark ? '' : '80rpx' }};">
+          <view class="myviptxt">{{ item.phone }}</view>
+          <view class="myviptxt">{{ item.remark }}</view>
+        </van-col>
+        <van-col span="5" style="height:80rpx;line-height:80rpx;"><text style="font-size:28rpx;">{{ item.add_time }}</text></van-col>
+        <van-col span="8" style="height:80rpx;">
+         <!-- <image bindtap="ask" class="delTel" data-id="{{ item.id }}" data-tel="{{ item.phone }}" data-type="delStoreMember" src="https://www.yitongwang.com/public/images/cancel.png"></image> -->
+         <view class="passClass" bindtap="editName" data-remark="{{ item.remark }}" data-id="{{ item.id }}" data-tel="{{ item.phone }}">备注名字</view>
+         <view class="refuseClass" bindtap="ask" data-id="{{ item.id }}" data-tel="{{ item.phone }}" data-remark="{{ item.remark }}" data-type="delStoreMember">取消VIP资格</view>
+         </van-col>
+      </van-row>
+    </view>
+  </van-tab> 
+  <van-tab title="待审核" info="{{ audit_count > 0 ? audit_count : '' }}">
+    <van-row custom-class="passtitle">
+        <!-- <van-col span="2">序号</van-col> -->
+        <!-- <van-col span="4">名称</van-col> -->
+        <van-col span="11">手机号</van-col>
+        <van-col span="5">申请日期</van-col>
+        <van-col span="8">操作</van-col>
+      </van-row>
+    <view >
+      <van-row custom-class="memberItem" wx:for="{{ unPassList }}" wx:key="index">
+          <!-- <van-col span="2">{{  index - 0 + 1 }}</van-col> -->
+          <!-- <van-col span="4">{{ item.nickname }}</van-col> -->
+          <van-col span="9" style="height:80rpx;line-height:80rpx;">{{ item.phone }}</van-col>
+          <van-col span="7" style="height:80rpx;line-height:80rpx;"><text style="font-size:28rpx;">{{ item.add_time }}</text></van-col>
+          <van-col span="8" style="height:80rpx;">
+            <view class="passClass" data-id="{{ item.id }}" data-tel="{{ item.phone }}" data-type="auditStoreMember" data-type2="pass" bindtap="ask">通过</view>
+            <view class="refuseClass" data-id="{{ item.id }}" data-tel="{{ item.phone }}" data-type="auditStoreMember" data-type2="refuse" bindtap="ask">拒绝</view>
+          </van-col>
+
+          <!-- <van-col span="3" data-id="{{ item.id }}" data-tel="{{ item.phone }}" data-type="auditStoreMember" data-type2="pass" bindtap="ask"><image class="delTel" src="https://www.yitongwang.com/template/pc/rainbow/static/images/icon30.png"></image></van-col>
+          <van-col span="3" data-id="{{ item.id }}" data-tel="{{ item.phone }}" data-type="auditStoreMember" data-type2="refuse" bindtap="ask"><image class="delTel" src="https://www.yitongwang.com/public/images/cancel.png"></image> 
+          </van-col>-->
+
+
+      </van-row>
+    </view>
+  </van-tab>
+</van-tabs>
+
+<!-- showAddPopup -->
+<van-popup show="{{ showAddPopup }}" bind:close="onPopupClose" round>
+  <view class="addNewMemberBox">
+    <view class="addNewMemberTtile">添加VIP客户</view>
+    <view class="addNewMemberInputs">
+      <input placeholder-style="font-size:24rpx;" bindinput="addNewInput" data-type="a" value="{{addNew.phone}}" maxlength="11" class="addNewMemberInput" type="number" placeholder="输入手机号(壹童网注册手机号)"></input>
+      <input placeholder-style="font-size:24rpx;" bindinput="addNewInput" data-type="b" value="{{addNew.remark}}" type="text" class="addNewMemberInput" placeholder="备注姓名"></input>
+    </view>
+    <view class="addNewMemberBtns">
+      <text class="borderR" catchtap="onPopupClose">取消</text>
+      <text class="coltheme" catchtap="submitNew">确定</text>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 添加新会员弹窗 -->
+
+<!-- 修改备注 -->
+<van-dialog
+  use-slot
+  id="van-dialog"
+>
+  <input hidden="{{ !showInput }}" placeholder-style="color: #fff;text-align: center;" class="editInput" focus="true" value="{{ editName }}" bindinput="editInputChange" placeholder="请输入备注"></input>
+</van-dialog>
+
+
+<!-- 底部菜单 -->
+<import src="../../index/publics/publics.wxml"/>
+<import src="../publicPage/publicPage.wxml"/>
+<template is="distributMenu" data="{{page:page,isiphoneX:isiphoneX,is_A:1}}" />
+<template is="operations" data="{{operaList,current:'',isiphoneX:isiphoneX}}" wx:if="{{shouldOperationsShow}}" />
+<template is="proposal" data="{{proposalData,isProposalDone}}" wx:if="{{shouldProposalShow}}" />

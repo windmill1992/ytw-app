@@ -1,0 +1,37 @@
+<!-- <view class="nav">
+  <text class="back" bindtap="back1">{{'←'}}</text>
+  <text class="tit">预约详情</text>
+</view> -->
+<view><good-swiper data="{{ list }}"></good-swiper></view>
+<image src="{{ url + '/public/static/images/minniapp/pinbao-index-banner.png' }}" class="banner"></image>
+<view class="container13">
+  <!-- <image class="logo" src="{{userImg}}"></image> -->
+  <view class="list">
+  <navigator url="/pages/subcontract/switchCore/switchCore?status={{ isAdministratorsStatus }}" hover-class="none">
+    <view class="item" wx:if="{{isAdministratorsStatus != 1}}">
+      <image src="http://yitongwanghuabei3.oss-cn-zhangjiakou.aliyuncs.com/public/upload/store/326/goods_album/f2861483b88cd8b4f610736dabd348fc.jpg?x-oss-process=image/resize,m_pad,h_206,w_206" class="itemImg"></image>
+      <view class="item-text">预约仓位</view>
+      >
+    </view>
+    </navigator>
+     <view class="item" bindtap="toMytions" wx:if="{{isAdministratorsStatus != 1}}">
+      <image src="http://yitongwanghuabei3.oss-cn-zhangjiakou.aliyuncs.com/public/upload/store/326/goods_album/f2861483b88cd8b4f610736dabd348fc.jpg?x-oss-process=image/resize,m_pad,h_206,w_206" class="itemImg"></image>
+      <view class="item-text">我预约的仓位</view>
+      <view>{{ '>' }}</view>
+    </view>
+    <view class="item" wx:if="{{isAdministratorsStatus == 1}}" hover-class="none" bindtap="toCore">
+      <image src="http://yitongwanghuabei3.oss-cn-zhangjiakou.aliyuncs.com/public/upload/store/326/goods_album/f2861483b88cd8b4f610736dabd348fc.jpg?x-oss-process=image/resize,m_pad,h_206,w_206" class="itemImg"></image>
+      <view class="item-text">仓位列表</view>
+      >
+    </view>
+  </view>
+</view>
+
+
+<!-- 为你推荐 -->
+<good-component data="{{goodsList}}"></good-component>
+
+
+
+
+<van-dialog id="van-dialog" />

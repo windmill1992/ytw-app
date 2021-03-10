@@ -1,0 +1,22 @@
+page {
+  background-color: #fff;
+}
+.changeSlotHead {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 40rpx;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.slotTxt1,.slotTxt2 {
+  color: #fff;
+  font-size: 34rpx;
+}
+.slotTxt3 {
+  color: #fff;
+  font-size: 38rpx;
+  font-weight: bold;
+}

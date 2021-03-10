@@ -1,0 +1,723 @@
+
+page {
+  background-color: #f5f5f5;
+  padding-bottom: 50rpx;
+}
+.col18c {
+  color: #18c2ba;
+}
+.col7c {
+  color: #7c7c7c;
+}
+.headder {
+  height: 114rpx;
+  width: 100%;
+  background: #3abdb7;
+}
+.hhome {
+  position: absolute;
+  top: 16rpx;
+  left: 16rpx;
+  height: 55rpx;
+  width: 55rpx;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, .5);
+  border: 2rpx solid #fff;
+  z-index: 4;
+}
+.hhome image {
+  height: 55rpx;
+  width: 55rpx;
+}
+.clearfix:after {
+  content: '.';
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  clear: both;
+}
+
+
+.product_info {
+  margin-top: 20rpx;
+  margin-bottom: 120rpx;
+}
+.product_info .product_list {
+  position: relative;
+  float: left;
+  width: 345rpx;
+  height: 494rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  margin-left: 20rpx;
+  border-radius: 10rpx;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.product_info .product_list .product_image {
+  width: 345rpx;
+  height: 345rpx;
+  background-color: #eaeaea;
+  position: relative;
+  overflow: hidden;
+}
+.product_info .product_list .product_image .product_image_title {
+  color: #fff;
+  font-size: 60rpx;
+  margin-top: 116rpx;
+  text-align: center;
+}
+.product_info .product_list .product_image .product_image_content {
+  text-align: center;
+  margin-top: 5rpx;
+  font-size: 36rpx;
+  color: #fff;
+  letter-spacing: 5rpx;
+}
+.product_info .product_list .product_image image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 345rpx;
+  height: 345rpx;
+}
+.product_info .product_list .product_list_title {
+  font-size: 26rpx;
+  color: #333333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 320rpx;
+  padding-left: 10rpx;
+}
+.product_info .product_list .activities {
+  padding-left: 10rpx;
+}
+.product_info .product_list .activities .activity {
+  float: left;
+  padding: 2rpx 6rpx;
+  border: 1rpx solid #ff3b3b;
+  font-size: 20rpx;
+  color: #ff3b3b;
+  margin-right: 10rpx;
+  border-radius: 3rpx;
+}
+.product_info .product_list .product_data {
+  margin-top: 5rpx;
+  padding-left: 10rpx;
+  width: 320rpx;
+}
+.product_info .product_list .product_data .price {
+  font-size: 22rpx;
+  color: #ff3b3b;
+  font-weight: bold;
+  float: left;
+}
+.product_info .product_list .product_data .price > view {
+  display: inline;
+  font-size: 30rpx;
+}
+.product_info .product_list .product_data .amount {
+  float: left;
+  color: #999;
+  font-size: 22rpx;
+  padding-top: 7rpx;
+  /* margin-left: 80rpx; */
+}
+
+
+/* 顶部信息  新改 */
+.banner {
+  position: relative;
+  height: 280rpx;
+  width: 750rpx;
+  background-color: #3abdb7;
+}
+.banner .bannerBg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 280rpx;
+  z-index: 1;
+}
+.bannerBg image {
+  height: 100%;
+  width: 100%;
+}
+.bannerStoreName {
+  position: absolute;
+  top: 16rpx;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  text-shadow: 3rpx 15rpx 10rpx #000;
+  font-size: 60rpx;
+  font-weight: 700;
+  z-index: 2;
+}
+.bannerStoreAddress {
+  position: absolute;
+  top: 150rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300rpx;
+  height: 50rpx;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 20rpx;
+  text-align: center;
+  color: #000;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  font-weight: 300;
+  z-index: 2;
+}
+.bannerShare {
+  position: absolute;
+  right: 18rpx;
+  top: 18rpx;
+  width: 60rpx;
+  height: 60rpx;
+  z-index: 2;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  line-height: 52rpx;
+}
+.bannerShare image {
+  vertical-align: middle;
+  width: 40rpx;
+  height: 40rpx;
+}
+.bannerGuanzhuSum {
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+  display: flex;
+  padding: 5rpx 8rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  z-index: 2;
+  border-radius: 15rpx;
+  border: 1px solid #fff;
+}
+.bannerGoodsSum {
+  position: absolute;
+  right: 200rpx;
+  bottom: 14rpx;
+  color: #fff;
+  font-weight: 600;
+  font-size: 24rpx;
+  z-index: 2;
+}
+.bannerScreen {
+  margin: 15rpx;
+  padding-left: 30rpx;
+  color: #242424;
+  font-size: 30rpx;
+  font-weight: 600;
+  z-index: 2;
+}
+.bannerScreen text:nth-child(n+2) {
+  margin-left: 27rpx;
+}
+.bannerCurr {
+  border-bottom: 4rpx solid #18c2ba;
+}
+.titleGoodsSum {
+  font-size: 22rpx;
+  color: #666;
+}
+/* 自有  或分销商品标识 */
+.goodsType {
+  width: 100%;
+}
+.goodsType view {
+  float: right;
+  margin-right: 10rpx;
+  border-radius: 8rpx;
+  padding: 8rpx 30rpx;
+  font-size: 24rpx;
+}
+.isFx {
+  background-color: #d1f8f3;
+  color: #25ccc3;
+}
+.isZy {
+  background-color: #8badf8;
+  color: #fff;
+}
+
+
+
+/* 海报 */
+/* 优惠信息弹框 */
+.prom-model{
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  background: white;
+  width: 100%;
+  padding: 0 30rpx 30rpx;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.prom-model .prom-title{
+  text-align: center;
+  margin: 30rpx 80rpx;
+}
+.prom-model .logistics-item{
+  border: 0;
+}
+.logistics-item .item-mes{
+  color: #1f1f1f;
+  font-size: 26rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.prom-model .item-mes{
+  width: 500rpx;
+}
+
+/* 商品海报分享s*/
+
+.share-btn {
+  display: inline-block;
+  margin-top: 12rpx;
+  margin-left: 12rpx;
+  height: 44rpx;
+  width: 44rpx;
+  color: #666;
+  font-size: 20rpx;
+  position: absolute;
+  right: 22rpx;
+  top:84rpx;
+}
+
+.share-btn image{
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.share-save-btns{
+  background-color: #18c2ba;
+  color: #fff;
+  width: 100%;
+  line-height: 80rpx;
+}
+
+.share-save-btn {
+  width: 80%;
+  height: 80rpx;
+  text-align: center;
+  margin: 0px auto;
+  background-color: #18c2ba;
+  color: #fff;
+  border-radius: 10rpx;
+}
+
+.share-pic {
+  width: 270rpx;
+  height: 480rpx;
+  margin: 20rpx auto ;
+  background-color: #999;
+  box-shadow: 0rpx 5rpx 5rpx 5rpx #cccccc
+}
+
+.share-tips {
+  font-size: 9pt;
+  color: #999;
+  display: block;
+  margin-top: 10rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.action-sheet-btn{
+  width: 100%;
+  height: 100%;
+  margin: -10px 0;
+  font-size: 18px;
+}
+
+.action-sheet-btn::after{   
+  border: none;   
+}
+.bargin_head_pic{
+  width: 1rem;
+  height:1rem;
+  margin-left: -15rpx;
+  border-radius: 50%;
+  border:4px #fff solid 
+}
+.bargin_headpic{
+  margin-top:32rpx;
+}
+
+.classname{
+  margin-top:-18px;
+  font-size:.6777rem;
+  color:#fff;
+}
+.wxParse-p image{
+width: 100%!important;
+}
+.co-red-price{
+font-size: 33rpx;
+font-weight: bold;
+float: left;
+}
+/* 商品海报分享e*/
+
+/* 秘密商品 */
+.secret {
+  position: absolute;
+  right: 10rpx;
+  bottom: 17rpx;
+  height: 35rpx;
+  width: 35rpx;
+  background-color: #f10215;
+  color: #fff;
+  border-radius: 50%;
+  line-height: 35rpx;
+  text-align: center;
+  font-size: 22rpx;
+}
+.delGoods,.delGoods2{
+  position: absolute;
+  bottom: 12rpx;
+  height: 43rpx;
+  width: 104rpx;
+  background-color: #fff;
+  color: #18c2ba;
+  border-radius: 5rpx;
+  line-height: 43rpx;
+  text-align: center;
+  font-size: 26rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #18c2ba;
+}
+.delGoods {
+  left: 10rpx;
+}
+.delGoods2 {
+  right: 10rpx;
+  background-color: #8badf8;
+  color: #fff;
+  border: none;
+}
+.delGoods::after,.delGoods2::after {
+  content: '';
+  position: absolute;
+  bottom: -5rpx;
+  height: 65rpx;
+  width: 130rpx;
+}
+.delGoods::after {
+  left: -5rpx;
+}
+.delGoods2::after {
+  right: -5rpx;
+}
+/* 对没有商品的时候添加提示语句 */
+.allInfo, .selfInfo {
+  padding: 0 15rpx;
+  color: #555;
+  font-size: 22rpx;
+  text-shadow:  0 0 5rpx #ccc;
+}
+.storePcUrl {
+  color: #18c2ba;
+}
+.copyUrl {
+  color: #f10215;
+  background-color: sandybrown;
+  text-align: center;
+  padding: 0 5rpx;
+  border-radius: 5rpx;
+}
+
+/* 提示信息遮罩层 */
+.tips-mask {
+  position: fixed;
+  height: 100%;
+  width: 750rpx;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background: rgba(0, 0, 0, .6);
+  text-align: center;
+  z-index: 10000;
+}
+.tips-mask image {
+  position: absolute;
+  width: 400rpx;
+  height: 300rpx;
+}
+.tips-mask .txt {
+  position: absolute;
+  top: 550rpx;
+  right: 15%;
+  padding: 13rpx 30rpx;
+  border: 2rpx solid #fff;
+  border-radius: 100rpx;
+  color: #fff;
+  font-weight: 500;
+}
+.tips-mask .txt2 {
+  position: absolute;
+  top: 400rpx;
+  right: 3%;
+  color: #fff;
+  font-weight: 500;
+  width: 337rpx;
+}
+
+/* 店铺被关闭 */
+.closeBox {
+  position: relative;
+  height: 25vh;
+  width: 650rpx;
+  border-radius: 50rpx;
+}
+.closeTitle {
+  margin: 30rpx auto;
+  width: 350rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  background-color: #ff976a;
+  color: #fff;
+}
+.closeTitle2 {
+  height: 60rpx;
+  width: 580rpx;
+  line-height: 60rpx;
+  text-indent: 1em;
+}
+.closeInfo {
+  padding: 20rpx 100rpx;
+  text-align: center;
+  font-size: 28rpx;
+  background-color: #8fd4d0;
+  box-sizing: border-box;
+}
+.colblue {
+  color: blue;
+}
+.closeBack {
+  position: absolute;
+  left: 50%;
+  bottom: 20rpx;
+  transform: translateX(-50%);
+  padding: 8rpx 15rpx;
+  background-color: #18c2ba;
+  border-radius: 25rpx;
+  color: #fff;
+}
+
+/* 删除商品 */
+.closeBox {
+  position: relative;
+  padding-top: 50rpx;
+  height: 230rpx;
+  width: 600rpx;
+  background-color: #fff;
+  border-radius: 50rpx;
+}
+.delTitle {
+  text-align: center;
+  margin: 10rpx 0;
+  font-size: 40rpx;
+  color: #f10215;
+}
+.delTips {
+  padding: 30rpx 30rpx 50rpx;
+  color: #999;
+  font-size: 33rpx;
+  word-break: break-all;
+  text-align: center;
+}
+.delbtns {
+  position: absolute;
+  bottom: 0rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 600rpx;
+  height: 80rpx;
+  border-top: 1rpx solid #eaeaea;
+  text-align: center;
+}
+.delbtns view {
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.copyUrl {
+  color: #fff;
+  background-color: #18c2ba;
+  border-radius: 5rpx;
+  width: 130rpx;
+  font-size: 26rpx;
+}
+.col18c {
+  color: #18c2ba;
+  border-left: 2rpx solid #eaeaea;
+  box-sizing: border-box;
+}
+
+/* 弹窗 */
+.warningPopup {
+  overflow-y: unset!important;
+  border-radius: 0 0 20rpx 20rpx;
+}
+.warningBox {
+  position: relative;
+  padding: 80rpx 20rpx 20rpx 30rpx;
+  min-height: 450rpx;
+  width: 550rpx;
+  box-sizing: border-box;
+}
+.warningBox image {
+  position: absolute;
+  top: -130rpx;
+  left: 0;
+  width: 550rpx;
+  height: 310rpx;
+  z-index: -1;
+}
+.warningTxt {
+  margin: 20rpx 0 10rpx 0;
+  color: #18c2ba;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 55rpx;
+}
+
+.warningBtn1 {
+  margin: 0 auto;
+  width: 85%;
+  height: 60rpx;
+  color: #fff;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+.warningBtn2 {
+  margin: 0 auto;
+  width: 85%;
+  height: 60rpx;
+  color: #fff;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  text-align: center;
+  background-color: #18c2ba;
+}
+.warningBtn1 {
+  margin: 50rpx auto;
+  background-color: #f17a7f;
+}
+
+.infoPopupCancel {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -80rpx;
+  font-size: 26rpx;
+  line-height: 48rpx;
+  width: 100rpx;
+  height: 70rpx;
+  color: #fff;
+  text-align: center;
+}
+
+/* 10.6 操作mask */
+
+.operationMask {
+  padding-top: 20vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100vh;
+  width: 750rpx;
+  box-sizing: border-box;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, .7);
+}
+.operationItemBox {
+  margin: 0 auto;
+}
+.operationItem {
+  margin: 18rpx auto;
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx 0rpx 10rpx 20rpx;
+  height: 70rpx;
+  width: 550rpx;
+  border-radius: 45rpx;
+  border: 1rpx solid #18c2ba;
+  background-color: #fff;
+}
+.operationImg {
+  margin-right: 8rpx;
+  height: 70rpx;
+  width: 70rpx;
+  border-radius: 50%;
+}
+.operationImg image {
+  height: 70rpx;
+  width: 70rpx;
+  border-radius: 50%;
+}
+.operationTxt {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.operationTitle {
+  font-weight: 600;
+  font-size: 26rpx;
+  color: #666;
+}
+.operationTips {
+  font-size: 22rpx;
+  color: #aaa;
+}
+.closeOperationMask {
+  position: relative;
+  margin: 22rpx auto;
+}
+.closeOperationMask text {
+  position: absolute;
+}
+.closeOperationMaskX {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  height: 60rpx;
+  width: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #18c2ba;
+  border-radius: 50%;
+}
+.closeOperationMaskTxt {
+  left: 50%;
+  top: 60rpx;
+  transform: translateX(-50%);
+  color: #18c2ba;
+  font-size: 32rpx;
+}

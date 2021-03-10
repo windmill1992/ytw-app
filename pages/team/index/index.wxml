@@ -1,0 +1,29 @@
+<!--index.wxml-->
+<view class="team-list" wx:for="{{goodlist}}" wx:key="index">
+    <view class="team-item">
+        <navigator class="team-pic" url="/pages/team/team_info/team_info?goods_id={{item.goods_id}}&item_id={{item.item_id}}&team_id={{item.team_id}}">
+            <image mode="aspectFill" class="wh100" src="{{url}}{{item.share_img}}"></image>
+        </navigator>
+        <view class="team-name ellipsis-2">{{item.act_name}}</view>
+        <view class="team-des">
+            <view class="team-price">
+                <view class="team-ico">
+                    <view><image class="wh100" src="../../../images/ico-team6.png"></image></view>
+                    {{item.needer}}人团
+                </view>
+                <view class="co-red"><text>￥</text>{{item.team_price}}</view>
+                <view>单买￥{{item.shop_price?item.shop_price:item.goods.shop_price}}</view>
+            </view>
+            <navigator url="/pages/team/team_info/team_info?goods_id={{item.goods_id}}&item_id={{item.item_id}}&team_id={{item.team_id}}">
+                <view class="go-team">去开团</view>
+            </navigator>
+        </view>
+    </view>
+</view>
+
+<!-- <view class="no-more">没有更多了</view> -->
+
+  <view class="defaultPage">
+    <image src="https://yitongwang.oss-cn-hangzhou.aliyuncs.com/miniapp/success.png" class="img1"></image>
+    <view class="orige">功能开发中！</view>
+  </view>

@@ -1,0 +1,49 @@
+<view class="orderBox">
+  <order-item url="{{ url }}" isDetail noOperations bind:operationOrder="operationOrder" bind:clickItem="clickItem" data="{{ list }}"></order-item>
+</view> 
+<view class="change">
+  <view class="absTitle">改价</view>
+  <view class="aaa">
+    <text class="abst2">商品总额</text>
+    <view class="op2">
+      <text catchtap="changeType" data-type1="a" data-type2="a1" class="op2Item{{ typeA ? ' op2Current' : '' }}">减价</text>
+      <text catchtap="changeType" data-type1="a" data-type2="a2" class="op2Item{{ typeA ? '' : ' op2Current' }}">打折</text>
+    </view>
+    <view class="discount" wx:if="{{!typeA}}"> <!-- 打折 -->
+      <view class="handelDiscount">
+        <view catchtap="doDiscount" data-type="sub" style="background-color:{{ curDiscountIndex == 19 ? '#ccc' : '#f17a7f' }};" hover-class="hoverSubAdd" class="inlineblock sub">-</view>
+        <view class="inlineblock countTxt">{{mapDiscount[curDiscountIndex]}}</view>
+        <view catchtap="doDiscount" data-type="add" style="background-color:{{ curDiscountIndex == 0 ? '#ccc' : '#f17a7f' }};" class="inlineblock add" hover-class="hoverSubAdd">+</view>
+      </view>
+      <view class="goodsPrice">￥{{ newP }}</view>
+    </view>
+    <view class="bySelf" wx:if="{{ typeA }}"><!-- 减价 -->
+      <view class="pxxStyle">
+        <text class="prePrice">￥{{ originalP }}-</text>
+        <input class="priceInput" bindblur="priceBlur" value="{{goodprice}}" type="digit"></input>
+        <text class="fainalPrice">= {{newP}}<text style="font-size:22rpx;">(减价后)</text></text>
+      </view>
+    </view>
+  </view>
+  <view class="bbb">
+    <text class="abst2">运费</text>
+    <view class="op2">
+      <text catchtap="changeType" data-type1="b" data-type2="b1" class="op2Item{{ typeB ? ' op2Current' : '' }}">减邮费</text>
+      <text catchtap="changeType" data-type1="b" data-type2="b2" class="op2Item{{ typeB ? '' : ' op2Current' }}">免邮</text>
+    </view>
+    <view style="height:120rpx;">
+      <view class="pxxStyle" wx:if="{{ typeB }}">
+        <text class="prePrice">￥{{ originalPostage }}-</text>
+        <input class="priceInput" bindblur="newPostageBlur" value="{{postprice}}" type="digit"></input>
+        <text class="fainalPrice">= {{newPostage}}<text style="font-size:22rpx;">(减价后)</text></text>
+      </view>
+      <view class="freeExpress" wx:if="{{ !typeB }}">
+        <text>￥{{ originalPostage }}</text>
+        <text>￥0.00</text>
+      </view>
+    </view>
+  </view>
+  <view class="total"><text class="totalcol1" space="emsp">含运费￥{{ newPostage }} </text>总价:<text class="totalcol2">￥{{ (newP - 0) + (newPostage - 0) }}</text></view>
+</view>
+
+<view class="sureChange" catchtap="sureChange">确 认 改 价</view>

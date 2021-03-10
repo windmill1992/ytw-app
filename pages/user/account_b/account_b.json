@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "店铺资金",
+    "navigationBarBackgroundColor": "#66d6d2",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "van-tab":  "../../../dist/tab/index",
+        "van-tabs": "../../../dist/tabs/index",
+        "van-row": "../../../dist/row/index",
+        "van-col": "../../../dist/col/index"
+      }
+}

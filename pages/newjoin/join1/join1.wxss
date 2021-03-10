@@ -1,0 +1,110 @@
+@import "../../../utils/template/newjoin.wxss";
+/* 区域选择弹框 */
+@import "../../../utils/regions/regions.wxss"; 
+page{
+    background-color: #f5f5f5;
+}
+.notice{
+    padding: 20rpx 20rpx 0 20rpx;
+    background-color: #f5f5f5;
+}
+.notice .content{
+    background-color: #FDFBE4;
+    color: #DF9D35;
+    font-size: 22rpx;
+    padding: 20rpx;
+    border-radius: 10rpx;
+    line-height: 32rpx;
+    position: relative;
+}
+.notice .content .close{
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.notice .content .title{
+    font-size: 28rpx;
+}
+.next_icon {
+    width: 32rpx;
+    height: 32rpx;
+    float: right;
+    margin-top: 32rpx;
+}
+
+.item{
+    float: left;
+    padding: 0 30rpx; 
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #f3f3f3;
+    line-height: 100rpx;
+    height: 100rpx;
+    position: relative;
+    background-color: white;
+    color: #999;
+}
+.item-name{
+    float: left;
+}
+.foot{
+  color: #999;
+  font-size: 24rpx;
+}
+.item-input{
+    float: left;
+    height: 100rpx;
+    width: 450rpx;
+    margin-left: 20rpx;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.arrow{
+    position: absolute;
+    right: 30rpx;
+    width: 32rpx;
+    height: 32rpx;
+    padding-top: 30rpx;
+}
+switch .wx-checkbox-input{
+    border-radius: 50%;
+    height: 38rpx;
+    width: 38rpx;
+}
+.next-btn{
+    float: left;
+    background-color: #ff3b3b;
+    color: white;
+    border-radius: 10rpx;
+    margin: 0 auto;
+    margin-top: 20rpx;
+    width: 710rpx;
+    font-size: 36rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+}
+.guide{
+    color: #ff3b3b;
+    display: inline-block;
+}
+.formbox{
+  width: 710rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+.last{
+  border-bottom-right-radius:10rpx;
+  border-bottom-left-radius:10rpx;
+}
+.choosebox{
+  position: relative;
+  top: 10rpx;
+}

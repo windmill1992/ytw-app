@@ -1,0 +1,214 @@
+/* account.wxss */
+page{
+    background: #fff;
+}
+.cover {
+    background-color: #3abdb7; 
+    color: white;
+    height: 320rpx;
+    position: relative;
+}
+.center{
+ text-align: center;
+}
+.justify-content{
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.flex{
+    display: flex;
+}
+.text-size{
+    font-size:30rpx;
+    margin-top:24rpx;
+}
+.detail {
+    font-size: 36rpx;
+    line-height: 40rpx;
+    width:33.3%;
+    text-align:center;
+    /* border-right:2rpx solid #ff3b3b; */
+    height:120rpx;
+}
+.price-text {
+    font-size: 22rpx;
+}
+.operate {
+    position: absolute;
+    width: 100%;
+}
+.op-item {
+    padding: 10rpx 0;
+    margin-left: 15rpx;
+    width: 30%;
+    float: left;
+    font-size: 24rpx;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border: 2rpx solid #fff;
+}
+.op-item text{
+    width:2rpx;
+    height:20rpx;
+    background:#fff;
+    position:absolute;
+    left:375rpx;
+    top:30rpx;
+}
+.op-item image{
+    width:28rpx;
+    height:28rpx;
+    margin-right:14rpx;
+}
+.list {
+    margin-top: 20rpx;
+}
+.item {
+    font-size: 32rpx;
+    background-color: white;
+    padding: 25rpx 35rpx;
+    border-bottom: 1rpx 
+}
+.arrow {
+    margin-top: 5rpx;
+    width: 25rpx;
+    height: 28rpx;
+    float: right;
+}
+.switch-box{
+    font-size:30rpx;
+    display:inline-block;
+    width:250rpx;/*只保留两个 */
+    box-sizing:border-box;
+    text-align:center;
+    line-height:84rpx;
+}
+.switch-box view{
+    color: #333333;
+    background-color: #ebebeb;
+}
+.switch-item-on{
+    color: #1a1a1a;
+    background-color: #ffffff !important;
+}
+.navbar-box{
+    font-size:30rpx;
+    display:inline-block;
+    width:33.333333%;
+    box-sizing:border-box;
+    text-align:center;
+    line-height:76rpx;
+    background:#fff;
+    position:relative;
+}
+.navbar-box view{
+    color:#666;
+}
+.navbar-item-on{
+    font-size: 35rpx;
+    color: #ff3b3b!important;
+}
+.navbar-item-on::after{
+    content:'';
+    position: absolute;
+    width:40rpx;
+    height:8rpx;
+    background:linear-gradient(90deg,rgba(255,59,59,1) 0%,rgba(255,115,61,1) 100%);
+    border-radius:4rpx;
+    left: 50%;
+    margin-left: -20rpx;
+    bottom: 0rpx;
+}
+.account-box{
+    border-bottom:2rpx solid #f3f3f3;
+    width:690rpx;
+    margin-left:30rpx;
+    display:flex;
+    justify-content:space-between;
+    height:108rpx;
+    padding-top:20rpx;
+    line-height:50rpx;
+}
+.account-box view{
+    font-size: 30rpx;
+     color: #333;
+}
+.account-box .bottom{
+    font-size: 24rpx;
+    color: #999;
+    max-width:250rpx;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.account-box .right view:nth-child(1){
+   color: #ff3b34;
+   text-align:right;
+}
+/* 充值记录 */
+.recharge-box{
+    font-size: 28rpx;
+    padding: 25rpx 30rpx;
+    border-bottom: 1rpx solid #f3f3f3;
+}
+.recharge-item{
+    display: inline-block; 
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #666666;
+    box-sizing: border-box;
+    text-align: center;
+}
+.recharge-box .pay{
+    width: 35%;
+}
+.recharge-box .time{
+    width: 23%;
+}
+.recharge-box .price{
+    width: 20%;
+}
+.recharge-box .status{
+    width: 22%;
+    color: #e01222;
+}
+.recharge-box .title{
+    color: #666666;
+    font-size: 30rpx;
+}
+/* 提现记录 */
+.withdrawal-box{
+    font-size: 28rpx;
+    padding: 25rpx 30rpx;
+    border-bottom: 1rpx solid #f3f3f3;
+}
+.withdrawal-item{
+    display: inline-block; 
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #666666;
+    box-sizing: border-box;
+    text-align: center;
+}
+.withdrawal-box .pay{
+    width: 20%;
+}
+.withdrawal-box .time{
+    width: 27%;
+}
+.withdrawal-box .price{
+    width: 28%;
+}
+.withdrawal-box .status{
+    width: 25%;
+    color: #e01222;
+}
+.withdrawal-box .title{
+    color: #666666;
+    font-size: 32rpx;
+}

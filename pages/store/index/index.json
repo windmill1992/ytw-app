@@ -1,0 +1,13 @@
+{
+    "navigationBarTitleText": "店铺详情",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 100,
+    "usingComponents":{
+        "van-action-sheet": "../../../dist/action-sheet/index",
+        "van-stepper": "../../../dist/stepper/index",
+        "van-dialog": "../../../dist/dialog/index",
+        "van-tab": "../../../dist/tab/index",
+        "van-tabs": "../../../dist/tabs/index",
+        "van-notice-bar": "../../../dist/notice-bar/index"
+      }
+}

@@ -1,0 +1,137 @@
+page{
+    background: #f5f5f5;
+}
+.receipt-category{
+    padding: 0 26rpx;
+    background:#fff;
+    border-top:1px solid #f3f3f3;
+    padding-bottom: 20rpx;
+}
+.receipt-category .type{
+    font-size: 26rpx;
+    color: #222;
+    height: 94rpx;
+    line-height: 94rpx;
+}
+.receipt-category .prompt{
+    font-size: 24rpx;
+    color: #ff3636;
+    line-height: 34rpx;
+    margin-bottom: 10rpx;
+}
+.invoice{
+    font-size: 24rpx;
+    margin-bottom:33rpx;
+}
+.invoice text{
+    display: inline-block;
+	height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    padding:0 26rpx;
+	border-radius: 5rpx;
+	border: solid 2rpx #ff4545;
+    margin-right:48rpx;
+    color: #ff4b4b;
+}
+.invoice text:nth-child(2){
+    color: #999999;
+    border: solid 2rpx #f3f3f3;
+}
+.radio{
+    transform:scale(0.8);
+}
+.radio radio{
+    margin-right:16rpx;
+}
+.set-mes{
+    background-color: #fff;
+    font-size: 30rpx;
+    color: #333;
+    border-top:8px solid #eff1f2;
+}
+.invoice-remarks.one{
+    height: 105rpx;
+    line-height:105rpx;
+}
+.invoice-remarks{
+    padding:0 26rpx;
+    font-size:26rpx;
+    color:#262626;
+}
+.invoice-remarks.one view{
+    display:inline-block;
+}
+.one radio-group{
+    float: right;
+}
+.one radio-group label:nth-child(1){
+    margin-right: 70rpx;
+}
+.two .tit{
+    border-top:2rpx solid #f3f3f3;
+}
+.three{
+    padding-bottom: 23rpx;
+}
+.four{
+    border-top:16rpx solid #f3f3f3;
+}
+.four .tit{
+    height: 108rpx;
+    line-height: 108rpx;
+}
+.four radio-group {
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+}
+.set-mes input{
+    width: 671rpx;
+	height: 70rpx;
+	background-color: #f4f4f4;
+	border-radius: 3rpx;
+	border: solid 2rpx #f3f3f3;
+    padding-left:27rpx;
+    font-size:24rpx;
+}
+input::-webkit-input-placeholder{
+    color: #999;
+}
+.tit{
+    height:80rpx;
+    line-height:80rpx;
+    font-size: 26rpx;
+    color: #262626;
+}
+.set-btn{
+    display: flex;
+    font-size: 24rpx;
+}
+.arrow-rigth{
+    width: 32rpx;
+    height: 32rpx; 
+}
+.invoice-text{
+    color:red;
+}
+.use-btn{
+    text-align: center;
+    color: #fff;
+    font-size:26rpx;
+    width: 698rpx;
+	height: 66rpx;
+	background-color: #ff4343;
+	border-radius: 33rpx;
+    padding: 0 26rpx;
+    margin-top:110rpx;
+}
+
+.invoice-remarks label{
+    display:inline-block;
+    font-size:30rpx;
+    color:#1d1d1d;
+}
+.bottom{
+    margin-left: -18rpx;
+}

@@ -1,0 +1,167 @@
+<view class="container">
+    <view class="nav">
+        <view class="nav-item {{requestUrl == requestData.orderby_default ? 'red-on' : ''}}" bindtap="changeTab" data-href="{{requestData.orderby_default}}">人气<view class="ico-dg"><image class="wh100" src="../../../images/dg.png"></image></view></view>
+        <view class="nav-item  {{requestUrl == requestData.orderby_sales_sum ? 'red-on' : ''}}" bindtap="changeTab" data-href='{{requestData.orderby_sales_sum}}'>销量</view>
+        <view class="nav-item" bindtap="changeTab" bindtap="openFilterModal">筛选<view class="ico-filter"><image class="wh100" src="../../../images/xx.png"></image></view></view>
+        <view class="nav-item" bindtap="changeTab" bindtap="toSearchPage">搜索<view class="ico-filter"><image class="wh100" src="../../../images/search.png"></image></view></view>
+    </view>
+
+    <view class="choice_list">
+        <!-- <view class="listitem" wx:for="{{requestData.goods_list}}" wx:key="index" style="padding-bottom:{{item.is_recommend>0?'30rpx':'0'}};" wx:if="{{ item.goods_id != requestData.goods_list[requestData.goods_list.length - 15].goods_id }}"> --> <!-- 防止商品正在继续上架，导致分页出现重复  待测试 -->
+        <view class="listitem" wx:for="{{requestData.goods_list}}" wx:key="index" style="padding-bottom:{{item.is_recommend>0?'30rpx':'0'}};">
+            <navigator class="choice_item" url="/pages/goods/goodsInfo/goodsInfo?goods_id={{item.goods_id}}&store_id={{item.store_id}}" hover-class="none">
+                <view class="img-wrap">
+                    <!-- <image src="{{url}}/api/goods/goodsThumImages?goods_id={{item.goods_id}}&width=400&height=400" mode="scaleToFill"></image> -->
+                    <image src="{{ item.original_img }}" mode="scaleToFill"></image>
+                    <text hidden="{{!item.activity.prom_title}}" class="Seconds_kill">{{item.activity.prom_title}}</text>
+                </view>
+                <view class="item-cont">
+                    <view class="title1">{{item.store_name}}</view>
+                    <view class="title2">{{item.goods_name}}</view>
+                    <!-- <view class="title2">{{item.goods_id}}</view> -->
+                    <view class="price">
+                        <view class="reddd">￥{{item.shop_price}}</view>
+                        <view><text class="reddd fs23">★</text><text class="fs23">浏览数:{{item.click_count}}</text></view>
+                        <!-- <view class="addToFavirate" data-id="{{ item.goods_id }}" catchtap="addToFavirate"><text class="reddd fs23"><text style="font-size:22rpx;" class="icon iconfont icon-icon-"></text></text><text class="fs23">收藏{{ showFavirate ? item.comment_count : '' }}</text></view> -->
+                    </view>
+                    <!-- <view class="comment">评论{{item.comment_count}} 销量{{item.sales_sum * 1 + item.virtual_sales_sum}}</view> -->
+                    <!-- <view hidden="{{ true }}" class="carts" catchtap='openSpecModel' data-goods_id="{{item.goods_id}}">
+                         <image src='../../../images/shopc.png'></image>
+                    </view>  -->
+                </view>
+                <view class="tuijian" wx:if="{{item.is_recommend > 0}}">推荐</view>
+            </navigator>
+            <view class="videoo" wx:if="{{ video.length>0 }}">▶</view>
+        </view>
+        
+    </view>
+    <view style="text-align:center;" hidden="{{ !loadingShow || requestData.goods_list.length == 0 || !requestData}}">
+        <image class="loading" src="https://www.yitongwang.com/public/static/images/ajaxLoader.gif"></image>
+    </view>
+    <van-divider wx:if="{{ !loadingShow }}" custom-style="margin-bottom: 5rpx;" contentPosition="center">我是有底线的</van-divider>
+    <view class="no-data" wx:if="{{!requestData.goods_list || requestData.goods_list.length == 0}}">
+        <image src="../../../images/cart-null.png" class="cart-image"/>
+        <view class="no-data-title">没有相关的数据</view>
+        <navigator url="/pages/index/index/index" class="lookat" open-type="switchTab"> 去逛逛 </navigator>
+    </view>
+</view>
+<!-- 规格弹框  -->
+<view hidden="{{!openSpecModal}}">
+   <view class="cover-layer" bindtap="closeSpecModal"></view>
+     <view class="spec-model">
+        <icon type="cancel" color="gray" size="22" class="modal-close" bindtap="closeSpecModal"/>
+        <view class="spec-goods">
+            <image mode="aspectFill" class="wh100 spec-img" src="{{url}}/api/goods/goodsThumImages?goods_id={{data.goods.goods_id}}&width=200&height=200"></image>
+            <view class="spec-goods-info">
+                <view class="spec-goods-name">{{data.goods.goods_name}}</view>
+                <view class="spec-goods-price"><text>￥</text>{{select.price[0]}}.<text>{{select.price[1]}}</text>
+                        <view class="spec-goods-stock">剩余库存:{{select.stock}}</view>
+                </view>
+            </view>
+        </view>
+         <block wx:for="{{data.goods_spec_list}}" wx:key="index" wx:for-index="listIdx">
+            <view class="spec-name">{{item.spec_name}}</view>
+            <view class='spec_types'>
+            <view wx:for="{{item.spec_list}}" wx:for-item='spec' wx:key="index" class="spec-btn {{item.selectItemId==spec.item_id?'spec-btn-click':''}}" bindtap="selectSpec" data-listidx="{{listIdx}}" data-itemid="{{spec.item_id}}">{{spec.item}}</view>
+            </view>
+        </block>
+        <view class='spec-box'>
+          <view class="spec-name">数量</view>
+          <view class="count">
+              <view class="sub" bindtap="subCartNum">-</view>
+              <input type="number" value="{{goodsInputNum}}" bindblur="inputCartNum"/>
+              <view class="add" bindtap="addCartNum">+</view>
+          </view>
+        </view>
+         <block>
+            <view class="spec-cart-btn spec-buy {{select.stock<=0||shippingCost<0||!hasSpec?'spec-cart-disable':''}}" data-action='buy' bindtap="addCart">确定</view>
+        </block>
+    </view>
+</view>
+<!-- 筛选弹框  -->
+<view hidden="{{!openFilterModal}}" catchtouchmove="true">
+    <view class="cover-layer" catchtap="closeFilterModal" catchtouchmove="true"></view>
+    <scroll-view scroll-y="{{true}}" class="filter-modal" catchtouchmove="true">
+        <!-- <icon type="cancel" color="gray" size="22" class="modal-close" bindtap="closeFilterModal"/>
+        <button class="viewall-btn" bindtap="restoreData">显示全部分类</button> -->
+        <view class="filter-box">
+            <view class="filter-name">分类筛选</view>
+            <view class="filter-items">
+                <view style="line-height:70rpx;" class="{{flall?'filter-item2':'filter-item'}}" data-type="jing1" data-sq="2" data-href="{{'id/0'}}" bindtap="filterGoods">全部</view>
+                <view style="line-height:{{item.name.length>6?'32rpx':'70rpx'}};font-size:{{ item.name.length > 11 ? '18rpx' : '26rpx' }};" class="{{urlObj.id== 'id/' + item.id?'filter-item2':'filter-item'}}" wx:for="{{requestData.goods_category}}" wx:key="index" data-type="jing1" data-href="{{ 'id/' + item.id}}" bindtap="filterGoods">
+                {{item.name}}
+                </view>
+            </view>
+        </view>
+
+        <view class="filter-box">
+            <view class="filter-name">商圈</view>
+            <view class="filter-items">
+                <view style="line-height:70rpx;" class="{{sqall?'filter-item2':'filter-item'}}" data-type="jing2" data-sq="2" data-href="{{'store_business/0'}}" bindtap="filterGoods">全部</view>
+                <view style="line-height:{{item.store_business.length>6?'30rpx':'70rpx'}};" class="{{urlObj.store_business == 'store_business/' + item.id?'filter-item2':'filter-item'}}" wx:for="{{requestData.business}}" wx:key="index" data-type="jing2" data-href="{{'store_business/' + item.id}}" bindtap="filterGoods">
+                {{item.store_business}}</view>
+            </view>
+        </view>
+        <!-- <view class="filter-box" wx:for="{{requestData.filter_spec}}" wx:key="index">
+            <view class="filter-name">{{item.name}}</view>
+            <view class="filter-items">
+                <view class="filter-item" wx:for="{{item.item}}" wx:key="index" data-href="{{item.href}}" bindtap="filterGoods">
+                {{item.name}}</view>
+            </view> 
+        </view> -->
+        <view class="filter-box">
+            <view class="filter-name">适用性别</view>
+            <view class="filter-items">
+                <!-- <view style="line-height:70rpx;" class="{{item.check?'filter-item2':'filter-item'}}" data-type="dong1" data-href="empty" bindtap="filterGoods">全部</view> -->
+                <view class="{{item.check?'filter-item2':'filter-item'}}" wx:for="{{filterData.sex}}" wx:key="index" data-index="{{index}}" data-type="dong1" data-href="{{item.href}}" bindtap="filterGoods">
+                    {{item.name}}
+                </view>
+            </view>
+        </view>
+        <view class="filter-box">
+            <view class="filter-name">适用年龄</view>
+            <view class="filter-items">
+                <!-- <view style="line-height:70rpx;" class="{{item.check?'filter-item2':'filter-item'}}" data-type="dong2" data-href="empty" bindtap="filterGoods">全部</view> -->
+                <view class="{{item.check?'filter-item2':'filter-item'}}" wx:for="{{filterData.age}}" data-index="{{index}}" wx:key="index" data-type="dong2" data-href="{{item.href}}" bindtap="filterGoods">
+                {{item.name}}</view>
+            </view>
+        </view>
+        <!-- <view class="filter-box" wx:if="{{requestData.filter_brand.length>0}}">
+            <view class="filter-name">相关品牌</view>
+            <view class="filter-items">
+                <view class="filter-item" wx:for="{{requestData.filter_brand}}" wx:key="index" data-type="dong" data-href="{{item.href}}" bindtap="filterGoods">
+                {{item.name}}</view>
+            </view>
+        </view> -->
+        <!-- <view class="filter-box" wx:if="{{requestData.filter_price.length>0}}">
+            <view class="filter-name">价格区间</view>
+            <view class="filter-items">
+                <view class="filter-item" wx:for="{{requestData.filter_price}}" wx:key="index" data-href="{{item.href}}" bindtap="filterGoods">
+                {{item.name}}</view>
+            </view>
+        </view> -->
+        
+    </scroll-view>
+    <view class="subBox">
+        <view class="bbtn bbtn1" bindtap="resetSearch">重置</view>
+        <view class="bbtn bbtn2" bindtap="searchGoods">确定</view>
+    </view>
+</view> 
+
+<!-- 返回顶部按钮  -->
+<view class="toTop" bindtap="doScrollTop" wx:if="{{supportPageScroll}}">
+    <image class="wh100" src="../../../images/topup.png"></image>
+</view>
+
+<!-- 筛选提示遮罩层 -->
+<view class="tips-mask" hidden="{{ tipsmask }}" catchtouchmove="{{ true }}">
+    <image src="{{url}}/public/static/images/minniapp/goodsListMask.png"></image>
+    <view class="txt" catchtap="closeMask">我知道了</view>
+    <view class="txt2">该提示6次后不再出现，当前已提示{{ pastSum }}次</view>
+</view>
+<wxs module="subStr1">
+    var str15 = function(str){
+        return str.substring(0,12)
+    }
+    module.exports.str15 = str15
+</wxs>

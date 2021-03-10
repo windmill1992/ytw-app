@@ -1,0 +1,229 @@
+<van-cell-group> 
+  <van-field
+    value="{{ name }}"
+    clearable
+    maxlength="10"
+    bind:change="nameChange"
+    label="预约姓名"
+    placeholder="请输入姓名"
+    disabled="{{ ableToEdit == 'b' }}"
+  />
+    <van-field
+      value="{{ mobile }}"
+      clearable
+      bind:change="mobileChange" 
+      label="预约电话"
+      placeholder="请输入手机号"
+    />
+    <van-field
+      value="{{currentCangweitxt}}"
+      clearable
+      placeholder="请选择仓位规格"
+      label="仓位规格"
+      bindtap="showCangwei"
+       disabled
+    />
+    <van-field
+      value="{{ checkTime.time }}"
+      clearable
+      label="打包日期"
+      bindtap="showTime"
+      disabled
+    />
+ 
+</van-cell-group>
+<van-action-sheet
+  show="{{ showCangwei }}"
+  actions="{{ cangwei_actions }}"
+  bind:close="onCangClose"
+  bind:cancel="onCangClose"
+  bind:select="onCangChoose"
+  cancel-text="取消"
+  z-index="9999"
+/>
+
+<van-picker 
+overlay
+wx:if="{{ isShowTime }}"
+title="最晚封包时间"
+show-toolbar="{{true}}" 
+columns="{{ columns2 }}" 
+bind:cancel="onCancelTime"
+bind:confirm="timeConfirm"
+bind:change="onTimeChange"
+style="position: fixed;bottom:0;width:100%;z-index:99;"  
+/>
+
+  <view class="shooseWuliu" style="display: flex;flex-direction: row;">
+    <view class="shooseWuliuBox">
+      <text style="margin-right: 32px;">拉包方式</text>
+      <van-radio-group value="{{ wuliuRadio }}" bind:change="onwuliuRadioChange">
+        <view style="display: flex;flex-direction: row;">
+          <van-radio checked-color="#3abdb7" icon-size="16px" name="1">拼包中心代拉</van-radio>
+          <van-radio checked-color="#3abdb7" icon-size="16px" name="2">指定人员拉包</van-radio>
+        </view>
+      </van-radio-group>
+    </view>
+  </view>
+
+  <van-field
+    value="{{ wuliu }}"
+    clearable
+    bind:change="wuliuChange"
+    label="{{ wuliuFieldTxt }}"
+    placeholder="{{ wuliuFieldTxt + ((wuliuRadio == 1 ? '(非' : '(') +  '必填)') }}"
+    type="{{ wuliuFieldType }}"
+  />
+
+
+<view class="addressBox">
+  <view bindtap="toAddress" style="color:{{ (defaultInfo.address.consignee && defaultInfo.address.user_address && defaultInfo.address.mobile) ? '#323233' : '#666' }};line-height:44rpx;">{{(defaultInfo.address.consignee && defaultInfo.address.user_address && defaultInfo.address.mobile) ? (defaultInfo.address.consignee + ' ' + defaultInfo.address.user_address + ' ' + defaultInfo.address.mobile) : '请选择'}}</view>
+</view>
+
+<view class="title" wx:if="{{ ableToEdit != 'b' }}">
+	<view class="title-txt">厂家信息</view>
+	<input class="input input3" disabled="{{true}}" bindtap="showhsi" placeholder-class="place1" placeholder="常用厂家 >" wx:if="{{ ableToEdit == '' }}"></input>
+</view>
+
+<!-- 备注信息部分 -->
+
+<view class="ssearch" style="width:100%" wx:if="{{ ableToEdit != 'b' }}">
+<!-- 厂家信息部分 -->
+<van-swipe-cell
+  id="swipe-cell"
+  right-width="{{ 45 }}"
+  async-close
+  wx:for="{{ showChangjia }}"
+  wx:key="index"
+  disabled="{{ true }}"
+  data-index="{{index}}"
+>
+<!-- 厂家 1 2 3 4 -->
+  <van-row>
+    <van-col span="12">
+      <van-search label="{{ '厂家'+ (index+1) }}" value="{{ item.name }}" disabled left-icon="use-left-icon-slot"/>
+    </van-col>
+    <van-col span="9">
+      <van-search label="数量" searchType="number" maxlength="4" clearable="{{ false }}" data-index="{{ index }}" bind:change="sumChange" disabled="{{ ableToEdit != '' }}" value="{{ item.number }}" left-icon="use-left-icon-slot"/>
+    </van-col>
+    <van-col span="3">
+      <van-icon  bindtap="delCompany" data-index="{{index}}" name="clear" />
+    </van-col>
+  </van-row>
+</van-swipe-cell>
+</view>
+<!-- 搜索厂家 -->
+    <van-row bindtap="toSearch" wx:if="{{ ableToEdit == '' }}">
+      <van-col span="12">
+        <van-search label="{{ '厂名' + (showChangjia.length + 1) }}" disabled left-icon="use-left-icon-slot"/>
+      </van-col>
+      <van-col span="10">
+        <van-search label="数量" value="" left-icon="use-left-icon-slot"/>
+      </van-col>
+    </van-row>
+
+<!-- 自己封装的actionsheet -->
+<ytw-action show="{{ ytwAction }}" height="{{ytwHeight}}" title="常 用 厂 家" bind:onConfirm="ytwActionConfirm" bind:sellectAllFactory="sellectAllFactory" bind:scrollEnd="ytwActionScrollEnd" bind:onConfirm="chooseHistory" bind:onClickAdd="onClickAdd">
+  <view slot="actionSlot" catchtap="true">
+    <van-row wx:for="{{ historyCompany }}" wx:key="index" gutter="20" style="padding:5rpx 20rpx;text-align:;center">
+      <van-col span="3">
+        <van-checkbox icon-size="35rpx" custom-class="company-check" value="{{ item.ischecked }}" data-index="{{index}}" catchtap="historyCompanyChange"></van-checkbox>
+      </van-col>
+      <van-col span="10" data-index="{{index}}" catchtap="historyCompanyChange">
+        {{item.name}}
+      </van-col>
+      <van-col span="11" data-index="{{index}}">
+        <text class="addHisTel" catchtap="editTel" data-index="{{ index }}" data-id="{{ item.history_id }}" data-tel="{{ item.phone }}" wx:if="{{ item.phone == 0 }}">添加电话</text><text wx:if="{{ item.phone == 0 }}" class="teladdtips">（便于催送货）</text>
+        <text class="hisTelNum" space="ensp" wx:if="{{ item.phone != 0 }}" >{{ item.phone }}  </text><van-icon catchtap="editTel" data-tel="{{ item.phone }}" data-index="{{ index }}" data-id="{{ item.history_id }}" name="edit" wx:if="{{ item.phone != 0 }}"/><text space="ensp">{{ item.phone > 0 ? ' ': '' }}</text><van-icon name="clear" color="#f56b6b" catchtap="delFromUsed" data-index="{{ index }}" data-id="{{ item.history_id }}" />
+      </van-col>
+    </van-row> 
+  </view>
+</ytw-action>
+<!-- 编辑厂家号码的弹窗 -->
+<van-dialog
+  use-slot
+  title="编辑厂家电话"
+  show="{{ showEidtTel }}"
+  show-cancel-button
+  bind:close="onCloseEidtTel"
+  bind:confirm="onConfirmEidtTel"
+  z-index="100"
+>
+  <input class="editInput" bindinput="hisTelChange" value="{{ editTelNum }}"></input>
+</van-dialog>
+
+<!-- 备注 -->
+<view hidden="{{ !textAreaFlag }}">
+		<textarea placeholder="备注" class="textarea" value="{{ textareaValue }}" cursor-spacing="80" bindinput="textareaChange" maxlength="130"></textarea>
+		<button class="btn" bindtap="send" disabled="{{ sendDisabled }}">申 请 预 约</button>
+</view>
+<view hidden="{{ textAreaFlag }}">
+		<view class="textarea">{{ textareaValue }}</view>
+		<button class="btn" bindtap="send" disabled="{{ sendDisabled }}">申 请 预 约</button>
+</view>
+
+<van-dialog
+  use-slot
+  title="仓位预览"
+  show="{{ previewFlag }}"
+  show-cancel-button
+  width="80%"
+  height="80vh"
+  confirm-button-text="提交"
+  bind:confirm="postAdd"
+  >
+<scroll-view scroll-y="true" style="height:100%;width:100%;white-space: nowrap;">
+  <view class="previewBox" catchtouchmove="true">
+    <view><text>姓名:</text><text class="col3">{{name}}</text></view>
+    <view>电话:<text class="col3">{{mobile}}</text></view>
+    <view>规格:<text class="col3">{{currentCangweitxt}}</text></view>
+    <view>时间:<text class="col3">{{checkTime.time}}</text></view>
+    <view>物流:<text class="col3">{{wuliu}}</text></view>
+    <view>物流:<text class="col3">{{ defaultInfo.address.user_address }}</text></view>
+    <view>所选厂家:</view>
+    <view class="col3" wx:for="{{ showChangjia }}" wx:key="index"><text>{{ index + 1 }}：{{ item.name }}</text> 数量:{{ item.number }}</view>
+    <view><text>备注信息:</text></view>
+    <view class="col3">{{ textareaValue }}</view>
+  </view>
+</scroll-view>
+</van-dialog>
+
+<van-dialog id="van-dialog" />
+
+
+<!-- 添加厂家 -->
+<view class="modifyPopupcustom" catchtouchmove="true" wx:if="{{ showAddUsed }}">
+	<view class="modifyPopup">
+		<scroll-view bindscroll="modifyScroll" scroll-y="{{false}}" class="modifyPopupscroll">
+			<view class="modifyRecordbbox">
+				<view class="modifyRecordTitle">添加常用厂家</view>
+				<view class="addNewFactoryHead flx flx_r">
+					<view>厂名</view>
+					<view>电话</view>
+				</view>
+				<view class="newModify flx flx_r" catchtap="toAddPage">
+					<input bindinput="addNameChange" value="{{ addName }}" class="modifyInputName" placeholder-class="modifyInput" placeholder="请输入厂名" type="text" maxlength="10"></input>
+					<input class="modifyInputSum" bindinput="hisTelChange" value="{{editTelNum}}" placeholder-class="modifyInput" placeholder="厂家电话(方便联系)" type="number" maxlength="11"></input>
+				</view>
+			</view>
+			<view style="height:150rpx;"></view>
+		</scroll-view>
+		<view class="modifyPopupBtns flx flx_r" catchtouchmove="true">
+			<text catchtap="onCloseAddUsed" >取消</text>
+			<text class="colTheme modifySure" catchtap="onConfirmAddUsed">确定</text>
+		</view>
+	</view>
+</view>
+
+
+<!-- 给用户的操作提醒信息 -->
+<!-- <van-popup show="{{ true }}" bind:close="onInfoClose" z-index="999" custom-class="warningPopup">
+	<view class="warningBox">
+		<image class="warningImg" src="https://www.yitongwang.com/public/static/images/minniapp/subcontract-info-input.png"></image>
+		<view class="warningTxt">友情提醒</view>
+		<view class="warningTxt">您的店铺为分销店铺，存储在云服务器上，并不会在壹童网展示，请将厂家的商品分销至您的店铺，并使用右上角的分享按钮，私密推荐给下级采购商。</view>
+		<view class="warningTxt" style="font-size:24rpx;">（对方将看不到任何关于壹童网的信息）</view>
+    <view class="warningBtn2" catchtap="onInfoClose">好 的</view>
+		<view class="infoPopupCancel" catchtap="onInfoClose"><van-icon name="close" size="30px" /></view>
+	</view>
+</van-popup> -->

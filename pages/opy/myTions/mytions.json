@@ -1,0 +1,19 @@
+{
+  "navigationBarTitleText": "我预约的仓位",
+  "navigationBarBackgroundColor": "#5fcfca",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh":true,
+  "usingComponents": {
+    "van-row": "../../../dist/row/index",
+    "van-col": "../../../dist/col/index",
+    "van-action-sheet": "../../../dist/action-sheet/index",
+    "van-checkbox": "../../../dist/checkbox/index",
+    "van-checkbox-group": "../../../dist/checkbox-group/index",
+    "van-icon": "../../../dist/icon/index",
+    "van-popup": "../../../dist/popup/index",
+    "van-empty": "../../../dist/empty/index",
+    "show-msg": "../showMsg/showMsg",
+    "see-recode": "../recodeComponent/recodeComponent",
+    "van-rate": "../../../dist/rate/index"
+  }
+}

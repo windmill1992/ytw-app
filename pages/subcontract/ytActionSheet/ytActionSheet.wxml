@@ -1,0 +1,11 @@
+<view class="ytwActionMask" hidden="{{!show}}" catchtouchmove="{{ true }}" id="mask" catchtap="onCalcel">
+  <view class="ytwActionBody {{ round ? ' roundAction' : '' }}" id="body" style="height:{{ height }};">
+    <view class="ytwActionTitle">{{title}}</view> 
+    <view class="ytwActionCancel" catchtap="sellectAllFactory">全选</view>
+    <view class="ytwActionConfirm" catchtap="onClickAdd">添加<text class="absPlus">+</text></view>
+    <scroll-view scroll-y="{{true}}" bindscrolltolower="scrollEnd" class="ytwActionScroll">
+      <slot name="actionSlot"></slot>
+    </scroll-view>
+    <view class="absSure" catchtap="onConfirm">确 定</view>
+  </view>
+</view>

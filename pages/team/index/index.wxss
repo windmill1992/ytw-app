@@ -1,0 +1,102 @@
+/* index.wxss */
+.menu{
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+}
+.menu-item{
+    width: 20%;
+    text-align: center;
+}
+.menu-ico{
+    width: 48rpx;
+    height: 48rpx;
+    margin: 0 auto 12rpx;
+}
+.menu-cont{
+    height: 42rpx;
+    font-size: 30rpx;
+    line-height: 42rpx;
+    overflow: hidden;
+    color: #666;
+}
+.team-list{
+    margin-top: 20rpx;
+}
+.team-item{
+    padding: 0 0rpx;
+    background-color: #fff;
+    padding-bottom: 20rpx;
+    margin-bottom: 12rpx;
+    width: 710rpx;
+    border-radius: 10rpx;
+    margin: 0 auto;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.team-pic{
+    width: 710rpx;
+    height:300rpx;
+    background: #fff;
+}
+.team-name{
+    font-size: 28rpx;
+    line-height: 42rpx;
+    max-height: 84rpx;
+    margin: 10rpx 0;
+    color:#1d1d1d;
+    font-weight:600;
+    padding: 0 20rpx;
+}
+.team-des{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20rpx;
+}
+.team-price{
+    display: flex;
+    font-size: 28rpx;
+    color: #666;
+    align-items: center;
+}
+.team-price>view{
+    margin-right:12rpx;
+    font-size:22rpx;
+}
+.team-price .co-red{
+    font-size:34rpx;
+    font-weight:600;
+}
+.team-price .co-red text{
+    font-size: 24rpx;
+}
+.team-ico{
+    display: flex;
+    align-items: center;
+    font-size:24rpx;
+}
+.team-ico>view{
+    width: 36rpx;
+    height: 30rpx;
+    margin-right: 6rpx;
+}
+.go-team{
+    font-size: 26rpx;
+    padding: 2rpx 10rpx;
+    color: #ff3b3b;
+    border-radius: 10rpx;
+    border: 1rpx solid #ff3b3b;
+    background: #fff;
+}
+.no-more{
+    text-align: center;
+    line-height: 2;
+}
+
+
+/* 功能未开发 */
+.defaultPage {
+    text-align: center;
+    padding-top: 100rpx;
+  }

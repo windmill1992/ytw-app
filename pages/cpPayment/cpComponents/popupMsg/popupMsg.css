@@ -1,0 +1,56 @@
+.popupMask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 750rpx;
+  background: rgba(0, 0, 0, .6);
+}
+.popupContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600rpx;
+  transform: translate(-50%,-50%);
+  background-color: #fff;
+  border-radius: 25rpx;
+  overflow: hidden;
+}
+.popupBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  text-align: center;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+.popupBtn1,.popupBtn2 {
+  flex: 1;
+}
+.popupBtn1 {
+  background-color: #fff;
+}
+.popupBtn2 {
+  background-color: #18c2ba;
+  color: #fff;
+}
+.changePriceHead {
+  position: relative;
+  height: 200rpx;
+  overflow: hidden;
+  border-radius: 25rpx 25rpx 0 0;
+  background-color: #fff;
+}
+.changePriceHead::before {
+  content: '';
+  position: absolute;
+  top: -1815rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2000rpx;
+  width: 2000rpx;
+  border-radius: 50%;
+  background: linear-gradient(to right, #b1f5ee, #05c5bc);
+  z-index: 0;
+}

@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-icon": "../../../dist/icon/index",
+    "van-radio": "../../../dist/radio/index",
+    "van-radio-group": "../../../dist/radio-group/index"
+  }
+}

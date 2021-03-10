@@ -1,0 +1,24 @@
+<!-- <van-search value="{{ value }}" bind:change="search" placeholder="请输入厂家关键词" focus="{{true}}" /> -->
+
+<van-search
+  value="{{ value }}"
+  placeholder="请输入厂家关键词"
+  use-action-slot
+  bind:change="search"
+  focus
+>
+  <view slot="action" bind:tap="submitOther">确定</view>
+</van-search>
+
+
+<view class="search-item">
+  <!-- <van-button plain hairline size="small" type="info" data-text="item" wx:for="{{ result }}" style="margin-right:5rpx;margin-top:10rpx;">{{item}}</van-button> -->
+  <view focus="{{ false }}" bindtap="chooseCompany" class="item" data-text="{{item}}" wx:for="{{ result }}" wx:key="index">{{item.store_name}}</view>
+</view>
+<!-- <button class="submit" bindtap="submitOther">确 定</button> -->
+<van-dialog
+  use-slot
+  id="van-dialog"
+>
+  <input type="number" class="editInput" focus="true" value="{{ editInputNum }}" bindinput="editInputChange"></input>
+</van-dialog>

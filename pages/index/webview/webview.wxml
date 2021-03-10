@@ -1,0 +1,7 @@
+<!--webview.wxml-->
+<web-view src="{{webUrl}}"></web-view>
+<!-- 功能未全做好之前展示 -->
+  <view class="defaultPage">
+    <image src="https://yitongwang.oss-cn-hangzhou.aliyuncs.com/miniapp/success.png" class="img1"></image>
+    <view class="orige">功能开发中！</view>
+  </view>

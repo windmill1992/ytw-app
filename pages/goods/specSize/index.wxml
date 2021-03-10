@@ -1,0 +1,69 @@
+
+<view class="sortBtnBox">
+	<text space="ensp" class="fll col888">货号颜色  <text wx:if="{{ showSortTipsTxt }}" class="col18">长按拖拽排序</text></text>
+	<text class="sortBtn flr" catchtap="triggleSort">{{ btnTxt }}</text>
+</view>
+<view class="dragTips">
+	<text class="dragTipsInfo"></text>
+</view>
+<drag id="drag"
+bind:click="itemClick"
+bind:change="change"
+bind:sortend="sortEnd"
+bind:scroll="scroll"
+extra-nodes="{{extraNodes}}"
+list-data="{{listData}}"
+columns="{{size}}"
+scroll-top="{{scrollTop}}"
+top-size="110"
+bind:del="delItem"
+bind:editSpec="editSpec"
+bind:changeImg="changeImg"
+bind:pTu="pTu"
+spec
+del
+change
+bottom-size="{{isIphoneX ? 380 : 300 }}">
+	<view slot="plus" class="plus-wrap" bindtap="add">
+		<view class="plus"></view>
+		<view class="imageNumtips">添加规格</view>
+	</view>
+</drag>
+
+<view class="sortBtnBox" style="margin-top:30rpx;">
+	<text space="ensp" class="fll col888">每手几件</text>
+</view>
+<view class="num2InputBox rela" style="height:75rpx;line-height:75rpx;"><input class="num2Input" type="number" value="{{specSize}}" bindinput="specSizeInput" placeholder="请输入"></input><text style="margin-left:170rpx;color:#000;">件/手</text></view>
+<!-- 映射部分 -->
+<view class="attrTitle col888">价格及库存</view>
+
+<view class="priceSum">
+	<view class="priceSumItem" wx:for="{{ listData }}" wx:key="index" wx:for-index='{{item.dragId}}'>
+		<view style="color:{{ item.spec_name ? '#000' : 'red' }};text-align: center;font-weight:{{ item.spec_name ? '600' : '300' }};">{{ item.spec_name || '未填写' }}</view>
+		<view class="itemInfoBox">
+			<view class="preImgTips" style="color:#555;">图片预览</view>
+			<view class="priceSumItemImg">
+				<image src="{{ item.spec_img }}" data-img="{{ item.spec_img }}" catchtap="changeImg2" data-from="map"></image>
+			</view>
+			<view class="xianxianxian rela" style="color:#555;"></view>
+			<view class="switch">
+				<view class="switchHasGoods"><view style="color:#555;">有货 <van-icon name="checked" wx:if="{{ item.hasGoods }}" color="#18c2ba" /></view> <van-switch size="25" checked="{{ item.hasGoods }}" active-color="#18c2ba" bind:change="onHasGoodsChange" data-id="{{ item.dragId }}" /></view>
+				<view class="switchHasGoods"><view style="color:#555;">无货 <van-icon name="checked" wx:if="{{ !item.hasGoods }}" color="#eb4079" /></view> <van-switch size="25" checked="{{ !item.hasGoods }}" active-color="#eb4079" bind:change="onHasGoodsChange" data-id="{{ item.dragId }}" /></view>
+			</view>
+		</view>
+		<view class="priceSumInputs">
+			<view class="rela" style="flex:1.8;">当前库存  <input class="abs mapSpecInput inputAfter" placeholder="请输入" maxlength="4" placeholder-style="color:#999;" disabled="{{ !item.hasGoods }}" type="number" value="{{ item.store_count }}" bindinput="editItemInputChange" data-type="sum" data-id="{{ item.dragId }}"></input></view>
+			<view class="xianxianxian2 rela" style="flex:0.4;color:#eaeaea;"></view>
+			<view class="rela" style="flex:1.5;">每件价格 <text class="colf10215" style="margin-left:29rpx;">￥</text> <input style="right:-40rpx;width:105rpx;right: -22px;padding:0;padding-left: 10rpx;text-align: left;" class="abs mapSpecInput" maxlength="6" type="digit" placeholder-style="color:#999;" placeholder="请输入" value="{{ item.price }}" bindinput="editItemInputChange" data-type="price" data-id="{{ item.dragId }}"></input></view>
+		</view>
+	</view> 
+</view>
+
+
+
+<!-- 确定 -->
+<view class="sureSub" catchtap="sureSubmit" style="margin-bottom:{{ isiphoneX? '25rpx' : '15rpx' }};">确  定</view>
+
+
+<!-- 空标签 -->
+<view id="j_page" style="height:1rpx;"></view>

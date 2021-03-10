@@ -1,0 +1,162 @@
+
+<van-overlay show="{{ showTips }}" bind:click="onClickHide" z-index="999999">
+    <view class="tipsTxt">
+    <view class="yuan"></view>
+    <view class="yuan"></view>
+    <view class="yuan"></view>
+    <view class="yuan"></view>
+    <view class="tipsTitle">微商专区说明</view>
+    <scroll-view class="scrollyTxt1" scroll-y="true">
+      <view>微商专区是壹童网专门为微商打造的一个专区。</view>
+      <view class="black26rpx">使用教程：</view>
+      <view class="smallTitle">在本专区内，</view>
+      您只需要点击 <text class="colblack">转发卖货</text>按钮即可自动下载商品九宫格图片，并自动复制商品文案。
+      <view class="smallTitle">接下来，</view>
+      您可以直接前往朋友圈选择刚刚下载的九宫格图片，并粘贴商品文案，即可发布朋友圈。
+    </scroll-view>
+    <!-- <view></view> -->
+    <view class="backWe">返回专区</view>
+  </view>
+</van-overlay>
+
+<!-- <view class="weBanner" bindtap="toAddGoodsOrStore" data-url="{{ adv_url }}">  -->
+<view class="weBanner" bindtap="showTips" data-url="{{ adv_url }}"> 
+  <image src="{{ url +  adv_images }}"></image>
+  <view class="tipsIntroduce" catchtap="showTips">了解详情</view>
+</view>
+
+<van-sticky>
+  <van-search
+    value="{{ searchTxt }}"
+    placeholder="请输入店铺名"
+    show-action
+    action-text="{{ searchButtonTxt }}"
+    bind:change="searchTxtChange"
+    bind:search="reSearch"
+    data-type="keyWord"
+    bind:cancel="reSearch"
+    bind:clear="clearSearch"
+    background="#5cbf7e"
+    shape="round"
+  />
+</van-sticky>
+
+<van-sticky offset-top="{{ 52 }}">
+  <view class="fastNav">
+    <view style="color:{{ sort == 'collect_sum' ? '#eb6257' : '#333' }};" class="fastItem{{sort == 'collect_sum' ? ' cur' : ''}}" bindtap="reSearch" data-type="collect_sum">
+      人气
+      <image src="../../../images/{{sort == 'collect_sum' ? 'd' : 'dg'}}.png"></image>
+    </view>
+    <view style="color:{{ sort == 'sales_sum' ? '#eb6257' : '#333' }};" class="fastItem{{sort == 'sales_sum' ? ' cur' : ''}}" bindtap="reSearch" data-type="sales_sum">
+      销量
+      <image src="../../../images/{{sort == 'sales_sum' ? 'd' : 'dg' }}.png"></image>
+    </view>
+
+    <view style="color:{{ sort == 'is_new' ? '#eb6257' : '#333' }};" class="fastItem{{sort == 'is_new' ? ' cur' : ''}}" bindtap="reSearch" data-type="is_new">
+      上新
+      <image src="../../../images/{{sort == 'is_new' ? 'd' : 'dg'}}.png"></image>
+    </view>
+    <view class="fastItem" bindtap="openFilterModal">
+      筛选
+      <image src="../../../images/xx.png"></image>
+    </view>
+    <!-- <view bindtap="showSearchStoreView" data-type="shop_price">
+      搜索
+      <image src="../../../images/c23.png"></image>
+    </view> -->
+  </view>
+</van-sticky>
+
+
+<!-- 筛选弹框  -->
+<view hidden="{{!openFilterModal}}" catchtouchmove="true">
+    <view class="cover-layer" catchtap="closeFilterModal" catchtouchmove="true"></view>
+    <scroll-view scroll-y="{{true}}" class="filter-modal" catchtouchmove="true">
+        <!-- <icon type="cancel" color="gray" size="22" class="modal-close" bindtap="closeFilterModal"/>
+        <button class="viewall-btn" bindtap="restoreData">显示全部分类</button> -->
+        <view class="filter-box">
+            <view class="filter-name">分类筛选</view>
+            <view class="filter-items">
+                <view style="line-height:70rpx;" class="{{flall?'filter-item2':'filter-item'}}" data-type="jing1" data-sq="2" data-href="{{'id/0'}}" bindtap="filterGoods">全部</view>
+                <view style="line-height:{{item.name.length>6?'35rpx':'70rpx'}};font-size:{{ item.name.length > 11 ? '18rpx' : '26rpx' }};" class="{{urlObj.id== 'id/' + item.id?'filter-item2':'filter-item'}}" wx:for="{{requestData.goods_category}}" wx:key="index" data-type="jing1" data-href="{{ 'id/' + item.id}}" bindtap="filterGoods">
+                {{item.name}}
+                </view>
+            </view>
+        </view>
+
+        <view class="filter-box">
+            <view class="filter-name">商圈</view>
+            <view class="filter-items">
+                <view style="line-height:70rpx;" class="{{sqall?'filter-item2':'filter-item'}}" data-type="jing2" data-sq="2" data-href="{{'store_business/0'}}" bindtap="filterGoods">全部</view>
+                <view style="line-height:{{item.store_business.length>6?'30rpx':'70rpx'}};" class="{{urlObj.store_business == 'store_business/' + item.id?'filter-item2':'filter-item'}}" wx:for="{{requestData.business}}" wx:key="index" data-type="jing2" data-href="{{'store_business/' + item.id}}" bindtap="filterGoods">
+                {{item.store_business}}</view>
+            </view>
+        </view>
+        <view class="filter-box">
+            <view class="filter-name">适用性别</view>
+            <view class="filter-items">
+                <view class="{{item.check?'filter-item2':'filter-item'}}" wx:for="{{filterData.sex}}" wx:key="index" data-index="{{index}}" data-type="dong1" data-href="{{item.href}}" bindtap="filterGoods">
+                {{item.name}}</view>
+            </view>
+        </view>
+        <view class="filter-box">
+            <view class="filter-name">适用年龄</view>
+            <view class="filter-items">
+                <view class="{{item.check?'filter-item2':'filter-item'}}" wx:for="{{filterData.age}}" data-index="{{index}}" wx:key="index" data-type="dong2" data-href="{{item.href}}" bindtap="filterGoods">
+                {{item.name}}</view>
+            </view>
+        </view>
+        <view class="subBox">
+            <view class="bbtn bbtn1" bindtap="resetSearch">重置</view>
+            <view class="bbtn bbtn2" bindtap="searchGoods">确定</view>
+        </view>
+    </scroll-view>
+</view>
+
+<!-- 展示商品 -->
+<view wx:for="{{ showList }}" wx:key="index" class="itemBox">
+  <view class="item">
+    <view class="store_name" catchtap="toStore" data-storeid="{{ item.store_id }}">{{item.store_name}}</view>
+    <view class="goodsName">{{item.goods_name}}</view>
+    <view class="specitem" wx:for="{{item.goods_attr}}" wx:for-item="item2" wx:for-index="index2" wx:key="index2">
+      <view>{{item2.attr_name}}：{{item2.attr_value}}</view>
+    </view>
+    <view class="specitem">商品规格：多款多色</view>
+    <scroll-view scroll-x="{{true}}" class="scrollX">
+      <view class="scrollImgBox" style="width:{{ item.goods_images.length > 5 ? '900rpx' : '700rpx'  }};">
+        <view wx:if="{{ index3 <= 8 }}" wx:for="{{ item.goods_images }}" catchtap="showImage" data-img="{{item.goods_images}}" data-current="{{ item3 }}" wx:for-item="item3" wx:for-index="index3" wx:key="index3">
+          <image src="{{ item3 }}"></image>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="price">￥{{item.price}}</view> 
+    <view class="twoButton">
+      <text class="bbuuttttoooonn" bindtap="shareGoods" data-info="{{item}}">转发卖货</text>
+      <text class="bbuuttttoooonn" bindtap="toGoodsList" data-id="{{ item.goods_id }}">查看详情</text>
+    </view>
+  </view>
+</view>
+
+
+<view style="text-align:center;" wx:if="{{ isShowLoading }}">
+  <image class="loading" src="https://www.yitongwang.com/public/static/images/ajaxLoader.gif"></image>
+</view>
+<view class="listEmpty" wx:if="{{ showList.length == 0 && searchTxt != '' }}">
+  <image src="https://www.yitongwang.com/public/static/images/minniapp/empty-image-default.png"></image>
+</view>
+
+
+<!-- 下载图片模拟进度 -->
+<van-overlay show="{{ showDownLoad }}" z-index="200">
+  <view class="progress">
+    下载进度（{{cur + '/' + sum}}）
+    <view class="count">
+      <view class="countup" style="width:{{countsum}}%;"></view>
+    </view>
+    <view class="baifenbi">{{ countsum + '%' }}</view>
+  </view>
+</van-overlay>
+
+<!-- 回到顶部 -->
+<!-- <image catchtap="toTop" class="toTop" src="https://www.yitongwang.com/public/static/images/minniapp/nwefa-1.png"></image> -->
+<image catchtap="toTop" class="toTop" src="../../../images/topup.png"></image>

@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "订单详情",
+    "enablePullDownRefresh": false,
+    "usingComponents":{
+        "van-action-sheet": "../../../dist/action-sheet2/index"
+      }
+}

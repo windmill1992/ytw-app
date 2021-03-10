@@ -1,0 +1,284 @@
+page {
+  padding-bottom: 25rpx;
+  font-size: 28rpx;
+  color: #555;
+}
+.orderBox {
+  margin: 15px 0;
+  padding: 15px 0;
+  background-color: #fff;
+}
+.huaLine {
+  padding-left: 10rpx;
+  width: 350rpx;
+  box-sizing: border-box;
+}
+.custom-button {
+  background: #f17a7f;
+  border-radius: 21rpx;
+  font-size: 16rpx;
+  padding: 5rpx;
+  color: #fff;
+}
+.change {
+  position: relative;
+  margin: 0 auto;
+  padding: 20rpx;
+  padding-top: 80rpx;
+  width: 720rpx;
+  box-sizing: border-box;
+  border-radius: 30rpx;
+  background-color: #fff;
+}
+.absTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 0rpx 0 30rpx 0;
+  text-align: center;
+  background-color: #f17a7f;
+  color: #fff;
+}
+.aaa,.bbb {
+  position: relative;
+  padding-top: 100rpx;
+  min-height: 70rpx;
+}
+.aaa {
+  height: 140rpx;
+}
+.bbb {
+  margin-top: 30px;
+  padding-top: 70rpx;
+}
+.abst2 {
+  position: absolute;
+  left: 15rpx;
+  top: 0;
+  font-size: 30rpx;
+}
+.op2 {
+  position: absolute;
+  right: 15rpx;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  height: 60rpx;
+  width: 230rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 20rpx;
+  color: #666;
+  font-size: 30rpx;
+}
+.op2Item {
+  flex: 1;
+  height: 100%;
+  width: 50%;
+  box-sizing: border-box;
+  border: 1rpx solid #6a6c79;
+}
+.op2 .op2Item:nth-child(1){
+  border-radius: 10rpx 0 0 10rpx;
+}
+.op2 .op2Item:nth-child(2){
+  border-radius: 0rpx 10rpx 10rpx 0rpx;
+}
+.op2Current {
+  color: #fff;
+  background-color: #6a6c79;
+}
+/* 折扣 */
+.handelDiscount {
+  position: relative;
+  display: inline-block;
+  width: 300rpx;
+  height: 150rpx;
+}
+.inlineblock {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sub,.add {
+  height: 55rpx;
+  width: 55rpx;
+  background-color: #f17a7f;
+  border-radius: 50%;
+  line-height: 46rpx;
+  text-align: center;
+  font-size: 48rpx;
+  color: #fff;
+  font-weight: 600;
+}
+.sub {
+  left: 0;
+}
+.add {
+  right: 0;
+}
+.hoverSubAdd {
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, .5);
+}
+.countTxt {
+  width: 180rpx;
+  height: 60rpx;
+  color: #555;
+  text-align: center;
+  line-height: 60rpx;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 40rpx;
+}
+.goodsPrice {
+  float: right;
+  width: 300rpx;
+  height: 150rpx;
+  line-height: 150rpx;
+  text-align: center;
+  vertical-align: bottom;
+  color: #f17a7f;
+  font-size: 40rpx;
+}
+
+/* 减价 */
+.bySelf {
+  position: relative;
+  /* padding-top: 70rpx; */
+  height: 100%;
+}
+.selfPrice {
+  position: absolute;
+  top: 40rpx;
+  right: 15rpx;
+  padding-top: 6rpx;
+  color: #f17a7f;
+  width: 220rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 116rpx;
+  font-size: 40rpx;
+  border: 1rpx solid #18c2ba;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+}
+.selfPrice::before,.newPriceInput::before {
+  position: absolute;
+  content: '￥';
+  left: 1rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40rpx;
+  color: #f17a7f;
+}
+
+/* bbb */
+.fll {
+  float: left;
+}
+.flr {
+  float: right;
+}
+.oldPrice {
+  margin-left: 15rpx;
+  font-size: 40rpx;
+}
+.newPrice {
+  margin-right: 70rpx;
+  font-size: 40rpx;
+  color: #f17a7f;
+}
+.newPriceInput {
+  position: absolute;
+  right: 20rpx;
+  bottom: 10rpx;
+  border: 1rpx solid #18c2ba;
+  width: 220rpx;
+  height: 60rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: #f17a7f;
+}
+
+/* 总计 */
+.total {
+  text-align: right;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+}
+.totalcol1 {
+  color: #999;
+}
+.totalcol2 {
+  color: #f17a7f;
+}
+/* 按钮 */
+.sureChange {
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 700rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #18c2ba;
+  border-radius: 20rpx;
+  font-size: 40rpx;
+}
+
+.pxxStyle {
+  position: relative;
+  padding-top: 50rpx;
+  height: 100%;
+  width: 100%;
+  line-height: 64rpx;
+  box-sizing: border-box;
+}
+.prePrice,.priceInput,.fainalPrice {
+  float: left;
+}
+.prePrice {
+  font-size: 34rpx;
+  color: #333;
+}
+.priceInput {
+  position: relative;
+  padding-left: 35rpx;
+  width: 120rpx;
+  height: 65rpx;
+  font-size: 34rpx;
+  background-color: #f6f6f7;
+  color: #555;
+}
+.priceInput::before {
+  content: '￥';
+  position: absolute;
+  left: 5rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+}
+.fainalPrice {
+  margin-left: 10rpx;
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #f17a7f;
+}
+
+
+
+
+
+.freeExpress {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50rpx;
+  padding-right: 90rpx;
+  height: 100%;
+  box-sizing: border-box;
+}

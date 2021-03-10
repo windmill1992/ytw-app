@@ -1,0 +1,108 @@
+page{
+    background-color: #f5f5f5;
+}
+.container {
+    color: #666;
+}
+.nav{
+    background: #fff;
+}
+.nav-item{
+    float: left;
+    width: 33.33%;
+    height: 70rpx;
+    line-height: 70rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24rpx;
+}
+.nav-item .ico-dg{
+    width: 24rpx;
+    height: 12rpx;
+    margin-left: 10rpx;
+    line-height: 0;
+}
+.group-purchase{
+    width: 100%;
+    height: 340rpx;
+}
+.choice_box{
+    background-color: #f5f5f5;
+}
+.choice_box .choice_item{
+    position: relative;
+    float: left;
+    width: 345rpx;
+    font-size: 28rpx;
+    background-color: #fff;
+    box-sizing: border-box;
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+.choice_item .img-wrap{
+    position: relative;
+    width:345rpx;
+    height:345rpx;
+    overflow: hidden;
+}
+.choice_item .img-wrap image{
+    width: 100%;
+    height: 100%;
+}
+ .discount{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 46rpx;
+    line-height: 46rpx;
+    text-align: center;
+    font-size: 22rpx;
+    color: #fff;
+    background-color: #ff3b3b;
+    display: inline-block;
+    padding: 0 10rpx;
+}
+.choice_item .title{
+    margin-top:16rpx;
+    padding: 0 10rpx;
+    height: 72rpx;
+    line-height: 36rpx;
+    color: #333;
+    overflow: hidden;
+    word-break: break-all;
+}
+.involved{
+    font-size: 22rpx;
+    padding:10rpx;
+    color: #666;
+    width: 220rpx;
+}
+.choice_item .price{
+    height: 30rpx;
+    line-height: 30rpx;
+    padding-bottom:20rpx;
+    padding-left:10rpx;
+    color: #ff3b3b;
+    font-size: 24rpx;
+    width: 220rpx;
+    font-weight: bold;
+}
+.count-down{
+    position: absolute;
+    right: 10rpx;
+    bottom: 20rpx;
+    font-size: 22rpx;
+    padding-right: 10rpx;
+    display: inline-block;
+    background: #ff3b3b;
+    border-radius: 6rpx;
+    padding: 5rpx 10rpx;
+    color: #fff;
+    text-align: center;
+}
+.red{
+  color: #ff3b3b;
+}

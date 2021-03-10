@@ -1,0 +1,392 @@
+page {
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding-bottom: 100rpx;
+  font-size: 14px;
+}
+
+.plus-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+
+.plus {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; 
+  border: 1rpx solid rgb(240, 230, 230);
+}
+  .plus::before {
+    content: '';
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    height: 60rpx;
+    margin-top: -30rpx;
+    margin-left: -2rpx;
+    border-left: 4rpx solid #cccccc; 
+  }
+  .plus::after {
+    content: '';
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    width: 60rpx;
+    margin-left: -30rpx;
+    margin-top: -2rpx;
+    border-top: 4rpx solid #cccccc; 
+  }
+.imageNumtips {
+  position: absolute;
+  bottom: 7rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #cccccc;
+  font-size: 26rpx;
+}
+.radio {
+  overflow-x: auto;
+  white-space: nowrap; }
+
+.extra {
+  background: #cccccc;
+  color: #3F82FD;
+  font-size: 24rpx;
+  padding: 10rpx;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden; }
+
+  /* 公共 */
+
+.fll {
+  float: left;
+}
+.flr {
+  float: right;
+}
+.abs {
+  position: absolute;
+}
+.rela {
+  position: relative;
+}
+.col999 {
+  color: #999;
+}
+.col18 {
+  color: #18c2ba;
+}
+.col323233 {
+  color: #323233;
+}
+.col70 {
+  color: #323233;
+}
+.flx {
+  display: flex;
+}
+.mr120 {
+  margin-right: 65rpx;
+}
+.fs24 {
+  font-size: 24rpx;
+}
+.fs28 {
+  font-size: 26rpx;
+}
+.fs26 {
+  font-size: 26rpx;
+}
+.fs14 {
+  font-size: 14px;
+}
+.lh110 {
+  line-height: 110rpx;
+}
+.mr240 {
+  margin-right: 200rpx;
+}
+.fw600 {
+  font-weight: bold;
+}
+.col969799 {
+  color: #969799;
+}
+.col555 {
+  color: #555;
+}
+.col000 {
+  color: #000;
+}
+/* 头 */
+.goodsTitle {
+  padding: 10rpx 16px;
+  background-color: #fff;
+}
+.titleTips {
+  margin: 15rpx 0;
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #555;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.goodsTitle input {
+  font-size: 28rpx;
+}
+.titleTips2 {
+  padding: 10rpx 0;
+}
+.titlePlace {
+  font-size: 14px;
+  color: #999;
+}
+.detailValueLength {
+  right: 5rpx;
+  top: 3rpx;
+  font-size: 28rpx;
+  color: #555;
+
+}
+.mainImg {
+  padding: 0 16px;
+  background-color: #fff;
+}
+/* 商品 */
+.attrTitle {
+  height: 80rpx;
+  margin-top: 20rpx;
+  padding: 0 16px;
+  line-height: 80rpx;
+  background-color: #f3fffe;
+  color: #555;
+  font-size: 28rpx;
+}
+.sortImg1 {
+  right: 20rpx;
+  padding: 0 30rpx;
+  top: 10rpx;
+  height: 50rpx;
+  line-height: 46rpx;
+  border-radius: 25rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #18c2ba;
+  color: #18c2ba;
+  font-size: 28rpx;
+}
+.sortImg2 {
+  color: #fff;
+  background-color: #18c2ba;
+}
+
+.uploadVideo {
+  height: 120rpx;
+  width: 120rpx;
+  margin-left: 15rpx;
+}
+.hasVideo {
+  height: 270rpx;
+}
+.changeVideo {
+  display: block;
+  right: -305rpx;
+  top: 15rpx;
+  height: 50rpx;
+  width: 130rpx;
+  text-align: center;
+  border-radius: 15rpx;
+  line-height: 50rpx;
+  background-color: #18c2ba;
+  color: #fff;
+  font-size: 20rpx;
+}
+.changeVideo2 {
+  display: block;
+  right: -305rpx;
+  top: 100rpx;
+  height: 50rpx;
+  width: 130rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 15rpx;
+  background-color: #e46f5d;
+  color: #fff;
+  font-size: 20rpx;
+}
+.uploadVideo image {
+  height: 120rpx;
+  width: 120rpx;
+}
+
+.proposalAge {
+  padding: 0 16px;
+  height: 82rpx;
+  line-height: 80rpx;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 300;
+  background-color: #fff;
+  overflow: hidden;
+}
+.proposalAge input {
+  position: absolute;
+  top: 21rpx;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  width: 70rpx;
+  height: 50rpx;
+  text-align: right;
+}
+.proposalAge .proposalAgeInput1{
+  right: 158rpx;
+}
+
+.proposalAgeInput2 {
+  right: 33rpx;
+}
+.proposalAgeInput3 {
+  right: 90rpx;
+}
+.goodsColor {
+  height: 110rpx;
+}
+.goodsColor2 {
+  padding: 0 16px;
+  height: 80rpx;
+  overflow: hidden;
+  font-size: 14px;
+}
+.goodsColorItem {
+  width: 400rpx;
+  text-align: left;
+  left: 54%;
+  transform: translateX(-50%);
+  top: 3rpx;
+  line-height: 56rpx;
+  font-size: 24rpx;
+}
+.isPublicCheck {
+  flex-direction: row;
+}
+.isPublicCheckTop {
+  padding: 30rpx 0;
+  flex-direction: row;
+}
+.vipLSist {
+  position: relative;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: left;
+}
+.vipLSist input {
+  position: absolute;
+  right: 20rpx;
+  top: 11rpx;
+  padding-left: 15rpx;
+  display: inline-block;
+  width: 230rpx;
+  border-radius: 3rpx;
+  text-align: center;
+
+}
+.borderT {
+  border-top: 1rpx solid #ebedf0;
+}
+.borderB {
+  border-bottom: 1rpx solid #ebedf0;
+}
+.publicBox {
+  padding: 0 16px;
+  color: #323233;
+  background-color: #fff;
+  font-size: 28rpx;
+}
+.toVipNavigator {
+  display: inline-block;
+  margin-right: 28rpx;
+  color: #18c2ba;
+}
+
+/* 确定 */
+.subBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 60rpx;
+  width: 750rpx;
+  background-color: #fff; 
+  z-index: 5;
+}
+.sureSub {
+  display: inline-block;
+  width: 220rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  color: #fff;
+  background-color: #18c2ba;
+  border-radius: 29rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+
+/* picker */
+.picker1 {
+  margin: 10rpx 0;
+  position: relative;
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #fff;
+  font-size: 26rpx;
+}
+.right1 {
+  position: absolute;
+  left: 16px;
+}
+.pickerValue {
+  position: absolute;
+  right: 16px;
+  color: #323233;
+}
+.pickerValueSelect {
+  color: #000;
+  font-weight: bold;
+}
+
+.selectAttr .van-cell__value {
+  color: #000!important;
+  /* font-weight: 600!important; */
+} 
+input {
+  color: #000;
+}
+.van-calendar__header-title,.van-calendar__header-subtitle {
+  font-size: 40rpx!important;
+}
+
+.van-radio__label {
+  margin-left: 0!important;
+}
+.isPublicCheckTop>text {
+  margin-right: 20rpx;
+}
+
+.rightArr1 {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border: 2rpx solid #969799;
+  border-top: none;
+  border-left: none;
+  transform: rotate(-45deg)translateY(-50%);
+}

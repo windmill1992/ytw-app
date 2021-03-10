@@ -1,0 +1,220 @@
+<!--pages/travel/personal_center/personal_center.wxml-->
+<!--pages/travel/personal_center/personal_center.wxml-->
+<view class="container">
+  <!-- 头像 -->
+  <view class="head_re">
+    <view class="top_1">
+      <image class="bg_1" src="{{ url + '/public/static/images/minniapp/my-banner02.png' }}"></image>
+      <view class="r">
+        <!-- 消息 -->
+        <view catchtap="navigateToUrl" data-url="/pages/user/message_notice/message_notice" class="l_1">
+          <image src="../../../images/s_2.png"></image>
+          <view wx:if='{{!userInfo.message_count==0}}' class="nuberi_1">{{userInfo.message_count}}</view>
+        </view>
+        <!-- 设置 -->
+        <view catchtap="navigateToUrl" data-url="/pages/user/userinfo/userinfo" class="l_1">
+          <image src="../../../images/s_1.png"></image>
+        </view>
+      </view>
+    </view>
+    <!-- 头像 -->
+    <view class="top_2 top_3">
+      <view class="t_top_1">
+       <view class="l_1 clearfix">
+        <view catchtap='clickMenu' data-url="/pages/user/userinfo/userinfo" class="tx">
+          <view class="b"><image mode="aspectFill" src="{{userInfo.head_pic?userInfo.head_pic:defaultAvatar}}"></image></view>
+        </view>
+        <view class="tx_yan des_flex_2">
+          <view>
+            <view catchtap='login' class="bt over_hide {{ userInfo.nickname? '' : ' loginTxt' }}">{{userInfo.nickname?userInfo.nickname:userInfo.user_id?userInfo.user_id + '用户' : '请登录'}}</view>
+            <!-- <view wx:if="{{ false }}" class="b_j" wx:if="{{userInfo.user_id}}">{{userInfo.describe?userInfo.describe:'注册会员'}}</view> -->
+            <view wx:if="{{ false }}" class="b_j">{{userInfo.describe?userInfo.describe:'注册会员'}}</view>
+          </view>
+        </view>
+        <view class="sign_in_1 des_flex_2" wx:if="{{ false }}">
+          <view catchtap='clickMenu' data-url="/pages/user/sign_in/sign_in" class="sign_in">
+            <image src="../../../images/jf_1.png"></image>签到赚积分
+          </view>
+        </view>
+      </view>
+      </view>
+    </view>
+    <!-- 模块一 -->
+    <view class="top_2">
+      <view class="t_top_1">
+        <view class="l_2 des_flex_4">
+          <!-- <view catchtap='toAccount_b' data-url="/pages/user/account_b/account_b" class="li" wx:if="{{ is_apply==0 && userInfo.store_id > 0 }}"> -->
+          <view catchtap='toAccount_b' data-url="/pages/user/account_b/account_b" class="li" wx:if="{{ false }}">
+            <view>{{userInfo.store_money?userInfo.store_money:'0.00'}}</view>商家账户余额
+          </view>
+          <view catchtap='clickMenu' data-url="/pages/user/account/account" class="li" wx:if="{{is_apply==0}}">
+            <view>{{userInfo.user_money?userInfo.user_money:'0.00'}}</view>会员账户余额
+          </view>
+          <view wx:if="{{ false }}" catchtap='clickMenu' data-url="/pages/user/points_list/points_list" class="li">
+            <view>{{userInfo.pay_points?userInfo.pay_points:0}}</view>积分
+          </view>
+          <view wx:if="{{ false }}" catchtap='clickMenu' data-url="/pages/user/coupon/coupon" class="li">
+            <view>{{userInfo.coupon_count?userInfo.coupon_count:0}}</view>优惠券
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 我的订单 -->
+  <view class="head_r2">
+    <view catchtap='clickMenu' data-url="/pages/user/order_list/order_list" class="h3 des_flex_4">
+      我的订单
+      <view class="r_ys des_flex_3">全部订单<image src="../../../images/xr_3.png"></image></view>
+    </view>
+    <view class="ul des_flex_4">
+      <view class="li" catchtap='clickMenu' data-url="/pages/user/order_list/order_list?type=1">
+        <view class="img">
+          <image src="../../../images/q1.png"></image>
+          <view wx:if='{{!userInfo.waitPay==0}}' class="nuberi_2">{{userInfo.waitPay>99?'99+':userInfo.waitPay}}</view>
+        </view>
+        <view>待付款</view>
+      </view>
+       <view class="li" catchtap='clickMenu' data-url="/pages/user/order_list/order_list?type=2">
+        <view class="img">
+          <image src="../../../images/ka.png"></image>
+          <view wx:if='{{!userInfo.waitSend==0}}' class="nuberi_2">{{userInfo.waitSend>99?'99+':userInfo.waitSend}}</view>
+        </view>
+        <view>待发货</view>
+      </view>
+      <view class="li" catchtap='clickMenu' data-url="/pages/user/order_list/order_list?type=3">
+        <view class="img">
+          <image src="../../../images/q2.png"></image>
+          <view wx:if='{{!userInfo.waitReceive==0}}' class="nuberi_2">{{userInfo.waitReceive>99?'99+':userInfo.waitReceive}}</view>
+        </view>
+        <view>待收货</view>
+      </view>
+      <view class="li" catchtap='clickMenu' data-url="/pages/user/comment/comment?status=0">
+        <view class="img">
+          <image src="../../../images/q3.png"></image>
+          <view wx:if='{{!userInfo.uncomment_count==0}}' class="nuberi_2">{{userInfo.uncomment_count>99?'99+':userInfo.uncomment_count}}</view>
+        </view>
+        <view>待评价</view>
+      </view>
+      <view class="li" catchtap='clickMenu' data-url="/pages/user/return_goods_list/return_goods_list">
+        <view class="img">
+          <image src="../../../images/q4.png"></image>
+          <view wx:if='{{!userInfo.return_count==0}}' class="nuberi_2">{{userInfo.return_count>99?'99+':userInfo.return_count}}</view>
+        </view>
+        <view>退换/售后</view>
+      </view>
+    </view>
+  </view>
+  <!-- 必备功能 -->
+  <view class="head_r2">
+    <view class="h3 des_flex_4">必备功能</view>
+    <view class="bibei_1 clearfix">
+      <view class="a des_flex_3" wx:for="{{userInfoList.manageList}}" wx:key="index" catchtap='clickMenu' data-url="{{item.menu_url}}">
+        <view class="img">
+          <image src="{{item.img_src}}"></image>
+          {{item.menu_name}}
+        </view>
+      </view>
+       <view class="a des_flex_3" catchtap='clickMenu' data-url="/pages/user/account/account" wx:if="{{ false }}">
+        <view class="img">
+          <image src="../../../images/distribut/money_red@2x.png"></image>
+          我的账户
+        </view>
+      </view>
+      <view class="a des_flex_3" catchtap='clickMenu' data-url="{{ is_store_member? '/pages/distribut0/shop/shop' : '/pages/newjoin/join4/join4' }}" wx:if="{{ is_apply!=1 }}">
+        <view class="img">
+          <image src="{{ is_store_member ? url + '/public/static/images/minniapp/index-wdxd.png' : url + '/public/static/images/minniapp/index-wykd.png' }}"></image>
+          {{ is_store_member? '我的小店' : '免费开店' }}
+        </view>
+      </view>
+      <!-- <view class="a des_flex_3" catchtap='toDestine' data-url="/pages/subcontract/destine/destine"> -->
+      <view class="a des_flex_3" catchtap='toDestine' data-url="/pages/subcontract/unPublicPage/unPublic">
+        <view class="img">
+          <image src="https://www.yitongwang.com/public/static/images/minniapp/index-pbzx.png"></image>
+          拼包平台
+        </view>
+      </view>
+      <view catchtap="navigateToUrl" class="a des_flex_3" data-url="/pages/user/collect_list/collect_list" >
+        <view class="img">
+          <image src="{{ url + '/public/images/my/scc.png' }}"></image>
+          我的收藏
+        </view>
+      </view>
+      <view catchtap="navigateToUrl" class="a des_flex_3" data-url="/pages/team/helpCore/helpCore" >
+        <view class="img">
+          <image src="{{ url + '/public/static/images/minniapp/help-core.png' }}"></image>
+          帮助中心
+          
+        </view>
+      </view>
+
+
+      <!-- dotted  <view class="userDotted">5</view>  放在 img 的view中-->
+      
+
+      <!-- <view wx:if="{{userInfo.is_broadcast == 1}}" class="a des_flex_3" catchtap='clickMenu' data-url="/pages/broadcast/apply_broadcast/apply_broadcast">
+        <view class="img">
+          <image src="http://www.maizixsp.com/public/miniapp/ss_20.png"></image>
+          我要直播
+        </view>
+      </view> -->
+      <!-- <view class="a des_flex_3" catchtap='distributSee' wx:if="{{ is_apply!=1 }}">
+        <view class="img">
+          <image src="../../../images/ss_17.png"></image>
+          新手必看
+        </view>
+      </view> -->
+      <!-- <view class="a des_flex_3" catchtap='toVip' wx:if="{{ is_apply!=1 && userInfo.is_B == 0 && userInfo.store_id > 0 }}">
+        <view class="img">
+          <image src="https://www.yitongwang.com/public/static/images/minniapp/index-vip.png"></image>
+          VIP会员
+        </view>
+      </view> -->
+
+      <!-- <view class="a des_flex_3" catchtap='authorization'>
+        <view class="img">
+          <image src="../../../images/ss_18.png"></image>
+          授权管理
+        </view>
+      </view> -->
+    </view>
+  </view>
+</view>
+<van-dialog id="van-dialog" />
+<!-- 底部菜单 -->
+<!-- <import src="../../index/publics/publics.wxml"/>
+<template is="model" data="{{page:4,menu_model:menu_model||[],url:url,defaultMenu:defaultMenu,is_store_member:is_store_member,is_apply:is_apply,isiphoneX:isiphoneX}}" /> -->
+<footbar page="{{ 4 }}" menu_model="{{menu_model}}" url="{{ url }}" defaultMenu="{{ defaultMenu }}" is_store_member="{{ is_store_member }}" isiphoneX="{{ isiphoneX }}" bind:topages="topages"></footbar>
+
+<modalView show="{{showModal}}">
+    <view class='modal-content'>
+      <image class="logo" src="{{logo}}"></image>
+      <view class="name">{{name}}</view>
+      <view class="note">登录后可下单和查看您的权益</view>
+      <view class="bigbtn wxbtn">微信快捷登录</view>
+      <view bindtap="usePhone" class="bigbtn usebtn">使用手机号登录</view>
+    </view>
+</modalView>
+
+<modalView show="{{showModal_1}}">
+    <view class='modal-content'>
+      <view class="name">输入手机号注册/绑定</view>
+      <view class="note_1">绑定手机号后方便您下单和查看自己的权益</view>
+      <view class="topbox">
+        <view class="left">
+          +86
+        </view>
+        <input class="right" type="number" placeholder="手机号"/>
+      </view>
+      <view class="bottombox">
+        <input class="left" type="number" placeholder="请输入验证码"/>
+        <view bindtap="countDown" wx:if="{{!is_send}}" class="right">
+          获取验证码
+        </view>
+        <view wx:if="{{is_send}}" class="right warn">
+          {{countDownNum}}秒后重新操作
+        </view>
+      </view>
+      <view bindtap="" class="bigbtn login">一键登录</view>
+    </view>
+</modalView>
+

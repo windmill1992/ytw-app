@@ -1,0 +1,288 @@
+page {
+  box-sizing: border-box;
+  background-color: #f5f7fc;
+  font-size: 28rpx;
+}
+.head {
+  margin-top: 15px;
+  padding: 15rpx;
+  background-color: #fff;
+}
+.img_status {
+  margin-bottom: 15rpx;
+}
+.statusImg {
+  height: 30rpx;
+  width: 30rpx;
+  border-radius: 50%;
+  vertical-align: inherit;
+}
+.detailGoods {
+  margin-top: 10px;
+  padding: 15rpx 0;
+}
+.statusTxt {
+  color: #444;
+  font-weight: bold;
+  font-size: 38rpx;
+}
+/* 快递信息 */
+.expressInfo {
+  margin: 15rpx 0;
+  padding: 10rpx 0;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+.expressIcon {
+  position: relative;
+  width: 150rpx;
+}
+.seeExpress {
+  width: 150rpx;
+}
+.expressTxt {
+  display: flex;
+  flex-direction: column;
+  color: #666;
+  font-size: 26rpx;
+}
+.flex2 {
+  flex: 2;
+}
+.flex1 {
+  flex: 1;
+}
+.seeExpress {
+  position: relative;
+}
+.seeExpress::after {
+  position: absolute;
+  content: '';
+  height: 20rpx;
+  width: 20rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotate(45deg);
+  border-top: 1rpx solid #555;
+  border-right: 1rpx solid #555;
+}
+/* 快递信息done */
+.address {
+  position: relative;
+  padding-left: 70rpx;
+  line-height: 55rpx;
+  box-sizing: border-box;
+  color: #555;
+  font-size: 26rpx;
+}
+.inlinebox {
+  display: inline-block;
+}
+.name {
+  min-width: 80rpx;
+}
+.mobile {
+  min-width: 200rpx;
+}
+.flr {
+  float: right;
+}
+.addressBtns {
+  margin-top: 40rpx;
+  height: 66rpx;
+}
+.addressBtns .flr {
+  display: inline-block;
+  height: 50rpx;
+  width: 130rpx;
+  line-height: 50rpx;
+  border: 1rpx solid #a8a8a8;
+  background-color: #fff;
+  color: #a8a8a8;
+  border-radius: 28rpx;
+  text-align: center;
+}
+.absAddressIcon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.seeOwnerInfo {
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 50rpx;
+  width: 200rpx;
+  line-height: 50rpx;
+  border-radius: 25rpx;
+  border: 1rpx solid #444;
+  color: rgb(88, 84, 84);
+  font-size: 26rpx;
+  text-align: center;
+}
+.mr10 {
+  margin-right: 10rpx;
+}
+.detailGoods {
+  background-color: #fbfcfe;
+}
+.remarks {
+  padding: 15rpx;
+}
+.remarkHead1 {
+  margin-bottom: 15rpx;
+}
+.remarkTxt1 {
+  padding-left: 20rpx;
+  font-size: 38rpx;
+  color: #444;
+  font-weight: bold;
+}
+.remarkTxt2 {
+  font-size: 26rpx;
+  color: #a4a4a5;
+}
+.remarkItem {
+  margin: 10rpx 0;
+  padding: 25rpx 0 25rpx 10rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.remarkIcon {
+  position: absolute!important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.remarkTime {
+  flex: 1;
+  position: relative;
+}
+.remarkContent {
+  flex: 3;
+}
+.remarkOperation {
+  flex: .8;
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-all;
+  color: #515151;
+}
+.absTime {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.orderParams {
+  margin-top: 30rpx;
+  padding: 15rpx;
+  padding-left: 25rpx;
+  background-color: #fff;
+}
+.remarkContent {
+  color: #777;
+}
+.params {
+  margin: 10rpx 0;
+  color: #999;
+}
+.absCopy::before,.absCopy::after {
+  content: '';
+  position: absolute;
+  width: 29rpx;
+  height: 29rpx;
+  background-color: #fff;
+  border-radius: 1px;
+  border: 1rpx solid #18c2ba;
+}
+.absCopy::before {
+  right: -40rpx;
+  top: 3rpx;
+  z-index: 2;
+}
+.absCopy::after {
+  right: -51rpx;
+  top: -5rpx;
+}
+.absTime {
+  text-align: center;
+  color: #444;
+}
+.smallTime {
+  font-size: 22rpx;
+  color: #999;
+}
+.inlinerela {
+  display: inline-block;
+  position: relative;
+}
+
+/* 备注的 */
+.remarkBox {
+  position: relative;
+  margin: 0 auto;
+  padding: 46rpx 10rpx 80rpx;
+  box-sizing: border-box;
+  height: 400rpx;
+  width: 550rpx;
+  background-color: #fff;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+}
+.remarkArea {
+  padding: 8rpx;
+  height: 100%;
+  width: 100%;
+  background-color: #ebf9f8;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: rgb(97, 97, 97);
+  box-sizing: border-box;
+}
+
+.remarkPlace {
+  font-size: 26rpx;
+  color: rgb(185, 182, 182);
+}
+.remarkHead {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 150rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 0 0 40rpx 40rpx;
+  background-color: #18c2ba;
+  color: #fff;
+}
+.remarkBtn {
+  position: absolute;
+  bottom: 12rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  background-color: #18c2ba;
+  border-radius: 28rpx;
+  color: #fff;
+}
+.absRemarkSum {
+  position: absolute;
+  right: 25rpx;
+  bottom: 82rpx;
+  font-size: 22rpx;
+  color: #333;
+}
+/* =======备注完========= */

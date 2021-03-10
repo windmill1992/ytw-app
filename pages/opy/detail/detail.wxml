@@ -1,0 +1,296 @@
+
+<view class="list"> 
+  <!-- 新版详情上部分 -->
+  <view class="btn">当前状态:<text style="color:#18c2ba;">{{ res.order.status_text }}</text></view>
+  <text class="absOperations operationBtnStyle{{res.order.apply_status}} " bindtap="doApplyOperation" data-status="{{ res.order.apply_status }}">{{ m1.setoperationTxt(res.order.apply_status) }}</text>
+  <text class="absOperations2" wx:if="{{ res.order.appointment_date_audit != '' }}" bindtap="handleUpdateTime">{{ '变更打包日期待审核' }}</text>
+  <view class="item">预约人姓名：{{ res.order.name }}</view>
+  <view class="item">预约人电话： <text class="col215" space="emsp">{{ res.order.mobile }} </text><van-icon color="#18c2ba" catchtap="makeCall" data-tel="{{ res.order.mobile }}" name="phone-circle-o" /></view>
+  <view class="item"><text space="emsp">仓 位 号</text>：{{ res.order.position_name }}</view>
+  <view class="item">送货确认码：{{ res.order.auth_code }}</view>
+  <view class="line"></view>
+  <view class="item">收货人姓名：{{ res.order.receipt_name }}</view>
+  <view class="item">收货人电话：<text space="emsp">{{ res.order.receipt_mobile }} </text><van-icon color="#18c2ba" catchtap="makeCall" data-tel="{{ res.order.receipt_mobile }}" name="phone-circle-o" /></view>
+  <view class="item">收货人地址：{{ res.order.receipt_address }}</view>
+  <view class="line"></view>
+  <view class="item">最晚封包时间：{{ res.order.appointment_date }}</view>
+  <view class="item">打好包的时间：{{ res.order.packing_time || '---' }}</view>
+  <view class="item">已拉包的时间：{{ res.order.take_away_time || '---' }}</view>
+  <view class="line"></view>
+  <view class="item">物流公司名称：{{ res.order.logistics_company }}</view>
+  <view class="item">拉 包 人 员：{{ res.order.logistics_phone ? res.order.logistics_phone : '拼包中心代拉' }} <van-icon wx:if="{{ res.order.logistics_phone }}" color="#18c2ba" catchtap="makeCall" data-tel="{{ res.order.logistics_phone }}" name="phone-circle-o" /></view>
+  <view class="item">下单备注信息：</view>
+  <view class="orderRemark">{{ res.order.order_remark || '无备注' }}</view>
+
+<!-- 强行取消预约图片展示框 -->
+  <!--
+  <view class="item title">厂家信息 <text wx:if="{{ res.order_status < 3 }}" class="cancelOrder" catchtap="cancelOrder">特权取消</text></view>
+  <view class="calcelOrderImgBox" bindtap="true" catchtouchmove="true" wx:if="{{ cancelFlag }}">
+    <view class="canceOrderBox2">
+      <van-uploader file-list="{{ fileList }}" bind:delete="delCancelOrderImg" bind:after-read="uploadCancelOrderImg" />
+    </view>
+    <text wx:if="{{ res.order_status < 3 }}" class="sureCancelOrder" bindtap="sureCancelOrder">确定取消</text> 
+    <text wx:if="{{ res.order_status < 3 }}" class="sureCancelOrder2" bindtap="unSureCancelOrder">算 了</text> 
+  </view>
+  <view class="item2" style="justify-content: start;" wx:for="{{ res.manufactor_data }}" wx:key="index">
+    <view class="flrow">
+      <view class="fl1">厂家:{{ item.manufactor_name }}</view>
+      <view class="fl1 {{ item.goods_number == item.receive_num ? ' green' : 'red' }}">数量:（{{ item.goods_number }} / {{ item.receive_num }}） <text class="col215"> 超时{{ item.time_out_num }}</text></view>
+    </view>
+    <view class="flrow">
+      <view class="fl1">状态: <text class="undeline">{{ m1.status2(item.status) }}</text></view>
+      <view class="fl1">操作: 
+        <text class="border1" bindtap="nextState" data-num="{{ item.goods_number }}" data-type2="1" data-id="{{item.id}}">收货</text>
+        <text class="border1" bindtap="nextState" data-num="{{ item.goods_number }}" data-type2="2" data-id="{{item.id}}">超时收货</text>
+      </view>
+    </view>
+  </view>
+  <view class="item beizhu">备注:{{ res.remark }}</view> -->
+</view>
+
+<!-- 如果有新增厂家待审核 -->
+<view class="rela">
+  <view class="newExamineTxt rela {{ res.order.add_count == 0 ? ' bg18c' : ' bgf215' }}" catchtap="seeNewFactory">新增厂家待审核<text class="newExamineNum abs {{ res.order.add_count == 0 ? ' newExamineNum2' : '' }}">{{ res.order.add_count }}</text></view>
+  <view class="absSearchFac"><input class="searchFacInput" type="text" value="{{searchVal}}" bindinput="searchValInput" placeholder-class="pplaacceeCCllaass" placeholder="输入厂名搜索"></input><text class="searchFacTxt" catchtap="searchSomeFac">搜索</text></view>
+</view>
+<!-- 新版本每个厂家部分 -->
+<view class="orderListBox">
+  <view class="orderItem rela" wx:for="{{ res.factory }}" wx:key="index" style="padding-right:0;" catchtap="clickFactoryItem" data-index="{{ index }}">
+    <view class="coreSize abs" style="top:-44rpx;" id="fac{{index}}">{{ item.manufactor_name }}</view>
+    <view class="orderItemExamine abs" wx:if="{{ item.audit_count > 0 }}" style="z-index:1;" catchtap="getAuditInfo" data-id="{{item.manufactor_id}}">{{ '待审核' }} <text class="abs orderItemExamineNum">{{ item.audit_count }}</text></view>
+    <view class="orderTime abs" style="z-index:1;" data-index="{{ index }}" data-apply="{{ item.apply_status }}" catchtap="sendCancelFac"><text style="color:{{ m1.setCancelCol(item.apply_status) }};">{{ m1.setoperationTxt2(item.apply_status) }}{{ item.apply_status == 3 ? item.cancel_code : '' }}</text></view>
+    <view class="orderInfo">
+      <view class="orderInfoL" style="padding-left:0;">
+        <view>预约数量：<input type="number" style="color:#18c2ba;" value="{{ item.goods_number }}" disabled></input>手</view>
+        <view>收货未打包：<input type="number"  value="{{ item.num1 }}" disabled style="color:{{ item.num1 == 0 ? '#555' : '#f10215' }};"></input>手</view>
+        <view>{{(showCheck && !operationGoodsType) ? '此次打包数量' : '打好包未拉'}}:
+          <input type="number" style="color:{{ item.num3 == 0 ? '#555' : '#f10215' }};" wx:if="{{ !showCheck || (showCheck && operationGoodsType)}}" disabled value="{{ item.num3 }}"></input>
+          <input type="number" wx:if="{{ (showCheck && !operationGoodsType) }}" style="border:{{ (showCheck && !operationGoodsType && item.preNum1 > 0 && item.canPack) ? '#18c2ba 1rpx solid' : '' }};" disabled="{{ !item.canPack || !showCheck || !item.lj || operationGoodsType || item.preNum1 == 0 }}" value="{{ item.packNum }}" bindinput="factoryItemInput" data-type="pack" data-index="{{ index }}"></input>手
+        </view>
+      </view>
+      <view style="flex:.05;" class="lineee"></view>
+      <view class="orderInfoR" style="padding-left:0;">
+        <view>{{ item.status_text }}</view>
+        <view>超时未送：<input disabled style="color:{{ item.num2 == 0 ? '#555' : '#f10215' }};" value="{{ item.num2 }}"></input>手</view>
+        <view>{{(showCheck && operationGoodsType) ? '此次拉包数量' : '已拉包数量'}}:
+          <input type="number" wx:if="{{ !showCheck || (showCheck && !operationGoodsType)}}" style="color:{{ m1.setNumCol(item.goods_number,item.num4) }};" disabled value="{{ item.num4 }}"></input>
+          <input wx:if="{{ (showCheck && operationGoodsType) }}" style="border:{{ (showCheck && operationGoodsType && item.preNum3 > 0 && item.canGo) ? '#18c2ba 1rpx solid' : '' }};" data-index="{{ index }}" bindinput="factoryItemInput" data-type="go" disabled="{{ !item.canGo || !showCheck || !item.lj || !operationGoodsType || item.preNum3 == 0}}"  value="{{ item.goNum }}"></input>手</view>
+      </view>
+    </view>
+    <view class="facOpreBtnBox">
+      <view wx:if="{{ !showCheck }}" class="facOpreBtn"><text class="bgfff" data-status="{{ item.status }}" catchtap="showRecord" data-id="{{ item.manufactor_id }}" data-num="{{ item.goods_number }}" data-type="recode">记 录</text></view>
+      <view wx:if="{{ !showCheck }}" class="facOpreBtn"><text class="bg18c" style="{{ (item.status == 6 || item.status == 7) ? 'background-color:#ccc;color:#fff;' : '' }}" data-status="{{ item.status }}" catchtap="showRecord" data-id="{{ item.manufactor_id }}" data-num="{{ item.goods_number - item.receive_num - item.time_out_num - 0 }}" data-type="recive">收 货</text></view>
+      <view wx:if="{{ showCheck && ((item.canPack && !operationGoodsType) || (item.canGo && operationGoodsType)) }}" ><van-checkbox value="{{ item.lj }}" checked-color="#18c2ba" data-index="{{ index }}" bind:change="onCheckBoxChange">选择</van-checkbox></view>
+      <view wx:if="{{ showCheck && ((!item.canPack && !operationGoodsType) || (!item.canGo && operationGoodsType) ) }}" ><van-checkbox value="{{true}}" checked-color="#ccc">选择</van-checkbox></view>
+    </view>
+  </view>
+</view>
+
+<view wx:for="{{res.order.order_img}}" wx:key="index" class="imgsBox">
+  <view class="imgsIndex">第{{index + 1}}次</view>
+  <van-uploader
+  show-upload="{{ false }}"
+  file-list="{{ item }}"
+  max-count="3"
+  deletable="{{ false }}"
+/>
+</view>
+<view class="imgsBox" wx:if="{{ res.order.order_status == 2 || res.order.order_status == 3 || res.order.order_status == 4 }}">
+  <view>上传拉包凭证</view>
+  <van-uploader
+    file-list="{{ uploadSrc }}"
+    max-count="3"
+    bind:after-read="afterRead"
+    bind:delete="delUploadImg"
+  />
+</view>
+<!-- 终级更改状态 -->
+<view class="finalStateChange">
+  <view wx:if="{{ !showCheck }}" class="finalCurState fll rela"><view class="finalStateTxt fll"><text>当前状态</text><text>{{ res.order.status_text }}</text></view><text class="packBtn" catchtap="showCheck" data-type="pack">打包</text><text class="goBtn" catchtap="showCheck" data-type="go">拉包</text></view>
+  <view class="finalCurState rela" wx:if="{{ showCheck }}" style="text-align:center;"><text class="packBtn" catchtap="hideCelect">取消</text><text class="goBtn" catchtap="sureSub" style="background-color:{{ submitColor }};">确定</text></view>
+</view>
+
+<!-- 记录 收货 修改信息审核 -->
+<see-recode bind:closeLog="closeLog" bind:modify="modifyRecode" wx:if="{{ seeLogFlag }}" admin isNormal="{{ true }}" slots="{{ showRecodeSlot }}" data="{{ factoryLogInfo }}">
+  <view class="receiveSlot" slot="receiveSlot">
+    <view class="receiveSlotInfo">
+      <view class="receiveSlotbl"></view>
+      <view class="receiveSlotbr"></view>
+      <view class="receiveSlotBox" wx:if="{{ slotType }}"><!-- 收货 -->
+        <view class="flex flex_c">
+          <view>此次收货数量</view>
+          <input placeholder-class="receiveSlotInputPlac" placeholder="请输入" type="number" value="{{receiveSlotInputVal}}" bindinput="receiveSlotInput" class="receiveSlotInput" type="text"></input>
+        </view>
+        <view>
+          <van-radio-group value="{{ receiveGoodsType }}" bind:change="receiveGoodsTypeChange">
+            <view><van-radio checked-color="#18c2ba" label-position="left" style="display: inline-block;margin-right:30rpx;" name="1">正常收货</van-radio><van-switch active-color="#18c2ba" size="30rpx" checked="{{ receiveGoodsType == 1 }}" bind:change="receiveGoodsTypeChange" /></view>
+            <view style="margin-top:25rpx;"><van-radio checked-color="#f17a7f" label-position="left" style="display: inline-block;margin-right:30rpx;" name="2">超时收货</van-radio><van-switch active-color="#f17a7f" size="30rpx" checked="{{ receiveGoodsType == '2' }}" bind:change="receiveGoodsTypeChange" /></view>
+          </van-radio-group>
+        </view>
+      </view>
+      <view class="applySlotBox" wx:if="{{ !slotType }}"><!-- 审核 -->
+        <view class="applySlotHead">
+          <view>时间</view><view>厂名</view><view>预约数量</view>
+        </view>
+        <view class="applySlotBody" wx:if="{{ shenheInfo.audit_data }}">
+          <view>
+            <view style="line-height:50rpx;">{{m1.brTime(shenheInfo.audit_data.create_date,'a')}}</view>
+            <view style="line-height:50rpx;">{{m1.brTime(shenheInfo.audit_data.create_date,'b')}}</view>
+          </view>
+          <view style="line-height:100rpx;color:#f10215;">{{ shenheInfo.audit_data.manfactor_name ? '改为' : '' }}{{ shenheInfo.audit_data.manfactor_name || ' ' }}</view>
+          <view style="line-height:100rpx;color:#f10215;">{{ shenheInfo.audit_data.num ? '改为' : '' }}{{( shenheInfo.audit_data.num  + '手')|| ' ' }}</view>
+        </view>
+        <view style="text-align:center;" wx:if="{{ !shenheInfo.audit_data }}">暂无~~</view>
+      </view>
+    </view>
+    <view class="slotBtns">
+      <text class="{{ slotType ? 'slotTypea' : 'slotTypeb' }}" catchtap="clickSlotBtn1">{{ slotTxt1 }}</text>
+      <text class="{{ slotType ? 'slotTypeb' : 'slotTypea' }}" catchtap="clickSlotBtn2">{{ slotTxt2 }}</text>
+    </view>
+  </view>
+</see-recode>
+
+<!-- 新增厂家审核 -->
+<see-recode bind:closeLog="closeLog" wx:if="{{ seeNew }}" bind:clickAudit="clickAudit" isNormal="{{ false }}" data="{{ AddFactoryList }}">
+  <view class="auditSlot" slot="auditSlot">
+    <view catchtap="refuseNewADD">拒绝</view>
+    <view catchtap="passNewAdd">通过</view>
+  </view>
+</see-recode> 
+
+<!-- 修改数量的弹窗 --> 
+<van-dialog
+  use-slot
+  id="van-dialog"
+  >
+  <input class="editInput" value="{{ editInputNum }}" bindinput="editInputChange"></input>
+</van-dialog>
+<!-- 收货数量 -->
+<van-dialog
+  use-slot
+  title="{{ recipientTitle }}"
+  show="{{ showInput }}"
+  show-cancel-button
+  bind:close="onCloseInput"
+  bind:confirm="onConfirmInput" 
+>
+  <input class="editInput" bindinput="receivedSumChange" maxlength="4" type="number" value="{{goodsSum}}"></input>
+</van-dialog>
+
+<!-- 处理用户申请的订单取消  修改申请 的提示框 -->
+<show-msg isShow="{{ showErrMsg }}" status="{{false}}" msg1="{{ msg1 }}" showTitle title="{{ errMsgTitle }}" msg2="{{ msg2 }}" showTitle="{{false}}" msgStyle="padding:0 25rpx;font-size:36rpx;font-weight:600;line-height:55rpx;" showBtn1 showBtn2 inlineBtn btnTxt1="{{btnTxt1}}" btnTxt2="{{ btnTxt2 }}" bind:btnClick2="clickOperaBtn2"  bind:btnClick1="clickOperaBtn1"></show-msg>
+<!-- 修改打包日期的提示   -->
+<show-msg isShow="{{ showErrMsg2 }}" showBtn1 showBtn2 inlineBtn btnTxt1="同意" btnTxt2="拒绝" showTitle title="用户申请修改打包日期" msg1="{{ oldTimeMsg }}" msg2="更改为:" msg3="{{ newTimeMsg }}" bind:btnClick2="refuseUpdateTime"  bind:btnClick1="passUpdateTime"></show-msg>
+<!-- 发送取消厂家 -->
+<show-msg isShow="{{ showErrMsg3 }}" status="{{false}}" showBtn1 showBtn2 inlineBtn btnTxt1="{{ cancelFacBtn1 }}" btnTxt2="{{ cancelFacBtn2 }}" showTitle title="取消厂家" msg1="{{ cancelFacMsg1 }}" bind:btnClick2="clickCancelFac1"  bind:btnClick1="clickCancelFac2"></show-msg>
+<wxs module="m1">
+  var orderStatus = function(i){
+    if (i==0) {
+        return "未送齐"
+    } else if(i==1){
+        return "已打包"
+    }else if(i==2){
+        return "已打包"
+    } else  if(i==3){
+        return "已拉走"
+    } else if(i==4){
+      return "已取消"
+    }
+  }
+  var text = function(i){
+    if (i==0) {
+        return "收货"
+    } else if(i==1){
+        return "收货"
+    } else {
+        return ""
+    }
+  }
+  var status2 = function(i){
+    if (i==0) {
+        return "未送齐"
+    } else if(i==1){
+        return "已送齐"
+    } else {
+        return "已取消"
+    }
+  }
+  var setoperationTxt = function(status){
+    var statusTxt = ''
+    var status = status + ''
+    switch (status) {
+      case '0':
+      statusTxt = '发送-关闭订单'
+        break;
+      case '1':
+      statusTxt = '关闭订单-已发送'
+        break;
+      case '2':
+      statusTxt = '关闭订单-待审核'
+        break;
+      case '3':
+      statusTxt = '关闭订单确认码'
+        break;
+      case '4':
+      statusTxt = '未通过'
+        break;
+    }
+    return statusTxt
+  }
+  var setoperationTxt2 = function(status){
+    var statusTxt = ''
+    var status = status + ''
+    switch (status) {
+      case '0':
+      statusTxt = '发送-取消服务'
+        break;
+      case '1':
+      statusTxt = '取消服务-已发送'
+        break;
+      case '2':
+      statusTxt = '取消服务-待审核'
+        break;
+      case '3':
+      statusTxt = '取消服务确认码'
+        break;
+      case '4':
+      statusTxt = '未通过'
+      break;
+    }
+    return statusTxt
+  }
+  var brTime = function(t,type){
+			var t = t.split(' ')
+			return type == 'a' ? t[0] : t[1]
+  }
+  var setNumCol = function(a,b){
+      if (b == 0) {
+        return '#555'
+      } else if (a == b) {
+        return '#18c2ba'
+      } else {
+        return '#f10215'
+      }
+  }
+  var setCancelCol = function(a){
+      if (a == 0) {
+        return '#333'
+      } else if (a == 1) {
+        return '#18c2ba'
+      } else if (a == 2) {
+        return '#18c2ba'
+      } else if (a == 3) {
+        return '#dd9aff'
+      } else if (a == 4) {
+        return '#dd9aff'
+      }
+  }
+  module.exports.orderStatus = orderStatus;
+  module.exports.text = text;
+  module.exports.status2 = status2;
+  module.exports.setoperationTxt = setoperationTxt;
+  module.exports.setoperationTxt2 = setoperationTxt2;
+  module.exports.brTime = brTime;
+  module.exports.setNumCol = setNumCol;
+  module.exports.setCancelCol = setCancelCol
+</wxs>

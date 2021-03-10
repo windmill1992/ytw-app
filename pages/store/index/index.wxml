@@ -1,0 +1,250 @@
+<view class="banner">
+    <image mode='aspectFill' class="wh100" src="{{store.store_banner?url + store.store_banner:'https://yitongwang.oss-cn-hangzhou.aliyuncs.com/miniapp/shopbanner.jpg'}}"></image>
+    <view class="shops-item">
+        <view class="search-bar"> 
+            <icon type="search" size="14" bindtap="searchGoods"/>
+            <input placeholder="搜商品" bindinput="inputSearch"/>
+        </view>
+        <view class="store-namea">{{ store.store_name }}</view>
+        <view class="store-address" style="font-size:{{ store.store_address.length > 11 ? '24rpx' : '28rpx' }};">{{ store.store_address }}</view>
+        <view class="shops-info">
+            <view class='share-btn' catchtap='catchShare'>
+                <image src='../../../images/icon-share.png'></image>
+            </view>
+            <view class="bbooxx" wx:if="{{ store }}">
+               <view class="guanzhu-style"  catchtap="guanzhuStore"><text style="font-size:{{ store.is_collect ? '24rpx' : '32rpx' }};">  {{ store.is_collect ? '已' : '+' }}</text>关注</view>
+               <view class="guanzhu-number">{{ store.store_collect }}</view>
+            </view>
+        </view>
+        <view class="goods-num-list">
+            <!-- <view catchtap="changeTab1" data-cur="all" class="num-item-title {{goods_type == 'all' ? 'after' : ''}} ">全部商品</view> -->
+            <view catchtap="changeTab1" data-cur="one" class="num-item-title {{goods_type == '1' ? 'after' : ''}}">普通商品</view>
+            <view catchtap="changeTab1" data-cur="three" class="num-item-title {{goods_type == '0' ? 'after' : ''}}">私密商品</view>
+        </view>
+        
+    </view>
+</view>
+<!-- <view hidden="{{ current == 'three' }}"> -->
+<view style="min-height:65vh;" hidden="{{ false }}">
+    <!-- 默认，销量，价格 -->
+    <view class="nav">
+        <view class="nav-item {{ sort == 'comprehensive' ? 'choose' : '' }}" bindtap="changeTab2" data-type="comprehensive" data-sort="comprehensive">新品</view>
+        <view class="nav-item {{ sort == 'sales' ? 'choose' : '' }}" bindtap="changeTab2" data-type="1" data-sort="sales">销量</view>
+        <view class="nav-item {{ sort == 'price' ? 'choose' : '' }}" bindtap="changeTab2" data-type="2"  data-sort="price"  >
+            价格
+            <view class="ico-dir {{requestData.sort!='price'?'':(requestData.sort_asc=='asc'?'ico-dir-up':'ico-dir-dn')}}" style="background-image: url({{resourceUrl+'/static/images/sxjt.png'}});"></view>
+        </view>
+        <view bindtap='tab' class='exhibition_one {{ flag==0?"exhibition_one":"exhibition_two"}}' style='background-image:url("../../../images/listo.png")'></view>
+    </view>
+
+        <view class="secret" hidden="{{ current != 'three' }}">
+            <view bindtap="showModal1" wx:if="{{ store.store_member_status == -1 }}">
+                您还不是该店铺VIP会员，无法查看私密商品，点击此处，立即申请成为该店铺VIP，查看更多私密商品！
+            </view>
+            <view bindtap="contactTel" wx:if="{{ store.store_member_status == 0 }}">
+                很遗憾，厂家没有同意您的VIP申请，如需继续申请，请点击右下角联系客服，让对方主动添加您为VIP。 
+            </view>
+
+            <!-- <view wx:if="{{ store.store_member_status == 1 }}">是会员</view> -->   <!-- 无需展示提示框 -->
+            <view wx:if="{{ store.store_member_status == 2 }}" bindtap="contactTel">
+                您已提交申请成为该店铺的VIP会员，等待厂家审核中，如需加急处理，请点击右下角联系客服。 
+            </view>
+        </view>
+    <!-- 橱窗式 -->
+    <view hidden='{{flag}}' class="goods-list">
+        <view catchtap="toGoodsInfo" data-sell="{{ item.is_public_sell }}" class="goods-item" wx:for="{{list}}" data-url="/pages/goods/goodsInfo/goodsInfo?goods_id={{item.goods_id}}&store_id={{storeId}}" wx:key="index">
+            <view class="goods-pic">
+                <image class="wh100" wx:if="{{ item.is_public_sell == 1 }}" src="{{url}}/api/goods/goodsMasterImg?goods_id={{item.goods_id}}&width=400&height=400"></image>
+                <image class="wh100 mohu25" wx:if="{{ item.is_public_sell != 1 && store.store_member_status != 1 }}" src="{{url}}/api/goods/goodsMasterImg?goods_id={{item.goods_id}}&width=400&height=400"></image>
+                <image class="wh100" wx:if="{{ item.is_public_sell != 1 && store.store_member_status == 1 }}" src="{{url}}/api/goods/goodsMasterImg?goods_id={{item.goods_id}}&width=400&height=400"></image>
+                
+            </view>
+            <view class="goods-name ellipsis-2">{{item.goods_name}}</view>
+            <!-- 没有商品标签，先去掉 -->
+            <!-- <view class='label'>
+                <text>新中式</text>
+                <text>实木定制</text>
+            </view> -->
+            <view class='bottom' style="display:flex;justify-content: space-between;box-sizing: border-box;padding: 0 20rpx;">
+                <view class="goods-price"><text>￥</text>{{item.shop_price}}</view>
+                <view class='evaluation' wx:if="{{false}}">
+                    <text>{{item.comment_count}}条评价</text>
+                </view>
+                <view class="visitedSum">浏览数:<text>{{item.click_count}}</text></view>
+            </view>
+        <view wx:if="{{ item.is_public_sell != 1 }}" class="goodsType">秘</view>
+        </view>
+        <view class='show' wx:if="{{ current == 'one' && list.length > 0 && showLine }}">
+            <image src='../../../images/c-line.png'></image>
+            <text>我也是有底线的</text>
+        </view>
+    <view style="text-align:center;width:750rpx;" hidden="{{ showLine }}">
+        <image class="loading" src="https://www.yitongwang.com/public/static/images/ajaxLoader.gif"></image>
+    </view>
+    </view>
+    <!-- 列表式 -->
+
+    <view hidden='{{!flag}}' class="choice_box vertical_type">
+        <view class="choice_list">
+            <block wx:for="{{list}}" wx:key="index">
+            
+                <view class="listmode" catchtap="toGoodsInfo" style="position:relative;" data-sell="{{item.is_public_sell}}" data-url="/pages/goods/goodsInfo/goodsInfo?goods_id={{item.goods_id}}">
+                <view wx:if="{{ item.is_public_sell != 1 }}" class="goodsType">秘</view>
+                    <view class="choice_item">
+                        <view catchtap="toGoodsInfo" data-sell="{{item.is_public_sell}}" data-url="/pages/goods/goodsInfo/goodsInfo?goods_id={{item.goods_id}}">
+                            <image class="wh100" wx:if="{{ item.is_public_sell == 1 }}" src="{{url}}/api/goods/goodsMasterImg?goods_id={{item.goods_id}}&width=400&height=400"></image>
+                            <image class="wh100 mohu25" wx:if="{{ item.is_public_sell != 1 && store.store_member_status != 1 }}" src="{{url}}/api/goods/goodsMasterImg?goods_id={{item.goods_id}}&width=400&height=400"></image>
+                            <image class="wh100" wx:if="{{ item.is_public_sell != 1 && store.store_member_status == 1 }}" src="{{url}}/api/goods/goodsMasterImg?goods_id={{item.goods_id}}&width=400&height=400"></image>
+                        </view>
+                        <view class="choice_footer">
+                            <view class='goods_name'>{{item.goods_name}}</view>
+                            <!-- 没有商品标签，先去掉 -->
+                            <!-- <view class='pro-label'>
+                                <view>商品标签</view>
+                                <view>商品标签</view>
+                            </view> -->
+                            <view class="price"><text>￥</text>{{item.shop_price}}</view>
+                            <view class="similer" wx:if="{{false}}">
+                                <text>{{item.comment_count}}条评价</text>
+                            </view>
+                            <view class="visitedSum">浏览数:<text>{{item.click_count}}</text></view>
+                        </view>
+                    </view>
+                </view>
+                
+            </block>
+        </view>
+        <view class='show' wx:if="{{ current == 'one' }}">
+            <image src='../../../images/c-line.png'></image>
+            <text>我也是有底线的</text>
+        </view>
+    </view>
+
+    <image class="secretEmptyClass" wx:if="{{ current =='three' && list.length == 0 }}" src="https://www.yitongwang.com/public/static/images/minniapp/sercet-empty-goods.png"></image>
+   <!-- 私密商品 -->
+ 
+</view>
+
+
+<view class="store-mes" style="padding-bottom:{{isiphoneX? '40rpx' : '0'}};">
+    <view class="store-btn">
+        <navigator url="/pages/store/about/about?store_id={{store.store_id}}">
+             <image src='../../../images/shop_icon.png'></image>
+            <view>店铺详情</view>
+        </navigator>
+    </view>
+    <view class="store-btn">
+        <navigator url="/pages/store/goods_list/goods_list?store_id={{store.store_id}}">
+            <image src='../../../images/product_icon_black.png'></image>
+            <view>商品分类</view>
+        </navigator>
+    </view>
+    <view bindtap="contactTel">
+        <image src='../../../images/service_icon_black.png'></image>
+        <view>联系客服</view>
+    </view>
+</view>
+
+<view wx:if="{{ showShareButton }}" class="ShareButtonBox" catchtap="true" catchtouchmove="{{ true }}">
+    <view class="ShareItemBox">
+        <view class="item">
+            <!-- <image class="" src="../../../images/wxlogo.png"></image> -->
+            <button class='ShareFriends' open-type="share"></button>
+            <text>分享给好友</text>
+        </view>
+    </view>
+    <view class="closeShareBox" catchtap="closeShare">X</view>
+</view>
+
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet">
+  <action-sheet-item>
+    <button wx:if="{{ userInfo.is_B == 1 || userInfo.store_id == 0 }}" class='action-sheet-btn' catchtap="shareTogether">发送给同行</button> <!--  大B 或 普通人  -->
+    <button wx:if="{{ userInfo.is_B != 1 && userInfo.store_id > 0 }}" class='action-sheet-btn' open-type="share">分享给微信好友</button>  <!--  大A  -->
+  </action-sheet-item>
+  <!-- <action-sheet-item wx:if="{{ userInfo.store_id == 0 || userInfo.is_B == 1 }}" catchtap="getSharePic" data-type="3">分享给下级采购商<view>（对方看不到壹童网信息）</view></action-sheet-item> --> <!-- 暂时关闭 -->
+  <action-sheet-item wx:if="{{ userInfo.store_id > 0 && userInfo.is_B == 0 }}" catchtap="getSharePic" data-type="0">分享至朋友圈</action-sheet-item>
+  <!-- <action-sheet-item catchtap="getSharePic" wx:if="{{ userInfo.is_store_member > 0 && userInfo.is_B != 1 }}">分享至朋友圈</action-sheet-item> -->
+  <action-sheet-cancel>取消</action-sheet-cancel>
+</action-sheet>
+<!-- 分享海报生成 e-->
+<!-- 分享下级二维码 -->
+<view class="mask" catchtouchmove="true" wx:if="{{hasQcode}}">
+
+    <view class="qCode" wx:if="{{hasQcode}}">
+        <view class="codeClose">
+            <icon class="icon-small" color="#999" type="cancel" size="23" catchtap="closeQcode"></icon>
+        </view>
+        <image src="{{qCodeImg}}" />
+    </view>
+
+</view>
+<!-- 分享下级二维码 end -->
+
+<!-- 联系客服 拨打电话 -->
+<van-action-sheet show="{{ telShow }}" bind:close="onTelClose">
+    <view class="makePhone col666">{{ store.store_phone }}</view>
+    <view class="makePhone telHasImage bgc18" catchtap="callOtherTel"><image src="../../../images/shop-tel.png"></image> {{ "   呼 叫" }}</view>
+    <view catchtap="onTelClose" class="makePhone telHasImage bgce6"><image style="background-color:#777;" src="../../../images/dax-1.png"></image> {{ "   取 消" }}</view>
+</van-action-sheet>
+
+
+<!-- 放海报的 -->
+<view wx:if='{{share_btn}}'>
+  <!-- <view class="cover-layer" bindtap="closePromModal"></view> -->
+  <view class="prom-model">
+    <icon type="cancel" color="gray" size="22" class="modal-close" bindtap="closeShareModal" />
+    <view class="prom-title">{{ shareTxt }}</view>
+    <view class='share-pic'>
+      <image catchtap='previewSharePic' style='width:100%;height:100%' src='{{share_pic}}'></image>
+    </view>
+    <view class="share-save-btns">
+      <view class="share-save-btn" catchtap="saveSharePic">保存海报</view>
+      <!-- <view class='share-tips'>保存海报至相册，可在朋友圈分享海报</view> -->
+    </view>
+
+  </view>
+</view>
+
+
+<!-- //分享的二次确认 -->
+<van-dialog
+  title="提醒"
+  message="请再次确认，本次分享，对方将知晓壹童网信息，是否继续？\n如若不想让对方知晓壹童网，您可以进入您自己的店铺，通过“私密分享给下级采购商”功能，让更多的夏季采购商知道您的店铺"
+  show="{{ shareTogether }}"
+  message-align="left"
+  show-cancel-button
+  zIndex="9999999"
+  confirmButtonText="继续"
+  cancelButtonText="返回"
+  confirm-button-open-type="share"
+  bind:close="shareTogetherClose"
+>
+</van-dialog>
+
+<van-dialog id="van-dialog" />
+<!-- 大B分享同行的弹框 -->
+<van-dialog
+  title="提醒"
+  message="请再次确认，本次分享，对方将知晓壹童网信息，是否继续？\n如若不想让对方知晓壹童网，请返回使用“私密分享给下级采购商”功能来进行分享"
+  show="{{ shareTogether2 }}"
+  message-align="left"
+  show-cancel-button
+  zIndex="9999999"
+  confirmButtonText="继续"
+  cancelButtonText="返回"
+  bind:confirm="haibaoB"
+  bind:close="shareTogetherClose2"
+>
+</van-dialog>
+
+
+<!-- 回首页遮罩层 -->
+<view class="tips-mask" hidden="{{ tipsmask }}" catchtouchmove="{{ true }}">
+    <image class="tipsImg" hidden="{{ tips2 }}" src="{{ 'https://www.yitongwang.com/public/static/images/minniapp/simi-tips-3.png' }}"></image>
+    <image class="image1" hidden="{{ !tips2 }}" src="{{ 'https://www.yitongwang.com/public/static/images/minniapp/collect-tips-3.png' }}"></image>
+    <view class="txt1" hidden="{{ !tips2 }}" catchtap="closeMask1">我知道了</view>
+    <view class="txt2" hidden="{{ tips2 }}" catchtap="closeMask">我知道了</view>
+    <view class="txt3" hidden="{{ tips2 }}">该提示6次后不再出现，当前已提示{{ pastSum }}次</view>
+</view>
+
+

@@ -1,0 +1,9 @@
+<!-- 顶部广告轮播 -->
+<good-swiper data1="{{ swiperList }}" url="{{url}}" ></good-swiper>
+<view class="coreItem" wx:for="{{navList}}" wx:key="index" catchtap="clickNav" data-index="{{ index }}">
+  <image class="NavItemImg fll" src="{{ item.src }}"></image>
+  <text class="NavItemTxt fll">{{ item.txt }}</text>
+  <text class="NavArrow flr">></text>
+</view>
+<!-- 为你推荐 -->
+<good-component data1="{{goodsList}}"></good-component>

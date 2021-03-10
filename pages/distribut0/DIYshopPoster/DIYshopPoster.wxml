@@ -1,0 +1,41 @@
+<view class="topBg">
+  <image class="bgImg" src="https://test.yitongwang.com/public/static/images/minniapp/DIYshop_sell_banner.png"></image>
+</view>
+
+<view class="setContent">
+  <!-- 群发海报 -->
+  <view class="insatiableItem">
+    <image class="leftIcon" src="https://test.yitongwang.com/public/static/images/minniapp/DIYshop_poster_1.png"></image>
+    <view class="rightTxt" catchtap="getPic">群发海报</view>
+  </view>
+
+  <view class="insatiableMore">
+    <image class="leftIcon" src="https://test.yitongwang.com/public/static/images/minniapp/DIYshop_poster_2.png"></image>
+    <view class="rightTxt">更多功能正在开发中，敬请期待...</view>
+  </view>
+</view>
+
+
+
+<!-- 放海报的 -->
+<view wx:if='{{share_btn}}'>
+  <!-- <view class="cover-layer" bindtap="closePromModal"></view> -->
+  <view class="prom-model">
+    <icon type="cancel" color="gray" size="22" class="modal-close" bindtap="closeShareModal" />
+    <view class="prom-title">{{ shareTxt }}</view>
+    <view class='share-pic'>
+      <image catchtap='previewSharePic' style='width:100%;height:100%' src='{{share_pic}}'></image>
+    </view>
+    <view class="share-save-btns">
+      <view class="share-save-btn" catchtap="saveSharePic">保存海报</view>
+      <!-- <view class='share-tips'>保存海报至相册，可在朋友圈分享海报</view> -->
+    </view>
+
+  </view>
+</view>
+
+<import src="../../index/publics/publics.wxml"/>
+<import src="../../index/publicPage/publicPage.wxml"/>
+<template is="distributMenu" data="{{page:2,isiphoneX:isiphoneX,is_A:store.is_A,isGoodsList: true}}" />
+<template is="operations" data="{{operaList,current:'营销管理',isiphoneX:isiphoneX}}" wx:if="{{shouldOperationsShow}}" />
+<template is="proposal" data="{{proposalData,isProposalDone}}" wx:if="{{shouldProposalShow}}" />

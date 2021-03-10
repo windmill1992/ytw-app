@@ -1,0 +1,30 @@
+<view class="list">
+  <!-- <video src="http://baobab.kaiyanapp.com/api/v1/playUrl?vid=118194&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss" autoplay="{{true}}" controls="{{false}}"></video> -->
+  <image src="https://www.yitongwang.com/public/static/images/minniapp/%E7%9B%91%E6%8E%A7%E9%BB%98%E8%AE%A4.png"></image>
+  <view class="item">
+    预计打包时间：{{res.dabao_end_time}}
+  </view>
+  <view class="item">
+    <view>仓位：{{ res.code }}-{{ res.cangwei_code }}</view>
+    <view>状态：{{m1.orderStatus(res.order_status)}}</view>
+  </view>
+  <view class="item">
+    <view>类型：{{res.size_name}}</view>
+  </view>
+</view>
+
+<wxs module="m1">
+var orderStatus = function(i){
+  if (i===0) {
+      return "未送齐"
+  } else if(i===1){
+      return "待打包"
+  }else if(i===2){
+      return "待拉包"
+  } else if(i==3) {
+      return "已拉走"
+  }
+}
+
+module.exports.orderStatus = orderStatus;
+</wxs>

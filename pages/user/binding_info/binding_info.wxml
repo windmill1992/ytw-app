@@ -1,0 +1,104 @@
+<!--pages/user/binding_info/binding_info.wxml-->
+<!-- <view wx:if="{{false}}">
+    <view class="binding-top" >
+    <image style="width:750rpx;height:560rpx;" class='img_back' src="{{ url + '/public/static/images/minniapp/badding-banner.png' }}"></image>
+        <view class='user-logo'><image src="{{userHeadPic}}"></image></view>
+        <view class='user-text'>
+            <text>亲爱的微信用户</text>
+            <text class="user-nname">{{nickName=='undefinde'?'':nickName}}</text>
+        </view> 
+    </view>
+    <view class='binding-container'>
+        <view class='binding-tips'><text>为了给您更好地服务，请关联一个{{appName}}账号\n若还没有{{appName}}账号，则注册后默认完成关联</text></view>
+        <view>
+            <view class="correlation-cont">
+                <view class="connect-item {{isRegist?'tp-list-bg':''}}" bindtap='regist'>新注册用户</view>
+                <view class="connect-item {{isRegist?'':'tp-list-bg'}}" bindtap='account'>已注册用户</view>
+			</view>
+            <view class="correlation-input-wrap">
+				<view class="items-warp" hidden='{{isRegist}}'>
+		            <view class="item_cont">
+		                <image src="{{ url + '/public/static/images/minniapp/badding-user.png' }}"></image>
+                        <text>手机号码</text>
+                        <input name="username" type="number" id="username" placeholder="请输入手机号码" bindinput="setMobile"></input>
+		            </view>
+		            <view class="item_cont ">
+		                <image src="{{ url + '/public/static/images/minniapp/badding-yanzhen.png' }}"></image>
+                        <text decode="{{true}}" space="{{true}}">验&nbsp;证&nbsp;&nbsp;码</text>
+                        <input name="password" type="number" id="password" placeholder="请输入验证码" bindinput="setCode"></input>
+                        <button class="tp-get-gode {{canGetCode?'btn-disable':''}}" wx:if="{{!is_send}}" bindtap='getCode'>获取验证码</button>
+                        <button class="tp-get-gode {{canGetCode?'btn-disable':''}} countDownNum"  wx:if="{{is_send}}" >{{countDownNum}}秒后重新操作</button>
+                    </view>    
+		            <view class="item-cont">
+		                <button class="correlation-submit" bindtap='bindAccount'>立即绑定</button>
+		            </view>
+		        </view>	
+				<view class="items-warp" hidden='{{!isRegist}}'>
+		            <view class="item_cont">
+		                <image src="{{ url + '/public/static/images/minniapp/badding-user.png' }}"></image>
+                        <text>手机号码</text>
+                        <input name="username" type="number" id="username" placeholder="请输入手机号码" bindinput="setRegMobile"></input>
+		            </view>
+		            <view class="item_cont ">
+		                <image src="{{ url + '/public/static/images/minniapp/badding-pwd.png' }}"></image>
+                        <text>设置密码</text>
+                        <input name="username" type="password" id="username" placeholder="字母和数字组成的6-16位字符" bindinput='setRegPwd'></input>
+		            </view>
+		            <view class="item_cont">
+		                <image src="{{ url + '/public/static/images/minniapp/badding-yanzhen.png' }}"></image>
+                        <text decode="{{true}}" space="{{true}}">验&nbsp;证&nbsp;&nbsp;码</text>
+                        <input name="password" type="number" id="password" placeholder="请输入验证码" bindinput="setRegCode"></input>
+                         <button class="correlation-get-gode" class="tp-get-gode"  wx:if="{{!is_send}}" bindtap='getRegCode'>获取验证码</button>
+                        <button class="tp-get-gode countDownNum"  wx:if="{{is_send}}" >{{countDownNum}}秒后重新操作</button>
+                    </view>
+                    <view class='bingding-agreement' hidden='{{!isRegist}}'>
+                        <checkbox checked='{{isAgree}}' bindtap='check'></checkbox>
+                        <label>我已阅读并同意</label>
+                        <view style="color:rgb(0,148,202);display:inline-block;" bindtap='agreement'>《平台服务协议与隐私保护政策》</view>
+                    </view>
+		            <view class="item-cont">
+		                <button class="correlation-submit" bindtap='bindReg'>立即绑定</button>
+		            </view>
+		        </view>
+			</view>
+        </view>
+        
+    </view>
+</view> -->
+
+<view class="pageBox">
+    <view class="logo">
+        <image class="logoImg" src="https://www.yitongwang.com/public/static/images/logo/admin_home_logo_defaults.png"></image>
+        <view class="topTips">首次登陆自动注册<text class="coltheme">壹童网</text>帐号</view>
+    </view> 
+    <view class="formBox">
+        <view class="item_cont">
+            <image src="{{ url + '/public/static/images/minniapp/badding-user.png' }}"></image>
+            <text>手机号码</text>
+            <input name="username" type="number" id="username" placeholder="请输入手机号码" bindinput="setRegMobile"></input>
+        </view>
+    </view>
+    <view class="item_cont">
+        <image src="{{ url + '/public/static/images/minniapp/badding-yanzhen.png' }}"></image>
+        <text decode="{{true}}" space="{{true}}">验&nbsp;证&nbsp;&nbsp;码</text>
+        <input name="password" type="number" id="password" placeholder="请输入验证码" bindinput="setRegCode"></input>
+            <button class="correlation-get-gode" class="tp-get-gode"  wx:if="{{!is_send}}" bindtap='checkCode'>获取验证码</button>
+        <button class="tp-get-gode countDownNum"  wx:if="{{is_send}}" >{{countDownNum}}秒后重新操作</button>
+    </view>
+    <view class="item-cont">
+        <button class="correlation-submit" bindtap='loginSubmit'>登录/注册</button>
+    </view>
+    <view class='bingding-agreement' hidden='{{!isRegist}}'>
+        <checkbox checked='{{isAgree}}' bindtap='check' class="checkBox"></checkbox>
+        <label bindtap="check">我已阅读并同意</label>
+        <view style="color:rgb(0,148,202);display:inline-block;" bindtap='agreement'>《商城用户注册协议》</view>
+    </view>
+</view>
+
+<text class="callService" catchtap="callServer">联系客服</text>
+<!-- 筛选提示遮罩层 -->
+<!-- <view class="tips-mask" wx:if="{{ tipsmask }}" catchtouchmove="{{ true }}">
+    <image src="https://www.yitongwang.com/public/static/images/minniapp/123123123.png"></image>
+    <view class="txt" catchtap="closeMask">我知道了</view>
+</view> -->
+

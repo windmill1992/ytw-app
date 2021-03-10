@@ -1,0 +1,18 @@
+<!-- <image class="cart-image" src="https://yitongwang.oss-cn-hangzhou.aliyuncs.com/miniapp/get_user_info.png" style="width:{{windowWidth}}px;height:{{windowHeight}}px"/> -->
+<!-- <view class="no-data"> -->
+    
+    <!-- <view class="no-data-title">请先登录, 以便操作更多功能</view> -->
+    <!-- <button open-type="getUserInfo" bindgetuserinfo='bindGetUserinfo' class='getuse_info'>立即登录</button> -->
+    <!-- <navigator class="similer" url="/pages/index/index/index" >返回首页</navigator>  -->
+    
+<!-- </view> -->
+
+
+<image class="cart-image" src="{{ url + '/public/static/images/minniapp/get_user_info.png' }}" style="width:{{windowWidth}}px;height:{{windowHeight}}px"/>
+<view class="no-data">
+    <!-- <view class="no-data-title">请先登录, 以便操作更多功能</view> -->
+    <button open-type="getUserInfo" bindgetuserinfo='bindGetUserinfo' class='getuse_info'>立即登录</button>
+    <button class="temporaryUnLogin" bindtap='temporaryUnLogin'>暂不登录</button>
+    <!-- <navigator class="similer" url="/pages/index/index/index" >返回首页</navigator>  -->
+</view>
+    <view class="loginTips">为了更好的服务您，请先登录再操作</view>

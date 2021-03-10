@@ -1,0 +1,40 @@
+
+
+.topImg {
+  width: 750rpx;
+  height: 400rpx;
+}
+/* 公共部分 */
+.fll {
+  float: left;
+}
+.flr {
+  float: right;
+}
+/* 选项Item */
+.coreItem {
+  margin: 30rpx auto;
+  padding: 10rpx 30rpx 10rpx 20rpx;
+  width: 95%;
+  background-color: #3abdb7;
+  border-radius: 15rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.NavItemImg {
+  height: 80rpx;
+  width: 80rpx;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+.NavItemTxt,.NavArrow {
+  color: #fff;
+  font-size: 34rpx;
+  line-height: 80rpx;
+}
+.NavItemTxt {
+  margin-left: 30rpx;
+}
+.NavArrow {
+  font-size: 50rpx;
+}

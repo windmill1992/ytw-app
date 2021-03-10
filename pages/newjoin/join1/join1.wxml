@@ -1,0 +1,51 @@
+<import src="../../../utils/template/newjoin.wxml"/>
+<import src="../../../utils/regions/regions.wxml"/>
+
+<view class="container" hidden="{{!showPage}}">
+    <template data="{{step:1}}" is="progress-bar"></template>
+    <view wx:if="{{showCont}}" class="notice">
+        <view  class="content">
+            <image bindtap="closeCont" src="../../../images/close_note.png" class="close"></image>
+            <view class="title">入驻须知：</view>
+            <view>1.认真填好个人信息。</view>
+            <view>2.以下信息都为必填信息。</view>
+            <view>3.姓名、号码具有真实性。</view>
+        </view>
+    </view>
+
+    <form class="formbox" bindsubmit="submitInfo">
+        <view class="item">
+            <view class="item-name">店主姓名:</view>
+            <input class="item-input" placeholder-style="color:#999" placeholder="请填写姓名" name="contacts_name"/>
+        </view>
+        <view class="item">
+            <view class="item-name">手机号:</view>
+            <input class="item-input" placeholder-style="color:#999" placeholder="请填写手机号" name="contacts_mobile"/>
+        </view>
+        <view class="item" data-id='0' bindtap="openRegionsModal">
+            <view class="item-name">所在地区:</view>
+            <view class="item-input">{{!address.province_name?'请选择您的地址':''}}{{address.province_name}} {{address.city_name}} {{address.district_name}}</view>
+            <view class="item-img">
+                <image class='next_icon' src="../../../images/xr_3.png"></image>
+            </view>
+        </view>
+        <view class="item">
+            <view class="item-name">详细地址:</view>
+            <input class="item-input" maxlength="40" placeholder-style="color:#999" placeholder="长度请限制在6-40字" name="company_address"/>
+        </view>
+        <view class="item last">
+            <view class="item-name foot">
+            <view  bindtap="setAgree"  class="choosebox">
+              <image wx:if="{{isAgree}}" src="../../../images/ischeck.png"></image>
+              <image wx:if="{{!isAgree}}"src="../../../images/nocheck.png"></image>
+            </view>
+                <!-- <switch type="checkbox"  color="#ff3b3b" ></switch> -->
+                我已阅读《<navigator class="guide" url="">入驻协议</navigator>》同意签署在线协议！
+            </view>
+        </view>
+        <button class="next-btn" form-type="submit">下一步</button>
+    </form>
+</view>
+
+<!-- 选择地址弹框  -->
+<template is="regions" data="{{regions}}"/>

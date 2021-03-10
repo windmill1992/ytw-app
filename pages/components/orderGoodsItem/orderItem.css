@@ -1,0 +1,149 @@
+.orderItem {
+  padding: 20rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  width: 700rpx;
+  border: 1rpx solid #80c4c0;
+  border-radius: 35rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+}
+.orderTop {
+  margin-bottom: 24rpx;
+  height: 45rpx;
+  border-bottom: 1rpx solid #e6e7ee;
+}
+.orderOwner {
+  float: left;
+}
+.orderOwner .avatorImg {
+  height: 35rpx;
+  width: 35rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.orderStatus {
+  float: right;
+  color: #fe8d62;
+}
+.goodsItem {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx 0;
+}
+.detailItem {
+  padding: 0;
+  border: none;
+}
+.afterLine::before {
+  content: '';
+  position: absolute;
+  width: 680rpx;
+  height: 1px;
+  background-color: #91e2de;
+  left: 50%;
+  top: -13rpx;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.img {
+  height: 180rpx;
+  width: 180rpx;
+}
+.img image {
+  border-radius: 10rpx;
+  height: 100%;
+  width: 100%;
+}
+.contentTxt {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 460rpx;
+  height: 180rpx;
+}
+.goodsAllprice {
+  margin: 15rpx 0;
+  font-weight: bold;
+  text-align: right;
+  color: #555;
+}
+.goodsAllprice text {
+  color: #fd1818;
+}
+.nameSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  line-height: 35rpx;
+  height: 100%;
+}
+.contentTxtTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+}
+.rela {
+  position: relative;
+}
+.absGoodsSum {
+  position: absolute;
+  right: 0;
+  bottom: -30rpx;
+  color: #ccc;
+}
+.goodsSpec {
+  position: relative;
+  font-size: 20rpx;
+  padding-left: 60rpx;
+  color: #ccc;
+  box-sizing: border-box;
+}
+.goodsSpec::before {
+  content: '规格:';
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  font-size: 22rpx;
+  color: #333;
+}
+.goodsName {
+  color: #555;
+  font-weight: bold;
+  font-size: 24rpx;
+}
+.fw600 {
+  font-weight: bold;
+  color: #555;
+}
+.colhui {
+  color: rgb(104, 97, 97);
+  font-weight: normal;
+}
+.goodsTotal {
+  font-size: 24rpx;
+  text-align: right;
+}
+.orderBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 10rpx 0;
+}
+.orderBtns text {
+  display: block;
+  height: 56rpx;
+  width: 180rpx;
+  text-align: center;
+  line-height: 56rpx;
+  color: #18c2ba;
+  border: 1rpx solid #18c2ba;
+  border-radius: 28rpx;
+}
+.orderBtns .colcccc {
+  color: #ccc;
+  border-color: #ccc;
+}
+

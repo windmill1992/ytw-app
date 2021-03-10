@@ -1,0 +1,93 @@
+.van-index-anchor--active {
+  background-color: #f0f0f4!important;
+}
+.van-index-anchor {
+  line-height: 32rpx!important;
+}
+.overlay2 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .6);
+  z-index: 11;
+}
+.facBottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 14px 35rpx;
+  z-index: 1;
+  width: 750rpx;
+  border-bottom: 1rpx solid #ccc;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 26rpx;
+}
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #333;
+  font-weight: bold;
+}
+.bottomItemTxt {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10rpx 0;
+  text-align: center;
+  background-color: #f0f0f4;
+  border-radius: 10rpx;
+}
+.BottomItem {
+  flex: 1;
+}
+.BottomItem:nth-child(2) {
+  flex: 1.5;
+  box-sizing: border-box;
+  border-left: 1rpx solid #ccc;
+  border-right: 1rpx solid #ccc;
+}
+.bottomDotted {
+  position: relative;
+  width: 60rpx;
+}
+/* 圆点菜单项 */
+.dottedOperations {
+  position: fixed;
+  right: 20rpx;
+  bottom: 100rpx;
+  padding: 15rpx 20rpx 15rpx;
+  z-index: 12;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+/* .dottedOperations::after {
+  position: absolute;
+  right: 60rpx;
+  bottom: 0rpx;
+  width: 20rpx;
+  height: 20rpx;
+  background-color: red;
+  transform: rotate(45deg);
+} */
+.dottedOperation {
+  position: relative;
+  line-height: 60rpx;
+}
+.operaAfterLine::after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1rpx;
+  width: 80%;
+  background-color: #18c2ba;
+}
+
+

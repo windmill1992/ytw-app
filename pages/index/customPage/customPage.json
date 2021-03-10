@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "footbar": "/pages/components/index_footbar/indexFootBar"
+  }
+}

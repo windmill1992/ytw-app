@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "店铺设置",
+  "usingComponents": {
+    "van-popup": "../../../dist/popup/index"
+  }
+}

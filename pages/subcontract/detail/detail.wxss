@@ -1,0 +1,1316 @@
+page {
+  padding-bottom: 200rpx;
+}
+.rela {
+  position: relative;
+  overflow: hidden;
+}
+.abs {
+  position: absolute;
+}
+.colf10 {
+  color: #f84545;
+}
+.col18c {
+  color: #18c2ba;
+}
+.col555 {
+  color: #555;
+}
+.bg18c {
+  background-color: #18c2ba;
+  color: #fff;
+  text-align: center;
+}
+.bgf215 {
+  background-color: #f85268;
+  color: #fff;
+}
+.bgfff {
+  background-color: #fff;
+  color: #18c2ba;
+  border: 1rpx solid #18c2ba;
+  box-sizing: border-box;
+}
+.border18c {
+  border: 1rpx solid #18c2ba;
+}
+.fll {
+  float: left;
+}
+.flr {
+  float: right;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.fw600 {
+  font-weight: 600;
+}
+.pd10 {
+  padding: 10px 0;
+}
+.bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.flex {
+  display: flex;
+}
+.flex_r {
+  flex-direction: row;
+}
+.flex_c {
+  flex-direction: column;
+}
+.col215 {
+  color: #f85268;
+}
+
+/* 上部分信息展示新做ssssssssss */
+.coltheme {
+  color: #18c2ba;
+}
+
+.flx1 {
+  flex: 1;
+}
+.newRemark {
+  position: relative;
+  margin: 20rpx auto;
+  padding: 5rpx 40rpx 5rpx 60rpx;
+  overflow: hidden;
+  word-wrap: break-word;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  border-radius: 15rpx;
+  border: 1rpx solid #18c2ba;
+  box-sizing: border-box;
+}
+.newRemarkMore {
+  position: absolute;
+  right: 11rpx;
+  top: 40%;
+  transform: translateY(-50%) rotate(45deg);
+  border-right: 1rpx solid rgb(155, 154, 154);
+  border-bottom: 1rpx solid rgb(155, 154, 154);
+  height: 20rpx;
+  width: 20rpx;
+}
+
+
+/* 修改货物数量 */
+.editInput {
+  margin: 0 auto;
+  width: 30%;
+  background-color: #ccc;
+  border-radius: 10rpx;
+}
+
+/* 收货数量 */
+.editInput {
+  padding-left: 20rpx;
+  margin: 55rpx auto;
+  width: 80%;
+  background-color: #dedede;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+}
+
+.green {
+  color: green;
+}
+.red {
+  color: #f85268;
+}
+
+/* 10.9 厂家每个Item */
+/* 预约订单列表 */
+.orderItem {
+  display: flex;
+  flex-direction: row;
+  margin: 50rpx auto;
+  padding: 10rpx;
+  width: 700rpx;
+  height: 350rpx;
+  border-radius: 20rpx;
+  border: 1rpx solid #18c2ba;
+  box-sizing: border-box;
+  font-size: 25rpx;
+}
+.coreSize,.hasExamine,.orderTime,.orderItemExamine {
+  top: -43rpx;
+  height: 48rpx;
+  line-height: 43rpx;
+  z-index: -1;
+  color: #18c2ba;
+  text-align: center;
+}
+.coreSize {
+  left: 0;
+  padding: 5rpx 12rpx;
+  background-color: #e7e7ee;
+  border-radius: 8rpx 12rpx 0 12rpx;
+}
+.hasExamine {
+  top: 10rpx;
+  left: 250rpx;
+  height: 30rpx;
+  padding: 2rpx 8rpx;
+  line-height: 30rpx;
+  background-color: #f84545;
+  color: #fff;
+  border-radius: 5rpx;
+  font-size: 24rpx;
+  z-index: 2;
+}
+.orderTime {
+  right: 10rpx;
+  color: #f84d4d;
+}
+
+.orderInfo {
+  flex: 3;
+  display: flex;
+  flex-direction: row;
+  padding-left: 15rpx;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+.orderInfoL,.orderInfoR {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 18rpx;
+  box-sizing: border-box;
+}
+.orderInfoL {
+  flex: 2;
+}
+.hasUrge {
+  top: 0rpx;
+  right: 0rpx;
+  padding: 0 6rpx;
+  background-color: #f84545;
+  color: #fff;
+  border-radius: 0 18rpx 0 10rpx;
+  font-size: 22rpx;
+  z-index: 0;
+}
+
+.receiveSlot {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding-top: 15rpx;
+  width: 100%;
+  height: 245rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 插槽两个按钮 */
+.slotBtns {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 100rpx;
+  bottom: 0;
+  left: 0;
+  border-top: 1rpx solid #eaeaea;
+}
+.slotTypea {
+  flex: 1;
+  color: #18c2ba;
+  line-height: 100rpx;
+  text-align: center;
+}
+.slotTypeb {
+  flex: 1;
+  box-sizing: border-box;
+  border-right: 1rpx solid #eaeaea;
+  color: #666;
+  line-height: 100rpx;
+  text-align: center;
+}
+.receiveSlotBox {
+  padding: 0rpx 35rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.receiveSlotInput {
+  position: relative;
+  height: 50rpx;
+  border-bottom: 1rpx solid #18c2ba;
+  text-align: left;
+  width: 395rpx;
+}
+.assd .receiveSlotInput::before {
+  content: '手';
+  position: absolute;
+  left: 60rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  color: "#444";
+  font-size: 28rpx;
+}
+.receiveSlotInputPlac {
+  text-align: center;
+  color: #999;
+}
+.absPlace {
+  position: absolute;
+  right: 80rpx;
+  top: 23rpx;
+  color: #ccc;
+  font-size: 24rpx;
+}
+.receiveSlotBox>view:nth-child(1) {
+  height: 100%;
+  flex: 1;
+}
+.receiveSlotBox>view:nth-child(2){
+  height: 100%;
+  flex: 1.2;
+}
+/* 修改 记录 popup */
+.fll {
+  float: left;
+}
+.flr {
+  float: right;
+}
+.modifyPopupcustom {
+  border-radius: 30rpx;
+  width: 750rpx;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(204, 204, 204, .5);
+  z-index: 100;
+}
+.modifyPopupcustom input {
+  color: #333;
+}
+.modifyPopup {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 9%;
+  height: 85%;
+  width: 710rpx;
+  border-radius: 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  overflow: hidden;
+  font-size: 26rpx;
+}
+.popupInputBox {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  height: 52rpx;
+  box-sizing: border-box;
+}
+.PopupInput {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  padding-left: 60rpx;
+  width: 300rpx;
+  height: 50rpx;
+  border: 1rpx solid #18c2ba;
+  border-bottom: 1rpx solid #18c2ba;
+  border-radius: 10rpx;
+}
+.PopupInput::before {
+  content: '';
+  position: absolute;
+  height: 40rpx;
+  width: 40rpx;
+  left: 10rpx;
+  top: 4rpx;
+  border-radius: 50%;
+  background: url('https://www.yitongwang.com/public/static/images/minniapp/subcontract-icon-search.png') no-repeat center center;
+  background-size: 40rpx 40rpx;
+} 
+
+.PopupAddNewFac {
+  float: right;
+  height: 50rpx;
+  width: 170rpx;
+  background-color: #18c2ba;
+  color: #fff;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+.popupHeadTxt {
+  margin: 5rpx auto;
+  width: 95%;
+  box-sizing: border-box;
+  color: #18c2ba;
+  text-align: center;
+  font-weight: bold;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.popupOperaFac {
+  position: absolute;
+  display: block;
+  height: 45rpx;
+  line-height: 45rpx;
+  width: 80%;
+  color: #fff;
+  background-color: #18c2ba;
+  text-align: center;
+  border-radius: 8rpx;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 23rpx;
+}
+.popupOperaFac2 {
+  background: url('https://test.yitongwang.com/public/static/images/minniapp/subcontract-icon-write.png') no-repeat center center;
+  background-size: 54% 45rpx;
+}
+
+.modifyRecordTitle {
+  margin: 0 auto;
+  margin-bottom: 5px;
+  padding: 15rpx 0 0 0;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #18c2ba;
+  text-align: center;
+}
+.modifyRecordContent {
+  padding: 20rpx 0;
+  padding-bottom: 150rpx;
+  background-color: #e7f9f8;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modifyRecordHead text{
+  flex: 1;
+  text-align: center;
+  color: #000;
+  font-size: 28rpx;
+}
+.modifyRecordItem {
+  margin: 0rpx auto;
+  padding: 9rpx 0;
+  width: 95%;
+  background-color: #cfe0df;
+  color: #444;
+  font-size: 24rpx;
+}
+.modifyRecordItem view{
+  flex: 1;
+  text-align: center;
+}
+.absAfterArrow,.absAfterArrow2 {
+  position: relative;
+}
+.absAfterArrow::after,.absAfterArrow2::after {
+  position: absolute;
+  content: '';
+  height: 20rpx;
+  width: 20rpx;
+  right: 0;
+  color: #ccc;
+  transform: rotate(45deg);
+  border-bottom: 2rpx solid #bbb;
+  border-right: 2rpx solid #bbb;
+}
+.absAfterArrow::after {
+  top: 0;
+}
+.absAfterArrow2::after {
+  bottom: 0;
+  transform: rotate(-135deg);
+}
+.labaorecord {
+  margin-top: -2rpx;
+  text-align: center;
+}
+.lh65 {
+  line-height: 65rpx;
+}
+.shouqia {
+  flex:.3;
+  text-align:center;
+}
+.modifyPopupBtns {
+  position: absolute;
+  right: 8rpx;
+  height: 50rpx;
+  width: 50rpx;
+  border-top: 1rpx solid #eaeaea;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+  overflow: hidden;
+}
+.modifyPopupBtns text {
+  display: block;
+  flex: 1;
+  text-align: center;
+}
+.modifyPopupBtns .roundX {
+  background-color: #fff;
+  border: 1rpx solid #444;
+  border-radius: 50%;
+}
+.van-rate {
+  vertical-align: bottom;
+}
+.absRadio {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.flx {
+  display: flex;
+  justify-content: space-around;
+}
+.flx_r {
+  flex-direction: row;
+}
+.flx_c {
+  flex-direction: column;
+}
+.core_receiveBtn {
+  width: 150rpx;
+  height: 50rpx;
+  background: #18c2ba;
+  text-align: center;
+  border-radius: 10rpx;
+  line-height: 50rpx;
+  color: #fff;
+}
+
+/* 新增收货 */
+.receiveFactoryBox {
+  width: 680rpx;
+  height: 880rpx;
+  border-radius: 30rpx;
+  padding-top: 20rpx;
+}
+.receiveFactoryTitle {
+  padding: 10rpx;
+  text-align: center;
+  background-color: #e7f9f8;
+  font-size: 35rpx;
+  color: #18c2ba;
+}
+.receiveFactoryHead {
+  display: flex;
+  margin: 0 auto;
+  padding: 0 50rpx;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  background-color: #e7f9f8;
+  box-sizing: border-box;
+}
+.receiveFactoryItem {
+  position: relative;
+  margin: 8rpx auto;
+  background-color: #fff;
+  padding: 8rpx 30rpx;
+  width: 90%;
+  height: 64rpx;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+}
+.receiveFactoryScroll {
+  height: 700rpx;
+  background-color: #e7f9f8;
+}
+.receiveFactoryInput {
+  position: relative;
+  display: inline-block;
+  height: 46rpx;
+  width: 220rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  border: 1rpx solid #18c2ba;
+}
+
+.receiveFactoryInput:nth-child(2){
+  width: 150rpx;
+  margin-left: 18rpx;
+}
+.receiveFactoryInput2::after {
+  content: '手';
+  position: absolute;
+  right: 8rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28rpx;
+  color: #555;
+}
+.receiveFactoryDel {
+  display: block;
+  position: absolute;
+  left: 11rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 35rpx;
+  width: 35rpx;
+  text-align: center;
+  line-height: 35rpx;
+  border: 1rpx solid #ccc;
+  color: #ccc;
+  border-radius: 50%;
+}
+
+.facRemarkVal {
+  border: 1rpx solid #18c2ba;
+  border-radius: 15rpx;
+  text-indent: 1em;
+}
+.receiveFactoryBtns {
+  height: 90rpx;
+  width: 100%;
+  line-height: 90rpx;
+  font-size: 35rpx;
+  text-align: center;
+  color: #18c2ba;
+  display: flex;
+  flex-direction: row;
+  border-top: 1rpx solid #ccc;
+}
+.borderR {
+  box-sizing: border-box;
+  border-right: 1rpx solid #ccc;
+  color: #333;
+}
+.receiveFactoryInput:nth-child(1){
+  margin-left: 30rpx;
+}
+.absRemark {
+  position: absolute;
+  right: 10rpx;
+  top: 50%;
+  width: 130rpx;
+  height: 45rpx;
+  transform: translateY(-50%);
+  padding: 2rpx 4rpx;
+  border: 1rpx solid #18c2ba;
+  color: #666;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 48rpx;
+  overflow: hidden;
+}
+
+/* 新版本头部  4.5 版本 */
+page {
+  background-color: #fff;
+  color: #333;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 28rpx;
+  /* padding-top: 253rpx; */
+}
+.displayInlineBlock {
+  display: inline-block;
+}
+.vts {
+  vertical-align: super;
+}
+.fs20 {
+  font-size: 20rpx;
+}
+.fw550 {
+  font-weight: bold;
+}
+.absTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 335rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  z-index: 3;
+}
+.detailTop {
+  padding: 10px;
+}
+.topSearch {
+  position: relative;
+  display: inline-block;
+  padding-left: 80rpx;
+  width: 420rpx;
+  height: 62rpx;
+  background-color: #f0f0f4;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+}
+.topSearch::before { 
+  content: '';
+  position: absolute;
+  height: 50rpx;
+  width: 50rpx;
+  left: 10rpx;
+  top: 10rpx;
+  border-radius: 50%;
+  background: url('https://www.yitongwang.com/public/static/images/minniapp/subcontract-icon-search.png') no-repeat center center;
+  background-size: 50rpx 50rpx;
+}
+.someOrderInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 90rpx;
+  font-size: 26rpx;
+  color: #555;
+}
+.someOrderInfo1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 90rpx;
+  text-align: center;
+}
+.colfe751b {
+  color: #fe751b;
+}
+.colff4848 {
+  color: #ff4848;
+}
+
+.detailLevel3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10px;
+  height: 60rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+.screenBtn {
+  padding: 8rpx 26rpx;
+  color: #18c2ba;
+  border: 1rpx solid #18c2ba;
+  border-radius: 16rpx;
+  font-weight: normal;
+}
+.operationBoxx {
+  position: fixed;
+  padding: 15rpx 20rpx;
+  top: 270rpx;
+  right: 30rpx;
+  border-radius: 15rpx;
+  background-color: #f0f0f4;
+  text-align: center;
+  z-index: 3;
+}
+.operationBoxx::before {
+  content: '';
+  position: absolute;
+  top: -10rpx;
+  right: 15rpx;
+  width: 20rpx;
+  height: 20rpx;
+  transform: rotate(45deg);
+  background-color: #f0f0f4;
+}
+.operationItem {
+  position: relative;
+  padding-right: 30rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  border-bottom: 1rpx solid #cbcbcd;
+  color: #333;
+}
+.operationItem:last-child {
+  border-bottom: none;
+}
+/* 1级遮罩 */
+.mask1,.changePackNumMask,.mask22 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 100%;
+}
+.mask1,.changePackNumMask {
+  background-color: rgba(0, 0, 0, .6);
+  z-index: 2;
+}
+.mask22 {
+  z-index: 4;
+  background-color: rgba(0, 0, 0, .6);
+}
+.modifyPopupscroll {
+  margin: 0 auto;
+  height: 100%;
+  width: 670rpx;
+  background-color: #fff;
+}
+.detailFacBox {
+  margin: 0 auto;
+  padding: 0 10rpx;
+  width: 750rpx;
+  line-height: 40rpx;
+  background-color: #e5fffe;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.detailFacTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 5rpx;
+  height: 60rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333;
+  box-sizing: border-box;
+}
+.titleItem {
+  position: relative;
+  text-align: center;
+  height: 60rpx;
+}
+.titleItem:nth-child(-n + 4)::after {
+  position: absolute;
+  content: '';
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20rpx;
+  width: 1px;
+  background-color: #18c2ba;
+}
+.titleItem .displayInlineBlock {
+  position: relative;
+  height: 40rpx;
+  width: 10rpx;
+}
+.absupdown {
+  position: absolute;
+  left: 0;
+  height: 10rpx;
+  width: 10rpx;
+}
+.bllur {
+  filter: grayscale(50%);
+}
+.displayInlineBlock .absupdown:nth-child(1) {
+  top: 10rpx;
+}
+.displayInlineBlock .absupdown:nth-child(2) {
+  top: 24rpx;
+}
+.dotedLine {
+  margin: 5px 0;
+  width: 100%;
+  height: 1rpx;
+  border-top: 2rpx dotted #18c2ba;
+}
+/*  每个Item  */
+.facItem {
+  margin: 5px auto;
+  width: 97%;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-size: 24rpx;
+}
+.facItemL {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #fff;
+  border-radius: 5rpx;
+  text-align: center;
+}
+.facItemR {
+  position: relative;
+}
+.facItemName {
+  font-weight: bold;
+  color: #333;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.facCancelCode {
+  margin-left: 12rpx;
+  height: 100%;
+  width: 80%;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+  background: #fbd071;
+  border-radius: 10rpx;
+}
+.w80 {
+  display: inline-block;
+  width: 80rpx;
+  line-height: 35rpx;
+}
+.facNameCenter {
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 5rpx 10rpx;
+  color: #18c2ba;
+  font-weight: bold;
+}
+
+/* 4.5代 用户页面基础上额外增 ==============================*/
+.packNum4_5 {
+  border: 1rpx solid #18c2ba;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 70%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+/* 底部的 */
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 12rpx 80rpx 14rpx 190rpx;
+  height: 90rpx;
+  width: 750rpx;
+  background-color: #e5fffe;
+  z-index: 4;
+  box-sizing: border-box;
+  text-align: center;
+  transition: all .3s linear;
+}
+.absBottomL,.absBottomR {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+.absBottomL {
+  left: 0;
+  width: 190rpx;
+  color: #333;
+  font-weight: bold;
+}
+.absBottomR {
+  right: 0;
+  width: 88rpx;
+  height: 88rpx;
+}
+.BottomM {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 5rpx;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.BottomMItem {
+  width: 21%;
+  height: 100%;
+  border: 1px solid #18c2ba;
+  border-radius: 8rpx;
+  line-height: 62rpx;
+  text-align: center;
+  color: #18c2ba;
+}
+.bottomTelBox {
+  position: fixed;
+  bottom: 100rpx;
+  right: 150rpx;
+  padding: 15rpx;
+  border-radius: 15rpx;
+  background-color: #18c2ba;
+  color: #fff;
+  z-index: 4;
+}
+.bottomTelBox::after,.bottomTelBox2::after {
+  content: '';
+  position: absolute;
+  bottom: -12rpx;
+  height: 25rpx;
+  width: 25rpx;
+  transform: rotate(45deg);
+}
+.bottomTelBox::after {
+  background-color: #18c2ba;
+  right: 100rpx;
+}
+.bottomTelBox2::after {
+  background-color: #f0f0f4;
+  right: 10rpx;
+}
+.bottomLine {
+  margin: 15rpx auto;
+  width: 350rpx;
+  height: 1rpx;
+  background-color: #fff;
+}
+.bottomTelBox2 {
+  position: fixed;
+  bottom: 98rpx;
+  right: 18rpx;
+  padding: 10rpx;
+  background-color: #f0f0f4;
+  color: #333;
+  z-index: 5;
+}
+.bottomItem2 {
+  margin: 5px auto;
+  height: 45rpx;
+  width: 260rpx;
+  line-height: 45rpx;
+  font-size: 26rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.bottomItem2:nth-child(n+2) {
+  background-color: #fcc755;
+  border-radius: 10rpx;
+}
+/* 预约信息 */
+.yyxxMask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 750rpx;
+  background: rgba(0,0,0,0.5);
+  z-index: 101;
+}
+.yyxxBox {
+  position: absolute;
+  width: 92%;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%,-50%);
+  padding: 13rpx 20rpx;
+  background-color: #fff;
+  border-radius: 30rpx;
+  box-sizing: border-box;
+}
+.yyxxTitle {
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #18c2ba;
+}
+.yyxxLine {
+  display: flex;
+  flex-direction: row;
+  margin: 5px auto;
+  width: 100%;
+  color: #222;
+}
+.yyxxLL,.yyxxLR {
+  flex: 1;
+}
+.yyxxdotted {
+  margin: 5px auto;
+  width: 80%;
+  height: 0;
+  border-top: 1px dotted #18c2ba;
+}
+
+.newRemark::before {
+  content: '备注:';
+  position: absolute;
+  left: 5rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #444;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+.yyxxClose {
+  position: absolute;
+  bottom: -80rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  height: 50rpx;
+  width: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #fff;
+  z-index: 3;
+}
+/* 底部的取消 确定 */
+.confirmCancel {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  line-height: 65rpx;
+  height: 65rpx;
+  width: 750rpx;
+  box-sizing: border-box;
+  background-color: #d1f0ed;
+  transition: all .3s linear;
+}
+/* 拉包明细中的操作样式 */
+.goDetailOpera {
+  position: absolute;
+  right: 0;
+  bottom: -130rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  text-align: center;
+  z-index: 102;
+}
+.goDetailOpera::before {
+  content: '';
+  position: absolute;
+  top: -8rpx;
+  right: 45rpx;
+  height: 20rpx;
+  width: 20rpx;
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+.goOperaiitem {
+  margin: 3px auto;
+  width: 175rpx;
+  font-size: 24rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  color: #333;
+}
+.goOperaiitem:nth-child(1){
+  border-bottom: 1rpx solid #333;
+}
+/* 上传图片的 */
+.uploadImgPre {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 10px 0;
+  height: 250rpx;
+  width: 650rpx;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 30rpx;
+  background-color: #e0e0e0;
+  z-index: 101;
+}
+.absCloseUpload {
+  position: absolute;
+  right: 10rpx;
+  bottom: 10rpx;
+  color: #fff;
+  text-align: center;
+  height: 40rpx;
+  width: 80rpx;
+  line-height: 40rpx;
+  background-color: #18c2ba;
+  border-radius: 20rpx;
+}
+/* 变更打包日期插槽 */
+.applyModefyDate {
+  padding-top: 130rpx;
+  height: 250rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+.applyModefyDateL,.applyModefyDateR {
+  position: relative;
+  flex: 1;
+  text-align: center;
+}
+.applyModefyDateL::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 40%;
+  transform: translateY(-50%);
+  height: 40%;
+  width: 1rpx;
+  background-color: #ccc;
+}
+/* 4.5代修改打包数量 */
+.changePackNumMask {
+  z-index: 150!important;
+}
+.changePackNum {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 650rpx;
+  width: 650rpx;
+  background-color: #fff;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+.changePackNumTitle {
+  margin: 45rpx auto;
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #18c2ba;
+}
+.changePackNumTitle:nth-child(2){
+  color: #333;
+}
+.changePackNumBody {
+  margin-top: 50rpx;
+  padding: 50rpx 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+}
+.changePackNumL,.changePackNumR {
+  font-size: 38rpx;
+  color: #555;
+}
+.changePackNumL {
+  position: relative;
+}
+.changePackNumL::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 36rpx;
+  transform: translateX(-50%);
+  width: 1rpx;
+  height: 50%;
+  background-color: #ccc;
+}
+
+.changePackNumRView {
+  padding: 0 50rpx;
+  box-sizing: border-box;
+}
+.changePackNumRInput {
+  position: relative;
+  padding-right: 50rpx;
+  width: 100%;
+  height: 50rpx;
+  background-color: rgb(226, 222, 222);
+  border-radius: 10rpx;
+  text-align: center;
+  color: #555;
+  box-sizing: border-box;
+}
+.changePackNumRInput::after {
+  content: '手';
+  position: absolute;
+  right: 10rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  font-size: 34rpx;
+}
+.changePackNumBtns {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100rpx;
+  width: 100%;
+  text-align: center;
+}
+.changePackNumBtn {
+  width: 250rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  font-size: 28rpx;
+  text-align: center;
+  border-radius: 33rpx;
+}
+.changePackNumBtn:nth-child(1) {
+  background-color: #f17a7f;
+  color: #fff;
+}
+.changePackNumBtn:nth-child(2) {
+  background-color: #fff;
+  color: #18c2ba;
+  border: 1rpx solid #18c2ba;
+  box-sizing: border-box;
+}
+.m20 {
+  margin: 20rpx 0;
+}
+.changePackNumBg {
+  position: absolute;
+  top: -750rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  background-color: #d2f5f4;
+  height: 1000rpx;
+  width: 1000rpx;
+  border-radius: 50%;
+
+}
+
+/* 合计打包数 */
+.totalPackNum {
+  position: fixed;
+  bottom: 80rpx;
+  left: 0;
+  padding: 5px;
+  width: 280rpx;
+  background-color: #9ceeea;
+  color: #f17a7f;
+  font-weight: bold;
+  font-size: 24rpx;
+  border-radius: 15rpx;
+  text-align: center;
+}
+.imgUploadOk {
+  color: #18c2ba;
+  font-size: 20rpx;
+  width: 70%;
+  float: left;
+  line-height: 30rpx;
+}
+.abs_success_no_circle {
+  position: absolute;
+  right: 3rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -1,0 +1,99 @@
+page{
+  background: #eee;
+}
+.container13 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  flex-direction: column;
+  padding-top: 12%;
+}
+.banner{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 393rpx;
+}
+.logo{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 100%;
+  /* text-decoration: line-through; */
+}
+.right{
+  width: 18rpx;
+  height: 22rpx;
+}
+.list{ 
+  width: 95%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.item{
+  margin-top: 8%;
+  width: 100%;
+  border-radius: 10rpx;
+  background: #3abdb7;
+  box-shadow: 4rpx 4rpx 8rpx #3abdb7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 32rpx;
+  letter-spacing: 6rpx;
+  color: #fff;
+  padding: 10rpx 5%;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+}
+.tip{
+  font-size: 24rpx;
+  color: #333;
+  text-align: center;
+}
+
+.nav {
+  height: 160rpx;
+  position: relative;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-size: 36rpx;
+}
+.nav .back {
+  position: absolute;
+  left: 30rpx;
+  top: 70rpx;
+  font-size: 36rpx;
+  z-index: 105;
+}
+.nav .tit {
+  position: absolute;
+  left: 50%;
+  top: 66rpx;
+  transform: translateX(-50%);
+  z-index: 105;
+}
+
+
+/* 新版 */
+.topImg {
+  width: 750rpx;
+  height: 400rpx;
+}
+/* 公共部分 */
+.fll {
+  float: left;
+}
+.flr {
+  float: right;
+}
+.itemImg {
+  height: 80rpx;
+  width: 80rpx;
+}

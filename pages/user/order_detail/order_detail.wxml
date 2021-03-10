@@ -1,0 +1,145 @@
+<!--order_detail.wxml -->
+<view class="container">
+    <view wx:if="{{!optionIsGoup || order.pay_status!=0}}" class="user-mes">
+        <view class="user-contact">
+            {{order.consignee+'　'+order.mobile}}
+        </view> 
+        <view class="location" wx:if="{{order.prom_type!=5}}">
+            <view class="address">{{order.total_address}}</view>
+            <view class="pos-icon"><image class="wh100" src="../../../images/iconfont-shouhuodizhi.png" /></view>
+        </view>
+        <text catchtap="changeAddress" wx:if="{{ order.order_status_detail == '待发货' }}" class="changeAddress">更换地址</text>
+        <view class="border-img"><image class="wh100" src="https://yitongwang.oss-cn-hangzhou.aliyuncs.com/miniapp/tt.png" /></view>
+    </view>
+    <view class="order-meg">
+        <view class="order-state">
+            <view class="store-name ellipsis-1"><image class="store-logo" src='../../../images/carnew.png'></image>{{order.store.store_name}}</view>
+            <view class="state">{{order.order_status_detail}}</view>
+        </view>
+        <view class="order-detail" wx:if="{{isOpen == true||index<3}}" wx:for="{{order.order_goods}}" wx:key="index">
+            <view class="goods-img">
+                <image class="wh100" src="{{url}}/api/goods/goodsThumImagesForCart?goods_id={{item.goods_id}}&width=100&height=100&item_id={{item.item_id}}"></image>
+            </view>
+            <navigator class="order-cont" url="/pages/goods/goodsInfo/goodsInfo?goods_id={{item.goods_id}}&store_id={{item.store_id}}" open-type="navigate">
+                <view class="goods-name ellipsis-2">{{item.goods_name}}</view>
+                <view class="goods-color ellipsis-1">{{item.spec_key_name?item.spec_key_name:''}}</view>
+            </navigator>
+            <view class="order-num">
+                <view class="goods-price">￥{{item.member_goods_price}}</view>
+                <view class="goods-num">x{{item.goods_num}}</view>
+            </view>
+        </view>
+        <view wx:if="{{order.order_goods.length>3 && isOpen == false}}" class="open">
+          <text bindtap="setOpen">展开全部</text>
+        </view>
+        <view wx:if="{{order.order_goods.length>3 && isOpen == true}}" class="close">
+          <text bindtap="setClose">收起全部</text>
+        </view>  
+        <view class="order-operate">
+        <button wx:if="{{optionIsGoup && order.order_status !=3}}" class='contact-us check-btn btn-share' open-type='share' >分享</button>
+            <view wx:if="{{optionIsGoup && order.order_status !=3}}" class="contact-us check-btn" bindtap='checkTeam'>查看拼团详情</view> 
+            <view class="contact-us goods-btn" bindtap='contactTel'>联系客服</view>
+            <view class="cancel-order goods-btn" hidden="{{!(order.order_button.cancel_btn==1&&order.pay_status==0 && order.order_status==3 )}}" bindtap="cancelOrder" data-id='{{order.order_id}}'>取消订单</view>
+            <navigator wx:if="{{ order.pay_status==1 && order.order_status == 3}}" class="cancel-order goods-btn" url="/pages/order/cancel_order_info/cancel_order_info?order_id={{order.order_id}}">退款进度</navigator>
+            <navigator hidden="{{!(order.order_button.cancel_btn==0&&order.pay_status==1 && order.order_status != 3)}}" class="cancel-order goods-btn" url="/pages/order/refund_order/refund_order?consignee={{order.consignee}}&mobile={{order.mobile}}&orderId={{order.order_id}}">取消订单</navigator>
+        </view>
+    </view>
+    <view class="barCode" wx:if="{{ order.shop_order.bar_code }}">
+            <text space="ensp">提货码:  {{order.shop_order.bar_code}}</text>
+        </view>
+    <view class="basic-information information">
+        <view class="title">基本信息</view>
+        <view class="item">
+            <view>订单编号</view>
+            <view>{{order.order_sn}}</view>  
+        </view>
+        
+        <view class="item">
+            <view>下单时间</view>
+            <view>{{order.addTimeFormat}}</view>  
+        </view>
+        <view class="item" wx:if="{{!optionIsGoup && order.order_prom_type!=5}}">
+            <view>收货地址</view>
+            <view class="delivery-address">{{order.total_address}}</view>  
+        </view>
+        <view class="item" wx:if="{{!optionIsGoup && order.order_prom_type!=5}}">
+            <view>收货人</view>
+            <view>{{order.consignee}}{{'　　'}}{{order.mobile}}</view>  
+        </view>
+        <view class="item" wx:if="{{order.order_prom_type==5}}">
+            <view>接收手机</view>
+            <view>{{order.mobile}}</view>  
+        </view>
+        <view class="item">
+            <view>支付方式</view>
+            <view>{{order.pay_name != '' ? order.pay_name:'无'}}</view>  
+        </view>
+        <view class="item" wx:if="{{order.order_prom_type!=5}}">
+            <view>配送方式</view>
+            <view>{{order.shipping_name != '' ? order.shipping_name:'无'}}</view>  
+        </view>
+        <view class="item">
+            <view>买家留言</view>
+            <view class="leave-word">{{user_note != '' ? user_note:'无'}}</view>  
+        </view>
+        <block wx:for="{{order.vrorder}}" wx:key="index">
+            <view class="item">
+                <view>电子兑换码</view>
+                <view class="red">{{item.vr_code}}</view>  
+            </view>
+            <view class="item">
+                <view>兑换码状态</view>
+                <view wx:if="{{item.vr_state==1}}" class="red">已使用，使用时间{{item.vrUsertimeFormat}}</view>
+                <view wx:elif="{{item.vr_state==2}}" class="red">已过期，有效期至{{item.vrIndateFormat}}</view>
+                <view wx:elif="{{item.vr_state==0&&item.refund_lock<1}}"class="red">未使用，有效期至{{item.vrIndateFormat}}</view>  
+                <view wx:elif="{{item.refund_lock>0}}" class="red">已取消，有效期至{{item.vrIndateFormat}}</view>  
+            </view>
+        </block>
+    </view>
+    <view class="price-information information">
+        <view class="title">价格信息</view>
+        <view class="item">
+            <view>商品总价</view>
+            <view>￥ {{order.goods_price}}元</view>  
+        </view>
+        <view class="item" wx:if="{{order.order_prom_type!=5}}">
+            <view>运费</view>
+            <view>￥ {{order.shipping_price}}元</view>  
+        </view>
+        <view class="item" wx:if="{{order.order_prom_type!=5}}">
+            <view>优惠券</view>
+            <view>- ￥ {{order.coupon_price ? order.coupon_price : '0.00'}}元</view>  
+        </view>
+        <view class="item" wx:if="{{order.order_prom_type!=5}}">
+            <view>积分</view>
+            <view>- ￥ {{order.integral_money}}元</view>  
+        </view>
+        <view class="item" wx:if="{{order.order_prom_type!=5}}">
+            <view>余额</view>
+            <view>- ￥ {{order.user_money}}元</view>  
+        </view>
+        <view class="item" wx:if="{{order.order_prom_type!=5}}">
+            <view>活动优惠</view>
+            <view>- ￥ {{order.order_prom_amount}}元</view>  
+        </view>
+        <view class="item">
+            <view>实付金额</view>
+            <view class="pay-amount">￥ {{order.order_amount}}元</view>  
+        </view>
+    </view>
+    <view class="btn-wrap">
+        <view hidden="{{!order.order_button.pay_btn}}" class="tips-btn" bindtap="jumpToCart4">立即付款</view>
+        <view class="tips-btn" hidden="{{order.order_button.pay_btn}}">{{order.order_status_detail}}</view>
+        <view bindtap="confirmOrder" class="tips-btn" hidden="{{!order.order_button.receive_btn}}">收货确认</view>
+        <navigator url="/pages/user/express/express?order_id={{order.order_id}}" hidden="{{!order.order_button.shipping_btn}}" class="tips-btn">查看物流</navigator>
+    </view>
+</view>
+
+
+<!-- 联系客服 拨打电话 -->
+<van-action-sheet show="{{ telShow }}" title="联系商家" bind:close="onTelClose">
+    <view class="makePhone col666">{{order.store.store_phone}}</view>
+    <view class="makePhone telHasImage bgc18" catchtap="callOtherTel"><image src="../../../images/shop-tel.png"></image> {{ "   呼 叫" }}</view>
+    <view catchtap="onTelClose" class="makePhone telHasImage bgce6"><image style="background-color:#777;" src="../../../images/dax-1.png"></image> {{ "   取 消" }}</view>
+</van-action-sheet>
+

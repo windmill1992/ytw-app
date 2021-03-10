@@ -1,0 +1,19 @@
+{
+  "navigationBarTitleText": "仓位列表",
+  "navigationBarBackgroundColor": "#3abdb7",
+  "navigationBarTextStyle": "white",
+  "usingComponents":{
+    "van-empty": "../../../dist/empty/index",
+    "van-dropdown-menu": "../../../dist/dropdown-menu/index",
+    "van-dropdown-item": "../../../dist/dropdown-item/index",
+    "see-recode": "../recodeComponent/recodeComponent",
+    "show-msg": "../showMsg/showMsg",
+    "van-icon": "../../../dist/icon/index",
+    "van-tabbar": "../../../dist/tabbar/index",
+    "van-tabbar-item": "../../../dist/tabbar-item/index",
+    "van-dialog": "../../../dist/dialog/index",
+    "van-popup": "../../../dist/popup/index"
+  },
+  "onReachBottomDistance": 100,
+  "enablePullDownRefresh":true
+}

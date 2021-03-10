@@ -1,0 +1,75 @@
+/* userinfo.wxss */
+.container {
+    padding-bottom: 45rpx;
+}
+.user-container{
+    font-size: 30rpx;
+}
+.user-head{
+    width: 100%;
+    height: 100rpx;
+    position: relative;
+    background-color: white;
+}
+.user-txt{
+    float: left;
+    margin-left: 40rpx;
+    margin-top: 30rpx;
+}
+.txs_fix{
+    height: 80rpx;
+    width:80rpx;
+    overflow: hidden;
+    border-radius: 40rpx;
+    float: right;
+    margin-right: 30rpx;
+    margin-top: 10rpx;
+}
+.txs_fix .user_headimg{
+  width: 100%;
+  height: 100%;
+}
+.user-name{
+    width: 100%;
+    height: 100rpx;
+    margin-top: 2rpx;
+    background-color: white;
+}
+.user-name-txt{
+    float: left;
+    margin-left:40rpx;
+    margin-top: 30rpx;
+}
+.user-txt-right{
+    float: right;
+    margin-top: 30rpx;
+    margin-right: 30rpx;
+}
+.user-change{
+    width: 100%;
+    height: 100rpx;
+    background-color: white;
+}
+.one-line{
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+}
+.arrow-right{
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 30rpx;
+    float: right;
+    margin-top: 30rpx;
+}
+.contbox{
+  margin: 0 auto;
+  margin-top: 20rpx;
+  width: 710rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.edition {
+    text-align: center;
+}

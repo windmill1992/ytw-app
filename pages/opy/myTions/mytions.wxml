@@ -1,0 +1,607 @@
+
+<view class="banner">
+	<image src="{{ url + '/public/static/images/minniapp/pinbao-audio-banner.png' }}" style="width:750rpx;height:307rpx;" mode="scaleToFill"></image>
+</view>
+
+<view class="stateBanner">
+		<view>
+			<view class="rela">
+				<image catchtap="chooseTab" data-index="-1" data-url="getOrderList" src="https://www.yitongwang.com/public/static/images/minniapp/all-{{ curState == 'getOrderList' ? 'a' : 'n' }}.png"></image>
+			</view>
+			<view class="rela">
+				<image catchtap="chooseTab" data-index="0" data-url="getIncompleteFactory" src="https://www.yitongwang.com/public/static/images/minniapp/wei-{{ curState == 'getIncompleteFactory' ? 'a' : 'n' }}.png"></image>
+				<text class="abs" wx:if="{{ countSum[0] }}">{{ countSum[0] }}</text>
+			</view>
+			<view class="rela">
+				<image catchtap="chooseTab" data-index="6" data-url="getTimeOutFactory" src="https://www.yitongwang.com/public/static/images/minniapp/timeout-{{ curState == 'getTimeOutFactory' ? 'a' : 'n' }}.png"></image>
+				<text class="abs" wx:if="{{ countSum[1] }}">{{ countSum[1] }}</text>
+			</view>
+			<view class="rela">
+				<image catchtap="chooseTab" data-index="4" data-url="getCancelFactoryList" src="https://www.yitongwang.com/public/static/images/minniapp/cancel-{{ curState == 'getCancelFactoryList' ? 'a' : 'n' }}.png"></image>
+			</view>
+			<view class="rela">
+				<image catchtap="chooseTab" data-index="7" data-url="getRecycleList" src="https://www.yitongwang.com/public/static/images/minniapp/laji-{{ curState == 'getRecycleList' ? 'a' : 'n' }}.png"></image>
+			</view>
+		</view>
+</view> 
+
+<!-- 全部  按订单区分展示 -->
+<view class="allBox" wx:if="{{ curState == 'getOrderList' }}">
+		<view class="all_item rela" wx:for="{{ orderInfo }}" wx:key="index" catchtap="requsstDetail" data-index="{{ index }}" data-id="{{ item.order_id }}" style="border-color:{{ item.order_status == 5 ? '#18c2ba' : '#f10215' }};">
+			<image class="abs centerBg" src="https://www.yitongwang.com/public/static/images/minniapp/pinbao-all-2.png"></image>
+			<view class="abs centerName">{{ item.seller_name }}</view>
+			<view class="orderCode col555">预约 单号：<text class="orderCodeTxt col999">{{ item.order_code }}</text></view>
+			<view class="orderTime col555">预约 日期：<text class="col999">{{ item.appointment_date }} <text>(最晚封包时间)</text></text></view>
+			<view class="orderOther">
+				<view class="orderVerification col555" >送货确认码：<text>{{ item.auth_code }}</text></view>
+				<view class="orderNum col555">仓位编号：<text class="col999">{{ item.position_name }}</text></view> 
+			</view> 
+			<view class="allCalcelOrder abs" style="background-color:{{ (item.order_status < 1 || item.order_status > 5) ? '#ee7e80' : '#18c2ba' }};">{{ item.status }}</view>
+			<view class="operationBox"> <!--apply_status  2 3 -->
+				<text wx:if="{{ (item.order_status == 0 || item.order_status == 1 || item.order_status == 2 || item.order_status == 3 || item.order_status == 8) && item.apply_status == 0 }}" catchtap="cancelAllOrder" data-url="cancelOrder" data-info="{{ item }}" class="allOperationItem bgfff">取消预约</text>
+				<text wx:if="{{ item.order_status < 5 && item.order_status != 1  && item.order_status != 3 }}" catchtap="openShare" data-id="{{ item.order_id }}" data-index="{{ index }}" class="allOperationItem bgpink">提醒送货</text>
+				<text wx:if="{{ item.order_status == 1 }}" class="allOperationItem bg18c" catchtap="urgeCore" data-info="{{ item }}">催促打包</text>
+				<text wx:if="{{ item.order_status > 3 && item.order_status < 6 }}" class="allOperationItem bgpink" catchtap="seeCredentials" data-id="{{ item.order_id }}">拉包明细</text>
+				<text wx:if="{{ item.order_status > 3 && item.order_status < 6 && item.is_evaluate == 0 }}" catchtap="openEvaluateOrder" data-index="{{ index }}" class="allOperationItem bgfff" data-id="{{ item.order_id }}">立即评价</text>
+				<!-- <text wx:if="{{ item.order_status > 3 && item.order_status < 6 }}" class="allOperationItem bgpink" data-tel="{{ item.logistics_phone }}" catchtap="callKuaidi">拉包电话</text> -->
+				<text wx:if="{{ item.apply_status >= 1 }}" style="background-color: #ff00ff;" class="allOperationItem bgpink" data-status="{{ item.apply_status }}" data-id="{{ item.order_id }}" catchtap="cancelOrder">{{ m1.setCancelTxt2(item.apply_status) }}{{ item.apply_status == 3 ? item.cancel_code : '' }}</text>
+			</view>
+			<view class="showAllDetail abs" wx:if="{{ item.order_status == 5 || item.order_status == 6 || item.order_status == 7 }}"catchtap="delOrderToRecycle" data-index="{{ index }}" data-id="{{ item.order_id }}" data-url="delOrderToRecycle">
+				<van-icon name="delete" />
+			</view>
+			<view wx:if="{{ item.is_exclamation_point == 1 }}" class="gantanhao abs">!</view> <!-- 4 5 且 有"收货未打包"的或"打好包未拉"的 -->
+		</view>
+</view>
+<!-- 全部展开 -->
+<view wx:if="{{ isShowAllDetail }}" class="allDetailBox" bindtap="true" catchtouchmove="true">
+	<view class="allDetailBack abs" catchtap="allDetailClose"><van-icon name="shrink" /></view>
+	<scroll-view scroll-y="true" class="allDetailItemBox" refresher-enabled="{{ true }}" bindrefresherrefresh="refreshDetail" refresher-triggered="{{ refresherTriggered }}">
+		<view class="all_item rela" style="border-color:{{ orderDetail.order.order_status == 5 ? '#18c2ba' : '#f10215' }};">
+			<image class="abs centerBg" src="https://www.yitongwang.com/public/static/images/minniapp/pinbao-all-2.png"></image>
+			<view class="abs centerName">{{ orderDetail.order.seller_name }}</view>
+			<view class="orderCode col555">预约 单号：<text class="orderCodeTxt col999">{{ orderDetail.order.order_code }}</text></view>
+			<view class="orderTime col555">预约 日期：<text class="col999">{{ orderInfo[allDetailIndex].appointment_date }}</text><text style="color:#999;font-size:26rpx;">(最晚封包时间)</text></view>
+			<view class="orderOther">
+				<view class="orderVerification col555" style="width:40%;">送货确认码：<text>{{ orderDetail.order.auth_code }}</text></view>
+				<view class="orderNum col555" style="width:60%;">仓位编号：<text class="col999">{{ orderDetail.order.position_name }}</text></view>
+			</view>
+			<view class="allCalcelOrder abs" style="background-color:{{ orderDetail.order_status == 5 ? '#18c2ba' : '#ee7e80' }};">{{ orderDetail.order.status_text}}</view>
+			<view class="operationBox" style="padding-right:100rpx;">
+				<text wx:if="{{ orderDetail.order.order_status == 0 && curState == 'getOrderList' }}" catchtap="cancelAllOrder" data-url="cancelOrder" data-info="{{ orderInfo[allDetailIndex] }}" class="allOperationItem bgfff">取消预约</text>
+				<text wx:if="{{ curState == 'getOrderList' && orderDetail.order.order_status == 1 }}" class="allOperationItem bg18c" catchtap="urgeCore" data-info="{{ orderInfo[allDetailIndex] }}">催促打包</text>
+				<text wx:if="{{orderDetail.order.order_status == 0  && curState == 'getOrderList' }}" catchtap="openShare" data-index="{{ allDetailIndex }}" data-id="{{ orderDetail.order.order_id }}" class="allOperationItem bgpink">提醒送货</text>
+				<text wx:if="{{ orderDetail.order.order_status == 4 || orderDetail.order.order_status == 5 }}" class="allOperationItem bgfff" catchtap="seeCredentials" data-id="{{ orderDetail.order.order_id }}">拉包明细</text>
+				<text wx:if="{{ orderDetail.order.order_status == 4 || orderDetail.order.order_status == 5  && item.is_evaluate == 0 }}" class="allOperationItem bgpink" catchtap="openEvaluateOrder" data-index="{{ allDetailIndex }}" data-id="{{ orderDetail.order.order_id }}">立即评价</text>
+				<text wx:if="{{ orderDetail.order.order_status == 4 || orderDetail.order.order_status == 5 }}" class="allOperationItem bgpink" catchtap="callKuaidi" data-tel="{{ orderDetail.order.logistics_phone || '' }}">拉包电话</text>
+			</view>
+			<view class="reEditOrder" wx:if="{{ curState == 'getOrderList' && orderDetail.order.order_status < 4}}" catchtap="reEditOrder"><van-icon name="edit" size="45rpx" color="#18c2ba" /></view><!--重新编辑订单-->
+		</view>
+		<view class="operationAddCall" wx:if="{{  curState == 'getOrderList' }}">
+			<text class="bgpink" catchtap="addManufactor" data-info="{{orderInfo[allDetailIndex]}}">+ 添加厂家</text><text class="bg18c" data-tel="{{ orderDetail.order.seller_phone }}" catchtap="callAdminAll">联系拼包中心</text>
+		</view>
+		<view class="warningTips rela" wx:if="{{ curState == 'getOrderList' && orderDetail.order.is_exclamation_point == 1 }}">
+			<text class="warninggantanh abs">!</text><text>您还有货在拼包中心未打包或未拉包，请注意跟踪记录!</text>
+		</view>
+
+		<view class="weiItem rela" wx:for="{{ orderDetail.factory }}" wx:key="index" style="font-size: 26rpx;" style="border-color:{{ item.status == 5 ? '#18c2ba' : '#ee7e80' }};">
+			<view class="abs storeName colTheme" style="color:{{ item.status == 5 ? '#18c2ba' : '#f10215' }};">{{ item.manufactor_name }}</view>
+			<!-- <view class="abs storeName2 colTheme">{{ orderDetail.order.seller_name }}</view> -->
+			<view class="weiGoodsSum2">
+				<view class="weiGoodsSumItem">预约  数量：<text class="weiNum1">{{ item.goods_number }}</text>手</view>
+				<view class="weiGoodsSumItem">收货未打包：<text class="weiNum1" style="color:{{ item.num1 == 0 ? '#555' : '#f10215' }};">{{ item.num1 }}</text>手</view>
+				<view class="weiGoodsSumItem">打好包未拉：<text class="weiNum2" style="color:{{ item.num3 == 0 ? '#555' : '#f10215' }};">{{ item.num3 }}</text>手</view>
+			</view>
+			<view class="weimiddleBox2">
+				<view class="weiGoodsSumItem"><text style="color:{{ item.status == 5 ? '#18c2ba' : '#ee7e80' }};">{{ item.status_text || ' ' }}</text></view><!--占茅坑-->
+				<view class="weiGoodsSumItem">超时  未送：<text class="weiNum1" style="color:{{ item.num2 == 0 ? '#555' : '#ee7e80' }};">{{ item.num2 }}</text>手</view>
+				<view class="weiGoodsSumItem">已拉包数量：<text class="weiNum2" style="color:{{ m1.setNumCol(item.goods_number,item.num4) }};">{{ item.num4 }}</text>手</view>
+			</view>
+			<view class="absApplyStatus" style="background-color:#b80fff;" wx:if="{{ item.apply_status == 3 || item.apply_status == 2 }}">{{ m1.setCancelTxt(item.apply_status) }}{{ item.apply_status == 3 ? item.cancel_code : '' }}</view>
+			<view class="allOpenOperation"><!-- apply_status 0无申请 1管理员发送取消申请 2用户申请取消 3同意取消 4拒绝取消 -->
+				<view wx:if="{{ curState == 'getOrderList' && item.apply_status != 3 && item.apply_status != 2 && item.status < 5}}" style="background-color:#b80fff;" class="allOpenOperationItem bgpink" catchtap="cancelOrderFanufactor" data-url="cancelFactory" data-state="{{ item.apply_status }}" data-id="{{ item.manufactor_id }}" data-info="{{ item }}" data-tel="{{ orderDetail.order.seller_phone }}">{{ m1.setCancelTxt(item.apply_status) }}</view>
+				<view class="allOpenOperationItem bg18c" catchtap="seeRecord" data-id="{{ item.manufactor_id }}">记录</view>
+				<view wx:if="{{ curState == 'getOrderList' && item.status < 5 }}" class="allOpenOperationItem bgfff" catchtap="showModifyPopupFlag" data-status="{{ item.status }}" data-correctNum="{{ item.num1 + item.num3 + item.num4 }}" data-id="{{ item.manufactor_id }}" data-name="{{ item.manufactor_name }}">修改</view>
+			</view>
+		</view>
+ 
+	</scroll-view> 
+</view>
+<!-- 未送齐 -->
+<view class="wei" wx:if="{{ curState == 'getIncompleteFactory' }}">
+	<view class="weiItem rela" wx:for="{{ orderInfo }}" wx:key="index">
+		<view class="abs storeName colTheme">{{ item.manufactor_name }}</view>
+		<view class="abs storeName2 colTheme" style="background-color:unset;">{{ item.appointment_date }}预约</view>
+		<view class="weiGoodsSum">
+			<view class="weiGoodsSumItem">预约  数量：<text class="weiNum1">{{ item.goods_number }}</text>手</view>
+			<view class="weiGoodsSumItem">已送达数量：<text class="weiNum2" style="color:{{ m1.setNumCol(item.goods_number,item.sent_num) }};">{{ item.sent_num }}</text>手</view>
+			<view class="weiGoodsSumItem">未送达数量：<text class="weiNum3" style="color:{{ item.unsent_num > 0 ? 'f10215' : '#555' }};">{{ item.unsent_num }}</text>手</view>
+		</view> 
+		<view class="weimiddleBox">
+			<view class="weiTxt">截止打包剩余</view>
+			<view class="weiCountDown">
+				<text wx:if="{{ item.time_remaining < 0 }}">----</text>
+				<text wx:if="{{ item.time_remaining >= 0 }}" style="color:{{ item.time_remaining < 3600 ? '#f10215' : '#777' }};">{{ item.count_down }}</text>
+			</view>
+			<view class="weiTwoButton">
+				<button class="weiBtn1" catchtap="callTel" data-tel="{{ item.factory_phone }}" data-id="{{ item.manufactor_id }}">电 话 催 促</button>
+				<button class="weiBtn2" catchtap="openShare" data-index="{{ index }}" data-id="{{ item.order_id }}">微 信 催 促</button>
+			</view>
+		</view>
+		<view class="weiOperation">
+			<text class="weiOperationBtn2" data-id="{{ item.manufactor_id }}" data-url="cancelFactory" data-tel="{{ item.factory_phone }}" data-name="{{ item.manufactor_name }}" data-sent="{{ item.sent_num }}" catchtap="cancelWeiOrder">取 消</text>
+			<text class="weiOperationBtn1" data-id="{{ item.manufactor_id }}" data-url="cancelFactory" data-tel="{{ item.factory_phone }}" data-name="{{ item.manufactor_name }}" data-receive="{{ item.receive_num }}" catchtap="seeRecord">记 录</text>
+			<text class="weiOperationBtn3 colTheme" catchtap="showModifyPopupFlag" data-status="{{ 0 }}" data-phone="{{ item.factory_phone }}" data-id="{{ item.manufactor_id }}" data-name="{{ item.manufactor_name }}" data-num="{{ item.goods_number }}" data-tel="{{ item.seller_phone }}" data-correctNum="{{ item.sent_num }}">修 改</text>
+		</view>
+	</view>
+</view>
+
+<!-- 已超时 -->
+<view class="wei" wx:if="{{ curState == 'getTimeOutFactory' }}">
+	<view class="doMore" wx:if="{{ orderInfo.length > 0 }}">
+		<text class="timeOutSelectAll" catchtap="timeOutCancel" hidden="{{ !isShowCheck }}">取消多选</text>
+		<text class="timeOutSelectAll" catchtap="timeOutSelectAll">多选</text>
+		<text class="reOrder" catchtap="reOrderMore">批量重新预约</text>
+		<text class="cancelMore" catchtap="cancelMore">批量忽略</text>
+	</view>
+
+	<view class="weiItem rela" wx:for="{{ orderInfo }}" wx:key="index" style="font-size: 26rpx;">
+		<view class="abs storeName colTheme">{{ item.manufactor_name }}</view>
+		<view class="checkOneBox abs" wx:if="{{ isShowCheck }}" ><van-checkbox checked-color="#18c2ba" value="{{ item.checked }}" data-index="{{ index }}" data-num="{{ item.time_out_num }}" bind:change="onTimeOutOrderInputChange"></van-checkbox></view>
+		<view class="weiGoodsSum" style="line-height:53rpx;flex:1;">
+			<view class="weiGoodsSumItem">预约  数量：<text class="weiNum1">{{ item.goods_number }}</text>手</view>
+			<view class="weiGoodsSumItem">收货未打包：<text class="weiNum2" style="color:{{ m1.setNumCol(item.goods_number,item.num1) }};">{{ item.num1 }}</text>手</view>
+			<view class="weiGoodsSumItem">打好包未拉：<text class="weiNum2" style="color:{{ m1.setNumCol(item.goods_number,item.num3) }};">{{ item.num3 }}</text>手</view>
+		</view>
+		<view class="weimiddleBox" style="line-height:53rpx;flex:1;">
+			<view class="weiGoodsSumItem"></view>
+			<view class="weiGoodsSumItem">超时未送：<text class="weiNum1" style="color:{{ item.num2 == 0 ? '#555' : '#ee7e80' }};">{{ item.num2 }}</text>手</view>
+			<view class="weiGoodsSumItem">已拉包数量：<text class="weiNum2" style="color:{{ m1.setNumCol(item.goods_number,item.num4) }};">{{ item.num4 }}</text>手</view>
+		</view>
+		<view class="weiOperation">
+			<!-- <text class="weiOperationBtn1" data-id="{{ item.id }}" catchtap="cancelTimeOutOrder" data-num="{{ item.receive_num }}">取 消</text> -->
+			<text class="weiOperationBtn2 colTheme" catchtap="cancelTimeOutOrder" data-id="{{ item.manufactor_id }}">忽略</text>
+			<view class="weiOperationBtn2 colTheme" catchtap="seeRecord" data-id="{{ item.manufactor_id }}">记录</view>
+			<text class="weiOperationBtn2 colTheme" catchtap="showModifyPopupFlag" data-id="{{ item.manufactor_id }}" data-status="{{ 8 }}" data-name="{{ item.manufactor_name }}" data-correctNum="{{ item.num1 + item.num3 + item.num4 }}">修改</text>
+		</view>
+	</view>
+	<view class=""></view>
+</view>
+
+<!-- 已取消 -->
+<view class="wei" wx:if="{{ curState == 'getCancelFactoryList' }}">
+	<view class="weiItem rela" wx:for="{{ orderInfo }}" wx:key="index" style="font-size: 26rpx;">
+		<view class="abs storeName colTheme">{{ item.manufactor_name }}</view>
+		
+		<view class="weiGoodsSum">
+			<view class="weiGoodsSumItem">预约  数量：<text class="weiNum1">{{ item.goods_number }}</text>手</view>
+			<view class="weiGoodsSumItem">收货未打包：<text class="weiNum1" style="color:{{ m1.setNumCol(item.goods_number,item.num1) }};">{{ item.num1 }}</text>手</view>
+			<view class="weiGoodsSumItem">打好包未拉：<text class="weiNum2" style="color:{{ m1.setNumCol(item.goods_number,item.num3) }};">{{ item.num3 }}</text>手</view>
+		</view>
+		<view class="weimiddleBox">
+			<view class="weiGoodsSumItem"></view>
+			<view class="weiGoodsSumItem">超时 未送：<text class="weiNum1" style="color:{{ item.num2 == 0 ? '#555' : '#ee7e80' }};">{{ item.num2 }}</text>手</view>
+			<view class="weiGoodsSumItem">已拉包数量：<text class="weiNum2" style="color:{{ m1.setNumCol(item.goods_number,item.num4) }};">{{ item.num4 }}</text>手</view>
+		</view>
+		<view class="weiOperation">
+			<text class="weiOperationBtn1" data-id="{{ item.manufactor_id }}" catchtap="delCancelOrder">删 除</text>
+			<view class="weiOperationBtn2 colTheme" catchtap="seeRecord" data-id="{{ item.manufactor_id }}">记录</view>
+		</view>
+	</view>
+</view>
+
+<!-- 垃圾桶 -->
+<view class="wei" wx:if="{{ curState == 'getRecycleList' }}">
+	<view class="nav2 rela">
+		<view class="navItem1 abs {{ ljtType ? ' curItem' : '' }}" catchtap="switchLajiType" data-type="1">按订单查看</view>
+		<view class="navItem2 abs {{ ljtType ? '' : ' curItem' }}" catchtap="switchLajiType" data-type="2">按厂家查看</view>
+	</view>
+	<view class="all_item rela" wx:if="{{ ljtType }}" wx:for="{{ orderInfo }}" wx:key="index" catchtap="requsstDetail" data-id="{{ item.order_id }}">
+		<image class="abs centerBg" src="https://www.yitongwang.com/public/static/images/minniapp/pinbao-all-2.png"></image>
+		<view class="abs centerName">{{ item.seller_name }}</view>
+		<view class="orderCode">预约单号：<text class="orderCodeTxt">{{ item.order_code }}</text></view>
+		<view class="orderTime">预约日期：{{ item.appointment_date }}(最晚封包时间)</view>
+		<view class="orderOther">
+			<view class="orderNum" style="width:100%;"><text>送货确认码：{{ item.auth_code }}</text><text>仓位编号：{{ item.position_name }}</text></view>
+		</view>
+		<!-- <view class="remind3 abs" catchtap="ljtDel" data-url="delOrder" data-id="{{ item.order_id }}">删除</view> -->
+	</view>
+	<view class="weiItem rela" wx:if="{{ !ljtType }}" wx:for="{{ orderInfo }}" wx:key="index" style="font-size: 26rpx;">
+		<view class="abs storeName colTheme">{{ item.manufactor_name }}</view>
+		<view class="weiGoodsSum">
+			<view class="weiGoodsSumItem">预约  数量：<text class="weiNum1">{{ item.goods_number }}</text>手</view>
+			<view class="weiGoodsSumItem">收货未打包：<text class="weiNum2" style="color:{{ m1.setNumCol(item.goods_number,item.num1) }};">{{ item.num1 }}</text>手</view>
+			<view class="weiGoodsSumItem">打好包未拉：<text class="weiNum2" style="color:{{ m1.setNumCol(item.goods_number,item.num3) }};">{{ item.num3 }}</text>手</view>
+		</view>
+		<view class="weimiddleBox">
+			<view class="weiGoodsSumItem"></view>
+			<view class="weiGoodsSumItem">超时 未送：<text class="weiNum1" style="color:{{ item.num2 == 0 ? '#555' : '#ee7e80' }};">{{ item.num2 }}</text>手</view>
+			<view class="weiGoodsSumItem">已拉包数量：<text class="weiNum2" style="color:{{ m1.setNumCol(item.goods_number,item.num4) }};">{{ item.num4 }}</text>手</view>
+		</view>
+		<view class="weiOperation">
+			<view class="remind3 abs" catchtap="seeRecord" data-id="{{ item.manufactor_id }}">记录</view>
+		</view>
+	</view>
+</view>
+
+<!-- 弹窗  提示 小组件部分 -->
+<!-- 分享面板 -->
+<van-action-sheet
+	show="{{ showShare }}"
+	title="发送给好友"
+	z-index="108"
+	bind:close="closeShare"
+	bind:cancel="closeShare"
+	close-on-click-overlay="true"
+	cancel-text="取消"
+	>
+  <view class="shareBox">
+		<view class="shareItem">
+			<button class="shareFriend" open-type="share"></button>
+			<view>微信好友</view>
+		</view>
+		<view class="shareItem">
+			<button class="sharePoster" catchtap="sharePoster"></button>
+			<view>分享海报</view>
+		</view>
+	</view>
+</van-action-sheet>
+<!-- 警告提示 -->
+<van-popup show="{{ showWarning }}" bind:close="onWarningClose" z-index="8" custom-class="warningPopup">
+	<view class="warningBox">
+		<image class="warningImg" src="https://www.yitongwang.com/public/static/images/minniapp/{{ editImg }}.png"></image>
+		<view class="warningTxt">{{ editTxt }}</view>
+		<view class="warningTxt2" wx:if="{{ showKuohao }}">（回收站仅保留近三个月信息）</view>
+		<view class="warningBtn1" catchtap="overlookFactory">{{ btnTxt1 }}</view>
+		<view class="warningBtn2" catchtap="onWarningClose">{{ btnTxt2 }}</view>
+	</view>
+</van-popup>
+<!-- 正常提示 --> 
+<van-popup show="{{ showInfo }}" bind:close="onInfoClose" z-index="8" custom-class="warningPopup">
+	<view class="warningBox">
+		<image class="warningImg" src="https://www.yitongwang.com/public/static/images/minniapp/subcontract-info-input.png"></image>
+		<view class="warningTxt">{{ curManufactorName }}</view>
+		<input class="editTelInput" value="{{ curTel }}" bindinput="editTel" placeholder-class="editTelplaceholdeInput" placeholder="请输入厂家电话" maxlength="11"></input>
+		<view class="warningTxt">老厂家建议添加号码，下次</view>
+		<view class="warningTxt">可直接拨打，无需翻通讯录</view>
+		<view class="warningBtn2" catchtap="eidtTelAndCall">立即添加并拨打</view>
+		<view class="infoPopupCancel" catchtap="onInfoClose"><van-icon name="close" size="40px" /></view>
+	</view>
+</van-popup>
+<!-- 送齐，拉走，提示 -->
+<van-popup show="{{ showOtherTxt }}" bind:close="onOtherClose" z-index="8" custom-class="warningPopup">
+	<view class="warningBox">
+		<image class="warningImg" src="https://www.yitongwang.com/public/static/images/minniapp/subcontranct-err.png"></image>
+		<view class="warningTxt">{{ editTxt }}</view>
+		<view class="warningBtn1" catchtap="callAdmin">立 即 拨 打</view>
+		<view class="warningBtn2" catchtap="onOtherClose">取 消</view>
+	</view>
+</van-popup>
+<!-- 垃圾桶单独提示 -->
+<van-popup show="{{ showLjt }}" bind:close="onLjtClose" z-index="8" custom-class="warningPopup">
+	<view class="warningBox">
+		<image class="warningImg" src="https://www.yitongwang.com/public/static/images/minniapp/subcontranct-err.png"></image>
+		<view class="warningTxt">{{ editTxt }}</view>
+		<view class="warningBtn1" catchtap="delFromLajitong">立 即 删 除</view>
+		<view class="warningBtn2" catchtap="onLjtClose">取 消</view>
+	</view>
+</van-popup>
+<!-- 超时选择拼包中心 -->
+<van-popup show="{{ showCoreList }}" bind:close="onCoreListClose" z-index="8" custom-class="warningPopup">
+	<view class="warningBox">
+		<image class="warningImg" src="https://www.yitongwang.com/public/static/images/minniapp/subcontract-info-input.png"></image>
+		<view class="warningTxt">{{ editTxt }}</view>
+		<view class="sellerNameSection" wx:for="{{ coreInfo }}" wx:key="index" wx:if="{{ item.status == 1 }}" catchtap="reOrderCoreOk" data-sellerId="{{ item.seller_id }}">{{ item.name }}</view>
+		<view class="warningBtn2" catchtap="onCoreListClose" style="margin-top:50rpx;">取 消</view>
+	</view>
+</van-popup>
+<!-- 放海报的 -->
+<view wx:if='{{share_btn}}'>
+  <!-- <view class="cover-layer" bindtap="closePromModal"></view> -->
+  <view class="prom-model">
+    <icon type="cancel" color="gray" size="22" class="modal-close" bindtap="closeShareModal" />
+    <view class="prom-title">{{  }}</view>
+    <view class='share-pic'>
+      <image catchtap='previewSharePic' style='width:100%;height:100%' src='{{share_pic}}'></image>
+    </view>
+    <view class="share-save-btns">
+      <view class="share-save-btn" catchtap="saveSharePic">保存海报</view>
+      <!-- <view class='share-tips'>保存海报至相册，可在朋友圈分享海报</view> -->
+    </view>
+
+  </view>
+</view> 
+
+<!-- 修改/记录 弹窗 -->
+<view class="modifyPopupcustom" catchtouchmove="true" wx:if="{{modifyPopupFlag}}">
+	<view class="modifyPopup" style="height:{{ modifyRecordInfo.reservation.length>5? '80vh' : '55vh' }};margin-top:{{ modifyRecordInfo.reservation.length>5? '9%' : '30%' }};">
+		<view class="modifyCName">{{ modifyRecordInfo.manufactor_name }}</view>
+		<view class="modifyTime">最晚封包时间：{{ modifyRecordInfo.appointment_time }}</view>
+		<scroll-view bindscroll="modifyScroll" scroll-y="true" class="modifyPopupscroll">
+			<view class="modifyRecordTitle">预约记录</view>
+			<view class="modifyRecordContent">
+				<view class="modifyRecordHead flx flx_r">
+					<text>时间</text>
+					<text>厂名</text>
+					<text>预约数量</text>
+				</view>
+				<view class="modifyRecordItem flx flx_r" wx:for="{{ modifyRecordInfo.reservation }}" wx:key="index">
+					<view><view>{{ m1.brTime( item.create_time,'a' ) }}</view><view>{{ m1.brTime( item.create_time,'b' ) }}</view></view>
+					<view style="line-height:80rpx;color:{{ (index > 0 && (item.manufactor_name != modifyRecordInfo.reservation[index-1].manufactor_name)) ? 'red' : '' }};">{{ (index > 0 && (item.manufactor_name != modifyRecordInfo.reservation[index-1].manufactor_name)) ? '改为' : '' }}{{ item.manufactor_name }}</view>
+					<view style="line-height:80rpx;color:{{ (index > 0 && (item.num != modifyRecordInfo.reservation[index-1].num)) ? 'red' : '' }};">{{ (index > 0 && (item.num != modifyRecordInfo.reservation[index-1].num)) ? '改为' : '' }}{{ item.num }}手</view>
+				</view>
+			</view>
+			<view class="newModify flx flx_r">
+				<input hidden="{{solvePlaceZindexFlag}}" focus="{{ modifyFocus1 }}" bindinput="curManufactorNameInput" value="{{ curManufactorName }}" class="modifyInputName" disabled="{{modifyNameDisabled}}" placeholder-class="modifyInput" placeholder="{{ modifyPlaceholderTxt }}" type="text" maxlength="12"></input>
+				<view hidden="{{!solvePlaceZindexFlag}}" catchtap="showSolvePlaceZindexFlag" style="width: 286rpx!important;max-width: 286rpx!important;" data-t="a" class="modifyInputName">{{ curManufactorName ? curManufactorName : '厂家名字(非必填)' }}</view>
+				<input hidden="{{solvePlaceZindexFlag}}" focus="{{ modifyFocus2 }}" bindinput="correctNumInput" value="{{ correctNum }}" class="modifyInputSum" placeholder-class="modifyInput" placeholder="数量(非必填)" type="number" maxlength="4"></input>
+				<view hidden="{{!solvePlaceZindexFlag}}" catchtap="showSolvePlaceZindexFlag" style="width: 286rpx!important;max-width: 286rpx!important;" data-t="b" class="modifyInputSum">{{ correctNum?correctNum : '数量(非必填)' }}</view>
+			</view>
+			<view style="height:150rpx;"></view>
+		</scroll-view>
+		<view class="modifyPopupBtns flx flx_r" catchtouchmove="true">
+			<text catchtap="closeModifyPopup" >关 闭</text>
+			<text class="colTheme modifySure" catchtap="confirmModify">确 定</text>
+		</view>
+	</view> 
+</view>
+<!-- 添加厂家 -->
+<view class="modifyPopupcustom" catchtouchmove="true" wx:if="{{ showAddFactory }}">
+	<view class="modifyPopup">
+		<scroll-view bindscroll="modifyScroll" scroll-y="true" class="modifyPopupscroll">
+			<view class="modifyRecordTitle">审核中</view>
+			<view class="modifyRecordContent">
+				<view class="modifyRecordHead flx flx_r">
+					<text>时间</text>
+					<text style="flex:1.2;">厂名</text>
+					<text style="flex:0.8;">数量</text>
+					<text style="flex:0.8;">状态</text>
+				</view>
+				<view class="modifyRecordItem flx flx_r" wx:for="{{ openAddInfo }}" wx:key="index">
+					<view><view>{{ m1.brTime( item.create_time,'a' ) }}</view><view>{{ m1.brTime( item.create_time,'b' ) }}</view></view>
+					<view style="line-height:80rpx;flex:1.2;font-weight:600;">{{ item.manufactor_name }}</view>
+					<view style="line-height:80rpx;flex:0.8;">{{ item.num }}手</view>
+					<view style="line-height:80rpx;flex:0.8;">{{ item.status_text }}</view>
+				</view>
+				<view style="text-align:center;" wx:if="{{ openAddInfo.length == 0 }}">暂时没有审核中的新增厂家哦~</view>
+			</view>
+			<view class="modifyRecordbbox">
+				<view class="modifyRecordTitle">添加厂家</view>
+				<view class="addNewFactoryHead flx flx_r">
+					<view>厂名</view>
+					<view>数量</view>
+					<view>电话</view>
+					<view>删除</view>
+				</view>
+				<view class="newModify flx flx_r" wx:for="{{ addFactoryTempList }}" wx:key='index'>
+					<view style="flex:1;"><input bindinput="addFactoryInput" data-type="manufactor_name" data-index="{{ index }}" value="{{ item.manufactor_name }}" class="modifyInputName" placeholder-class="modifyInput" placeholder="请输入厂名" type="text" maxlength="12"></input></view>
+					<!-- <view hidden="{{!solvePlaceZindexFlag}}" catchtap="showSolvePlaceZindexFlag" data-t="a" class="modifyInputName">{{ curManufactorName ? curManufactorName : '请输入厂名' }}</view> -->
+					<view style="flex:1;"><input bindinput="addFactoryInput" data-type="goods_number" data-index="{{ index }}" value="{{ item.goods_number }}" class="modifyInputSum" placeholder-class="modifyInput" placeholder="请输入数量" type="number" maxlength="4"></input></view>
+					<!-- <view hidden="{{!solvePlaceZindexFlag}}" catchtap="showSolvePlaceZindexFlag" data-t="b" class="modifyInputSum">{{ correctNum?correctNum : '请输入数量' }}</view> -->
+					<view style="flex:1;"><input bindinput="addFactoryInput" data-type="phone" data-index="{{ index }}" value="{{ item.phone }}" class="modifyInputSum" placeholder-class="modifyInput" placeholder="厂家电话" type="number" maxlength="11"></input></view>
+					<view style="flex:0.2;position:relative;"><van-icon style="left: 50%; position: absolute; top: 50%;transform: translate(-50%,-50%);" catchtap="delFromAddTempList" data-index="{{index}}" name="close" size="30rpx"/></view>
+					<!-- <view hidden="{{!solvePlaceZindexFlag}}" catchtap="showSolvePlaceZindexFlag" data-t="b" class="modifyInputSum">{{ correctNum?correctNum : '厂家电话' }}</view> -->
+				</view>
+				<view class="newModify flx flx_r" catchtap="toAddPage">
+					<input disabled bindinput="curManufactorNameInput" value="{{ curManufactorName }}" class="modifyInputName" placeholder-class="modifyInput" style="width:140rpx;" placeholder="请输入厂名" type="text" maxlength="12"></input>
+					<input disabled class="modifyInputSum" placeholder-class="modifyInput" placeholder="数量" type="number" maxlength="4" style="width:100rpx;"></input>
+					<input disabled class="modifyInputSum" placeholder-class="modifyInput" placeholder="厂家电话" type="number" maxlength="6"></input>
+				</view>
+			</view>
+			<view style="height:150rpx;"></view>
+		</scroll-view>
+		<view class="modifyPopupBtns flx flx_r" catchtouchmove="true">
+			<text catchtap="closeModifyPopup" >取消</text>
+			<text class="colTheme modifySure" catchtap="confirmAddFactory">确定</text>
+		</view>
+	</view>
+</view> 
+<!-- showMsg -->
+<show-msg status="{{true}}" isShow="{{ showMsgUrge }}" msg1="{{ showMsgTxt1 }}" showTitle="{{false}}" showBtn1 btnTxt1="{{btnTxt1}}" inlineBtn bind:btnClick1="showMsgClose1" bind:btnClick2="showMsgClose2" btnTxt2="{{ btnTxt2 }}">
+</show-msg>
+<!-- 取消预约 -->
+<show-msg status="{{false}}" isShow="{{ showMsgCancel }}" msg1="{{ showMsgTxt1 }}" showTitle="{{false}}" msgStyle="padding:0rpx 50rpx;" minh="380rpx" showBtn1 showBtn2 btnTxt1="{{btnTxt1}}" inlineBtn bind:btnClick1="calcelOrderClick1" bind:btnClick2="calcelOrderClick2" btnTxt2="{{ btnTxt2 }}">
+</show-msg>
+<!-- success Msg -->
+<show-msg status="{{true}}" isShow="{{ successMsgFlag }}" msg1="{{ successTxt }}" showTitle="{{false}}" showBtn2  btnTxt2="好 的">
+</show-msg>
+<!-- err Msg -->
+<show-msg status="{{false}}" isShow="{{ errMsgFlag }}" msg1="{{ errTxt }}" showTitle="{{false}}" showBtn2 showBtn1="{{ showErrMsgBtn1 }}" btnTxt1="{{ errMsgBtnTxt1 }}" btnTxt2="知道了" bind:btnClick1="clickErrMsg1">
+</show-msg>
+<!-- 取消厂家 --> 
+<show-msg status="{{false}}" isShow="{{ cancelFanufactorMsgFlag }}" showTitle title="{{ showMsgTxt1 }}" showBtn2 showBtn1 inlineBtn btnTxt1="确定取消" btnTxt2="我点错了" bind:btnClick1="cancelFactory">
+</show-msg>
+<!-- 发送取消订单申请 --> 
+<show-msg status="{{false}}" isShow="{{ sendCancelOrderApplyFlag }}" msg1="{{ sendCancelOrderApplyTxt }}" showBtn2 showBtn1 inlineBtn btnTxt1="确定取消" btnTxt2="我点错了" bind:btnClick1="sendCancelOrderApply">
+</show-msg>
+<!-- 取消协议 -->
+<van-popup z-index="100" show="{{ showCancelXieyi }}" bind:close="onWarningClose" z-index="8" custom-class="warningPopup">
+	<view class="warningBox2">
+		<image class="warningImg" src="https://www.yitongwang.com/public/static/images/minniapp/subcontranct-err.png"></image>			
+		<view class="headWord">请谨慎操作，强制取消后，系统将无法跟踪货物记录，如您仍需继续强制取消服务，请仔细阅读以下协议：</view>
+		<view class="headWord2">“关于已收货物的取消服务协议”</view>
+		<scroll-view scroll-y="{{ true }}" class="xieyiScroll">
+			<view class="contentWord contentWord1">取消服务后，系统将不能跟踪货物信息，请尽快处置取消服务的货物，您可以取回货物或重新预约拼包。</view>
+			<view class="contentWord contentWord2">如您选择重新预约拼包，需办理<text class="coltheme">“关于已取消服务货物的重新预约拼包协议”</text>，如您本人或您指定的人员前往仓库取回货物时，需出具“取消厂家确认码”或“关闭订单确认码”，仓库人员核实后才能办理货物出库手续。</view>
+			<view class="contentWord contentWord3">暂未发包的货物，我们为您提供免费保管三天的服务，三天后将收取相应的保管费用，<text class="col215">最长保管期限为30天，超过30天我们有权自行处置货物</text>。</view>
+			<view class="contentWord contentWord4">在保管期内，货物的保管义务由我们承担，不可抗拒的因素除外。</view>
+			<view class="contentWord contentWord5">若您强制取消服务次数过多，我们有权终止您的预约拼包功能。</view>
+		</scroll-view>
+		
+		<view class="warningBtn2" catchtap="agreeAgreement">本人同意以上协议并提交申请</view>
+		<view class="warningBtn1" catchtap="onWarningClose">取 消</view>
+	</view>
+</van-popup>
+<!-- 记录 -->
+<see-recode bind:closeLog="closeLog" wx:if="{{ seeLogFlag }}" data="{{ factoryLogInfo }}"></see-recode>
+<!-- 评价的框 showEvaluate -->
+<show-msg status="{{true}}" isShow="{{ showEvaluate }}" showTitle="{{ false }}" showBtn2 btnTxt2="提交评价" bind:btnClick2="doEvaluate">
+	<view slot="slot1">
+		<view class="ttitle">您的评价让我们做的的更好</view>
+		<view class="emmmm">请为我们打分</view>
+		<view class="lineStar">服务 <van-rate
+			value="{{ evaluateV1 }}"
+			size="58rpx"
+			color="#fed04d"
+			void-color="#eee"
+			void-icon="star"
+			data-index="1"
+			bind:change="onEvaluateChange1"
+		/></view>
+		<view class="lineStar">时效 <van-rate
+			value="{{ evaluateV2 }}"
+			size="58rpx"
+			color="#fed04d"
+			void-color="#eee"
+			void-icon="star"
+			data-index="2"
+			bind:change="onEvaluateChange1"
+		/></view>
+		<view class="lineStar">精准 <van-rate
+			value="{{ evaluateV3 }}"
+			size="58rpx"
+			color="#fed04d"
+			void-color="#eee"
+			void-icon="star"
+			data-index="3"
+			bind:change="onEvaluateChange1"
+		/></view>
+	</view>
+</show-msg>
+<!-- 查看拉包记录的 -->
+<view class="modifyPopupcustom" catchtouchmove="true" wx:if="{{shouldVoucherShow}}">
+	<view class="modifyPopup" style="height:{{ modifyRecordInfo.reservation.length>5? '80vh' : '55vh' }};margin-top:{{ modifyRecordInfo.reservation.length>5? '9%' : '30%' }};">
+		<scroll-view bindscroll="modifyScroll" scroll-y="true" class="modifyPopupscroll">
+			<view class="modifyRecordTitle">拉包明细</view>
+			<view class="modifyRecordContent">
+				<view class="modifyRecordHead flx flx_r">
+					<text style="flex:.5;">时间</text>
+					<text>厂名</text>
+					<text style="flex:.4;">数量</text>
+					<text style="flex:.3;">凭证</text>
+				</view>
+				<view wx:for="{{ voucherInfo }}" wx:key="index">
+					<view class="modifyRecordItem flx flx_r" style="background-color:cornsilk;"  wx:if="{{ !item.lj }}">
+						<view style="flex:.5;"><view>{{ m1.brTime( item.create_date,'a' ) }}</view><view>{{ m1.brTime( item.create_date,'b' ) }}</view></view>
+						<view style="" class="lh65" catchtap="seeDetailFac" data-index="{{ index }}"><text style="background-color:#e3c381;border-raduis:7rpx;padding:5rpx;">查看明细</text></view>
+						<view style="flex:.4" class="lh65">{{ item.num }}手</view>
+						<view style="flex:.3;position:relative;"><van-icon class="seeImgIcon" catchtap="seeOrderDetailImgs" data-index="{{ index }}" name="photo" color="#18c2ba" size="40rpx" /></view>
+					</view>
+					<view>
+						<view class="modifyRecordItem flx flx_r" wx:for="{{ item.log }}" wx:for-item="item2" wx:for-index="index2" wx:key="index2" wx:if="{{ item.lj }}" style="position:relative;display:flex;text-align:center;color:#444;">
+							<view style="flex:.5;"><view>{{ m1.brTime( item2.create_date,'a' ) }}</view><view>{{ m1.brTime( item2.create_date,'b' ) }}</view></view>
+							<text style="flex:1;" class="lh65">{{item2.manufactor_name}}</text>
+							<text style="flex:.4;" class="lh65">{{ item2.num }}手</text>
+							<text style="flex:.3;">{{ ' ' }}</text>
+						</view>
+						<view class="labaorecord modifyRecordItem flx flx_r" wx:if="{{ item.lj }}" style="text-align:center;">
+							<text class="lh65">{{ '合计' }}</text>
+							<text style="flex:.4;" class="lh65">{{ item.num }}手</text>
+							<text class="lh65" style="text-align:left;" catchtap="collectedRecord" data-index="{{index}}"><text class="shouqia">{{ '收起' }}</text></text>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view style="height:150rpx;"></view>
+		</scroll-view>
+		<view class="modifyPopupBtns flx flx_r" catchtouchmove="true">
+			<text catchtap="closeModifyPopup" >关 闭</text>
+		</view>
+	</view> 
+</view>
+<!-- 啥也没有的时候 -->
+<van-empty wx:if="{{ orderInfo.length == 0 }}" image="search" description="空空如也哦" />
+<!-- 审核中的时候的提示信息 showUndeReview -->
+<van-popup show="{{ showUndeReview }}" bind:close="onInfoClose" z-index="8" custom-class="warningPopup">
+	<view class="warningBox">
+		<image class="warningImg" src="https://www.yitongwang.com/public/static/images/minniapp/subcontract-info-input.png"></image>
+		<view class="warningTxt" style="color:#18c2ba;">{{ '您的修改申请' }}</view>
+		<view class="warningTxt" style="color:#18c2ba;">正在审核中，如需加急处理请致电拼包中心{{underReciveTel}}</view>
+		<view class="warningBtn2" catchtap="onInfoClose">确 定</view>
+		<view class="infoPopupCancel" catchtap="onInfoClose"><van-icon name="close" size="40px" /></view>
+	</view>
+</van-popup>
+<wxs module="m1">
+  var getTime = function(i){
+  	var day = Math.floor(i / 60 /60 /24)
+		var hours = parseInt((i % ( 60 * 60 * 24)) / ( 60 * 60));
+    var minutes = parseInt((i % ( 60 * 60)) / 60);
+		return day + " 天 " + hours + " 小时 " + minutes + " 分钟 " 
+	}
+
+	  var setColor = function(a,b){
+			if(b == 0){
+				return '#999'
+			}else if(a == b){
+			return '#18c2ba'
+		} else {
+			return '#f10215'
+		}
+	}
+	
+	var brTime = function(t,type){
+			var t = t.split(' ')
+			return type == 'a' ? t[0] : t[1]
+  }
+
+	var setCancelTxt = function(s){
+		switch (s) {
+			case 0:
+				return '取消'
+				break;
+			case 1:
+				return '申请取消厂家'
+				break;
+			case 2:
+				return '取消厂家审核中'
+				break;
+			case 3:
+				return '取消厂家确认码:'
+				break;
+			case 4:
+				return '未通过'
+				break;
+			default:
+				break;
+		}
+	}
+	var setCancelTxt2 = function(s){
+		switch (s) {
+			case 0:
+				return '关闭订单'
+				break;
+			case 1:
+				return '申请关闭订单'
+				break;
+			case 2:
+				return '关闭订单-审核中'
+				break;
+			case 3:
+				return '关闭订单确认码:'
+				break;
+			case 4:
+				return '未通过'
+				break;
+			default:
+				break;
+		}
+	}
+	var setNumCol = function(a,b){
+			var a = a+''
+			var b = b+''
+      if ( b == '0') {
+        return '#555'
+      } else if (a == b) {
+        return '#18c2ba'
+      } else {
+        return '#f10215'
+      }
+  }
+  module.exports.getTime = getTime;
+  module.exports.setColor = setColor;
+  module.exports.brTime = brTime;
+  module.exports.setCancelTxt = setCancelTxt;
+  module.exports.setCancelTxt2 = setCancelTxt2;
+  module.exports.setNumCol = setNumCol;
+</wxs>
+
+

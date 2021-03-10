@@ -1,0 +1,23 @@
+<!-- z-index 102 -->
+<view class="showMsgComponent" catchtap="true" catchtouchmove="true" wx:if="{{ isShow }}">
+  <view class="showMsgContent" style="color:{{ status ? 'green' : '#f17a7f' }};min-height:{{minh}};">
+    <image class="showMsgRoundImg" src="{{ status ? 'https://test.yitongwang.com/public/static/images/minniapp/msg-ok-1.png' : 'https://test.yitongwang.com/public/static/images/minniapp/msg-err-1.png'}}"></image>
+    <image class="showMsgBgImg" src="{{ status ? 'https://test.yitongwang.com/public/static/images/minniapp/msg-ok-2.png' : 'https://test.yitongwang.com/public/static/images/minniapp/msg-err-2.png' }}"></image>
+    <!-- 标题 -->
+    <view wx:if="{{showTitle}}" class="showMsgTitle" style="color:{{ titleColor }};">{{ title }}</view>
+    <!-- 中间文字内容 需要显示的文案 -->
+    <view wx:if="{{ msg1 }}" style="{{msgStyle}}">{{ msg1 }}</view>
+    <view wx:if="{{ msg2 }}" style="{{msgStyle}}">{{ msg2 }}</view>
+    <view wx:if="{{ msg3 }}" style="{{msgStyle}}">{{ msg3 }}</view>
+    <view wx:if="{{ msg4 }}" style="{{msgStyle}}">{{ msg4 }}</view>
+    <slot class="showMsgSloat1" name="slot1"></slot>
+    <slot class="showMsgSloat2" name="slot2"></slot>
+    <slot class="showMsgSloat3" name="slot3"></slot>
+    <!-- 底部按钮 -->
+    <view class="showMsgBtns{{ inlineBtn? ' inlineBtn' : '' }}">
+      <view wx:if="{{ showBtn1 }}" class="showMsgBtn1" style="width:{{ inlineBtn? '40%' : '80%' }};" catchtap="btnClick1">{{ btnTxt1 }}</view>
+      <view wx:if="{{ showBtn2 }}" class="showMsgBtn2" style="width:{{ inlineBtn? '40%' : '80%' }};" catchtap="btnClick2">{{ btnTxt2 }}</view>
+    </view>
+    <view class="closeShowMsg" catchtap="closeShowMsg">X</view>
+  </view>
+</view> 

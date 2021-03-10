@@ -1,0 +1,481 @@
+/* cart2.wxss */
+.container {
+   padding-bottom: 100rpx;
+   border-top:2rpx solid #f3f3f3;
+   overflow-x: hidden;
+}
+.user-mes{
+    position: relative;
+    background-color: #fff;
+    font-size: 32rpx;
+    color: #333;
+    padding-top: 24rpx;
+}
+.user-contact{
+    padding: 0 60rpx 24rpx 30rpx;
+    color:#333333;
+    font-size:30rpx;
+    font-weight:500;
+}
+.location{
+    position: relative;
+    padding:0 60rpx 26rpx 30rpx;
+}
+.location .address{
+    color: #999999;
+    font-size: 26rpx;
+    line-height: 40rpx;
+    height:40rpx;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.pos-icon{
+    position: absolute;
+    left: 28rpx;
+    top: 4rpx;
+    width: 23rpx;
+    height: 29rpx;
+}
+.border-img{
+    width: 100%;
+    height: 8rpx;
+    font-size: 0;
+}
+.update-logistics{
+    position:absolute;
+    right:30rpx;
+    top:40rpx;
+    width:18rpx;
+    height:18rpx;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-top:3rpx solid #B9B9B9;
+    border-right:3rpx solid #B9B9B9;
+    transform:rotate(45deg);
+}
+.update-logistics .arrow-rigth{
+    top: 0;
+}
+.order-meg{
+    font-size: 28rpx;
+    margin-top: 10rpx;
+}
+.order-detail{
+    padding: 25rpx 0;
+    color: #999;
+    height: 180rpx;
+    position:relative;
+    background: #ffffff;
+}
+.goods-img{
+    float: left;
+    width: 180rpx;
+    height: 180rpx;
+    margin:0 30rpx 0 25rpx;
+}
+.order-cont{
+    float: left;
+    width: 490rpx;
+}
+.goods-name{
+    overflow: hidden;
+    margin-bottom: 10rpx;
+    color:#1d1d1d;
+    font-size:26rpx;
+    -webkit-line-clamp:1;
+}
+.goods-color{
+    font-size: 22rpx;
+}
+.information1{
+    font-size: 22rpx;
+    color: #f48a00;
+    position:absolute;
+    left:230rpx;
+    bottom:70rpx;
+}
+.order-num{
+    position:absolute;
+    left:230rpx;
+    bottom:0;
+    width:484rpx;
+    font-size:30rpx;
+    font-weight:600;
+    color:#ff3b3b;
+    padding-bottom:24rpx;
+}
+.order-num .goods_price{
+    font-size:22rpx;
+}
+.order-num .goods_num{
+    float:right;
+    color:#333333;
+    font-size:30rpx;
+    font-weight:500;
+}
+.order-num .goods_num text{
+    font-size:26rpx;
+}
+.distribution{
+  width: 750rpx;
+	height: 86rpx;
+  line-height: 86rpx; 
+  color: #666;
+  font-size: 30rpx;
+  padding-left:25rpx;
+	background-color: #ffffff;
+  border-bottom: 1px solid #f3f3f3;
+  margin-top: 10rpx;
+}
+.set-mes{
+    background-color: #fff;
+    padding: 0 25rpx;
+    font-size: 26rpx;
+    color: #262626;
+}
+.selfsubmit{
+    width:100%;
+    height:auto !important;
+    padding-top:16rpx;
+}
+.set-mes>view{
+    display: flex;
+    align-items: center;
+    height: 106rpx;
+    position:relative;
+}
+.use-item .jf{
+    color:#666;
+    font-size:26rpx;
+    float:right;
+    position:absolute;
+    right:85rpx;
+
+}
+.set-item{ 
+    justify-content: space-between; 
+    font-size: 26rpx; 
+    position: relative;
+    padding-right: 40rpx;
+}
+.use-item.set-item{
+    padding-right: 0;
+}
+.store-list .set-item .set-btn{
+    width: auto;
+}
+.invoice{
+    padding-right: 0
+}
+.set-btn{
+    display: flex;
+    font-size: 24rpx;
+    width: 110rpx;
+}
+.set-mes input{
+    width: 380rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    border:1px solid #f3f3f3;
+}
+.line{
+    border-bottom:2rpx solid #f3f3f3;
+}
+.show1{
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,.7);
+    position:fixed;
+    top:0;
+    bottom:0;
+    z-index: 999;
+}
+.show1>view{
+    position:fixed;
+    width:750rpx;
+    height: 765rpx;
+    padding-top: 35rpx;
+    bottom:0;
+    background:#fff;
+    z-index:9;
+}
+.show1 .use{
+    color: #1f1f1f;
+    text-align: center;
+    font-size: 30rpx;
+}
+.show1 .use view{
+    color:#999;
+    font-size:15px;
+    float:right;
+    margin-right:30rpx;
+}
+.show1 .use image{
+    width:22rpx;
+    height:22rpx;
+}
+.show1 button{
+    width: 690rpx;
+    height: 66rpx;
+    line-height: 66rpx;
+    color: #fff;
+    margin-left: 30rpx;
+    font-size: 26rpx;
+    background-color: #ff3b3b;
+    text-align: center;
+    border-radius:50rpx;
+    position: absolute;
+    bottom: 106rpx;
+}
+.show1 input{
+    width: 606rpx;
+    height: 80rpx;
+    margin-top: 28rpx;
+    border: 1px solid #f3f3f3;    
+    border-radius:50rpx;
+    padding:0 20px;
+}
+.use-btn{
+    width: 40rpx;
+    height: 40rpx;
+    border-radius:50%;
+    margin-left: 20rpx;
+    line-height: 50rpx;
+    text-align: center;
+      border:1px solid #f3f3f3;
+    color: #fff;
+}
+.coupon-num{
+    height: 36rpx;
+    margin-left: 20rpx;
+    padding: 0 16rpx;
+    line-height: 36rpx;
+    text-align: center;
+    background-color: #ff3b3b;
+    color: #fff;
+    font-size: 24rpx;
+}
+.set-item .word-box{
+    position:absolute;
+    left:80rpx;
+    top:40rpx;
+    text-align: right;
+    z-index:1;
+}
+.word-box{
+    width: 620rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+.information{
+    padding:10rpx 25rpx 20rpx;
+    background-color: #fff;
+    margin-top: 10rpx;
+}
+.information .item{
+    display: flex;
+    justify-content: space-between;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 26rpx;
+    color: #202020;
+}
+.information .item .co-red{
+    color:ff2c2c;
+    font-weight: 600;
+}
+.btn-wrap{
+    height:98rpx;
+    background-color:#fff;
+    border-top:solid 1px #f3f3f3;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    z-index: 100;
+}
+.remark{
+  display: block;
+}
+.btn-wrap .num{
+    color:#252525;
+    font-size:26rpx;
+    float:left;
+    padding-left:25rpx;
+    display:flex;
+    align-items:center;
+    height:98rpx;
+}
+.tips-btn{
+    float:right;
+    width:215rpx;
+    height:100rpx;
+    line-height:100rpx;
+    text-align:center;
+    font-size:30rpx;
+    background-color:#18c2ba;
+    color:#f7f8f8;
+}
+.pay-amount{
+    float: right;
+    display: flex;
+    align-items: center;
+    height: 100rpx;
+    font-size: 30rpx;
+    margin-right: 40rpx;
+}
+.pay-amount .co-red{
+    font-weight:600;
+    color: #ff3b3b;
+}
+.payable{
+    color: #1e1e1e;
+}
+/* 物流列表弹框 */
+.shipping-modal{
+    z-index: 20;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: hidden;
+    color: #666666;
+    background-color: white;
+}
+.shipping-nav{
+    text-align: center;
+    font-size: 35rpx;
+    padding-top: 30rpx;
+}
+.shipping-list{
+    padding: 20rpx 30rpx 40rpx;
+    font-size: 28rpx;
+}
+.shipping-item{
+    display: block;
+    padding: 20rpx 0;
+}
+.shipping-btn{
+    width: 100%;
+    color: white;
+    background-color: #ff3b3b;
+    line-height: 90rpx;
+    text-align: center;
+    font-size: 40rpx;
+}
+.store-list{
+    margin-bottom: 10rpx;
+}
+.store-mes{
+    height: 34rpx;
+    padding: 33rpx 20rpx;
+    display: flex;
+}
+.coupon{
+    display: flex;
+}
+.totle-weight{
+    padding-right: 20rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: right;
+}
+.invoice-wrap{
+    margin-top: 20rpx;
+    margin-bottom:0rpx;
+}
+.store-ico{
+    height: 34rpx;
+    width: 34rpx;
+    margin-right: 20rpx;
+}
+
+switch .wx-switch-input{
+    height: 42rpx;
+    border-radius: 4rpx;
+}
+switch .wx-switch-input::before,switch .wx-switch-input::after{
+    height: 40rpx;
+    border-radius: 4rpx;
+}
+
+
+
+.selfsubmit radio{
+    float:right;
+    transform:scale(0.85);
+}
+.selfsubmit-view{
+  margin-top: 20rpx;
+  padding-bottom:30rpx;
+  margin-bottom: 10rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.selfsubmit-view text{
+    color:#999;
+}
+.radio-group{
+    width:100%;
+    font-size: 26rpx;
+    color:#262626;
+}
+.arrow-rigth{
+    width: 14rpx;
+    height: 25rpx; 
+    position:absolute;
+    right:0;
+    top:42rpx;
+}
+.use-points{
+  width:48rpx;
+  position:absolute;
+  right:0;
+}
+
+
+
+/** 日期插件s */
+
+.kouviewList{
+    background-color: #F7F7F7;
+}
+.kouview{
+  height:170px;
+    margin-top:5px;
+ 
+}
+.kouviews{
+  height:150px;
+    margin-top:5px;
+ 
+}
+.time-title{
+  float:left;width:20%;text-align:center;color:#45BCE8
+}
+.picker-text{
+  text-align:center;
+}
+/** 日期插件e */
+/* 优惠券码弹窗 */
+.coupons .input{
+    color: #333333;
+    font-size:26rpx;
+    margin-left:30rpx;
+    margin-top:95rpx;
+}
+.store_name{
+  height: 82rpx;
+  border-bottom: 1rpx solid #f3f3f3;
+  padding: 0 20rpx;
+  line-height: 82rpx;
+  background: #fff;
+  color: #666;
+}
+.store_name image{
+  width: 32rpx;
+  height: 32rpx;
+  transform: translate(0,6rpx);
+  margin-right: 5rpx;
+}

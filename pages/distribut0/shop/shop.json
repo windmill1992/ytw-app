@@ -1,0 +1,12 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "我的小店",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 100,
+  "usingComponents":{
+      "van-action-sheet": "../../../dist/action-sheet/index",
+      "van-dialog": "../../../dist/dialog/index",
+      "van-popup": "../../../dist/popup/index",
+      "van-icon": "../../../dist/icon/index"
+    }
+}

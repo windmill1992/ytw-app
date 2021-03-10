@@ -1,0 +1,39 @@
+<view class="container">
+    <view class="type-navbar">
+        <view class="type-box" wx:for="{{categories}}"  wx:key="index">
+            <view id="{{item.id}}" class="type-navbar-item {{typeId == item.id ? 'type-item-on' : ''}}" bindtap="changeTab">
+                {{item.name}}
+            </view>
+        </view>
+    </view>
+    <view class="coupon-list">
+        <view class="coupon-box" wx:for="{{coupons}}" wx:key="index">
+            <view class="coupon-head {{typeId!=0?'head-disable':''}}">
+                <view class="coupon-money">￥ <text class="money">{{item.money}}</text></view>
+                <view class="line">【满{{item.condition}}使用】</view>
+                <view class="line">有效期至{{item.deadTimeFommat}}</view>
+            </view>
+            <view class="coupon-body">
+                <view class="line">
+                  <view class="left">名称：</view>
+                  <view class="right">{{item.limit_store ? item.name : '--'}}</view>
+                </view>
+                <view class="line">
+                  <view class="left">限店铺：</view>
+                  <view class="right">{{item.limit_store ? item.limit_store : '商城平台'}}</view>
+                </view>
+                <view class="line bottom">
+                  <view class="left">券编号：</view>
+                  <view class="right">{{item.id ? item.id : '--'}}</view>
+                </view>
+                <navigator class="use-btn {{typeId!=0?'btn-disable':''}}"  url="{{typeId==0?'/pages/store/index/index?store_id='+item.store_id:''}}" open-type="navigate">{{typeId==1?'已使用':(typeId==2?'已过期':'立即使用')}}</navigator>
+            </view>
+            <!-- <view class="use-end">限{{item.deadTimeFommat}}前使用</view> -->
+        </view>
+    </view>
+    <view class="no-data" wx:if="{{!coupons || coupons.length == 0}}">
+        <image src="../../../images/cart-null.png" class="cart-image"/>
+        <view class="no-data-title">没有找到相关的数据</view>
+        <navigator url="/pages/index/index/index" class="lookat" open-type="switchTab"> 去逛逛 </navigator>
+    </view>
+</view>

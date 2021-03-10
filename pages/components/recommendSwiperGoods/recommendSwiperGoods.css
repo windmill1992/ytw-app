@@ -1,0 +1,20 @@
+
+.componentSwiperBox {
+  margin: 0 auto;
+  height: 400rpx;
+  width: 710rpx;
+}
+.componentSwiper {
+  height: 100%;
+  width: 100%;
+}
+.componentSwiperItem {
+  height: 400rpx;
+  width: 710rpx;
+}
+.componentSwiperItem image {
+  width: 100%;
+  height: 100%;
+  border-radius: 25rpx;
+  box-shadow: 0 0 5rpx #18c2ba;
+}

@@ -1,0 +1,18 @@
+/* 功能未开发 */
+.defaultPage {
+  text-align: center;
+  padding-top: 100rpx;
+}
+.img1 {
+  height: 430rpx;
+  width: 560rpx;
+}
+.hotArea {
+  position: fixed;
+  top: 240rpx;
+  left: 320rpx;
+  height: 85rpx;
+  width: 50rpx;
+  background-color: transparent;
+  z-index: 2;
+}

@@ -1,0 +1,33 @@
+/* payment.wxss */
+.panel{
+    background: #fff;
+}
+.order-ico{
+    padding-top: 66rpx;
+    width: 324rpx;
+    height: 208rpx;
+    margin: 0 auto 66rpx;
+}
+.pay-way{
+    font-size: 30rpx;
+    line-height: 1;
+    color: #333;
+    margin-left: 220rpx;
+    margin-bottom: 30rpx;
+}
+.detail-btn{
+    display: block;
+    width: 640rpx;
+    margin: 60rpx auto 0;
+    line-height: 72rpx;
+    border:1px solid #f3f3f3;
+    font-size: 32rpx;
+    color: #333;
+    text-align: center
+}
+.tips{
+    padding: 50rpx 55rpx;
+    font-size: 28rpx;
+    color: #999;
+    line-height:48rpx;
+}

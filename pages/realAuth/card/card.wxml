@@ -1,0 +1,8 @@
+<view>拍摄/上传您的二代身份证</view>
+<view class="cardBox">
+  <view class="leftIcon">
+    
+  </view>
+  <view class="centerImg"></view>
+  <view class="rightIcon"></view>
+</view>

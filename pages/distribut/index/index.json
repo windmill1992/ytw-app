@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#3abdb7",
+  "navigationBarTitleText": "分销中心",
+  "onReachBottomDistance": 100,
+  "navigationBarTextStyle": "white"
+}

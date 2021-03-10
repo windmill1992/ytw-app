@@ -1,0 +1,14 @@
+//  对数据长度的截取操作
+module.exports = {
+  subText:function(text){
+    if(text.length > 20) {
+      return text.substring(0,15) + '...'
+    } else {
+      return text
+    }
+  },
+  formatDate:function(data) {
+    return '时间 内部处理没写呢'
+  },
+
+}

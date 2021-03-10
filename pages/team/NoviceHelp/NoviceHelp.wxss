@@ -1,0 +1,69 @@
+page {
+  background-color: #fff;
+}
+
+/* 功能未开发 */
+.defaultPage {
+  text-align: center;
+  padding-top: 100rpx;
+}
+.img1 {
+  height: 430rpx;
+  width: 560rpx;
+}
+
+/* 开发好的 */
+
+.topBg {
+  width: 750rpx;
+  height: 380rpx;
+}
+.topImg {
+  width: 750rpx;
+  height: 380rpx;
+}
+.switchType {
+  margin: 10px 0;
+  padding: 0 30rpx;
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+.switchItem {
+  height: 70rpx;
+  width: 300rpx;
+  font-weight: bold;
+  line-height: 70rpx;
+  text-align: center;
+  color: #18c2ba;
+  border: 2rpx solid #18c2ba;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+}
+.current {
+  background-color: #18c2ba;
+  color: #fff;
+}
+.videoItem {
+  position: relative;
+  margin: 45rpx auto;
+  width: 86%;
+  height: 340rpx;
+  border-radius: 15rpx;
+  box-shadow: 0 0 12rpx rgba(24, 194, 186, .6);
+}
+.Video {
+  height: 0rpx;
+  border-radius: 15rpx;
+}
+.maskImg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 15rpx;
+  z-index: 2;
+}

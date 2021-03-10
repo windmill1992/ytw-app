@@ -1,0 +1,115 @@
+<!--account.wxml-->
+<!-- <view class="ss">
+    <view class="cover">
+        <view class="justify-content flex">
+            <view class="detail">
+                    <view class="text-size">{{ store_money }}</view>
+                    <view class="price-text">可用余额</view>
+            </view>
+             <view class="detail">
+                <view class="text-size">{{ enter_money  }}</view>
+                <view class="price-text">累计收入</view>  
+            </view>          
+            <view class="detail">
+                <view class="text-size">{{ out_money }}</view>
+                <view class="price-text">累计提现</view>
+            </view>
+        </view>
+        <view class="operate center">
+            <navigator url="/pages/user/withdrawals/withdrawals?money={{store_money}}&store_id={{store_id}}">
+                <view class="op-item">
+                申请提现
+                </view>
+            </navigator>
+        </view>
+    </view>
+</view> -->
+<!-- 12 10 新的上部分 -->
+<view class="headInfo">
+    <view class="flexR">
+        <view class="fs30">
+            <view>可用余额</view>
+            <view class="fs35">￥{{ store_money }}</view>
+        </view>
+        <view><navigator url="/pages/user/withdrawals/withdrawals?money={{store_money}}&store_id={{store_id}}" class="applyMoney">申请提现</navigator></view>
+    </view>
+    <view class="flexR" style="margin-top:10px;">
+        <view>
+            <view>累计收入</view>
+            <view class="colf1">￥{{ enter_money  }}</view>
+        </view>
+        <view>
+            <view>累计提现</view>
+            <view class="colf1">￥{{ out_money }}</view>
+        </view>
+    </view>
+</view>
+<!-- 主要部分 -->
+    <van-tabs active="{{ active }}" bind:change="onChange" color="#18c2ba">
+        <van-tab title="余额明细">
+            <van-tabs line-height="0" active="{{ active2 }}" bind:change="onChange2">
+                <van-tab title="全部"><!--- 全部的里面每一条 --->
+                   <view class="item" wx:for="{{ listAll }}" wx:key="index">
+                        <view class="odd-price fs26 col333">
+                            <text class="fw600">{{ ' ' }}</text>
+                            <!-- <text class="fw600">单号:{{ item.order_sn || item.id }}</text> -->
+                            <text class="colred">￥{{ item.result_totals }}</text>
+                        </view>
+                        <view class="time-describe col555 fs24">
+                            <text>{{ item.create_date }}</text>
+                            <text>描述:{{ item.remark }}</text>
+                        </view>
+                        <view class="hasPhoto" catchtap="preImage" data-img="{{ item.src }}" wx:for="{{ item.src }}" wx:key="index"><van-icon name="photo" size="30px" /></view>
+                   </view>
+                </van-tab>
+                <van-tab title="收入">
+                    <view class="item" wx:for="{{ listIn }}" wx:key="index">
+                        <view class="odd-price fs30 col333">
+                            <text class="fw600">{{ ' ' }}</text>
+                            <!-- <text class="fw600">单号:{{ item.order_sn }}</text> -->
+                            <text class="colred">￥{{ item.result_totals }}</text>
+                        </view>
+                        <view class="time-describe col555 fs24">
+                            <text>{{ item.create_date }}</text>
+                            <text>描述:{{ item.remark }}</text>
+                        </view>
+                   </view>
+                </van-tab>
+                <van-tab title="支出">
+                    <view class="item" wx:for="{{ listOut }}" wx:key="index">
+                        <view class="odd-price fs30 col333">
+                            <text class="fw600">{{ ' ' }}</text>
+                            <!-- <text class="fw600">单号{{ item.order_sn || item.id }}</text> -->
+                            <text class="colred">￥{{ item.result_totals }}</text>
+                        </view>
+                        <view class="time-describe col555 fs24">
+                            <text>{{ item.create_date }}</text>
+                            <text>描述:{{ item.remark }}</text>
+                        </view>
+                   </view>
+                </van-tab>
+            </van-tabs>
+
+        </van-tab>
+        <van-tab title="提现记录">
+            <van-row custom-class="withdrawalTitle">
+                <van-col span="6">编号</van-col>
+                <van-col span="6">申请日期</van-col>
+                <van-col span="6">金额</van-col>
+                <van-col span="6">状态</van-col>
+            </van-row>
+            <van-row wx:for="{{ listOut }}" wx:key="index" custom-class="withdrawal"><!--  提现记录部分  -->
+                <van-col span="6">{{ item.id }}</van-col>
+                <van-col span="6">{{ item.create_date }}</van-col>
+                <van-col span="6">￥{{ item.result_totals }}</van-col>
+                <van-col span="6">{{ item.remark }}</van-col>
+            </van-row>
+        </van-tab>
+    </van-tabs>
+
+    <!-- 底部菜单 -->
+<import src="../../index/publics/publics.wxml"/>
+<import src="../../index/publicPage/publicPage.wxml"/>
+<template is="distributMenu" data="{{page:page,isiphoneX:isiphoneX,is_A:is_A}}" />
+<template is="operations" data="{{operaList,current:'店铺资金',isiphoneX:isiphoneX}}" wx:if="{{shouldOperationsShow}}" />
+<template is="proposal" data="{{proposalData,isProposalDone}}" wx:if="{{shouldProposalShow}}" />

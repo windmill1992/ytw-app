@@ -1,0 +1,60 @@
+<!--about.wxml-->
+<view class="shops-item">
+    <view class="shops-info">
+        <view class="shops-pic"><image class="wh100" src="{{ store.store_logo ? url + store.store_logo : url + '/public/static/images/minniapp/store_defalut_img.png' }}"></image></view>
+        <view class="shops-mes">
+            <view class="shops-name">{{store.store_name}}</view>
+        </view>
+    </view>
+    <view class="score-list">
+        <view>商品 <text class="co-pink">{{store.store_desccredit}}分</text></view>
+        <view>服务 <text class="co-pink">{{store.store_servicecredit}}分</text></view>
+        <view>物流 <text class="co-pink">{{store.store_deliverycredit}}分</text></view>
+    </view>
+    <view class="goods-num-list">
+        <view class="goods-num-item" bindtap='remindLookGoods' data-mode=''>
+            <view class="goods-num">{{store.total_goods}}</view>
+            <view class="num-item-title">全部商品</view>
+        </view>
+        <view class="goods-num-item" bindtap='remindLookGoods' data-mode='is_new'>
+            <view class="goods-num">{{store.new_goods}}</view>
+            <view class="num-item-title">新品</view>
+        </view>
+        <view class="goods-num-item" bindtap='remindLookGoods' data-mode='is_hot'>
+            <view class="goods-num">{{store.hot_goods}}</view>
+            <view class="num-item-title">热销</view>
+        </view>
+    </view>
+</view>
+<view class="service-list pd-bg-fff">
+    <!-- <view class="service-item">
+        <view>在线客服</view>
+        <view class="service-ico"><image class="wh100" src="../../../images/custom-service.png"></image></view>
+    </view>
+    <view class="service-item">
+        <view>店铺二维码</view>
+        <view class="service-ico"><image class="wh100" src="https://yitongwang.oss-cn-hangzhou.aliyuncs.com/miniapp/qr-code.png"></image></view>
+    </view> -->
+    <view class="service-item">
+        <view>在线客服 <text class="service-tel">{{store.store_phone}}</text></view>
+        <view class="service-ico" bindtap="contactTel"><image class="wh100" src="../../../images/shop-tel.png"></image></view>
+    </view>
+</view>
+
+<view class="shop-adr pd-bg-fff">
+
+        <!-- <view class="shop-time">
+            开店时间：<text class="service-tel">{{store.store_time ? store.storeTimeFormat : '未知'}}</text>
+        </view> -->
+        <view class="address">开店时间：{{store.start_factory}}</view>
+         <view class="address">店铺等级： <image src="https://www.yitongwang.com/template/pc/rainbow/static/images/level/zs.png" wx:for="{{ store.store_level }}" wx:key="index"></image></view>
+        <view class="address">所在商圈：{{store.store_business}}</view>
+        <view class="address">店铺地址：{{store.location}}{{store.store_address}}</view>
+</view>
+
+<!-- 联系客服 拨打电话 -->
+<van-action-sheet show="{{ telShow }}" title="联系商家" bind:close="onTelClose">
+    <view class="makePhone col666">{{store.store_phone}}</view>
+    <view class="makePhone telHasImage bgc18" catchtap="callOtherTel"><image src="../../../images/shop-tel.png"></image> {{ "   呼 叫" }}</view>
+    <view catchtap="onTelClose" class="makePhone telHasImage bgce6"><image style="background-color:#777;" src="../../../images/dax-1.png"></image> {{ "   取 消" }}</view>
+</van-action-sheet>

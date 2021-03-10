@@ -1,0 +1,102 @@
+page {
+  font-size: 28rpx; 
+  color: #777;
+  line-height: 40rpx;
+  padding: 0 15rpx;
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+.addressContent {
+  padding: 10rpx 25rpx 10rpx 0;
+  position: relative;
+  box-sizing: border-box;
+  min-height: 60rpx;
+}
+.addressTop {
+  font-size: 26rpx;
+}
+.address,.orderInfo {
+  padding: 10rpx 20rpx;
+  margin-top: 15px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 20rpx;
+}
+.orderInfo {
+  padding-left: 0;
+}
+.arrAddress {
+  position: absolute;
+  right: 15rpx;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  height: 15rpx;
+  width: 15rpx;
+  border-top: 1px solid #555;
+  border-right: 1px solid #555;
+}
+.orderTop,.addressTop {
+  position: relative;
+  padding-left: 40rpx;
+}
+.orderTop {
+  margin: 10rpx 0 10rpx 20rpx;
+}
+.borderB {
+  border-bottom: 1px solid #f0e9e9;
+}
+.addressTop {
+  line-height: 45rpx;
+}
+.col666 {
+  color: #666;
+  font-weight: normal;
+}
+.fs24 {
+  font-size: 24rpx;
+}
+.inputt {
+  display: inline-block;
+}
+.absIcon {
+  position: absolute!important;
+  left: 0;
+  top: 5rpx;
+}
+.subBtn {
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 500rpx;
+  height: 56rpx;
+  text-align: center;
+  line-height: 56rpx;
+  border-radius: 10rpx;
+  color: #fff;
+  background-color: #18c2ba;
+  border: none;
+}
+.van-cell__title {
+  color: rgb(109, 109, 109);
+  font-weight: bold;
+}
+.absKuaidi {
+  position: absolute;
+  top: 44px;
+  left: 186rpx;
+  padding: 8rpx 5rpx;
+  width: 420rpx;
+  background: #fff;
+  box-sizing: border-box;
+  z-index: 2;
+}
+.van-field__input {
+  font-weight: 500!important;
+}
+.van-picker {
+  position: absolute!important;
+  bottom: 0;
+  left: 0;
+  width: 750rpx;
+  
+}

@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "商品列表",
+    "onReachBottomDistance": 100,
+    "usingComponents":{
+        "van-divider": "../../../dist/divider/index"
+    }
+}

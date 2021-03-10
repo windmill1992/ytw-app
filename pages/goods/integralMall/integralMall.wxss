@@ -1,0 +1,72 @@
+/* integralMall.wxss */
+.container {
+    color: #666;
+}
+.nav-item{
+    float: left;
+    width: 33.33%;
+    height: 90rpx;
+    line-height: 90rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+    background-color: #fff;
+}
+.nav-item .ico-dg{
+    width: 26rpx;
+    height: 14rpx;
+    margin-left: 10rpx;
+    line-height: 0;
+}
+.choice_list{
+    background-color: #f5f5f5;
+}
+.choice_item{
+    position: relative;
+    min-height: 200rpx;
+    padding: 20rpx 0;
+    font-size: 28rpx;
+    border-radius: 10rpx;
+    width: 710rpx;
+    margin:  0 auto;
+    margin-top: 20rpx;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+.img-wrap{
+    float: left;
+    width: 180rpx;
+    height: 180rpx;
+    padding:0 10rpx 10rpx;
+}
+.img-wrap image{
+    width: 100%;
+    height: 100%;
+}
+.item-cont .title{
+    height: 72rpx;
+    margin: 16rpx 0;
+    padding-right: 10rpx;
+    line-height: 36rpx;
+    color: #333;
+    overflow: hidden;   
+}
+.discount-price{
+    display: inline-block;
+    color: #ff3b3b;
+    font-weight: bold;
+}
+.exchange-btn{
+    position: absolute;
+    right: 20rpx;
+    bottom:20rpx;
+    width: 150rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    text-align: center;
+    color: #666;
+}
+.price{
+    padding-bottom: 10rpx;
+}

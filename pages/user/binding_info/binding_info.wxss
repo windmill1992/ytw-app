@@ -1,0 +1,270 @@
+/* pages/user/binding/binding_info.wxss */
+page{
+  background-color: #fff;
+}
+.binding-top{
+  width: 100%;
+  height: 560rpx;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+.user-logo{ 
+  width: 180rpx; 
+  height: 180rpx; 
+  border-radius: 15rpx; 
+  border: 2px solid #fff; 
+  overflow: hidden; 
+  position: absolute; 
+  left: 50%; 
+  margin-left: -95rpx; 
+  top: 60rpx;
+}
+.user-logo image{ 
+  width: 100%; 
+  height: 100%;
+}
+.user-text{ 
+  margin-top: -310rpx;
+}
+.user-nname {
+  font-size: 46rpx;
+}
+.user-text text{
+  display: block; 
+  margin-top: 9rpx; 
+  color: #fff;
+}
+.userbj-cover{ 
+  width: 100%; 
+  height: 46rpx; 
+  position: absolute; 
+  left: 0; 
+  bottom: 0; 
+  z-index: 20;
+}
+.userbj-cover image{
+  width: 100%; 
+  height: 46rpx;
+}
+.binding-container{ 
+  margin-top: 363rpx;
+  width: 100%; 
+  padding-top: 15px;
+}
+.binding-tips{ 
+  margin-bottom: 72px;
+  font-size: 14px; 
+  color: #fff; 
+  text-align: center; 
+  letter-spacing: 2rpx;
+}
+.correlation-cont{
+	width: 600rpx;
+	margin: 0 auto;
+  margin-top: 40rpx;
+  overflow: hidden;
+}
+.connect-item{
+	width: 296rpx;
+	height: 78rpx;
+	line-height: 78rpx;
+	font-size: 28rpx;
+  text-align: center;
+  border: 1px solid #e1dada;
+  float: left;
+  color: #1fc9b6;
+}
+.correlation-cont .connect-item:first-child{
+	border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+}
+.correlation-cont .connect-item:last-child{
+	border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.tp-list-bg{
+	color: #fff;
+	background: linear-gradient(to right, #1bc6d6, #1beedd);
+	/* border:1px solid #ff3b3b!important; */
+}
+
+/*绑定模块*/
+.correlation-input-wrap{
+	margin-top: 56rpx;
+	width: 100%;
+}
+.item_cont {
+  width: 590rpx;
+	height:96rpx;
+  margin: 0 auto;
+	position: relative;
+	line-height:96rpx;
+  border-bottom: 1px solid #f3f3f3;
+} 
+.item_cont image{
+	width: 48rpx;
+	height: 48rpx;
+  vertical-align: middle;
+}
+.item_cont text{ 
+  font-size: 28rpx; 
+  vertical-align: middle; 
+  color: #777; 
+  margin-left: 16rpx;
+}
+.item_cont input{
+	border: 0px;
+	font-size: 28rpx;
+	height: 50rpx;
+	line-height: 50rpx;
+	display: inline-block;
+  vertical-align: middle;
+  width: 370rpx;
+  margin-left: 30rpx;
+}   
+.tp-get-gode{
+  position: absolute;
+	right: 0;
+	top: 29rpx;
+  border-radius: 30rpx;
+  background-color: #1bc6d6;
+  color: #fff;
+  height: 44rpx;
+	width: 140rpx;
+	font-size: 22rpx;
+  line-height: 44rpx;
+  z-index: 50;
+}
+.correlation-submit{
+	width: 500rpx;
+	height: 85rpx;
+  line-height: 85rpx;
+	background: linear-gradient(to right, #1bc6d6, #1beedd);
+  border: none;
+  border-radius: 48rpx;
+  color: #ffffff;
+  font-size: 20px;
+  margin-top: 40rpx;
+  box-shadow: 0 0 5rpx #18c2ba;
+}
+.bingding-agreement{
+  width: 610rpx; 
+  margin: 0 auto; 
+  margin-top: 20rpx; 
+  font-size: 26rpx;
+  line-height: 46rpx;
+  text-align: center;
+}
+.bingding-agreement label{ 
+  vertical-align: baseline; 
+  color: #333; 
+}
+.bingding-agreement navigator{ 
+  vertical-align: middle; 
+  color: #0094ca; 
+  display: inline-block;
+}
+
+/*checkbox样式*/
+checkbox .wx-checkbox-input{
+   border-radius: 50%;
+   width: 36rpx;
+   height: 36rpx;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   border: none;
+   background: #18c2ba;
+   width: 40rpx;
+   height: 40rpx;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;
+   width: 36rpx;
+   height: 36rpx;
+   line-height: 36rpx;
+   text-align: center;
+   font-size:30rpx;
+   color:#fff;
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+.img_back {
+  width: 100%;
+}
+.countDownNum{
+  background-color:#999;
+  width:32%;
+  text-align: center;
+}
+
+/* 提示信息遮罩层 */
+.tips-mask {
+  position: fixed;
+  height: 100%;
+  width: 750rpx;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background: rgba(0, 0, 0, .6);
+  text-align: center;
+  z-index: 10000;
+}
+.tips-mask image {
+  position: absolute;
+  top: 87rpx;
+  left: 80rpx;
+  width: 625rpx;
+  height: 850rpx;
+}
+.tips-mask .txt {
+  position: absolute;
+  top: 1000rpx;
+  left: 65%;
+  transform: translateX(-50%);
+  padding: 13rpx 30rpx;
+  border: 2rpx solid #fff;
+  border-radius: 32rpx;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* 11-26 新版本注册 */
+.pageBox {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+.logo {
+  margin-bottom: 40rpx;
+  text-align: center;
+}
+.logoImg {
+  height: 150rpx;
+  width: 330rpx;
+}
+.topTips {
+  color: #555;
+  font-size: 20rpx;
+  font-weight: 550;
+  font-family: Helvetica, sans-serif;
+}
+.coltheme {
+  color: #18c2ba;
+}
+.checkBox {
+  transform: scale(0.6,0.6);
+}
+.callService {
+  position: absolute;
+  bottom: 100rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24rpx;
+  color: #555;
+}

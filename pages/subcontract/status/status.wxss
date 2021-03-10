@@ -1,0 +1,32 @@
+.container{
+  padding: 80rpx!important;
+  text-align: center;
+}
+.orige{
+  color: orange;
+  font-size: 40rpx;
+  margin: 30rpx auto;
+  text-align: center;
+}
+.red{
+  color: #3abdb7;
+}
+
+.img1{
+  width: 475rpx;
+  height: 309rpx;
+}
+.container .btn {
+  display: block;
+  margin: 0 auto;
+  width: 500rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 50rpx;
+  color: #fff;
+  border-radius: 40rpx;
+  background-color: #18c2ba;
+}
+
+@import '../myTions/mytions.wxss';

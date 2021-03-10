@@ -1,0 +1,10 @@
+<!-- 仓位剩余 -->
+<view class="topTitle">仓位信息一览</view>
+<view class="WarehouseSum">
+  <view class="WarehouseSumItem" wx:for="{{cangInFo}}" wx:key="index">
+    <view>仓位区域：<text class="valueClass">{{ item.code }}</text></view>
+    <view>仓位编号：<text class="valueClass">{{ item.name }}</text></view>
+    <view>仓位总计：<text class="valueClass">{{ item.number }}</text></view>
+    <view>剩余可用：<text class="valueClass">{{ item.used_number }}</text></view>
+  </view>
+</view>

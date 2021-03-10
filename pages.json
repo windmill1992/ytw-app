@@ -1,0 +1,745 @@
+{
+	"pages": [{
+		"path": "pages/index/index/index",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/index/demo/demo",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/cart/cart/cart",
+		"style": {
+			"navigationBarTitleText": "购物车"
+		},
+	}, {
+		"path": "pages/index/publicPage/publicPage",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/index/publics/publics",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/index/custom/custom",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/index/customPage/customPage",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/index/street/street",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/order/refund_order/refund_order",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/virtual/buy_step/buy_step",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/index/webview/webview",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/index/pinbaoMsg/pinbaoMsg",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/cart/integral/integral",
+		"style": {
+			"navigationBarTitleText": "填写订单",
+			"enablePullDownRefresh": false
+		}
+	}, {
+		"path": "pages/payment/payment/payment",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/order/cancel_order_info/cancel_order_info",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/index/dk/dk",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/distribution/index",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/logs/logs",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/user0/index/index",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}, {
+		"path": "pages/cart/cart2/cart2",
+		"style": {
+			"navigationBarTitleText": "填写订单",
+			"enablePullDownRefresh": false,
+		}
+	}, {
+		"path": "pages/cart/cart4/cart4",
+		"style": {
+			"navigationBarTitleText": "支付订单",
+			"navigationBarBackgroundColor": "#fa4949",
+			"navigationBarTextStyle": "white"
+		}
+	}, {
+		"path": "pages/cart/invoice/invoice",
+		"style": {
+			"navigationBarTitleText": "发票信息"
+		}
+	}, {
+		"path": "pages/cart/submit_address/submit_address",
+		"style": {
+			"navigationBarTitleText": "自提点",
+			"enablePullDownRefresh": false
+		}
+	}, {
+		"path": "verify_mpsdk/index/index",
+		"style": {
+			"navigationBarTitleText": "壹童网"
+		}
+	}],
+	"subPackages": [{
+			"root": "pages/realAuth",
+			"pages": [{
+				"path": "index/index",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "card/card",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "main/main",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/cpPayment",
+			"pages": [{
+				"path": "fac_user/fac_user",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "refundsRecheck/refundsRecheck",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "cpComponents/userCard/userCard",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "writeDealer/writeDealer",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "writeSupplier/writeSupplier",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "dealerPage/dealerPage",
+				"style": {
+					"navigationBarTitleText": "壹童网",
+					"enablePullDownRefresh": false,
+				}
+			}, {
+				"path": "creditOrder/creditOrder",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "dealerOrder/dealerOrder",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "a_pay_info/a_pay_info",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/distribut0",
+			"pages": [{
+				"path": "DIYshop/DIYshop",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "DIYshopPoster/DIYshopPoster",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "shop/shop",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "vipList/vipList",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/goods",
+			"pages": [{
+				"path": "categoryList/categoryList",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "brandstreet/brandstreet",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "goodsInfo/goodsInfo",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "goodsList/goodsList",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "search/search",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "addGoods/index",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "specSize/index",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "setAttr/setAttr",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "tailoring/tailoring",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "orderList/orderList",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "orderDetail/orderDetail",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "deliverGoods/deliverGoods",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "changeGoodsPrice/changeGoodsPrice",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/user",
+			"pages": [{
+				"path": "order_detail/order_detail",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "visit_log/visit_log",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "address_list/address_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "userinfo/userinfo",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "account/account",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "account_b/account_b",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "comment/comment",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "return_goods_list/return_goods_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "userinfo_edit/userinfo_edit",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "collect_list/collect_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "coupon/coupon",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "checkcoupon/checkcoupon",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "add_address/add_address",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "account_list/account_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "points_list/points_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "recharge_list/recharge_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "withdrawals_list/withdrawals_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "add_comment/add_comment",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "return_goods_info/return_goods_info",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "return_goods_logistics/return_goods_logistics",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "return_goods/return_goods",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "withdrawals/withdrawals",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "recharge/recharge",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "message_notice/message_notice",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "message_release/message_release",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "express/express",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "binding_info/binding_info",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "get_user_info/get_user_info",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "active_mesg/active_mesg",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "message_logistics/message_logistics",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "order_list/order_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "mesg_detail/mesg_detail",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/distribut",
+			"pages": [{
+				"path": "retail_order/retail_order",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "team_list/team_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "index/index",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "poster/poster",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "distribut_list/distribut_list",
+				"style": {
+					"navigationBarTitleText": "分销商品列表",
+					"onReachBottomDistance": 100,
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "good_list/good_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "set_store/set_store",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "team_commission/team_commission",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "withdrawals/withdrawals",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/team",
+			"pages": [{
+				"path": "index/index",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "team_info/team_info",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "team_detail/team_detail",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "team_confirm/team_confirm",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "team_coupon/team_coupon",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "team_order/team_order",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "helpCore/helpCore",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "NoviceHelp/NoviceHelp",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/store",
+			"pages": [{
+				"path": "index/index",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "about/about",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "goods_list/goods_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/newjoin",
+			"pages": [{
+				"path": "join1/join1",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "join2/join2",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "join3/join3",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "join4/join4",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "agreement/agreement",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/activity",
+			"pages": [{
+				"path": "group_list/group_list",
+				"style": {
+					"navigationBarTitleText": "团购"
+				}
+			}, {
+				"path": "sales_goods/sales_goods",
+				"style": {
+					"navigationBarTitleText": "优惠促销"
+				}
+			}, {
+				"path": "sales_list/sales_list",
+				"style": {
+					"navigationBarTitleText": "优惠促销"
+				}
+			}, {
+				"path": "seckill_list/seckill_list",
+				"style": {
+					"navigationBarTitleText": "商品秒杀"
+				}
+			}, {
+				"path": "coupon_list/coupon_list",
+				"style": {
+					"navigationBarTitleText": "领券中心"
+				}
+			}]
+		},
+		{
+			"root": "pages/weBusiness",
+			"pages": [{
+				"path": "index/index",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/infoservice",
+			"pages": [{
+				"path": "index/index",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		},
+		{
+			"root": "pages/subcontract",
+			"pages": [{
+				"path": "destine/destine",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "destine_address_list/address_list",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "write/write",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "companysearch/index",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "switchCore/switchCore",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "status/status",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "myTions/mytions",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "vedio/vedio",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "detail/detail",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "core/core",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "tionDetail/tionDetail",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "WarehouseSum/WarehouseSum",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}, {
+				"path": "unPublicPage/unPublic",
+				"style": {
+					"navigationBarTitleText": "壹童网"
+				}
+			}]
+		}
+	],
+	"tabBar": {
+		"custom": true,
+		"color": "#666",
+		"selectedColor": "#ff3b3b",
+		"list": [
+			{
+				"pagePath": "pages/index/index/index",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/cart/cart/cart",
+				"text": "购物车"
+			},
+			{
+				"pagePath": "pages/user0/index/index",
+				"text": "我的"
+			}
+		]
+	},
+	"globalStyle": {
+		"backgroundTextStyle": "light",
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "壹童网",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#f5f5f5",
+		"enablePullDownRefresh": true,
+		"onReachBottomDistance": 100,
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	}
+}

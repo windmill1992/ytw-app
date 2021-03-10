@@ -1,0 +1,82 @@
+<!-- 分销订单模块开始 -->
+<view class='retail_order'>
+  <view class='order_tab clearfix'>
+    <view class="order_tab_list {{currentTab==0?'active':''}}" data-current="0" bindtap='clickTab'>全部订单</view>
+    <view class="order_tab_list {{currentTab==1?'active':''}}" data-current="1" bindtap='clickTab'>未付款</view>
+    <view class="order_tab_list {{currentTab==2?'active':''}}" data-current="2" bindtap='clickTab'>已付款</view>
+    <view class="order_tab_list {{currentTab==3?'active':''}}" data-current="3" bindtap='clickTab'>已完成</view>
+  </view>
+  <view class="order_content">  
+<block wx:for="{{teamOrder}}" wx:key="index">
+    <view class='order_content_list'>
+      <view class='header clearfix wrap'>
+        <navigator hover-class="none" url="/pages/store/index/index?store_id={{ item.store_id }}"><view class='buy_name'><image src="../../../images/carnew.png" class="store-logo"></image>{{item.store_name}}</view></navigator>
+        <view class='is_pay' wx:if="{{item.status == 0}}">未付款</view>
+        <view class='is_pay' wx:if="{{item.status == 1}}">已付款</view>
+        <view class='is_pay' wx:if="{{item.status == 2}}">等待分成(已收货)</view>
+        <view class='is_pay' wx:if="{{item.status == 3}}">已分成</view>
+        <view class='is_pay' wx:if="{{item.status == 4}}">已取消</view>
+      </view>
+      <view class='details'>    
+        <block wx:if="{{item.goods_list.length > 1}}">
+          <view class='product_info clearfix wrap'>                
+                  <image src='{{url}}/api/goods/goodsThumImages?goods_id={{item.goods_list[0].goods_id}}&width=400&height=400' class='product_image'></image>
+                  <image src='{{url}}/api/goods/goodsThumImages?goods_id={{item.goods_list[1].goods_id}}&width=400&height=400' class='product_image'></image>
+                  <view>...</view>   
+                        
+                  <view class='' style="float:right;">
+                      <view class='product_content_title'>共{{item.goods_list.length}}种商品 <image class="next_icon" src='../../../images/distribut/qian@2x.png' ></image></view>                                      
+                  </view> 
+              </view>
+        </block>
+        <block wx:else>
+                <view class='product_info clearfix wrap' wx:for="{{item.goods_list}}" wx:for-item="goods" wx:key="index">
+                  <image src='{{url}}/api/goods/goodsThumImages?goods_id={{goods.goods_id}}&width=400&height=400' class='product_image'></image>
+                  <view class='product_content'>
+                      <view class="top">
+                        <view class="left">{{goods.goods_name}}</view>
+                        <view class="right">
+                          <view class="price">￥{{goods.member_goods_price}}</view>
+                          <view class="num">x{{goods.goods_num}}</view>
+                        </view>
+                      </view>
+                      <view class="bottom">
+                          规格：{{goods.spec_key_name==""||goods.spec_key_name==undefined?"--":goods.spec_key_name}}
+                      </view>
+                </view>
+                </view>
+        </block>
+
+        <view class='product_detail wrap'>
+          <view class="line">
+            <view class="left">订单号：</view>
+            <view class="right">{{item.order_sn}}</view>
+          </view>
+          <view class="line" hidden="{{true}}">
+            <view class="left" hidden="{{true}}">分销等级：</view>
+            <view class="right" hidden="{{true}}">{{item.level_name}}级分销商</view>
+          </view>
+          <view class="line">
+            <view class="left">下单时间：</view>
+            <view class="right">{{item.create_time}}</view>
+          </view>
+          <view class="line bottom" wx:if="{{ store_type == 0 }}">
+            <text>共{{item.num}}件商品 实付款：</text>￥{{item.cost_price}}
+          </view>
+          <view class="line bottom" style="height:88rpx;" wx:if="{{ store_type == 1 }}">
+            <text>共{{item.num}}件商品 实付款：</text>￥{{item.goods_price}}
+            <view><text>自己发货可结算</text>￥{{item.goods_price}}<text>平台发货可结算 </text>￥{{item.goods_list[0].fx_price}}</view>
+          </view>
+        </view>
+        <!-- <view class='divided'></view> -->
+      </view>
+    </view>
+     </block>
+  </view>
+</view>
+<!-- 分销订单模块结束 -->
+
+
+<!-- 底部菜单 --> 
+<import src="../../index/publics/publics.wxml"/>
+<template is="distributMenu" data="{{page:page,isiphoneX:isiphoneX,is_A:is_A}}" />

@@ -1,0 +1,81 @@
+/* account.wxss */
+page{
+    background: #fff;
+    padding-bottom: 120rpx;
+}
+.headInfo {
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 30rpx 60rpx;
+    width: 96%;
+    background: linear-gradient(to right, #6ddbd6, #70dcd8);
+    border-radius: 25rpx;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 26rpx;
+}
+.flexR {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.fs30 {
+    font-size: 30rpx;
+}
+.fs35 {
+    font-size: 35rpx;
+}
+.applyMoney {
+    background: #fff;
+    color: #666;
+    padding: 8rpx 20rpx;
+    border-radius: 12rpx;
+    vertical-align: -webkit-baseline-middle;
+}
+.colf1 {
+    color: #f1f1f1;
+}
+
+/* 主题展示区域 */
+.item {
+    position: relative;
+    padding: 15rpx 30rpx 25rpx 30rpx;
+}
+.fw600 {
+    font-weight: 550;
+}
+.colred {
+    color: #f10215;
+}
+.col555 {
+    color: #555;
+}
+.fs24 {
+    font-size: 24rpx;
+}
+.fs26 {
+    font-size: 26rpx;
+}
+.col333 {
+    color: #333;
+}
+.odd-price,.time-describe {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10rpx;
+}
+.withdrawalTitle {
+    padding: 15rpx 30rpx;
+}
+.withdrawal {
+    padding: 15rpx 30rpx;
+    font-size: 26rpx;
+    color: #555;
+}
+
+.hasPhoto {
+    position: absolute;
+    right: 10rpx;
+    bottom: 10rpx;
+}

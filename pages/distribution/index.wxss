@@ -1,0 +1,188 @@
+/* pages/distribution/index.wxss */
+.title {
+  height: 104rpx;
+  width: 100%;
+  background: #18c2ba;
+  font-size: 34rpx;
+  text-align: center;
+  line-height: 104rpx;
+  color: #fff;
+}
+.fr {
+  float: right;
+}
+checkbox .wx-checkbox-input {
+	width: 34rpx;
+	height: 34rpx;
+	border-radius: 50%;
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #589ab8;
+  border-color:#589ab8;
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 20rpx;
+  height: 20rpx;  
+  line-height: 20rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.control-all {
+  position: relative;
+  display: flex;
+  padding-left: 28rpx;
+  margin-top: 26rpx;
+  margin-bottom: 20rpx;
+  line-height: 35rpx;
+}
+.control-all checkbox {
+  margin-right: 235rpx;
+}
+.aaalll {
+  position: absolute;
+  top: 0;
+  left: 70rpx;
+  width: 120rpx;
+  height: 30rpx;
+  color: #589ab8;
+  font-weight: 500;
+}
+.inputBoxA {
+  border: 1px solid #ccc;
+  display: inline-block;
+  height: 44rpx;
+  display: flex;
+}
+input {
+  width: 110rpx;
+  height: 42rpx;
+  text-align: center;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.jiajian {
+  width: 52rpx;
+  height: 42rpx;
+  line-height: 40rpx;
+  text-align: center;
+  color: #18c2ba;
+}
+
+
+.jiajianIntro {
+  font-size: 32rpx;
+  line-height: 40rpx;
+  color: #18c2ba;
+}
+
+.distribution-item {
+  position: relative;
+  justify-content: space-between;
+  padding: 0 17rpx 0 28rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  height: 270rpx;
+  width: 720rpx;
+  box-sizing: border-box;
+  border-radius: 15rpx;
+  box-shadow: 0 0 5rpx 5rpx #ccc;
+  border-bottom: 1px solid #18c2ba;
+  color: #18c2ba;
+}
+.distribution-item checkbox {
+  position: absolute;
+  top: 0;
+  left: 28rpx;
+  line-height: 200rpx;
+}
+.distribution-item input {
+  color: #000;
+}
+.distribution-item .color333 {
+  color: #555;
+}
+.distribution-item .item-img {
+  position: absolute;
+  top: 25rpx;
+  left: 30rpx;
+  height: 180rpx;
+  width: 180rpx;
+  flex: 34;
+  background-color: #fff;
+}
+.item-price-intro {
+  font-size: 26rpx;
+}
+.choose-single {
+  width: 28rpx;
+  height: 100%;
+  /* background-color: #ccc; */
+}
+.distribution-item .txt {
+  position: absolute;
+  top: 25rpx;
+  left: 230rpx;
+}
+.distribution-item image {
+  width: 180rpx;
+  height: 180rpx;
+} 
+
+.ctrl {
+  display: flex;
+  flex-direction: row;
+  padding-left: 162rpx;
+  margin-top: 28rpx;
+  line-height: 44rpx;
+  text-align: center;
+}
+.line {
+  position: absolute;
+  width: 600rpx;
+  left: 50%;
+  top: -30rpx;
+  transform: translateX(-50%);
+  border-bottom: 1px solid #000;
+}
+
+.makesure {
+  margin-top: 15rpx;
+  width: 676rpx;
+  height: 88rpx;
+  background: #18c2ba;
+  border-radius: 44rpx;
+  text-align: center;
+  line-height: 88rpx;
+  color: #fff;
+  font-size: 42rpx;
+  font-weight: 700;
+}
+
+/* 返回按钮 */
+.back1 {
+  position: absolute;
+  top: 15rpx;
+  left: 38rpx;
+  height: 45rpx;
+  width: 45rpx;
+  font-size: 66rpx;
+  color: #fff;
+  font-weight: 500;
+}
+
+.distribution-item .fangda {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40rpx;
+  width: 40rpx;
+  border-radius: 50%;
+  opacity: .7;
+}

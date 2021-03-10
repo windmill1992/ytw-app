@@ -1,0 +1,97 @@
+.container{
+    font-size: 28rpx;
+}
+.cover-layer {
+    z-index: 2!important;
+}
+.message{
+    padding: 60rpx 40rpx;
+    line-height: 40rpx;
+    margin: 0 auto;
+    margin-top: 20rpx;
+    border-radius: 10rpx;
+    background: #fff;
+    width: 710rpx;
+    box-sizing: border-box;
+}
+.item{
+    float: left;
+    padding: 0 30rpx; 
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #f3f3f3;
+    background-color: white;
+    line-height: 100rpx;
+    height: 100rpx;
+    position: relative;
+}
+.item-name{
+    float: left;
+}
+.item-input{
+    float: left;
+    height: 100rpx;
+    width: 450rpx;
+    margin-left: 20rpx;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.arrow{
+    position: absolute;
+    right: 30rpx;
+    width: 32rpx;
+    height: 32rpx;
+    padding-top: 30rpx;
+}
+.submit-btn{
+    position: fixed;
+    bottom: 80rpx;
+    width: 50%;
+    margin-left: 25%;
+    font-size: 36rpx;
+    background-color: #ff3b3b;
+    color: white;
+    line-height: 100rpx;
+    border-radius: 10rpx;
+}
+/* 取消订单原因弹框 */
+.reason-modal{
+    z-index: 20;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: hidden;
+    color: #666666;
+    background-color: white;
+}
+.reason-nav{
+    text-align: center;
+    font-size: 35rpx;
+    padding-top: 30rpx;
+}
+.reason-list{
+    padding: 20rpx 30rpx 40rpx;
+    font-size: 28rpx;
+}
+.reason-item{
+    display: block;
+    padding: 20rpx 0;
+}
+.reason-btn{
+    width: 100%;
+    color: white;
+    background-color: #ff3b3b;
+    line-height: 90rpx;
+    text-align: center;
+    font-size: 40rpx;
+}
+.formbox{
+  border-radius: 10rpx;
+  width: 710rpx;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 20rpx;
+}

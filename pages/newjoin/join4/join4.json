@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "商家入驻",
+    "navigationBarBackgroundColor": "#fff",
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+        "van-dialog": "../../../dist/dialog/index",
+        "van-action-sheet": "../../../dist/action-sheet/index"
+      }
+}

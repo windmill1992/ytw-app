@@ -1,0 +1,395 @@
+<!-- 由此结构部分为 4.5 代  -->
+<van-sticky>
+  <view class="absTop" catchtap="true">
+    <view class="detailTop">
+      <input type="text" class="topSearch" bindconfirm="searchInput" confirm-type="search" placeholder="输入厂名搜索"></input>
+      <van-button color="#18c2ba" catchtap="PopupAddNewFac" data-info="{{res.order}}" custom-style="display:inline-block;width:260rpx;height:62rpx;vertical-align: top;line-height:62rpx;float:right;border-radius:15rpx;padding: 0 6rpx;">新增厂家并收货</van-button>
+    </view>
+    <view class="someOrderInfo">
+      <view class="someOrderInfo1">
+        <view>封包倒计时</view>
+        <view class="colfe751b fw550">{{ res.order.count_down }}</view>
+      </view>
+      <view class="someOrderInfo1">
+        <view>仓位号</view>
+        <view class="colff4848 fw550">{{ res.order.position_name }}</view>
+      </view>
+      <view class="someOrderInfo1">
+        <view>送货确认码</view>
+        <view class="coltheme fw550">{{ res.order.auth_code }}</view>
+      </view>
+    </view>
+
+    <view class="detailLevel3">
+      <view>厂家数:<text class="{{res.order.order_receive_num > 0 ? 'coltheme' : '#666'}}">{{factory.length}}个</text></view>
+      <view>总收货:<text class="{{res.order.order_receive_num > 0 ? 'coltheme' : '#666'}}">{{calculation_receive_num}}手</text><text style="font-size:18rpx;" wx:if="{{hasInherit}}">(含结余)</text></view>
+      <view>已拉包:<text style="color:{{res.order.order_take_num > 0 ? '#18c2ba' : '#666'}};">{{calculation_take_num}}手</text></view>
+      <view><text class="screenBtn" catchtap="showScreen">{{'筛选'}}</text></view>
+    </view>
+    <view class="operationBoxx" wx:if="{{ showScreen }}">
+      <view class="operationItem" wx:for="{{operations}}" wx:key="index" data-index="{{item.index}}" catchtap="switchFac" style="color:{{ (item.name == '全部拉包' || item.name == '部分拉包') ? '#18c2ba' : '' }};">{{ item.name }} <van-icon name="success" data-index="{{item.index}}" catchtap="switchFac" wx:if="{{item.index == showType}}" style="position:absolute;right:0rpx;top:10rpx;"/></view>
+    </view>
+
+    <!-- 表头 -->
+    <view class="detailFacBox">
+      <view class="detailFacTitle">
+        <view class="titleItem"  catchtap="sortFac" data-type="manufactor_name" data-index="0" style="flex:1;line-height: 60rpx;"><text class="vts">厂名 </text><view class="displayInlineBlock"><image class="absupdown bllur" src="https://www.yitongwang.com/public/static/images/uup.png"></image><image class="absupdown" src="https://www.yitongwang.com/public/static/images/ddn.png"></image></view></view>
+        <view class="titleItem"  catchtap="sortFac" data-type="num1" data-index="1" style="flex:.6;line-height: 60rpx;"><text class="vts">预约</text><text class="vts fs20">(手) </text><view class="displayInlineBlock"><image class="absupdown" src="https://www.yitongwang.com/public/static/images/uup.png"></image><image class="absupdown" src="https://www.yitongwang.com/public/static/images/ddn.png"></image></view></view>
+        <view class="titleItem"  catchtap="sortFac" data-type="receive_num" data-index="2" style="flex:.6;"><text class="vts w80"> 收货 未打包</text><view class="displayInlineBlock" style="height:54rpx;"><image class="absupdown" src="https://www.yitongwang.com/public/static/images/uup.png"></image><image class="absupdown" src="https://www.yitongwang.com/public/static/images/ddn.png"></image></view></view>
+        <view class="titleItem"  catchtap="sortFac" data-type="receive_num" data-index="2" style="flex:.6;"><text class="vts w80"> 打包 未拉走</text><view class="displayInlineBlock" style="height:54rpx;"><image class="absupdown" src="https://www.yitongwang.com/public/static/images/uup.png"></image><image class="absupdown" src="https://www.yitongwang.com/public/static/images/ddn.png"></image></view></view>
+        <view class="titleItem"  catchtap="sortFac" data-type="num4" data-index="3" style="flex:.6;line-height: 60rpx;"><text class="vts">已拉包</text><view class="displayInlineBlock"><image class="absupdown" src="https://www.yitongwang.com/public/static/images/uup.png"></image><image class="absupdown" src="https://www.yitongwang.com/public/static/images/ddn.png"></image></view></view>
+        <view class="titleItem vts" style="flex:.4;line-height: 60rpx;">操作</view>
+      </view>
+      <view class="dotedLine"></view>
+    </view>
+  </view>
+</van-sticky>
+
+<view class="mask1" catchtouchmove="true" catchtap="closeScreen" wx:if="{{showScreen}}"></view>
+<view class="mask22" catchtouchmove="true" catchtap="closeScreen2" wx:if="{{showScreen2}}"></view>
+
+<!-- 厂家部分 -->
+<view class="detailFacBox" style="padding-top:330rpx;">
+	<view class="facItem" wx:for="{{factory}}" wx:key="index" >
+		<view class="facItemL" style="flex:2.8;" data-status="{{ item.status }}" catchtap="showRecord" data-id="{{ item.manufactor_id }}" data-index="{{index}}" data-num="{{ item.goods_number }}" data-type="recode">
+			<view style="flex:.8;" class="facItemName fw550">{{item.manufactor_name}}</view>
+			<view style="flex:.5;">{{item.goods_number > 0 ? item.goods_number : '未填'}}</view>
+			<view style="flex:.5;position:relative;">
+        <text wx:if="{{!isShowPack || (isShowPack && !item.canPack) || (isShowPack && item.canPack && !item.lj)}}">{{item.num2}}</text>
+        <input type="number" class="packNum4_5" value="{{item.packNum}}" wx:if="{{isShowPack && item.canPack && item.lj}}" bindblur="packInputBlur" bindinput="packInputChange" data-index="{{index}}"></input>
+      </view>
+			<view style="flex:.5;">{{item.num3}}</view>
+			<view style="flex:.5;">{{item.num4}}</view>
+                                                                     
+		</view>
+		<view class="facItemR" style="{{ (!isShowPack && item.status > 5) ? 'background-color:#ffca28;line-height:38rpx;' : 'background-color:#fff;' }}flex:.4;text-align:center;">
+      <text wx:if="{{!isShowPack && item.cancel_code <= 0 && item.status < 6}}" data-status="{{ item.status }}" catchtap="showRecord" data-id="{{ item.manufactor_id }}" data-num="{{ item.goods_number - item.receive_num - item.time_out_num - 0 }}" data-type="recive">收货</text>
+      <text wx:if="{{!isShowPack && item.cancel_code > 0}}" style="color:#333;border-radius:8rpx;">取消码
+        {{item.cancel_code}}</text>
+      <text style="line-height: unset;" wx:if="{{ !isShowPack && item.cancel_code == 0 && showType == 5 }}">-</text>
+      <van-checkbox wx:if="{{isShowPack && item.canPack}}" value="{{ item.lj }}" checked-color="#18c2ba" data-index="{{ index }}" bind:change="choosePackFac" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);"></van-checkbox>
+      <van-checkbox wx:if="{{isShowPack && !item.canPack}}" value="{{true}}" checked-color="#ccc" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);"></van-checkbox>
+		</view>
+	</view>
+</view>
+
+
+<!-- 底部操做 -->
+<view class="bottomBar" bindtap="closeBottomTips" style="{{isShowPack ? 'bottom:-280rpx;' : bottomPosition}}">
+  <view class="absBottomL">
+    <view>状态:</view>
+    <view class="col555" style="font-size:{{ res.order.order_status == 2 ? '24rpx' : '' }};">{{res.order.status_text}}</view>
+  </view>
+  <view class="BottomM">
+    <text class="BottomMItem" catchtap="clickBottomItem" data-type="pack">打包</text>
+    <text class="BottomMItem" catchtap="clickBottomItem" data-type="go">拉包</text>
+    <text class="BottomMItem" catchtap="clickBottomItem" data-type="tel">电话</text>
+    <text class="BottomMItem" catchtap="clickBottomItem" data-type="log">明细</text>
+  </view>
+  <view class="absBottomR" catchtap="clickDotted">
+    <van-icon info="{{res.order.audit_count > 0 ? res.order.audit_count : ''}}" name="more-o" size="50rpx" color="{{ res.order.audit_count > 0 ? '#ff5656' : '#18c2ba' }}" style="position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);" />
+  </view>
+</view>
+<!-- 取消确定 -->
+<view class="confirmCancel" style="{{isShowPack ? bottomPosition : 'left:-1000rpx;'}}">
+  <text style="flex:1;"  class="borderR" catchtap="unPack">取消</text>
+  <text style="flex:1;" catchtap="confirmPack">确定</text>
+</view>
+
+<view class="bottomTelBox" wx:if="{{bottomTipBox == 'tel'}}">
+  <view class="pd10" catchtap="makeCall" data-tel="{{res.order.mobile}}">预约电话：{{res.order.mobile}} {{res.order.name}}</view>
+  <view class="bottomLine"></view>
+  <view class="pd10" catchtap="makeCall" data-tel="{{res.order.logistics_phone}}">拉包电话：{{res.order.logistics_phone > 0 ? res.order.logistics_phone : '拼包中心代拉'}}</view>
+</view>
+<view class="bottomTelBox" style="right:55rpx;" wx:if="{{bottomTipBox == 'log'}}">
+  <view class="pd10" catchtap="seeRecodeLG" data-type="da">打包记录</view>
+  <view class="bottomLine" style="width:125rpx;"></view>
+  <view class="pd10" catchtap="seeRecodeLG" data-type="la">拉包明细</view>
+</view>
+<view class="bottomTelBox2" wx:if="{{bottomTipBox == 'dotted'}}">
+  <view class="bottomItem2 pd10" catchtap="clickDottedItem" data-type="yyxx">预约信息</view>
+  <view class="bottomItem2 pd10" catchtap="clickDottedItem" data-type="{{item.type}}" wx:for="{{applyItemList}}" data-index="{{index}}" wx:key="index">{{item.name}}</view>
+</view>
+<!-- 预约信息 -->
+<view class="yyxxMask" catchtouchmove="true" wx:if="{{bottomTipBox == 'yyxx'}}">
+  <view class="yyxxBox">
+    <view class="yyxxTitle">预约信息</view>
+    <view class="yyxxLine">
+      <view class="yyxxLL">预约人姓名：<text style="color:#666;">{{res.order.name}}</text></view>
+      <view class="yyxxLR">仓位号：<text style="color:#666;">{{res.order.position_name}}</text></view>
+    </view>
+    <view class="yyxxLine">
+      <view class="yyxxLL">送货确认码：<text style="color:#666;">{{res.order.auth_code}}</text></view>
+    </view>
+    <view class="yyxxLine">
+      <view class="yyxxLL">预约人电话：<text style="color:#666;">{{res.order.mobile}}</text><van-icon size="35rpx" style="vertical-align:middle;" color="#18c2ba" catchtap="makeCall" data-tel="{{ res.order.mobile }}" name="phone" /></view>
+    </view>
+    <view class="yyxxdotted"></view>
+    <view class="yyxxLine">
+      <view class="yyxxLL">收货人姓名：<text style="color:#666;">{{res.order.receipt_name}}</text></view>
+    </view>
+    <view class="yyxxLine">
+      <view class="yyxxLL">收货人电话：<text style="color:#666;">{{res.order.receipt_mobile}}</text><van-icon size="35rpx" style="vertical-align:middle;" color="#18c2ba" catchtap="makeCall" data-tel="{{ res.order.receipt_mobile }}" name="phone" /></view>
+    </view>
+    <view class="yyxxLine">
+      <view class="yyxxLL">收 货 地 址：<text style="color:#666;">{{res.order.receipt_address}}</text></view>
+    </view>
+    <view class="yyxxdotted"></view>
+    <view class="yyxxLine">
+      <view class="yyxxLL">物流公司名称：<text style="color:#666;">{{res.order.logistics_company || '未填写'}}</text></view>
+    </view>
+    <view class="yyxxLine">
+      <view class="yyxxLL">拉 包 人 员：<text style="color:#666;">{{res.order.logistics_phone ? res.order.logistics_phone : '拼包中心代拉'}}</text><van-icon wx:if="{{res.order.logistics_phone}}" size="35rpx" style="vertical-align:middle;" color="#18c2ba" catchtap="makeCall" data-tel="{{ res.order.logistics_phone }}" name="phone" /></view>
+    </view>
+    <view class="yyxxLine">
+      <view class="yyxxLL">下单备注信息：</view>
+    </view>
+    <view class="yyxxLine">
+      <view class="yyxxLL">最晚封包时间：<text style="color:#666;">{{res.order.appointment_date}}</text></view>
+    </view>
+    <view class="newRemark" style="height:{{newRemarkMore ? 'auto' : '50rpx'}};">
+      {{ res.order.order_remark || '无备注' }}
+      <view class="newRemarkMore" wx:if="{{ res.order.order_remark && res.order.order_remark.length > 15 && !newRemarkMore }}" catchtap="newRemarkMore"></view>
+    </view>
+    <view class="yyxxClose" catchtap="closeBottomTips">X</view>
+  </view>
+</view>
+<!-- 图片上传 弹出框 -->
+<view class="uploadImgPre" hidden="{{!showUploadImg}}">
+  <van-uploader file-list="{{ orderLog[curLogIndex].img || [] }}" max-count="3" deletable="{{deletable}}" show-upload="{{!disabledUpload}}"  bind:after-read="afterRead" bind:delete="delUploadImg" />
+  <view class="absCloseUpload" catchtap="absCloseUpload">收起</view>
+</view>
+
+<!-- 合计打包的数量  -->
+<view class="totalPackNum" wx:if="{{isShowPack}}">
+  <view>此次打包合计 <text style="border-bottom: 1px solid #000;padding: 0 10rpx;">{{totalPackNum || 0}}</text> 手</view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 记录 收货  -->
+<see-recode bind:closeLog="closeLog" bind:modify="modifyRecode" bind:modifyFacName="modifyFacName" wx:if="{{ seeLogFlag }}" admin isNormal="{{ true }}" slots="{{ showRecodeSlot }}" data1="{{ factoryLogInfo }}">
+  <view class="receiveSlot" slot="receiveSlot">
+    <view class="receiveSlotBox" wx:if="{{ slotType }}">
+        <view class="flex flex_r assd">
+          <view style="line-height:50rpx;">此次收货数量：</view>
+          <input placeholder-class="receiveSlotInputPlac" style="color:{{receiveSlotInputValCol}};" focus="{{receiveSlotFocus}}" placeholder-style="font-size:24rpx;padding-left:50rpx;" model:value="{{receiveSlotInputVal}}" bindblur="receiveSlotbindblur" class="receiveSlotInput" type="text"></input>
+          <text class="absPlace">(预约者调走的可输入负数)</text>
+        </view>
+        <view class="flex flex_r">
+          <view style="line-height:50rpx;">备注:</view>
+          <input placeholder-class="receiveSlotInputPlac" placeholder="请输入" model:value="{{receiveSlotInputVal2}}"  class="receiveSlotInput" type="text" style="width:525rpx;" maxlength="20"></input>
+        </view>
+      </view>
+    <view class="slotBtns">
+      <text class="slotTypeb" catchtap="clickSlotBtn1">取消</text>
+      <text class="slotTypea" catchtap="clickSlotBtn2">确定</text>
+    </view>
+  </view>
+</see-recode>
+
+
+<!-- 修改数量的弹窗 --> 
+<van-dialog
+  use-slot
+  id="van-dialog"
+  show="{{ modifyFacNameFlag }}"
+  show-cancel-button
+  bind:confirm="confirmModifyName"
+  >
+  <input class="editInput" model:value="{{ modifyFacName }}" placeholder="输入厂名"></input>
+</van-dialog>
+<!-- 收货数量 -->
+<van-dialog
+  use-slot
+  title="{{ recipientTitle }}"
+  show="{{ showInput }}"
+  show-cancel-button
+  bind:close="onCloseInput"
+  bind:confirm="onConfirmInput" 
+>
+  <input class="editInput" bindinput="receivedSumChange" maxlength="4" placeholder="输入数量" type="number" model:value="{{goodsSum}}"></input>
+</van-dialog>
+
+<!-- 处理用户申请的订单取消  修改申请 的提示框 -->
+<show-msg isShow="{{ showErrMsg }}" status="{{false}}" msg1="{{ msg1 }}" showTitle title="{{ errMsgTitle }}" msg2="{{ msg2 }}" msgStyle="padding:0 25rpx;font-size:36rpx;font-weight:600;line-height:55rpx;" showBtn1 showBtn2 inlineBtn btnTxt1="{{btnTxt1}}" btnTxt2="{{ btnTxt2 }}" bind:btnClick2="clickOperaBtn2"  bind:btnClick1="clickOperaBtn1"></show-msg>
+<!-- 修改打包日期的提示   -->
+<show-msg isShow="{{ showErrMsg2 }}" showBtn1 showBtn2 inlineBtn btnTxt1="同意" btnTxt2="拒绝" showTitle title="变更打包日期审核" bind:btnClick2="refuseUpdateTime"  bind:btnClick1="passUpdateTime">
+  <view class="applyModefyDate" slot="slot1">
+    <view class="applyModefyDateL">
+      <view style="color:#333;">原打包日期</view>
+      <view style="color:#666;">{{oldTimeMsg}}</view>
+    </view>
+    <view class="applyModefyDateR">
+      <view style="color:#333;">变更后日期</view>
+      <view style="color: #18c2ba;">{{newTimeMsg}}</view>
+    </view>
+  </view>
+</show-msg>
+<!-- 发送取消厂家 -->
+<show-msg isShow="{{ showErrMsg3 }}" status="{{false}}" showBtn1 showBtn2 inlineBtn facName="{{curFacName}}" btnTxt1="{{ cancelFacBtn1 }}" btnTxt2="{{ cancelFacBtn2 }}" msgStyle="padding:0 25rpx;font-size:36rpx;font-weight:600;line-height:55rpx;" showTitle title="申请取消厂家" msg1="{{ cancelFacMsg1 }}" bind:btnClick2="clickCancelFac1"  bind:btnClick1="clickCancelFac2"></show-msg>
+
+<!-- 查看打包记录的 showReceive -->
+<view class="modifyPopupcustom" catchtouchmove="true" hidden="{{!showReceive}}">
+	<view class="modifyPopup" style="height:70vh;{{ orderLog.length > 5 ? 'margin-top:26%;padding-bottom:80rpx;' : 'margin-top:30%;padding-bottom:0rpx;' }}">
+		<view class="modifyRecordTitle">{{logType}}<text style="font-size:22rpx;" wx:if="{{logType != '拉包操作'}}">(合计:{{orderLog[0].order_total_num}}手)</text><text style="font-size:22rpx;" wx:if="{{logType == '拉包操作'}}">(待拉包合计:{{orderLog[0].order_un_take_num}}手)</text></view>
+		<scroll-view scroll-y="true" class="modifyPopupscroll">
+			<view class="modifyRecordContent">
+				<view class="modifyRecordHead flx flx_r">
+					<text style="flex:.5;">时间</text>
+					<text>厂名</text>
+					<text style="flex:.4;">数量</text>
+					<text style="flex:.5;">操作</text>
+				</view>
+				<view wx:for="{{ orderLog }}" wx:key="index" class="rela" style="overflow:{{goDetailOperaIndex >= 0 ? 'unset' : 'hidden'}};margin:5px auto;border-radius:35rpx;" wx:if="{{item.total_num != 0}}">
+					<view class="modifyRecordItem flx flx_r fw550" style="font-weight:550;">
+						<view style="flex:.5;font-size:22rpx;line-height: 32rpx;">
+								<view>{{ m1.brTime( item.create_date,'a' ) }}</view><view>{{ m1.brTime( item.create_date,'b' ) }}</view>
+							</view>
+						<view class="lh65" catchtap="seeDetailFac" data-index="{{ index }}">明细 <text style="color:#cfe0df;" class="absAfterArrow">{{ '哟' }}</text></view>
+						<view style="flex:.4;" class="lh65">{{item.total_num}}手</view>
+						<view  style="flex:.5;position:relative;">
+              <text wx:if="{{logType == '打包记录'}}" catchtap="seeDetailFac" data-index="{{ index }}" data-pid="{{item.pid}}" class="lh65">展开 <text style="color:#cfe0df;" class="absAfterArrow">{{ '哟' }}</text></text>
+              <view wx:if="{{logType == '拉包操作'}}" catchtap="seeUploadBox" data-index="{{index}}">
+                <block wx:if="{{item.pid>0}}">
+                  <text style="color:#18c2ba;" space="emsp" class="fw550"> 已拉走 查看凭证</text>
+                </block>
+                <block wx:if="{{item.pid == 0}}">
+                  <text  space="emsp" class="fw550 " wx:if="{{item.img.length == 0}}" style="color:#fb1717;"> 待拉包 上传凭证</text>
+                  <text  space="ensp" class="fw550 imgUploadOk" wx:if="{{item.img.length > 0}}" style="color:#cdabe6;line-height: 30rpx;"> 已上传 拉包凭证</text><icon class="abs_success_no_circle" wx:if="{{item.img.length > 0}}" type="success_no_circle" size="40rpx"></icon>
+                </block>
+              </view>
+              <view wx:if="{{logType == '拉包明细'}}">
+                <van-icon name="more-o" size="50rpx" color="#ff5656" style="position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);" data-index="{{index}}" catchtap="showGoOpera"/>
+                <view class="goDetailOpera" wx:if="{{goDetailOperaIndex == index}}">
+                  <view class="goOperaiitem" catchtap="revokeGo" data-id="{{ item.pack_log_id }}" class="revokeGo">撤销拉包</view>
+                  <view class="goOperaiitem" catchtap="seeUploadBox" data-index="{{index}}">查看拉包凭证</view>
+                </view>
+              </view>
+            </view>
+					</view>
+					<view>
+						<view class="modifyRecordItem flx flx_r" wx:for="{{ item.log }}" wx:for-item="item2" wx:for-index="index2" wx:key="index2" wx:if="{{ item.lj }}" style="position:relative;display:flex;text-align:center;color:#999;">
+							<view style="flex:.5;font-size:22rpx;line-height: 32rpx;">
+								<view>{{ m1.brTime( item2.create_date,'a' ) }}</view><view>{{ m1.brTime( item2.create_date,'b' ) }}</view>
+							</view>
+							<view style="">
+								<view class="lh65">{{ item2.manufactor_name }}</view>
+							</view>
+							<text style="flex:.4;" class="lh65">{{item2.num}}手</text>
+							<text class="lh65" wx:if="{{logType == '打包记录'}}" style="flex:.4;position:relative;" catchtap="modifyLog" data-logid="{{item2.log_id}}" data-index1="{{index}}" data-index2="{{index2}}" data-num="{{ item2.num }}"><text class="popupOperaFac popupOperaFac2">{{' '}}</text></text>
+							<text class="lh65" wx:if="{{logType != '打包记录'}}" style="flex:.5;position:relative;" ><text class="">{{' '}}</text></text>
+						</view>
+						<view class="labaorecord modifyRecordItem flx flx_r" wx:if="{{ item.lj }}" style="text-align:center;">
+							<text class="lh65">{{ ' ' }}</text>
+							<text style="flex:.8;" class="lh65">{{ ' ' }}</text>
+							<text class="lh65" catchtap="collectedRecord" data-index="{{index}}"><text class="shouqia">{{ '收起' }}</text><text style="color:#cfe0df;position:relative;" class="absAfterArrow2">1呦</text></text>
+						</view>
+          </view>
+				</view>
+			</view>
+			<view style="height:150rpx;"></view>
+		</scroll-view>
+		<view class="modifyPopupBtns flx flx_r" catchtouchmove="true" style="top:8rpx;">
+			<text catchtap="closeModifyPopup" class="roundX" >X</text>
+    </view>
+    <view wx:if="{{res.order.order_status < 5 && res.order.position_is_null != 1 && logType == '拉包操作'}}" style="width:100%;height:80rpx;bottom:0;line-height:80rpx;" class="modifyPopupBtns flx flx_r" catchtouchmove="true">
+			<text class="borderR" catchtap="closeModifyPopup">取 消</text>
+			<text style="color:#18c2ba;" catchtap="shreLaBao" >确 定</text>
+    </view>
+	</view> 
+</view>
+
+<!-- 新增厂家收货  receiveFactory-->
+<van-popup show="{{ receiveFactory }}" bind:close="closeModifyPopup" round>
+	<view class="receiveFactoryBox">
+		<view style="background-color:##e7f9f8;border-radius:35rpx 35rpx 0 0;">
+			<view class="receiveFactoryTitle">新增厂家收货</view>
+			<view class="receiveFactoryHead"><text style="flex:1;">厂名</text><text style="flex:1;">数量</text><text space="emsp" style="flex:.5;">备注</text></view>
+			<scroll-view scroll-y="{{ true }}" class="receiveFactoryScroll">
+				<view wx:for="{{ receiveFactoryList }}" wx:key="index" class="receiveFactoryItem">
+					<input class="receiveFactoryInput" data-index="{{ index }}" value="{{item.manufactor_name}}" data-type="name" bindinput="receiveFactoryInput" placeholder="厂名" type="text"></input>
+          <input class="receiveFactoryInput receiveFactoryInput2" data-index="{{ index }}" value="{{item.num}}" data-type="sum" bindinput="receiveFactoryInput" placeholder="数量" type="number"></input>
+          <text class="absRemark" catchtap="showAddFacRemark" data-index="{{index}}">{{item.receive_remark || '备注'}}</text>
+					<text class="receiveFactoryDel" catchtap="receiveFactoryDel" data-index="{{ index }}">X</text>
+				</view>
+				<view class="receiveFactoryItem">
+					<input class="receiveFactoryInput" value="{{receiveFactoryNew.manufactor_name}}" data-type="name" bindblur="checkBlur" bindinput="receiveFactoryInput3" placeholder="厂名" type="text"></input>
+          <input class="receiveFactoryInput receiveFactoryInput2" value="{{receiveFactoryNew.num}}" data-type="sum" bindblur="checkBlur" bindinput="receiveFactoryInput3" placeholder="数量" type="number"></input>
+          <text class="absRemark" value="{{receiveFactoryNew.receive_remark}}" data-type="remark" bindinput="receiveFactoryInput2" placeholder="备注" type="text"></text>
+				</view>
+			</scroll-view>
+		</view>
+		<view class="receiveFactoryBtns">
+			<text catchtap="operationReceiveBtn2" data-type="cancel" style="flex:1;" class="borderR">取消</text>
+			<text catchtap="operationReceiveBtn2" data-type="confirm" data-receive="more" style="flex:1;">确定</text>
+		</view>
+	</view>
+</van-popup>
+
+
+
+<!-- 4.5版 更改打包数量  curFacName -->
+<view class="changePackNumMask" catchtouchmove="true" wx:if="{{showModifyLog}}">
+  <view class="changePackNum">
+    <view class="changePackNumTitle">{{ curFacName }}</view>
+    <view class="changePackNumTitle">修改<text style="color:#f10215;">打包</text>数量</view>
+    <view class="changePackNumBody">
+      <view class="changePackNumL" style="flex:1;">
+        <view class="m20">原<text style="color:#f10215;">打包</text>数量</view>
+        <view style="color:#666;">{{modifyData.beforeNum}}手</view>
+      </view>
+      <view class="changePackNumR" style="flex:1;">
+        <view class="m20">修改为</view>
+        <view class="changePackNumRView"><input class="changePackNumRInput" placeholder="请输入" value="{{modifyData.num}}" data-type="sum" bindinput="receiveFactoryInput2" type="number"></input></view>
+      </view>
+    </view>
+    <view class="changePackNumBtns">
+      <text class="changePackNumBtn" catchtap="operationReceiveBtn" data-type="cancel">取消</text>
+      <text class="changePackNumBtn" catchtap="operationReceiveBtn" data-type="confirm" data-receive="one">确定</text>
+    </view>
+    <view class="changePackNumBg"></view>
+  </view>
+</view>
+
+<!-- 修改新增厂家收货 备注 -->
+<van-popup show="{{ showAddFacRemark }}" bind:close="closeModifyPopup" round bind:click-overlay="true">
+	<view class="receiveFactoryBox" style="height:220rpx;">
+		<view style="background-color:#e7f9f8;">
+			<view class="receiveFactoryTitle">备注</view>
+				<view class="receiveFactoryItem">
+					<input class="facRemarkVal" model:value="{{ addFacRemark }}" bindinput="addFacRemarkInput" focus="{{ addFacRemarkFocus }}" placeholder="备注" type="text" maxlength="20"></input>
+				</view>
+		</view>
+		<view class="receiveFactoryBtns">
+			<text catchtap="closeModifyPopup" style="flex:1;" class="borderR">取消</text>
+			<text catchtap="confirmAddFacRemark" style="flex:1;">确定</text>
+		</view>
+	</view>
+</van-popup>
+<wxs module="m1">
+  var brTime = function(t,type){
+      if (!t) {
+        return ''
+      }
+			var t = t.split(' ')
+			return type == 'a' ? t[0] : t[1]
+  }
+  module.exports.brTime = brTime;
+</wxs>

@@ -1,0 +1,125 @@
+/* address_list.wxss */
+page{
+    margin-bottom: 200rpx;
+}
+.address-box{
+    background-color: white;
+    padding: 25rpx 25rpx 25rpx 25rpx;
+    font-size: 28rpx;
+    border-bottom: 3rpx solid #f3f3f3;
+    width: 710rpx;
+    border-radius: 10rpx;
+    margin: 0 auto;
+    margin-top: 20rpx;
+    box-sizing: border-box;
+}
+.address-box .topbox{
+  width: 100%;
+  border-bottom: 1rpx solid #f3f3f3;
+  height: 120rpx;
+}
+.address-box .footbox{
+  width: 100%;
+  height: 60rpx;
+  line-height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+}
+.choosebox{
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.address-box .footbox .leftbox{
+  height: 100%;
+  width: 200rpx;
+}
+.address-box .footbox .rightbox{
+  height: 100%;
+  width: 120rpx;
+  text-align: right;
+}
+.editimg{
+  width: 32rpx;
+  height: 34rpx;
+  vertical-align: middle;
+  position: relative;
+  top: -2rpx;
+}
+.address-user{
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+.user-name{
+    font-size: 30rpx;
+    padding-bottom: 20rpx;
+    word-break:keep-all;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    max-width: 380rpx;
+}
+.default{
+    color: white;
+    background-color: red;
+    padding: 4rpx;
+    width:fit-content;
+    border-radius:6rpx;
+}
+.address-info{
+    box-sizing: border-box;
+    padding-left: 10rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+}
+.mobile{
+    padding-bottom: 20rpx;
+}
+.address{
+    height: 50rpx;
+    overflow: hidden;
+    font-size: 24rpx;
+    color: #999;
+    width: 100%;
+    line-height: 50rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.address-edit{
+    box-sizing: border-box;
+    width:95rpx;
+    float: left;
+    text-align: center;
+    padding-top: 32rpx;
+}
+.address-edit>image{
+    width: 36rpx;
+    height: 42rpx;
+}
+.address-create{
+    width: 50%;
+    text-align: center;
+    position: fixed;
+    bottom: 80rpx;
+    left: 25%;
+}
+.create-btn{
+    font-size: 28rpx;
+    color: white;
+    background-color: #ff3b3b;
+    border-radius: 10rpx;
+    text-align: center;
+    line-height: 80rpx;
+    display: block;
+}
+.choosebox{
+    width: 32rpx;
+    height: 32rpx;
+    position: relative;
+    top: -2rpx;
+}

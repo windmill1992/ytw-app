@@ -1,0 +1,70 @@
+.van-tab--active {
+  color: var(--tab-active-text-color,#18c2ba)!important;
+}
+.van-ellipsis {
+  font-weight: bold!important;
+}
+page {
+  background-color: #fff;
+  padding-bottom: 160rpx;
+}
+.remarkBox {
+  position: relative;
+  margin: 0 auto;
+  padding: 46rpx 10rpx 80rpx;
+  box-sizing: border-box;
+  height: 400rpx;
+  width: 550rpx;
+  background-color: #fff;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+}
+.remarkArea {
+  padding: 8rpx;
+  height: 100%;
+  width: 100%;
+  background-color: #ebf9f8;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: rgb(97, 97, 97);
+  box-sizing: border-box;
+}
+
+.remarkPlace {
+  font-size: 26rpx;
+  color: rgb(185, 182, 182);
+}
+.remarkHead {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 150rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 0 0 40rpx 40rpx;
+  background-color: #18c2ba;
+  color: #fff;
+}
+.remarkBtn {
+  position: absolute;
+  bottom: 12rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  background-color: #18c2ba;
+  border-radius: 28rpx;
+  color: #fff;
+}
+.absRemarkSum {
+  position: absolute;
+  right: 25rpx;
+  bottom: 82rpx;
+  font-size: 22rpx;
+  color: #333;
+}

@@ -1,0 +1,24 @@
+<view class="topBg" wx:if="{{public}}">
+  <image class="topImg" src="https://test.yitongwang.com/public/static/images/minniapp/help_top_bg.png"></image>
+</view>
+<!-- 切换选项 -->
+<view class="switchType" wx:if="{{public}}">
+  <view catchtap="switchType" data-type="a" class="switchItem{{type == 'a' ? ' current' : ''}}">我是厂家</view>
+  <view catchtap="switchType" data-type="b" class="switchItem{{type == 'b' ? ' current' : ''}}">我是采购商</view>
+</view>
+
+<!-- 视频选项 -->
+<view wx:for="{{video.factory}}" wx:key="index" class="videoItem" wx:if="{{type == 'a' && public}}">
+  <image src="{{url + item.img}}" class="maskImg" data-index="{{index}}" catchtap="seeVideo"></image>
+</view>
+
+<view wx:for="{{video.buyer}}" wx:key="index" class="videoItem" wx:if="{{type == 'b' && public}}">
+  <image src="{{url + item.img}}" class="maskImg" data-index="{{index}}" catchtap="seeVideo"></image>
+</view>
+
+<video class="Video" id="video" bindfullscreenchange="fullscreenchange" controls src="{{url + vviiddeeoo}}" direction="0"></video>
+
+<view class="defaultPage" wx:if="{{!public}}">
+  <image src="https://yitongwang.oss-cn-hangzhou.aliyuncs.com/miniapp/success.png" class="img1"></image>
+  <view class="orige">正在开发中！</view>
+</view>

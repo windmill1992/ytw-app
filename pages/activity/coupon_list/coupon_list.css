@@ -1,0 +1,286 @@
+page{
+    background-color: #f5f5f5;
+    padding-top: 90rpx;
+}
+.container {
+    color: #333;
+    background:#f5f5f5;
+}
+.red{
+    font-weight: bold;
+    color: #ff3b3b;
+}
+.nav-item{
+    float: left;
+    width: 33.33%;
+    height: 90rpx;
+    line-height: 90rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+}
+.nav-item .ico-dg{
+    width: 32rpx;
+    height: 18rpx;
+    margin-left: 10rpx;
+    line-height: 0;
+}
+.nav-item .ico-dg>.wh100{
+  width: 15rpx;
+  height: 9rpx;
+}
+.nav{
+    background: #fff;
+    position: fixed;
+    top: 0rpx;
+    width: 100%;
+    z-index: 1000;
+    color: #333;
+}
+.coupon-box{
+    font-size: 26rpx;
+    padding: 0 30rpx;
+    margin: 15rpx 0;
+    background:#fff;
+}
+.conpon-left{
+    float:left;
+    padding: 30rpx 0 30rpx 10rpx;
+}
+.conpon-img{
+    box-sizing: border-box;
+    float:left;
+    height: 150rpx;
+    width: 150rpx;
+    border: 1rpx solid #f3f3f3;
+}
+.coupon-detail{
+    float:left;
+    padding: 10rpx 10rpx;
+}
+.coupon-title{
+    width: 350rpx;
+    height: 40rpx;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.coupon-range{
+    width: 350rpx;
+    line-height: 40rpx;
+    font-size: 24rpx;
+    color: #999;
+}
+.coupon-info{
+    color: #4cb6b8;
+    margin-top: 10rpx;
+}
+.discounts{
+    font-size: 40rpx;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.conpon-right{
+    position: relative;
+    float:right;
+    width: 160rpx;
+    height: 160rpx;
+    padding-top:50rpx;
+    background-color: #74d2d4;
+    text-align: center;
+    color: #f6f6f6;
+    border-top-right-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+.conpon-right .hidden{
+    display: none;
+}
+.conpon-right .have{
+    position:absolute;
+    top:-10rpx;
+    left:-50rpx;
+    display:block;
+    border:6rpx solid #f3f3f3;
+    width:124rpx;
+    height:124rpx;
+    border-radius:50%;
+    padding:8rpx;
+    font-size:35rpx;
+}
+.conpon-right .have text{
+    display:block;
+    width:120rpx;
+    height:120rpx;
+    border:1px solid #f3f3f3;
+    border-radius:50%;
+    line-height:120rpx;
+    transform:rotate(-30deg);
+}
+.conpon-right .go-use{
+    display: none;
+    position: absolute;
+    bottom: 15rpx;
+    left:10rpx;
+    width:130rpx;
+    background:#F9F124;
+    color:#C65217;
+    border-radius:100rpx;
+    padding:4rpx 0;
+    border:4rpx solid #909693;
+    font-size:24rpx;
+    font-weight:600;
+}
+.receive{
+    background: #E23435;
+}
+.receive .circle{
+    display: none;
+}
+.receive view{
+    display: none;
+}
+.receive .go-use{
+    display: block;
+}
+.circle{
+    position: absolute;
+    top:15rpx;
+    left: 4rpx;
+    width: 160rpx;
+    height: 120rpx;
+    text-align:left;
+}
+.get-btn{
+    background: white;
+    color: #74d2d4;
+    border-radius: 26rpx;
+    width: fit-content;
+    padding: 0 8rpx;
+    border: 4rpx solid #48b3b5;
+    margin: 40rpx auto 0;
+}
+
+/*以下是新增样式*/
+.coupon_list{
+  margin: 20rpx auto 0;
+  width: 710rpx;
+  height: 240rpx;
+  position: relative;
+}
+.coupon_list:first-child{
+  margin-top: 110rpx;
+}
+
+.coupon_list .coupon_bg{
+  width: 710rpx;
+  height: 240rpx;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 0;
+}
+.coupon_list .coupon_already{
+  position: absolute;
+  width: 140rpx;
+  height: 140rpx;
+  right: 30rpx;
+  top: 10rpx;
+  z-index: 0;
+}
+.coupon_list .coupon_mode{
+  width: 160rpx;
+  height: 160rpx;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+  /* float: left; */
+}
+.main_box{
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  position: relative;
+}
+.coupon_list .right_main{
+  width: 437rpx;
+  height: 100%;
+  float: right;
+  padding-right: 45rpx;
+  box-sizing: border-box;
+}
+.coupon_list .right_main .topbox{
+  height: 110rpx;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 110rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+  color: #333333;
+}
+.coupon_list .right_main .footbox{
+  height: 130rpx;
+  width: 100%;
+}
+.coupon_list .right_main .footbox .leftbox{
+  width: 230rpx;
+  height: 100%;
+  float: left;
+  color: #FF3B3B;
+}
+.coupon_list .right_main .footbox .price{
+  width: 100%;
+  height: 60rpx;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
+.coupon_list .right_main .footbox .price .note{
+  font-size: 36rpx;
+}
+.coupon_list .right_main .footbox .full{
+  width: 100%;
+  height: 45rpx;
+  line-height: 45rpx;
+  font-size: 24rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.coupon_list .right_main .footbox .btn_1{
+  width:140rpx;
+  height:48rpx;
+  float: right;
+  background:linear-gradient(90deg,rgba(255,59,59,1) 0%,rgba(255,115,61,1) 100%);
+  /* box-shadow:0rpx 6rpx 10rpx 1rpx rgba(255,59,59,0.3); */
+  border-radius:24rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 48rpx;
+  margin-top: 40rpx; 
+}
+.coupon_list .right_main .footbox .btn_2{
+  width:140rpx;
+  height:48rpx;
+  float: right;
+  background:#b3b3b3;
+  border-radius:24rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 48rpx;
+  margin-top: 40rpx; 
+}
+
+/* 功能未开发 */
+.defaultPage {
+  text-align: center;
+  padding-top: 100rpx;
+}

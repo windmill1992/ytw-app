@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "订单列表",
+  "navigationBarBackgroundColor": "#3abdb7",
+  "navigationBarTextStyle": "white",
+  "onReachBottomDistance": 100
+}

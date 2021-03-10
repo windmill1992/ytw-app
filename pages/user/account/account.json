@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "我的账号",
+    "navigationBarBackgroundColor": "#fff",
+    "onReachBottomDistance": 100,
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+        "van-tab":  "../../../dist/tab/index",
+        "van-tabs": "../../../dist/tabs/index"
+      }
+}

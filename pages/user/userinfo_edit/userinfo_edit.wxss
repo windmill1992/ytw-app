@@ -1,0 +1,126 @@
+page{
+    background-color: #f5f5f5;
+}
+.user-container{
+    padding-top: 100rpx;
+}
+.label-input{
+    font-size: 28rpx;
+    margin: 0 auto;
+    line-height: 90rpx;
+    border: 1rpx  solid #f3f3f3;
+    width: 710rpx;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+    background: #fff;
+    box-sizing: border-box;
+}
+.label{
+    box-sizing: border-box;
+    float: left;
+    padding: 0 25rpx;
+}
+.input{
+    box-sizing: border-box;
+    float: left;
+    height: 90rpx;
+    width: 500rpx;
+    padding-right: 5rpx;
+}
+.simple{
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1rpx solid #f3f3f3;
+    background: #fff;
+    width: 710rpx;
+}
+.user-container .simple:first-child{
+    border-top-left-radius:10rpx;
+    border-top-right-radius:10rpx;
+}
+.simple:last-of-type{
+    border-bottom-right-radius:10rpx;
+    border-bottom-left-radius:10rpx;
+}
+.submit{
+    width: 600rpx;
+    margin: 0 75rpx;
+    background-color: #ff3b3b;
+    color: white;
+    line-height: 90rpx;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+}
+.verify-box{
+    font-size: 28rpx;
+    width: 710rpx;
+    margin: 0 auto;
+    line-height: 90rpx;
+    border-bottom: 1rpx solid #f3f3f3;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+    box-sizing: border-box;
+}
+.verify-input{
+    box-sizing: border-box;
+    float: left;
+    height: 90rpx;
+    width: 400rpx;
+    padding-left: 20rpx;
+}
+.verify-btn{
+    box-sizing: border-box;
+    float: right;
+    margin-top: 10rpx;
+    margin-right: 10rpx;
+    line-height: 70rpx;
+    padding: 0 10rpx;
+    background-color: #ff3b3b;
+    color: white;
+    border-radius: 10rpx;
+}
+.btn-disable{
+    background-color: grey;
+}
+.item{
+    background: #fff;
+}
+.gender-box{
+    width: 50%;
+    float: left;
+    padding: 100rpx 0 200rpx 0;
+}
+.gender{
+    background-repeat: no-repeat !important;
+    background-size: 4.48rem !important;
+    width: 2.13333rem;
+    height: 2.73067rem;
+    margin: 0 auto;
+}
+.boy {
+    background-position: 0 0 !important;
+}
+.girl {
+    background-position: 0 -2.92267rem !important;
+}
+.boy-click {
+    background-position: -2.34667rem 0 !important;
+}
+.girl-click {
+    background-position: -2.368rem -2.92267rem !important;
+}
+.countDownNum{
+  background-color:#999;
+  width:32%;
+  text-align: center;
+}
+.forget_password{
+  padding:17rpx  0rpx  0rpx 41%;
+  font-size:28rpx;
+}
+.block{
+  margin: 0 auto;
+  width: 710rpx;
+  height: 70rpx;
+  background: #fff;
+}

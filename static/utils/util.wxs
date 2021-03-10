@@ -1,0 +1,13 @@
+module.exports = orderStatus
+
+var orderStatus = function(i){
+  if (i===0) {
+      return "未送齐"
+  } else if(i===1){
+      return "待打包"
+  }else if(i===2){
+      return "待拉包"
+  } else {
+      return "已拉走"
+  }
+}

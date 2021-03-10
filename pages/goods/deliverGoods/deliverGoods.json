@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "发货",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "van-field": "../../../dist/field/index",
+    "van-cell-group": "../../../dist/cell-group/index",
+    "van-icon": "../../../dist/icon/index",
+    "van-popup": "../../../dist/popup/index",
+    "van-picker": "../../../dist/picker/index"
+  }
+}

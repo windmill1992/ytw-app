@@ -1,0 +1,102 @@
+.showMsgComponent {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 750rpx;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .6);
+  z-index: 102;
+}
+.showMsgContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 0 18rpx;
+  padding-top: 110rpx;
+  width: 650rpx;
+  min-height: 48vh;
+  max-height: 90vh;
+  border-radius: 30rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 32rpx;
+}
+.showMsgRoundImg {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 210rpx;
+  width: 211rpx;
+  border-radius: 50%;
+  z-index: 102;
+}
+.showMsgBgImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200rpx;
+  border-radius: 30rpx 30rpx 0 0;
+  z-index: -1;
+}
+.facName {
+  text-align: center;
+  font-size: 36rpx;
+  color: #18c2ba;
+  font-weight: 550;
+}
+.showMsgTitle {
+  text-align: center;
+  font-size: 36rpx;
+  color: #f17a7f;
+  font-weight: 600;
+}
+.showMsgBtns {
+  position: absolute;
+  bottom: 15rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 101;
+
+}
+.inlineBtn {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+
+}
+.showMsgBtn1,.showMsgBtn2 {
+  margin: 0 auto;
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 40rpx;
+}
+.showMsgBtn1 {
+  color: #fff;
+  background-color: #f17a7f;
+}
+.showMsgBtn2 {
+  color: #18c2ba;
+  background-color: #fff;
+  border: 1rpx solid #18c2ba;
+  box-sizing: border-box;
+}
+.closeShowMsg {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -80rpx;
+  border: 2rpx solid #fff;
+  color: #fff;
+  border-radius: 50%;
+  height: 45rpx;
+  width: 45rpx;
+  text-align: center;
+  line-height: 45rpx;
+
+}

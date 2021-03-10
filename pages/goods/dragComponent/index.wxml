@@ -1,0 +1,50 @@
+<view class="item-wrap" style="height: {{ itemWrapHeight }}px;">
+	<view
+		class="item {{cur == index ? 'cur':''}} {{curZ == index ? 'zIndex':''}} {{itemTransition && index !== cur ? 'itemTransition':''}} {{item.fixed ? 'fixed' : ''}}"
+		wx:for="{{list}}"
+		wx:key="id"
+		data-key="{{item.sortKey}}"
+		data-index="{{index}}"
+		style="transform: translate3d({{index === cur ? tranX + 'px' : item.tranX}}, {{index === cur ? tranY + 'px' : item.tranY}}, 0);width: {{100 / columns}}%"
+		bindtap="itemClick"
+		bind:longpress="longPress"
+		catch:touchmove="{{dragging?'touchMove':''}}"
+		catch:touchend="{{dragging?'touchEnd':''}}">
+
+		<!-- start:请在该区域编写自己的渲染逻辑 -->
+		<!-- <view wx:if="{{columns === 1 && item.extraNode}}" class="cell">
+			<view class="cell__bd" style="height: 160rpx;">
+				<slot name="{{item.slot}}"></slot>
+			</view>
+		</view>
+		<view wx:elif="{{columns === 1 && !item.extraNode}}" class="cell">
+			<view class="cell__hd">
+				<image class="image" mode="aspectFill" src="{{item.data.spec_img}}" alt=""/>
+			</view>
+			<view class="cell__bd">
+				<view class="name">{{item.data.title}}</view>
+				<view class="des">{{item.data.description}}</view>
+			</view>
+		</view> -->
+		<view wx:if="{{columns > 1 && item.extraNode}}" class="info">
+			<view class="info__item">
+				<slot name="{{item.slot}}"></slot>
+			</view>
+		</view>
+		<view wx:elif="{{columns > 1 && !item.extraNode}}" class="info">
+			<view class="info__item" style="border:{{ (spec || item.extraNode) ? 'none' : '1px solid #18c2ba' }};">
+				<image class="image" src="{{item.data.spec_img}}" style="border:{{ spec ? '1px solid #18c2ba' : 'none' }};" catchtap="pTu" data-info="{{ item }}" mode="aspectFit"></image>
+			</view>
+		</view>
+		<view class="iinnppuutt" wx:if="{{ spec && !item.extraNode }}" style="box-sizing: border-box;padding: 0 10rpx;">
+			<input class="itemInput" placeholder="请输入 货号-颜色" placeholder-class="specNamePlace" data-info="{{item}}" value="{{ item.data.spec_name }}" bindblur="editSpec" maxlength="10"></input>
+		</view>
+		<view wx:if="{{ !item.extraNode }}" style="margin-top:{{ spec? '' : '13rpx' }};width:{{ spec ? '216rpx' : '156rpx' }};" catchtap="del" data-info="{{item}}" class="{{spec ? 'delItem' : 'delItem2'}}">
+			删除
+		</view>
+		<view wx:if="{{ !item.extraNode }}" class="changeImg" data-info="{{item}}" style="top:{{ spec? '5rpx' : '-2rpx' }};right:{{ spec ? '-1rpx' : '-2rpx' }};" catchtap="changeImg">换</view>
+		<!-- <view wx:if="{{ delx && !item.extraNode }}" class="changeImg" data-info="{{item}}" catchtap="del">X</view> -->
+		<!-- end:请在该区域编写自己的渲染逻辑 -->
+
+	</view>
+</view>

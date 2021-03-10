@@ -1,0 +1,59 @@
+<swiper wx:if="{{ mode == '' && is_apply != 1 }}" class="swiper" indicator-dots="true" autoplay="true" indicator-active-color="#ffffff">
+	<swiper-item wx:for="{{banner}}" wx:key="index">
+		<image class="banner" src="{{item.ad_code}}"></image>
+	</swiper-item>
+</swiper>
+
+<view class="list" style="min-height:{{ mode ? '100vh' : '80vh' }};padding-bottom:20rpx;">
+	<!-- <image wx:if="{{ mode == '' }}" src="https://www.yitongwang.com/public/static/images/minniapp/screen-business.png" class="shaixuan" catchtap="showDialog"></image> -->
+	<view wx:if="{{ mode == '' }}" catchtap="showDialog" class="shaixuan">
+		<image src="../../../images/xx.png"></image>
+		筛选厂家
+	</view>
+	<view class="emptyStore" wx:if="{{ list.length == 0 }}">
+		<van-empty image="https://www.yitongwang.com/public/static/images/minniapp/empty-image-default.png" description="未搜索到相关信息" />
+	</view>
+	<view class="item" wx:for="{{list}}" wx:key="index">
+		<view class="item-title" data-store_id="{{item.store_id}}" catchtap="goStore">{{item.store_name}}</view>
+		<!-- <view class="item-label">一年销量：<text class="red">{{item.store_all_goods_sales}}件</text></view> -->
+		<view class="item-label color64">店铺商品：<text class="themecolor">{{item.store_goods_sale}}个</text></view>
+		<view class="item-label color64">店铺等级：<image class="zszszs" src="https://www.yitongwang.com/template/pc/rainbow/static/images/level/zs.png" wx:for="{{ item.store_level }}" wx:key="index2"></image></view>
+		<view class="item-label color-c2">最新上传：<text>{{item.sale_goods_date}}</text></view>
+		<view class="item-label color-c2">档口地址：<text>{{item.store_address}}</text>
+			<image src="../../../images/call.png" wx:if="{{item.mobile}}" class="call"></image>
+		</view>
+		<view class="banner1" wx:if="{{ item.goods_list.length > 0 }}">
+			<image src="https://www.yitongwang.com/template/pc/rainbow/static/images/swr.png" data-id="{{item.store_id}}" catchtap="next" class="next"></image>
+			<image src="https://www.yitongwang.com/template/pc/rainbow/static/images/swl.png" data-id="{{item.store_id}}" catchtap="before" class="before"></image>
+			<swiper class="swiper1" circular="true" data-id="{{item.store_id}}" bindchange="swiperChange" current="{{item.current}}" display-multiple-items="3" >
+				<swiper-item wx:for="{{item.goods_list || []}}" data-store_id="{{item.store_id}}" data-goods_id="{{item1.goods_id}}" catchtap="goDetail" wx:for-item="item1" wx:key="idx">
+					<image class="img1" wx:if="{{item1.original_img}}" src="{{item1.original_img}}"></image>
+				</swiper-item>
+				<swiper-item wx:if="{{item.goods_list.length == 1}}" data-store_id="{{item.store_id}}" data-goods_id="{{item1.goods_id}}" catchtap="" wx:for-item="item2" wx:key="idx">
+					<image class="img1" src=""></image>
+				</swiper-item>
+				<swiper-item wx:if="{{item.goods_list.length == 1}}" data-store_id="{{item.store_id}}" data-goods_id="{{item1.goods_id}}" catchtap="" wx:for-item="item3" wx:key="idx">
+					<image class="img1" src=""></image>
+				</swiper-item>
+				<swiper-item wx:if="{{item.goods_list.length == 2}}" data-store_id="{{item.store_id}}" data-goods_id="{{item1.goods_id}}" catchtap="" wx:for-item="item4" wx:key="idx">
+					<image class="img1" src=""></image>
+				</swiper-item>
+			</swiper>
+		</view>
+	</view>
+	
+</view>
+<!-- 返回顶部按钮  -->
+<view class="toTop" bindtap="doScrollTop" wx:if="{{supportPageScroll}}">
+    <image class="wh100" src="../../../images/topup.png"></image>
+</view>
+
+<van-divider wx:if="{{ list }}" contentPosition="center">我是有底线的</van-divider>
+<view class="mask" wx:if="{{dialog}}" catchtap="close" catchtouchmove="true"></view>
+<view class="business" wx:if="{{dialog}}">
+	<view class="business-title" catchtap="setall">显示全部商圈</view>
+	<view class="t1">商圈</view>
+	<view class="business-list">
+		<view class="business-item {{businessId==item.id?'active':''}}" wx:for="{{storeBusiness}}" data-id="{{item.id}}" catchtap="setItem" wx:key="index">{{item.store_business}}</view>
+	</view>
+</view>

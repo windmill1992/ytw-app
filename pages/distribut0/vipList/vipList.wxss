@@ -1,0 +1,186 @@
+/* pages/distribut0/vipList/vipList.wxss */
+
+/* pass 每一项 */
+page {
+  color: #999;
+}
+.top1 {
+  height: 180rpx;
+  width: 750rpx;
+  background: url('https://www.yitongwang.com/public/static/images/minniapp/pinbao-write-banner.png') no-repeat top center;
+  background-size: 100% 100%;
+}
+.topTitle {
+  padding: 15rpx 0;
+  color: #fff;
+  font-size: 46rpx;
+  font-weight: 600;
+  text-align: center;
+}
+.navrootclass {
+  padding-bottom: 150rpx;
+}
+/* 每一项数据的样式 */
+.passtitle {
+  text-align: center;
+  margin: 15rpx 0;
+}
+.memberItem {
+  position: relative;
+  margin: 15rpx 0;
+  padding: 15rpx 0;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+.memberItem::before {
+  content: '';
+  position: absolute;
+  width: 6rpx;
+  height: 30rpx;
+  background-color: #18c2ba;
+  left: 10rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.passClass {
+  margin: 0 auto;
+  width: 180rpx;
+  height: 40rpx;
+  background-color: #fff;
+  border: 2rpx solid #18c2ba;
+  border-radius: 20rpx;
+  color: #18c2ba;
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 24rpx;
+}
+.refuseClass {
+  margin: 0 auto;
+  margin-top: 10rpx;
+  width: 180rpx;
+  height: 40rpx;
+  background-color: #fe5b5f;
+  border-radius: 20rpx;
+  color: #f5cbcb;
+  line-height: 40rpx;
+  font-size: 24rpx;
+}
+.delTel {
+  height: 30rpx;
+  width: 30rpx;
+  vertical-align: middle;
+}
+.myviptxt {
+  font-size: 32rpx;
+}
+
+/* 吸顶添加 */
+.addInput {
+  position: relative;
+  display: inline-block;
+  margin-left: 50rpx;
+  padding-left: 55rpx;
+  vertical-align: middle;
+  width: 430rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 30rpx;
+  background: rgba(255,255,255,.5);
+  height: 50rpx;
+  font-size: 32rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+.addInput::before {  
+  content: '';
+  position: absolute;
+  height: 50rpx;
+  width: 50rpx;
+  left: 10rpx;
+  top: 0rpx;
+  border-radius: 50%;
+  background: url('https://www.yitongwang.com/public/static/images/minniapp/subcontract-icon-search.png') no-repeat center center;
+  background-size: 35rpx 35rpx;
+}
+.phClass {
+  color: #fff;
+  text-indent: 1em;
+}
+.addButton {
+  margin-right: 30rpx;
+  padding: 10rpx 20rpx;
+  float: right;
+  border-radius: 30rpx;
+  color: #fff;
+  background-color: #fe5b5f;
+  font-size: 32rpx;
+}
+
+/* 修改备注 */
+.editInput {
+  margin: 55rpx auto;
+  width: 80%;
+  background-color: #dedede;
+  border-radius: 20rpx;
+}
+.phClass2 {
+  color: #fff;
+  /* text-indent: 2em; */
+  text-align: center;
+}
+
+/* 添加VIP新做 11.25 */
+.addNewMemberBox {
+  position: relative;
+  height: 350rpx;
+  width: 580rpx;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 30rpx;
+}
+.addNewMemberTtile {
+  margin: 10rpx auto;
+  text-align: center;
+  font-weight: 550;
+  font-size: 40rpx;
+  color: #333;
+}
+.addNewMemberInputs {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  height: 160rpx;
+}
+.addNewMemberInput {
+  padding-left: 20rpx;
+  width: 100%;
+  border: 1rpx solid #ccc;
+  height: 70rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+.addNewMemberBtns {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 80rpx;
+  width: 100%;
+  line-height: 80rpx;
+  color: #333;
+  border-top: 1rpx solid #ccc;
+}
+.addNewMemberBtns .borderR {
+  box-sizing: border-box;
+  text-align: center;
+  border-right: 1rpx solid #ccc;
+  flex: 1;
+}
+.addNewMemberBtns .coltheme {
+  flex: 1;
+  text-align: center;
+  color: #18c2ba;
+}

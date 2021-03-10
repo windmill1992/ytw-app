@@ -1,0 +1,55 @@
+<!-- <view class="title">设置分销价格</view>
+<view class="back1" bindtap="back1">{{'<'}}</view> -->
+<view hidden="{{dataLength == 0}}" class="distribution-content">
+  <view class="control-all">
+    <checkbox-group>
+    <label>
+        <checkbox bindtap="checkAll" checked="{{isAllChecked}}" hidden="{{true}}"></checkbox>   
+        <text>       </text>
+    </label>
+  
+    </checkbox-group>
+    <text class="aaalll" hidden="{{ true }}">全选</text>
+    <text>批量加价:</text>
+    <view class="inputBoxA" style="margin-left: 200rpx;">
+      <text class="jiajian ml400" bindtap="subAll">-</text>
+      <input type="digit" value="{{inputAllValue}}" bindinput="inputAll"></input>
+      <text class="jiajian" bindtap="addAll">+</text>
+    </view>
+    <!-- <van-stepper bind:plus="addAll" bind:minus="subAll" bind:change="inputAll" value="{{ inputAllValue }}"/> -->
+    <text space="ensp" class="jiajianIntro"> 元/件</text>
+  </view>
+
+  <view class="distribution-item" wx:for="{{mapGoods}}" wx:key="index">
+    <view class="choose-single">
+      <label>
+        <checkbox checked="{{chengkOneState[index]}}" bindtap="checkItem" data-index="{{index}}" hidden="{{ true }}"></checkbox>   
+      </label>
+    </view>
+    <view class="item-img">
+      <image catchtap="preImg" data-src="{{item.image}}" src="{{item.image}}"></image>
+      <image catchtap="preImg" data-src="{{item.image}}" src="../../images/preImage.png" class="fangda"></image>
+    </view>
+    <view class="txt">
+      <view><text>{{item.spec_item[1].s_name}}:</text><text class="color333">{{item.spec_item[1].item}}</text></view>
+      <view><text>拿货价格:</text><text class="color333">{{item.each_hand_unit_price}}</text></view>
+      <view><text>{{pramas[index][0].s_name}}:</text><text class="color333">{{pramas[index][0].item}}</text></view>
+      <view class="ctrl">
+        <view class="inputBoxA">
+          <text class="jiajian" bindtap="subOne" data-index="{{index}}">-</text>
+          <input type="digit" data-index="{{index}}" bindinput="inputOne" value="{{item.newPrice}}"></input>
+          <text class="jiajian" bindtap="addOne" data-index="{{index}}">+</text>
+        </view>
+        <text class="item-price-intro" space="ensp"> 元/件</text>
+      </view>
+    </view>
+    <!-- <view class="line"></view> -->
+  </view>
+<button hover-class="none" class="makesure" catchtap="submitGoods"><text space="ensp">确     定</text></button>
+</view>
+
+<van-popup show="{{ imageShow }}" bind:close="onImageClose" bind:click-overlay="onImageClose">
+  <image style="width:750rpx;height:750rpx;" src="{{ imgSrc }}"></image>
+</van-popup>
+
+

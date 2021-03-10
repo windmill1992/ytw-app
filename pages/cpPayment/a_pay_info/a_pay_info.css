@@ -1,0 +1,35 @@
+
+.headBox {
+  position: absolute;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding-top: 10px;
+  font-size: 34rpx;
+}
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  height: 40rpx;
+  width: 40rpx;
+  transform: rotate(45deg);
+}
+.close::before,.close::after {
+  content: '';
+  position: absolute;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.close::before {
+  height: 70%;
+  width: 2px;
+}
+.close::after {
+  width: 70%;
+  height: 2px;
+}

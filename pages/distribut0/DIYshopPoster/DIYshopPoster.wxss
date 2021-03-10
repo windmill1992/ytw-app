@@ -1,0 +1,163 @@
+page {
+  background-color: #fff;
+}
+.setContent {
+  background-color: #f5f5f5;
+  padding-bottom: 1px;
+  padding-top: 8px;
+}
+.bgImg {
+  width: 750rpx;
+  height: 400rpx;
+  vertical-align: middle;
+}
+.insatiableItem,.insatiableMore {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20rpx 0 20rpx 40rpx;
+  margin-bottom: 8px;
+  background-color: #fff;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+.insatiableItem {
+  color: #333;
+}
+.insatiableMore {
+  color: #777;
+}
+.leftIcon {
+  height: 40rpx;
+  width: 40rpx;
+  vertical-align: middle;
+}
+.rightTxt {
+  flex: 1;
+  padding-left: 30rpx;
+  text-align: left;
+  box-sizing: border-box;
+
+}
+
+
+
+/* 海 */
+/* 优惠信息弹框 */
+.prom-model{
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  background: white;
+  width: 100%;
+  padding: 0 30rpx 30rpx;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.prom-model .prom-title{
+  text-align: center;
+  margin: 30rpx 80rpx;
+}
+.prom-model .logistics-item{
+  border: 0;
+}
+.logistics-item .item-mes{
+  color: #1f1f1f;
+  font-size: 26rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.prom-model .item-mes{
+  width: 500rpx;
+}
+
+/* 商品海报分享s*/
+.share-btn {
+  display: inline-block;
+  margin-top: 12rpx;
+  margin-left: 12rpx;
+  height: 44rpx;
+  width: 44rpx;
+  color: #666;
+  font-size: 20rpx;
+  position: absolute;
+  right: 22rpx;
+  top:84rpx;
+}
+
+.share-btn image{
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.share-save-btns{
+  background-color: #18c2ba;
+  color: #fff;
+  width: 100%;
+  line-height: 80rpx;
+}
+
+.share-save-btn {
+  width: 80%;
+  height: 80rpx;
+  text-align: center;
+  margin: 0px auto;
+  background-color: #18c2ba;
+  color: #fff;
+  border-radius: 10rpx;
+}
+
+.share-pic {
+  width: 270rpx;
+  height: 480rpx;
+  margin: 20rpx auto ;
+  background-color: #999;
+  box-shadow: 0rpx 5rpx 5rpx 5rpx #cccccc
+}
+
+.share-tips {
+  font-size: 9pt;
+  color: #999;
+  display: block;
+  margin-top: 10rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.action-sheet-btn{
+  width: 100%;
+  height: 100%;
+  margin: -10px 0;
+  font-size: 18px;
+}
+
+.action-sheet-btn::after{   
+  border: none;   
+}
+.bargin_head_pic{
+  width: 1rem;
+  height:1rem;
+  margin-left: -15rpx;
+  border-radius: 50%;
+  border:4px #fff solid 
+}
+.bargin_headpic{
+  margin-top:32rpx;
+}
+
+.classname{
+  margin-top:-18px;
+  font-size:.6777rem;
+  color:#fff;
+}
+.wxParse-p image{
+width: 100%!important;
+}
+.co-red-price{
+font-size: 33rpx;
+font-weight: bold;
+float: left;
+}
+/* 商品海报分享e*/

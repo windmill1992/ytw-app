@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "拼包中心",
+  "enablePullDownRefresh":false,
+  "usingComponents": {
+    "van-dialog": "../../../dist/dialog/index",
+    "good-component": "../../components/recommendGoods/recommendGoods",
+    "good-swiper": "../../components/recommendSwiperGoods/recommendSwiperGoods"
+  }
+}

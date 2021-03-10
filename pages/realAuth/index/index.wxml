@@ -1,0 +1,5 @@
+<!-- 未实名注册的 开始提示页面 -->
+<image class="image" src="http://yitongwanghuabei3.oss-cn-zhangjiakou.aliyuncs.com/public/upload/3526acdfc87a723fda0f156dcc565dcc.png"></image>
+<view class="centerTxt">使用此服务前，您需要填写姓名、证件号码等，</view>
+<view class="centerTxt">完成本人的身份认证</view>
+<view class="nextStep">立即认证</view>

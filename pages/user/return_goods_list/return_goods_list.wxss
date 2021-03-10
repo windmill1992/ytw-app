@@ -1,0 +1,63 @@
+/* return_goods_list.wxss */
+.return-box{
+    background-color: white;
+    font-size: 30rpx;
+    width: 710rpx;
+    margin: 0 auto;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+}
+.return-box:first-child{
+    margin-top: 20rpx;
+}
+.item {
+    padding: 20rpx 25rpx;
+    border-bottom: 3rpx  solid #f3f3f3;
+    height: 38rpx;
+    font-size: 28rpx;
+}
+.state{
+    color: red;
+    float: right;
+}
+.arrow {
+    margin-top: 5rpx;
+    width: 25rpx;
+    height: 28rpx;
+    float: right;
+}
+.return-goods{
+    height: 100rpx;
+}
+.goods_img{
+    height: 100rpx;
+    width: 100rpx;
+    float: left;
+}
+.goods-desc{
+    padding-left: 30rpx;
+    width: 530rpx;
+    float: left;
+}
+.goods-name{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    padding-bottom: 35rpx;
+}
+.apply-time{
+    font-size: 26rpx;
+    color: #999999;
+}
+.return-btn{
+    float: right;
+    border: 1rpx  solid #f3f3f3;
+    padding: 8rpx;
+    margin: 20rpx 25rpx;
+    font-size: 24rpx;
+    border-radius: 6rpx;
+}
+.foot-btn{
+  float: right;
+  margin: 20rpx 25rpx 20rpx 0rpx;
+}

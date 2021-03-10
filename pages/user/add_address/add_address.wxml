@@ -1,0 +1,37 @@
+<import src="../../../utils/regions/regions.wxml"/>
+
+<view class="container">
+    <form class="formbox" bindsubmit="submitAddress">
+        <view class="item">
+            <view class="item-name">收货人姓名:</view>
+            <input class="item-input" placeholder-class="placeholder" placeholder="请输入姓名" name="consignee" value="{{address.consignee}}"/>
+        </view>
+        <view class="item">
+            <view class="item-name">手机号码:</view>
+            <input class="item-input" placeholder-class="placeholder" placeholder="请输入手机号码" name="mobile" value="{{address.mobile}}"/>
+        </view>
+        <view class="item" data-id='0' bindtap="openRegionsModal">
+            <view class="item-name">所在区域:</view>
+            <view wx:if="{{address.province_name}}" class="item-input">{{address.province_name || ''}} {{address.city_name || ''}} {{address.district_name || ''}} {{ address.twon_name == 'null' ? '' : address.twon_name }}</view>
+            <view wx:else class="item-input">请选择所在区域</view>
+            <view class="item-img">
+                <image class="arrow" src="../../../images/icon-arrowdown.png"></image>
+            </view>
+        </view>
+        <view class="item">
+            <view class="item-name">详细地址:</view>
+            <input class="item-input" placeholder-class="placeholder" placeholder="请输入详细地址" name="address" value="{{address.address}}"/>
+        </view>
+        <view class="item">
+            <view class="item-name">设为默认地址</view>
+            <switch type="switch" class="item-switch" color="#ff3b3b" name="is_default" checked="{{address.is_default==1?true:false}}"/>
+        </view> 
+        <view class="address-btns">
+            <button class="delete-btn" bindtap="deleteAddress">删除地址</button>
+            <button class="submit-btn" form-type="submit">提交地址</button>
+        </view>
+    </form>
+</view>
+
+<!-- 选择地址弹框  -->
+<template is="regions" data="{{regions}}"/>

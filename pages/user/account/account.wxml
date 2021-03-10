@@ -1,0 +1,120 @@
+<!--account.wxml-->
+<view class="container">
+    <view class="cover">
+        <view class="justify-content flex">
+            <view class="detail">
+                    <view class="text-size">{{ userInfo.user_money }}</view>
+                    <view class="price-text">可用余额</view>
+            </view>
+             <view class="detail">
+                <view class="text-size">{{ userInfo.user_money }}</view>
+                <view class="price-text">可提现</view>
+            </view>
+             <view class="detail">
+                <view class="text-size">{{ userInfo.cash_in }}</view>
+                <view class="price-text">提现中</view>
+            </view>      
+            
+            <view class="detail">
+                <view class="text-size">{{ userInfo.user_total_money  }}</view>
+                <view class="price-text">累计收入</view>  
+            </view>          
+            <view class="detail">
+                <view class="text-size">{{ userInfo.withdrawal_total_money }}</view>
+                <view class="price-text">累计提现</view>
+            </view>
+            <view class="detail">
+                <view class="text-size">{{ userInfo.frozen_money }}</view>
+                <view class="price-text">冻结余额</view>
+            </view>     
+        </view>
+        <view class="operate center">
+            <navigator url="/pages/user/withdrawals/withdrawals?money={{userInfo.user_money}}">
+                <view class="op-item">
+                申请提现
+                <!-- <text></text> -->
+                </view>
+            </navigator>
+            <navigator url="/pages/user/recharge/recharge?money={{userInfo.user_money}}"> <!-- 暂时不用 -->
+                <view class="op-item">
+                账户充值
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <!-- <view class="list">
+        <navigator url="/pages/user/account_list/account_list">
+            <view class="item">余额明细
+                <image class="wh100 arrow" src="../../../images/icon-arrowdown.png"></image>
+            </view>
+        </navigator>
+        <navigator url="/pages/user/recharge_list/recharge_list">
+            <view class="item">充值记录
+                <image class="wh100 arrow" src="../../../images/icon-arrowdown.png"></image>
+            </view>
+        </navigator>
+        <navigator url="/pages/user/withdrawals_list/withdrawals_list">
+            <view class="item">提现记录
+                <image class="wh100 arrow" src="../../../images/icon-arrowdown.png"></image>
+            </view>
+        </navigator>
+    </view> -->
+    <view class='switch'>
+        <view class="switch-box" wx:for="{{switch}}" wx:key="index">
+            <view id="{{item.number}}" class="{{show == item.number ? 'switch-item-on' : ''}}" bindtap="switch">
+                {{item.name}}
+            </view>
+        </view>
+    </view>
+    <!-- 余额明细 -->
+    <view hidden="{{show==1?false:true}}" class="navbar">
+        <view class="navbar-box" wx:for="{{categories}}" wx:key="index">
+            <view id="{{item.type}}" class="{{activeType == item.type ? 'navbar-item-on' : ''}}" bindtap="changeTab">
+                {{item.name}}
+            </view>
+        </view>
+    </view>
+     <view hidden="{{show==1?false:true}}" class="account-box" wx:for="{{accounts}}" wx:key="index">
+        <view class='left'>
+            <view>单号：{{item.order_sn}}</view>
+            <view class='bottom'>{{item.changeTimeFommat}}</view>
+        </view>
+        <view class='right'>
+            <view wx:if="{{item.user_money>0}}">+￥{{item.user_money}}</view>
+            <view wx:else>-￥{{-item.user_money}}</view>
+            <view class='bottom'>描述：{{item.desc}}</view>
+        </view>
+    </view>
+    <!-- 余额明细end -->
+    <!-- 充值记录 -->
+        <view hidden="{{show==2?false:true}}"class="recharge-box">
+            <view class="recharge-item pay title">支付方式</view>
+            <view class="recharge-item time title">日期</view>
+            <view class="recharge-item price title">金额</view>
+            <view class="recharge-item status title">状态</view>
+        </view>
+        <view hidden="{{show==2?false:true}}" class="recharge-box" wx:for="{{recharges}}" wx:key="index">
+            <view class="recharge-item pay">{{item.pay_name ? item.pay_name : ''}}</view>
+            <view class="recharge-item time">{{item.cTimeFommat}}</view>
+            <view class="recharge-item price">{{item.account}}</view>
+            <view class="recharge-item status">{{item.pay_status==0?'待支付':''}}{{item.pay_status==1?'已支付':''}}{{item.pay_status==2?'支付失败':''}}</view>
+        </view>
+    <!-- 充值记录end -->
+    <!-- 提现记录 -->
+        <view hidden="{{show==3?false:true}}" class="withdrawal-box">
+            <view class="withdrawal-item pay title">编号</view>
+            <view class="withdrawal-item time title">申请日期</view>
+            <view class="withdrawal-item price title">金额</view>
+            <view class="withdrawal-item status title">状态</view>
+        </view>
+        <view hidden="{{show==3?false:true}}" class="withdrawal-box" wx:for="{{withdrawals}}" wx:key="index">
+            <view class="withdrawal-item pay">{{item.id}}</view>
+            <view class="withdrawal-item time">{{item.createTimeFommat}}</view>
+            <view class="withdrawal-item price">{{item.money}}</view>
+            <view class="withdrawal-item status">
+            {{item.status==0?'申请中':''}}{{item.status==1?'申请成功':''}}{{item.status==2?'提现完成':''}}
+            {{item.status==3?'转款失败':''}}{{item.status== -2?'审核作废':''}}{{item.status==-1?'审核失败':''}}
+            </view>
+        </view>
+    <!-- 提现记录end -->
+</view>

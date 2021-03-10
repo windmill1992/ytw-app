@@ -1,0 +1,842 @@
+.banner{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 307rpx;
+}
+
+page {
+  box-sizing: border-box;
+  color: #777;
+  padding-bottom: 50rpx;
+  font-size: 28rpx;
+}
+/* 顶部nav */
+.nav2 {
+  margin: 10px auto;
+  width: 602rpx;
+  height: 60rpx;
+  font-size: 28rpx;
+  line-height: 58rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  color: #18c2ba;
+  border: 1rpx solid #ccc;
+}
+.navItem1 {
+  left: 0;
+  height: 60rpx;
+  width: 350rpx;
+  border-radius: 30rpx;
+  background-color: #e6e3e3;
+  z-index: 1;
+}
+.navItem2 {
+  right: 0;
+  height: 60rpx;
+  width: 350rpx;
+  border-radius: 30rpx;
+  background-color: #e6e3e3;
+  z-index: 1;
+}
+.nav2 .curItem {
+  background-color: #18c2ba;
+  z-index: 2;
+  color: #fff;
+}
+
+/* 公共的样式 */
+.rela {
+  position: relative;
+}
+.abs {
+  position: absolute;
+}
+.colTheme {
+  color: #18c2ba;
+}
+.col215 {
+  color: #f10215;
+}
+.fs30 {
+  font-size: 30rpx;
+}
+.fs38 {
+  font-size: 38rpx;
+}
+.fs40 {
+  font-size: 40rpx;
+}
+.col555 {
+  color: #555;
+}
+.col999 {
+  color: #999;
+}
+.flx {
+  display: flex;
+  justify-content: space-around;
+}
+.flx_r {
+  flex-direction: row;
+}
+.flx_c {
+  flex-direction: column;
+}
+.dividingLine {
+  margin: 15px auto 10px;
+  height: 10rpx;
+  width: 100%;
+  background-color: #18c2ba;
+  box-shadow: 0 0 3rpx #18c2ba;
+}
+/* 全部---item */
+.all_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 20rpx auto;
+  padding: 20rpx 0 20rpx 50rpx;
+  height: 250rpx;
+  width: 710rpx;
+  border-radius: 15rpx;
+  box-shadow: 0 0 8rpx rgba(204, 204, 204, .5);
+  color: rgb(78, 75, 75);
+  box-sizing: border-box;
+  font-size: 28rpx;
+  border: 1rpx solid #f10215;
+}
+.showAllDetail {
+  right: 20rpx;
+  bottom: 15rpx;
+  font-size: 35rpx;
+  border-radius: 50%;
+  border: 1rpx solid #ccc;
+  height: 44rpx;
+  width: 44rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+
+.allCalcelOrder {
+  top: 0rpx;
+  right: 0;
+  padding: 5rpx 25rpx;
+  border-radius: 0 15rpx 0 15rpx;
+  background-color: #18c2ba;
+  color: #fff;
+  font-size: 24rpx;
+  z-index: -1;
+}
+.centerBg {
+  left: -15rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 200rpx;
+  width: 50rpx;
+  z-index: 2;
+}
+.centerName {
+  padding-top: 10rpx;
+  left: -15rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32rpx;
+  color: #fff;
+  width: 50rpx;
+  word-break: break-all;
+  z-index: 3;
+  box-sizing: border-box;
+  text-align: center;
+}
+.orderOther {
+  display: flex;
+  flex-direction: row;
+}
+.orderVerification text {
+  color: #1bc0b8;
+}
+.orderOther view {
+  width: 50%;
+}
+.orderCodeTxt {
+  font-size: 32rpx;
+}
+
+.operationBox {
+  padding-top: 15rpx;
+  padding-right: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+.allOperationItem {
+  display: block;
+  padding: 8rpx 30rpx;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+}
+.bgfff {
+  color: #18c2ba;
+  background-color: #fff;
+  border: 1rpx solid #18c2ba;
+  box-sizing: border-box;
+}
+.bgpink {
+  color: #fff;
+  background-color: #ee7e80;
+}
+.bg18c {
+  color: #fff;
+  background-color: #18c2ba;
+}
+.bgblue {
+  color: #fff;
+  background-color: #81caeb;
+}
+.bgorange {
+  background-color: #fcc755;
+  color: #000;
+}
+.bgorangeLarge {
+  background-color: #fcc755;
+  padding: 4rpx 25rpx;
+}
+
+/* 超时 */
+
+/* 弹窗 */
+.warningPopup {
+  overflow-y: unset!important;
+  border-radius: 0 0 20rpx 20rpx;
+}
+.warningBox {
+  position: relative;
+  padding: 100rpx 20rpx 20rpx 30rpx;
+  min-height: 450rpx;
+  width: 550rpx;
+  box-sizing: border-box;
+}
+.warningBox2 {
+  position: relative;
+  padding: 100rpx 20rpx 20rpx 20rpx;
+  min-height: 450rpx;
+  width: 650rpx;
+  box-sizing: border-box;
+}
+.warningBox image {
+  position: absolute;
+  top: -130rpx;
+  left: 0;
+  width: 550rpx;
+  height: 310rpx;
+  z-index: -1;
+}
+.warningBox2 image {
+  width: 650rpx;
+  height: 360rpx;
+  position: absolute;
+  top: -145rpx;
+  left: 0;
+  z-index: -1;
+}
+.warningTxt {
+  margin: 20rpx 0;
+  color: #f0787d;
+  font-size: 36rpx;
+  line-height: 55rpx;
+  text-align: center;
+}
+.warningTxt2 {
+  margin: 20rpx 0;
+  color: #ccc;
+  font-size: 32rpx;
+  text-align: center;
+}
+.warningBtn1,.warningBtn2 {
+  margin: 0 auto;
+  width: 85%;
+  height: 80rpx;
+  color: #fff;
+  border-radius: 40rpx;
+  line-height: 80rpx;
+  font-size: 34rpx;
+  text-align: center;
+}
+.warningBtn1 {
+  margin: 0rpx auto;
+  margin-top: 15rpx;
+  background-color: #f17a7f;
+}
+.warningBtn2 {
+  margin-top: 15rpx;
+  background-color: #3acbc4;
+}
+.headWord {
+  padding: 0 15rpx;
+  color: #fd7178;
+  font-size: 24rpx;
+}
+.headWord2 {
+  margin-top: 10rpx;
+  text-align: center;
+  color: #111;
+}
+.contentWord {
+  position: relative;
+  padding: 10rpx 10rpx 0rpx 35rpx;
+  font-size: 24rpx;
+  line-height: 37rpx;
+  color: #616161;
+}
+.contentWord1::before,
+.contentWord2::before,
+.contentWord3::before,
+.contentWord4::before,
+.contentWord5::before {
+  position: absolute;
+  left: 5rpx;
+  top: 10rpx;
+}
+.contentWord1::before{
+  content: '1、';
+}
+.contentWord2::before{
+  content: '2、';
+}
+.contentWord3::before{
+  content: '3、';
+}
+.contentWord4::before{
+  content: '4、';
+}
+.contentWord5::before{
+  content: '5、';
+}
+.xieyiScroll {
+  height: 500rpx;
+  width: 100%;
+}
+.contentWord .coltheme { 
+  color: #18c2ba;
+}
+.contentWord .col215 { 
+  color: #ff2a2a;
+}
+.editTelInput {
+  display: block;
+  margin: 0 auto;
+  width: 450rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 25rpx;
+  border: 1rpx solid #ccc;
+  color: #999;
+  background-color: #fff;
+}
+.editTelplaceholdeInput {
+  text-align: center;
+}
+.infoPopupCancel {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -80rpx;
+  font-size: 26px;
+  line-height: 48rpx;
+  width: 100rpx;
+  height: 70rpx;
+  color: #fff;
+  text-align: center;
+}
+
+
+/* 海拔 */
+/* 优惠信息弹框 */
+.prom-model{
+  position: fixed;
+  bottom: 0;
+  z-index: 20;
+  background: white;
+  width: 100%;
+  padding: 0 30rpx 30rpx;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  box-shadow: 0 0 5rpx #ccc;
+}
+.prom-model .prom-title{
+  text-align: center;
+  margin: 30rpx 40rpx;
+  font-size: 26rpx;
+  text-align: center;
+  color: #333;
+}
+.prom-model .logistics-item{
+  border: 0;
+}
+.logistics-item .item-mes{
+  color: #1f1f1f;
+  font-size: 26rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.prom-model .item-mes{
+  width: 500rpx;
+}
+
+/* 商品海报分享s*/
+
+.share-save-btns{
+  background-color: #18c2ba;
+  color: #fff;
+  width: 100%;
+  line-height: 80rpx;
+}
+
+.share-save-btn {
+  width: 80%;
+  height: 80rpx;
+  text-align: center;
+  margin: 0px auto;
+  background-color: #18c2ba;
+  color: #fff;
+  border-radius: 10rpx;
+}
+
+.share-pic {
+  width: 270rpx;
+  height: 480rpx;
+  margin: 20rpx auto ;
+  background-color: #999;
+  box-shadow: 0rpx 5rpx 5rpx 5rpx #cccccc
+}
+
+.share-tips {
+  font-size: 9pt;
+  color: #999;
+  display: block;
+  margin-top: 10rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.action-sheet-btn{
+  width: 100%;
+  height: 100%;
+  margin: -10px 0;
+  font-size: 18px;
+}
+
+.action-sheet-btn::after{   
+  border: none;   
+}
+.bargin_head_pic{
+  width: 1rem;
+  height:1rem;
+  margin-left: -15rpx;
+  border-radius: 50%;
+  border:4px #fff solid 
+}
+.bargin_headpic{
+  margin-top:32rpx;
+}
+
+.classname{
+  margin-top:-18px;
+  font-size:.6777rem;
+  color:#fff;
+}
+.wxParse-p image{
+width: 100%!important;
+}
+.co-red-price{
+font-size: 33rpx;
+font-weight: bold;
+float: left;
+}
+/* 商品海报分享e*/
+
+
+
+/* 2020 10 17 新改版预约记录 及修改 */
+/* 修改 记录 popup */
+.modifyPopupcustom {
+  border-radius: 30rpx;
+  width: 750rpx;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(204, 204, 204, .5);
+  z-index: 100;
+}
+.modifyPopupcustom input {
+  color: #333;
+}
+.modifyPopup {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 9%;
+  height: 85%;
+  width: 710rpx;
+  border-radius: 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  font-size: 26rpx;
+}
+.modifyCName {
+  width: 301rpx;
+  height: 57rpx;
+  text-align: center;
+  line-height: 57rpx;
+  color: #fff;
+  background-color: #18c2ba;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0 0 90rpx 90rpx;
+}
+.modifyTime {
+  margin: 8rpx;
+  font-size: 24rpx;
+  color: #f39093;
+  text-align: center;
+}
+.modifyPopupscroll {
+  margin: 0 auto;
+  height: 100%;
+  width: 670rpx;
+  background-color: #fff;
+}
+.modifyRecordTitle {
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 15rpx 0 0 0;
+  font-size: 36rpx;
+  color: #18c2ba;
+  background-color: #e7f9f8;
+  text-align: center;
+}
+.modifyRecordContent {
+  padding: 20rpx 0;
+  background-color: #e7f9f8;
+  width: 100%;
+}
+.hasAfterShou {
+  position: relative;
+}
+.hasAfterShou::after {
+  content: '手';
+  position: absolute;
+  right: 5rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  font-size: 28rpx;
+}
+.addNewFactoryHead {
+  padding: 10px 0;
+  text-align: center;
+  background-color: #e7f9f8;
+  color: #000;
+  font-size: 28rpx;
+}
+.addNewFactoryHead view:nth-child(1) {
+  flex: 1;
+}
+.addNewFactoryHead view:nth-child(2) {
+  flex: 1;
+}
+.addNewFactoryHead view:nth-child(3) {
+  flex: 1;
+}
+.addNewFactoryHead view:nth-child(4) {
+  flex: .4;
+}
+.modifyRecordHead text{
+  flex: 1;
+  text-align: center;
+  color: #000;
+  font-size: 28rpx;
+}
+.modifyRecordbbox {
+  margin-top: 20px;
+  background: #e7f9f8;
+  padding: 9px;
+  box-sizing: border-box;
+}
+
+.modifyRecordItem {
+  margin: 1rpx auto;
+  padding: 9rpx 0;
+  width: 95%;
+  background-color: #cfe0df;
+  color: #444;
+  font-size: 24rpx;
+}
+.modifyRecordItem view{
+  flex: 1;
+  text-align: center;
+}
+.absAfterArrow {
+  position: relative;
+}
+.absAfterArrow::after {
+  position: absolute;
+  content: '';
+  height: 20rpx;
+  width: 20rpx;
+  right: 0;
+  top: 0;
+  transform: rotate(45deg);
+  color: #ccc;
+  border-bottom: 2rpx solid #ccc;
+  border-right: 2rpx solid #ccc;
+}
+.absAfterArrow2::after {
+  position: absolute;
+  content: '';
+  height: 20rpx;
+  width: 20rpx;
+  right: 0;
+  color: #ccc;
+  border-bottom: 2rpx solid #bbb;
+  border-right: 2rpx solid #bbb;
+  bottom: 0;
+  transform: rotate(-135deg);
+}
+.labaorecord {
+  margin-top: -1rpxrpx;
+  text-align: center;
+}
+.lh65 {
+  line-height: 65rpx;
+}
+.shouqia {
+  flex:.3;
+  text-align:center;
+}
+.seeImgIcon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.newModify {
+  margin: 24rpx auto;
+  padding: 20rpx;
+  justify-content: space-between;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+}
+.newModify .modifyInputName,.newModify .modifyInputSum {
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 22rpx;
+  border: 1rpx solid #18c2ba;
+  z-index: 0;
+}
+.modifyInput {
+  color: #ccc;
+  font-size: 24rpx;
+  text-align: center;
+}
+.modifyPopupBtns {
+  position: absolute;
+  bottom: -100rpx;
+  left: 0;
+  height: 90rpx;
+  width: 710rpx;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  background-color: transparent;
+}
+.modifyPopupBtns text {
+  display: block;
+  height: 87rpx;
+  text-align: center;
+  width: 87rpx;
+  background: #fff;
+  border-radius: 50%;
+  border: 1rpx solid #ccc;
+}
+.modifyPopupBtns view {
+  flex: 1;
+  height: 87rpx;
+  text-align: center;
+}
+.modifySure {
+  box-sizing: border-box;
+  border-left: 1rpx solid #eaeaea;
+}
+
+.lineStar {
+  margin: 25rpx auto;
+  text-align: center;
+  padding: 8rpx 0;
+  border-bottom: 1rpx solid rgb(223, 215, 215);
+  width: 75%;
+  color: #555;
+}
+.ttitle {
+  color: #50cfca;
+  font-size: 40rpx;
+  text-align: center;
+}
+.emmmm {
+  color: #888;
+  font-size: 22rpx;
+  text-align: center;
+}
+.van-rate {
+  vertical-align: bottom;
+}
+.absRadio {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.recycleTips {
+  margin: 10px auto;
+  width: 750rpx;
+  text-align: center;
+  color: #f83030;
+  font-size: 30rpx;
+}
+/* 厂家操作 */
+.mask2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 750rpx;
+  background-color: rgba(0, 0, 0, .6);
+  z-index: 105;
+  color: #fff;
+}
+.operaFacItemBox {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 650rpx;
+  font-size: 24rpx;
+  background-color: transparent;
+}
+.operaFacItem {
+  margin: 10px 0;
+  padding: 8rpx 0 8rpx 20rpx;
+  height: 100rpx;
+  text-align: left;
+  border-radius: 25rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #444;
+  font-weight: bold;
+}
+.operaFacItem2 {
+  height:60rpx;
+  width:60%;
+  margin:0 auto;
+  line-height:53rpx;
+  font-size:34rpx;
+  text-align:center;
+}
+.operaFacItem .operaFacItemImg {
+  height: 84rpx;
+  width: 84rpx;
+  vertical-align: top;
+}
+.itemView2 {
+  display: inline-block;
+  margin-left: 30rpx;
+  height: 100%;
+  line-height: 44rpx;
+  font-size: 28rpx;
+}
+.cancelFac {
+  color: #333;
+}
+.fw550 {
+  font-weight: bold; 
+}
+
+/* 11-27 订单的额外操作 */
+.orderOperationItemBox {
+  position: fixed;
+  right: 15rpx;
+  background-color: #fff;
+  padding: 5px 30px;
+  text-align: center;
+  border-radius: 15rpx;
+  z-index: 5;
+}
+.orderOperationItemBox::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: 40rpx;
+  height: 20rpx;
+  width: 20rpx;
+  background-color: #fff;
+  transform: rotate(45deg);
+  z-index: 5;
+}
+.orderOperationItemBox2 {
+  position: fixed;
+  right: 15rpx;
+  top: 0;
+  background-color: #fff;
+  padding: 5px 20px;
+  text-align: center;
+  border-radius: 15rpx;
+  z-index: 5;
+}
+.orderOperationItemBox2::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 40rpx;
+  height: 20rpx;
+  width: 20rpx;
+  background-color: #fff;
+  transform: rotate(45deg);
+  z-index: 5;
+}
+.orderOperationItem {
+  position: relative;
+  margin: 5px auto;
+  padding: 10rpx 0;
+  height: 20px; 
+  line-height: 20px;
+  font-size: 28rpx;
+  color: #18c2ba;
+  border-bottom: 1rpx solid #18c2ba;
+}
+.orderOperationItem:last-child{
+  border-bottom: none;
+}
+.absOrderOperaDoted {
+  display: block;
+  position: absolute;
+  right: -8rpx;
+  top: -6rpx;
+  height: 20rpx;
+  width: 20rpx;
+  line-height: 20rpx;
+  text-align: center;
+  background-color: #f10215;
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: bold;
+  border-radius: 50%;
+}
+

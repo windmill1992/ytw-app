@@ -1,0 +1,54 @@
+.goodsTypeTitle {
+  position: relative;
+  padding-left: 35rpx;
+  margin: 20rpx 0;
+  height: 30rpx;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  color: #000;
+}
+.goodsTypeTitle::before {
+  content: '';
+  position: absolute;
+  left: 15rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5rpx;
+  height: 30rpx;
+  background-color: #f07278;
+}
+.pBox {
+  padding: 0 15rpx;
+  padding-bottom: 8rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 26rpx;
+}
+.pBox .goodsItem {
+  margin: 10rpx 0;
+  padding: 10rpx;
+  width: 49%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15rpx;
+  box-sizing: border-box;
+}
+.pBox .goodsItem image {
+  height: 300rpx;
+  width: 100%;
+}
+.pBox .goodsItem .goodsName {
+  margin: 10rpx 0;
+  color: #666;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.pBox .goodsItem .goodsPrice {
+  color: #f10125;
+  font-size: 30rpx;
+}
+.pBox .goodsItem .storeName {
+  color: #000;
+}
