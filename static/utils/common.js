@@ -320,14 +320,14 @@ module.exports = {
   },
     //网页中的图片加上域名
     wxParseAddFullImageUrl: function (page, contentStr) {
-        if (typeof page.data[contentStr].images != 'undefined') {
-            var content = page.data[contentStr];
+        if (typeof page[contentStr].images != 'undefined') {
+            var content = page[contentStr];
             for (var i = 0; i < content.images.length; i++) {
                 content.images[i].attr.src = this.getFullUrl(content.images[i].attr.src);
                 content.imageUrls[i] = this.getFullUrl(content.imageUrls[i]);
             }
             // console.log(content);
-            page.setData({ [contentStr]: content });
+						page[contentStr] = content;
         }
     },
 

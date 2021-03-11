@@ -1,9 +1,0 @@
-{
-  "navigationBarBackgroundColor":"#18c2ba",
-  "enablePullDownRefresh":false,
-  "navigationBarTitleText": "设置分销价格",
-  "usingComponents": {
-    "van-popup": "../../dist/popup/index",
-    "van-overlay": "../../dist/overlay/index"
-  }
-}

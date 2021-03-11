@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "order-item": "../../components/orderGoodsItem/orderItem",
-    "van-slider": "../../../dist/slider/index"
-  },
-  "enablePullDownRefresh": false
-}

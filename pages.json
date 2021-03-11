@@ -83,7 +83,13 @@
 	}, {
 		"path": "pages/distribution/index",
 		"style": {
-			"navigationBarTitleText": "壹童网"
+			"navigationBarBackgroundColor":"#18c2ba",
+			"enablePullDownRefresh":false,
+			"navigationBarTitleText": "设置分销价格",
+			"usingComponents": {
+			  "van-popup": "/wxcomponents/vant/dist/popup/index",
+			  "van-overlay": "/wxcomponents/vant/dist/overlay/index"
+			}
 		}
 	}, {
 		"path": "pages/logs/logs",
@@ -205,17 +211,33 @@
 			}, {
 				"path": "DIYshopPoster/DIYshopPoster",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "营销管理",
+					"enablePullDownRefresh": false
 				}
 			}, {
 				"path": "shop/shop",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarBackgroundColor": "#fff",
+					"navigationBarTitleText": "我的小店",
+					"enablePullDownRefresh": false,
+					"onReachBottomDistance": 100
 				}
 			}, {
 				"path": "vipList/vipList",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "VIP列表",
+					"enablePullDownRefresh": false,
+					"onReachBottomDistance": 100,
+					"navigationBarBackgroundColor": "#56cbc5",
+					"usingComponents": {
+					  "van-tab": "/wxcomponents/vant/dist/tab/index",
+					  "van-tabs": "/wxcomponents/vant/dist/tabs/index",
+					  "van-dialog": "/wxcomponents/vant/dist/dialog/index",
+					  "van-sticky": "/wxcomponents/vant/dist/sticky/index",
+					  "van-row": "/wxcomponents/vant/dist/row/index",
+					  "van-col": "/wxcomponents/vant/dist/col/index",
+					  "van-popup": "/wxcomponents/vant/dist/popup/index"
+					}
 				}
 			}]
 		},
@@ -224,17 +246,27 @@
 			"pages": [{
 				"path": "categoryList/categoryList",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "分类",
+					"enablePullDownRefresh": false
 				}
 			}, {
 				"path": "brandstreet/brandstreet",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "品牌街",
+					"enablePullDownRefresh": false
 				}
 			}, {
 				"path": "goodsInfo/goodsInfo",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "商品详情",
+					"enablePullDownRefresh": false,
+					"onReachBottomDistance": 100,
+					"usingComponents":{
+						"van-action-sheet": "/wxcomponents/vant/dist/action-sheet2/index",
+						"van-stepper": "/wxcomponents/vant/dist/stepper/index",
+						"van-dialog": "/wxcomponents/vant/dist/dialog/index",
+						"van-icon": "/wxcomponents/vant/dist/icon/index"
+					}
 				}
 			}, {
 				"path": "goodsList/goodsList",
@@ -249,7 +281,16 @@
 			}, {
 				"path": "addGoods/index",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "商品编辑",
+					"usingComponents": {
+						"drag": "/pages/goods/dragComponent/index",
+						"van-cell": "/wxcomponents/vant/dist/cell/index",
+						"van-action-sheet": "/wxcomponents/vant/dist/action-sheet/index",
+						"van-radio": "/wxcomponents/vant/dist/radio/index",
+						"van-radio-group": "/wxcomponents/vant/dist/radio-group/index",
+						"van-calendar": "/wxcomponents/vant/dist/calendar/index"
+					},
+					"enablePullDownRefresh": false
 				}
 			}, {
 				"path": "specSize/index",
@@ -279,12 +320,24 @@
 			}, {
 				"path": "deliverGoods/deliverGoods",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "发货",
+					"enablePullDownRefresh": false,
+					"usingComponents": {
+					  "van-field": "/wxcomponents/vant/dist/field/index",
+					  "van-cell-group": "/wxcomponents/vant/dist/cell-group/index",
+					  "van-icon": "/wxcomponents/vant/dist/icon/index",
+					  "van-popup": "/wxcomponents/vant/dist/popup/index",
+					  "van-picker": "/wxcomponents/vant/dist/picker/index"
+					}
 				}
 			}, {
 				"path": "changeGoodsPrice/changeGoodsPrice",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "壹童网",
+					"usingComponents": {
+					  "van-slider": "/wxcomponents/vant/dist/slider/index"
+					},
+					"enablePullDownRefresh": false
 				}
 			}]
 		},
@@ -510,7 +563,7 @@
 				"path": "withdrawals/withdrawals",
 				"style": {
 					"navigationBarTitleText": "佣金提现"
-				},
+				}
 			}, {
 				"path": "order/order",
 				"style": {

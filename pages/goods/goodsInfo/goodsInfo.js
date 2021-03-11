@@ -155,7 +155,8 @@ Page({
     shareTxt: '分享至朋友圈',
     tipsmask: true,
     pastSum: 1,
-    isFirstIn: true
+    isFirstIn: true,
+		goods_content: '',
   },
 
   onLoad: function(options) {
@@ -901,6 +902,7 @@ Page({
         //网页中的图片加上域名
         common.wxParseAddFullImageUrl(that, 'content');
         that.setData({
+					goods_content: res.data.result.goods_content,
           goodsAttrs: res.data.result.goods_attr_list
         });
       },

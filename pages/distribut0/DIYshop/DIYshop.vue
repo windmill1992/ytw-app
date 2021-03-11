@@ -17,8 +17,7 @@
 			<view class="setItem pdlr afterLine">
 				<text class="">店铺地址</text>
 				<text v-if="!isModifyAddress" class="flx1">{{ subParams.store_re_address || '' }}</text>
-				<text v-if="isModifyAddress"
-					class="flx1">{{ (address.province_name ? (address.province_name + ' / ') : '') + (address.city_name ? (address.city_name + ' / ') : '') + (address.district_name ? (address.twon_name ? (address.district_name  + ' / ') : address.district_name ) : '') + (address.twon_name || '') }}</text>
+				<text v-else class="flx1">{{ (address.province_name ? (address.province_name + ' / ') : '') + (address.city_name ? (address.city_name + ' / ') : '') + (address.district_name ? (address.twon_name ? (address.district_name  + ' / ') : address.district_name ) : '') + (address.twon_name || '') }}</text>
 				<image @tap.stop="openRegionsModal" class="setModifyImg"
 					src="https://www.yitongwang.com/public/static/images/minniapp/subcontract-icon-write.png"></image>
 			</view>
@@ -66,12 +65,12 @@
 			</view>
 		</uni-popup>
 
-		<regions :regions='regions'></regions>
+		<!-- <regions :regions='regions'></regions>
 		<publics :page='2' :isiphoneX='isiphoneX' :is_A='store.is_A' :isGoodsList='true'></publics>
 		<operations :operaList='operaList' current='店铺设置' :isiphoneX='isiphoneX' v-if="{{shouldOperationsShow}}">
 		</operations>
 		<proposal :proposalData='proposalData' :isProposalDone='isProposalDone' v-if="{{shouldProposalShow}}">
-		</proposal>
+		</proposal> -->
 	</view>
 </template>
 
@@ -216,7 +215,7 @@
 						break;
 				}
 			},
-			callService() {
+			callService: function() {
 				uni.makePhoneCall({
 					phoneNumber: '400-008-6336',
 				})
@@ -225,11 +224,11 @@
 				var that = this;
 				new Regions(this, 'regions', {
 					endAreaLevelCall: function(parentId, regionName, address) {
+						that.address.province_name = that.address.province_name;
+						that.address.city_name = that.address.city_name;
+						that.address.district_name = that.address.district_name;
+						that.address.twon_name = that.address.twon_name;
 						Object.assign(that.address, address);
-						that.address.province_name = that.data.address.province_name;
-						that.address.city_name = that.data.address.city_name;
-						that.address.district_name = that.data.address.district_name;
-						that.address.twon_name = that.data.address.twon_name;
 						that.isModifyAddress = true;
 						that.req({
 							store_id: that.store_id,
@@ -270,15 +269,14 @@
 			onPopupClose: function() {
 				this.showPopup = false;
 			},
-			setDetail: function(e) { //设置详细地址
-				this.subParams.store_info_address = e.detail.value;
-				this.subParams = Object.assign({}, this.subParams);
-			},
 			detailAddressBlur: function(e) { //详细地址提交
 				this.req({
 					store_id: this.store_id,
 					store_address: this.subParams.store_info_address
 				})
+			},
+			openRegionsModal: function() {
+				
 			},
 			sureChange: function() { //改名字 手机号的确定
 				var type = this.modifyType
@@ -303,7 +301,7 @@
 					this.showPopup = false;
 				}
 			},
-			req(params) { //提交修改
+			req: function(params) { //提交修改
 				var that = this
 				request.post(that.url + '/api/StoreBusiness/editStore', {
 					data: params,
@@ -314,7 +312,7 @@
 					}
 				})
 			},
-			proposalAddImg() { //增加投诉建议的图片
+			proposalAddImg: function() { //增加投诉建议的图片
 				var that = this
 				if (that.proposalData.img.length >= 5) {
 					return
@@ -329,7 +327,7 @@
 					}
 				})
 			},
-			delProposalImg(e) { //删除投诉建议的图片
+			delProposalImg: function(e) { //删除投诉建议的图片
 				var index = e.currentTarget.dataset.index;
 				var imgs = this.proposalData.img;
 				imgs.splice(index, 1);
@@ -354,13 +352,13 @@
 							return
 						}
 						var result = JSON.parse(res.data);
-						that.proposalData.img = [...that.data.proposalData.img, ...[result.result]];
+						that.proposalData.img = [...that.proposalData.img, ...[result.result]];
 						that.proposalData = Object.assign({}, that.proposalData);
 						uni.hideLoading()
 					}
 				})
 			},
-			proposalSubmit() { //提交
+			proposalSubmit: function() { //提交
 				var complaint_content = this.proposalData.proposalArea + ''
 				var img = this.proposalData.img
 				complaint_content = complaint_content.replace(' ', '')
