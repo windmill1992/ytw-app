@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "订单详情",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "van-icon": "../../../dist/icon/index",
-    "order-item": "../../components/orderGoodsItem/orderItem",
-    "van-popup": "../../../dist/popup/index"
-  }
-}

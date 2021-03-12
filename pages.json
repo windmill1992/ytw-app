@@ -271,7 +271,11 @@
 			}, {
 				"path": "goodsList/goodsList",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "商品列表",
+					"onReachBottomDistance": 100,
+					"usingComponents":{
+					    "van-divider": "/wxcomponents/vant/dist/divider/index"
+					}
 				}
 			}, {
 				"path": "search/search",
@@ -310,12 +314,23 @@
 			}, {
 				"path": "orderList/orderList",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "壹童网",
+					"usingComponents": {
+					  "van-tab": "/wxcomponents/vant/dist/tab/index",
+					  "van-tabs": "/wxcomponents/vant/dist/tabs/index",
+					  "van-popup": "/wxcomponents/vant/dist/popup/index",
+					  "van-empty": "/wxcomponents/vant/dist/empty/index"
+					}
 				}
 			}, {
 				"path": "orderDetail/orderDetail",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "订单详情",
+					"enablePullDownRefresh": false,
+					"usingComponents": {
+					  "van-icon": "/wxcomponents/vant/dist/icon/index",
+					  "van-popup": "/wxcomponents/vant/dist/popup/index"
+					}
 				}
 			}, {
 				"path": "deliverGoods/deliverGoods",
@@ -338,6 +353,11 @@
 					  "van-slider": "/wxcomponents/vant/dist/slider/index"
 					},
 					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "integralMall/integralMall",
+				"style": {
+					"navigationBarTitleText": "积分商城"
 				}
 			}]
 		},

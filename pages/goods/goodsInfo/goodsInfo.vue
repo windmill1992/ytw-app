@@ -1647,7 +1647,6 @@
 						store_id: that.data.goods.store_id
 					},
 					success: function(res) {
-						console.log(res)
 						if (res.data.status == 1) {
 							if (res.data.msg == '关注成功') {
 								uni.showToast({
@@ -2028,57 +2027,47 @@
 				var price = this.result.spec_goods_price[index].each_hand_unit_price
 				var sheetMaxSum = Math.floor(this.result.spec_goods_price[index].store_count)
 				var introduce = goodsName + '  ' + kuanshiname + '-' + kuanshi
-				this.setData({
-					curImg: e.currentTarget.dataset.index,
-					selictGoods: {
-						introduce: introduce,
-						goods_id: goods_id,
-						goods_num: goods_num,
-						item_id: item_id,
-						form: 1,
-						price: price,
-						allprice: this.data.result.spec_goods_price[index].price,
-						store_count: this.data.result.spec_goods_price[index].store_count
-					},
-					totalPrice: totalPrice,
-					sheetMaxSum: sheetMaxSum,
-					v: v
+				this.curImg = e.currentTarget.dataset.index
+				this.selictGoods = Object.assign({}, {
+					introduce: introduce,
+					goods_id: goods_id,
+					goods_num: goods_num,
+					item_id: item_id,
+					form: 1,
+					price: price,
+					allprice: this.result.spec_goods_price[index].price,
+					store_count: this.result.spec_goods_price[index].store_count
 				})
+				this.totalPrice = totalPrice
+				this.sheetMaxNum = sheetMaxNum
+				this.v = v
 			},
 			// 手数变化
 			changeShoushu: function(e) {
 				var index = e.currentTarget.dataset.index
-				var shoushu = this.data.result.goods_spec_list[1].spec_list[index].item
-				const selictGoods = JSON.parse(JSON.stringify(this.data.selictGoods))
+				var shoushu = this.result.goods_spec_list[1].spec_list[index].item
+				const selictGoods = JSON.parse(JSON.stringify(this.selictGoods))
 				var count = selictGoods.store_count
 
-				var sheetMaxSum = Math.floor(this.data.selictGoods.store_count)
-				this.setData({
-					currentShoushu: shoushu,
-					selictGoods: selictGoods,
-					sheetMaxSum: sheetMaxSum,
-				})
+				var sheetMaxSum = Math.floor(this.selictGoods.store_count)
+				this.currentShoushu = shoushu
+				this.selictGoods = Object.assign({}, selictGoods)
+				this.sheetMaxNum = sheetMaxSum
 			},
 			// 购买数量变化
 			bunSumChange: function(e) {
-				// console.log(e.detail)
-				console.log(e.detail)
-				var num = e.detail * this.data.currentShoushu
-				if (num > this.data.selictGoods.store_count) {
-					this.setData({
-						v: Math.floor(this.data.selictGoods.store_count)
-					})
+				var num = e.detail * this.currentShoushu
+				if (num > this.selictGoods.store_count) {
+					this.v = Math.floor(this.selictGoods.store_count)
 				}
-				const selictGoods = JSON.parse(JSON.stringify(this.data.selictGoods))
+				const selictGoods = JSON.parse(JSON.stringify(this.selictGoods))
 				selictGoods.goods_num = e.detail
-				this.setData({
-					selictGoods: selictGoods,
-					upsum: num,
-					totalPrice: selictGoods.allprice * e.detail,
-				})
-				if (e.detail > this.data.sheetMaxSum) {
+				this.selictGoods = Object.assign({}, selictGoods)
+				this.upsum = num
+				this.totalPrice = selictGoods.allprice * e.detail
+				if (e.detail > this.sheetMaxSum) {
 					uni.showToast({
-						title: '当前库存' + this.data.sheetMaxSum + '件' + '，您可联系商家增加库存',
+						title: '当前库存' + this.sheetMaxSum + '件' + '，您可联系商家增加库存',
 						icon: 'none'
 					})
 				}
@@ -2086,10 +2075,8 @@
 			// 购买 或者添加购物车
 			buyOrcar: function(e) {
 				const that = this
-				var type = this.data.carOrBuy
-				// console.log(type)
-				// return
-				const selictGoods = JSON.parse(JSON.stringify(this.data.selictGoods))
+				var type = this.carOrBuy
+				const selictGoods = JSON.parse(JSON.stringify(this.selictGoods))
 				if (selictGoods.introduce == '') {
 					return uni.showToast({
 						title: '您还没有选择商品',
@@ -2101,7 +2088,7 @@
 					goods_num: selictGoods.goods_num,
 					item_id: selictGoods.item_id,
 					form: 1,
-					store_id: this.data.data.goods.store_id
+					store_id: this.data.goods.store_id
 				}
 				if (type == 'car') {
 					if (!app.auth.isAuth()) {
@@ -2109,8 +2096,6 @@
 						app.getUserInfo();
 						return;
 					}
-
-					console.log(data)
 					request.post('/api/cart/addCart', {
 						data: data,
 						success: function(res) {
@@ -2124,9 +2109,7 @@
 											url: '/pages/cart/cart/cart'
 										});
 									} else {
-										that.setData({
-											show: false
-										})
+										that.show = false
 										that.requestCardNum();
 									}
 								}
@@ -2139,36 +2122,26 @@
 			},
 			imageFangDa: function(e) {
 				var index = e.currentTarget.dataset.index
-				this.setData({
-					currentSwiperIndex: index,
-					isSwiperShow: false
-				})
+				this.currentSwiperIndex = index
+				this.isSwiperShow = false
 			},
 			// 模拟图片预览
 			previewImageChange: function(e) {
 				var index = e.detail.current
-				this.setData({
-					previewImageIndex: index
-				})
+				this.previewImageIndex = index
 			},
 			// 商品预览滚动
 			scrollXfun: function(e) {
-				var bili = this.data.proportionPx
-				// console.log(e.detail.scrollLeft,'=====',e.detail.scrollWidth)
-				// console.log(e.detail.scrollLeft / (e.detail.scrollWidth - (730*bili)))
-				this.setData({
-					pressLeft: e.detail.scrollLeft / e.detail.scrollWidth * 100 + '%'
-				})
+				var bili = this.proportionPx
+				this.pressLeft = e.detail.scrollLeft / e.detail.scrollWidth * 100 + '%'
 			},
 			//  关闭模拟预览
 			previewImageClose: function() {
-				this.setData({
-					isSwiperShow: true
-				})
+				this.isSwiperShow true
 			},
 			previewImageTap: function(e) {
-				var index = this.data.previewImageIndex
-				if (this.data.result.spec_goods_price[index].store_count == 0) {
+				var index = this.previewImageIndex
+				if (this.result.spec_goods_price[index].store_count == 0) {
 					return uni.showToast({
 						title: '当前规格没有库存，请选择其他规格查看',
 						icon: 'none'
@@ -2178,7 +2151,7 @@
 					goods_spec_list,
 					spec_goods_price,
 					goods
-				} = this.data.result
+				} = this.result
 				var v = 1
 				var goodsName = goods.goods_name
 				var kuanshi = goods_spec_list[0].spec_list[index].item
@@ -2187,46 +2160,40 @@
 				var item_id = spec_goods_price[index].item_id
 				var introduce = goodsName + '  ' + kuanshiname + '-' + kuanshi
 				var price = spec_goods_price[index].each_hand_unit_price
-				var goods_num = this.data.selictGoods.goods_num > Math.floor(this.data.result.spec_goods_price[0]
-						.store_count) ? Math.floor(this.data.result.spec_goods_price[0].store_count) : this.data
-					.selictGoods.goods_num
-				var totalPrice = this.data.result.spec_goods_price[index].price * (this.data.selictGoods.goods_num >
-					Math.floor(this.data.result.spec_goods_price[0].store_count) ? Math.floor(this.data.result
-						.spec_goods_price[0].store_count) : this.data.selictGoods.goods_num)
-				var sheetMaxSum = Math.floor(this.data.result.spec_goods_price[index].store_count)
-				this.setData({
-					curImg: this.data.previewImageIndex,
-					selictGoods: {
-						introduce: introduce,
-						goods_id: goods_id,
-						goods_num: goods_num,
-						item_id: item_id,
-						form: 1,
-						price: price,
-						allprice: this.data.currentShoushu * price * v,
-						store_count: this.data.result.spec_goods_price[index].store_count
-					},
-					sheetMaxSum: sheetMaxSum,
-					v: v,
-					isSwiperShow: true,
-					totalPrice: totalPrice
+				var goods_num = this.selictGoods.goods_num > 
+					Math.floor(this.result.spec_goods_price[0].store_count) ? 
+					Math.floor(this.result.spec_goods_price[0].store_count) : this.selictGoods.goods_num
+				var totalPrice = this.result.spec_goods_price[index].price * (this.selictGoods.goods_num >
+					Math.floor(this.result.spec_goods_price[0].store_count) ? 
+					Math.floor(this.result.spec_goods_price[0].store_count) : this.selictGoods.goods_num)
+				var sheetMaxSum = Math.floor(this.result.spec_goods_price[index].store_count)
+				this.curImg = this.previewImageIndex
+				this.selictGoods = Object.assign({}, {
+					introduce: introduce,
+					goods_id: goods_id,
+					goods_num: goods_num,
+					item_id: item_id,
+					form: 1,
+					price: price,
+					allprice: this.currentShoushu * price * v,
+					store_count: this.result.spec_goods_price[index].store_count
 				})
-
+				this.sheetMaxNum = sheetMaxSum
+				this.v = v
+				this.isSwiperShow = true
+				this.totalPrice = totalPrice
 			},
 			swiperOver: function(e) {
-				this.setData({
-					previewImageIndex: e.detail.current
-				})
+				this.previewImageIndex = e.detail.current
 			},
 			siseHelp: function() { //每手几件的弹出
-				Dialog.alert({
+				uni.showModal({
 					message: "每‘手’即该商品 ··所有尺码各一件·· \n例:某商品所含尺码为-S/M/L/XL/XXL。\n一手则含S至XXL在内所有五个尺码各一件",
+					showCancel: false,
 				})
 			},
 			closeMask: function() { // 提示信息
-				this.setData({
-					tipsmask: true
-				})
+				this.tipsmask = true
 				if (uni.getStorageSync('maskSum2')) { //判断本地有无数量设置过
 					var maskSum = uni.getStorageSync('maskSum2') - 1
 					uni.setStorageSync('maskSum2', maskSum)
@@ -2235,7 +2202,7 @@
 				}
 			},
 			showImg: function(e) {
-				var imgs = this.data.data.gallery.map(function(item) {
+				var imgs = this.data.gallery.map(function(item) {
 					return item.image_url
 				})
 				uni.previewImage({
@@ -2243,7 +2210,7 @@
 					current: e.currentTarget.dataset.curimg
 				})
 			},
-			copyTitle(e) {
+			copyTitle: function(e) {
 				uni.setClipboardData({
 					data: e.currentTarget.dataset.txt,
 				})
