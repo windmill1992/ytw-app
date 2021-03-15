@@ -2,12 +2,18 @@
 	"pages": [{
 		"path": "pages/index/index/index",
 		"style": {
-			"navigationBarTitleText": "壹童网"
-		}
-	}, {
-		"path": "pages/index/demo/demo",
-		"style": {
-			"navigationBarTitleText": "壹童网"
+			"navigationBarBackgroundColor": "#3abdb7",
+			"navigationBarTextStyle": "white",
+			"onReachBottomDistance": 100,
+			"usingComponents":{
+			    "van-icon": "/wxcomponents/vant/dist/icon/index",
+			    "van-dialog": "/wxcomponents/vant/dist/dialog/index",
+			    "van-divider": "/wxcomponents/vant/dist/divider/index",
+			    "van-tab": "/wxcomponents/vant/dist/tab/index",
+			    "van-tabs": "/wxcomponents/vant/dist/tabs/index",
+			    "van-sticky": "/wxcomponents/vant/dist/sticky/index",
+			    "footbar": "/pages/components/index_footbar/indexFootBar"
+			}
 		}
 	}, {
 		"path": "pages/cart/cart/cart",
@@ -21,16 +27,6 @@
 		}
 	}, {
 		"path": "pages/index/publics/publics",
-		"style": {
-			"navigationBarTitleText": "壹童网"
-		}
-	}, {
-		"path": "pages/index/custom/custom",
-		"style": {
-			"navigationBarTitleText": "壹童网"
-		}
-	}, {
-		"path": "pages/index/customPage/customPage",
 		"style": {
 			"navigationBarTitleText": "壹童网"
 		}
@@ -78,7 +74,15 @@
 	}, {
 		"path": "pages/index/dk/dk",
 		"style": {
-			"navigationBarTitleText": "壹童网"
+			"navigationBarBackgroundColor": "#18c2ba",
+			"navigationBarTitleText": "档口排行",
+			"navigationBarTextStyle": "white",
+			"onReachBottomDistance": 150,
+			"enablePullDownRefresh": false,
+			"usingComponents":{
+			    "van-divider": "/wxcomponents/vant/dist/divider/index",
+			    "van-empty": "/wxcomponents/vant/dist/empty/index"
+			}
 		}
 	}, {
 		"path": "pages/distribution/index",
@@ -280,7 +284,9 @@
 			}, {
 				"path": "search/search",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarBackgroundColor": "#18c2ba",
+					"navigationBarTitleText": "搜索",
+					"enablePullDownRefresh": false
 				}
 			}, {
 				"path": "addGoods/index",
@@ -299,17 +305,32 @@
 			}, {
 				"path": "specSize/index",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "规格编辑",
+					"usingComponents": {
+					  "drag": "/pages/goods/dragComponent/index",
+					  "van-switch": "/wxcomponents/vant/dist/switch/index",
+					  "van-icon": "/wxcomponents/vant/dist/icon/index"
+					},
+					"enablePullDownRefresh": false
 				}
 			}, {
 				"path": "setAttr/setAttr",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "商品分类",
+					"usingComponents": {
+					  "van-collapse": "/wxcomponents/vant/dist/collapse/index",
+					  "van-collapse-item": "/wxcomponents/vant/dist/collapse-item/index",
+					  "van-icon": "/wxcomponents/vant/dist/icon/index",
+					  "van-cell": "/wxcomponents/vant/dist/cell/index"
+					}
 				}
 			}, {
 				"path": "tailoring/tailoring",
 				"style": {
-					"navigationBarTitleText": "壹童网"
+					"navigationBarTitleText": "图片裁剪",
+					"usingComponents": {
+					  "image-cropper": "/pages/goods/image-cropper/image-cropper"
+					}
 				}
 			}, {
 				"path": "orderList/orderList",

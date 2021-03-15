@@ -13,7 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      infologin:false,
+      infologin: false,
       ak: 'fZksmKUsUDqqYs2FHWv6CHHBIF3cR5qK',  //百度地图key
       ad: true, //门店列表
       url: setting.url,

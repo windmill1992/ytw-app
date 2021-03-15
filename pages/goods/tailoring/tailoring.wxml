@@ -1,3 +1,0 @@
-
-<image-cropper bind:saveImg="saveImg" bind:cancelImg1="cancelImg" bind:resetImgPos="reset" hidden="{{ !showCropper }}" id="image-cropper"  limit_move="{{false}}" disable_ratio="{{ disable_ratio }}" disable_rotate="{{ false }}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut"></image-cropper>
- 

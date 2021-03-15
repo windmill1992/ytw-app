@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "规格编辑",
-  "usingComponents": {
-    "drag": "../dragComponent/index",
-    "van-switch": "../../../dist/switch/index",
-    "van-icon": "../../../dist/icon/index"
-  },
-  "enablePullDownRefresh": false
-}
