@@ -235,6 +235,7 @@
 	} = require('../../../static/utils/util2.js');
 	import LoadMore from '../../../static/utils/LoadMore.js';
 	var load = new LoadMore;
+	import Dialog from '../../../wxcomponents/vant/dist/dialog/dialog';
 
 	function returnNotFx(t) {
 		return [{
@@ -527,7 +528,6 @@
 							title: '提示',
 							content: '本次分享，对方将知晓壹童网信息，是否继续',
 							cancelText: '返回',
-							messageAlign: 'left',
 							confirmText: '继续',
 							success(res) {
 								if (res.confirm) {
@@ -561,7 +561,6 @@
 							title: '提示',
 							content: '本次分享，对方将知晓壹童网信息，是否继续',
 							cancelText: '返回',
-							messageAlign: 'left',
 							confirmText: '继续',
 							success(res) {
 								if (res.confirm) {
@@ -779,9 +778,9 @@
 							})
 						}
 						uni.showModal({
-							message: '复制商品后，您可以在您的草稿箱中查看商品，修改主图，快捷上架更多商品~~',
-							confirmButtonText: '复制',
-							cancelButtonText: '取消',
+							content: '复制商品后，您可以在您的草稿箱中查看商品，修改主图，快捷上架更多商品~~',
+							confirmColor: '复制',
+							cancelText: '取消',
 							success: res => {
 								if (res.confirm) {
 									that.copyOrOffGoods('copyGoods', {
@@ -805,11 +804,11 @@
 							})
 						}
 						uni.showModal({
-							message: (this.type == 3 || this.type == 4) ?
+							content: (this.type == 3 || this.type == 4) ?
 								'商品上架后，将展示在您的店铺中，如需再次下架，可重新进行商品操作' :
 								'商品下架后，将暂时存放在您的"已下架"商品列表中，下架后，如需重新上架，可以在"已下架"列表中重新编辑上架',
-							confirmButtonText: (this.type == 3 || this.type == 4) ? "上架" : "下架",
-							cancelButtonText: '取消',
+							confirmText: (this.type == 3 || this.type == 4) ? "上架" : "下架",
+							cancelText: '取消',
 							success: res => {
 								that.copyOrOffGoods('changeGoodsStatus', {
 									field: 'is_on_sale',
@@ -888,11 +887,11 @@
 			toTongHang: function(e) { //点击商品的分享给同行
 				this.actionSheetHidden = true;
 				this.actionSheetHidden2 = true;
-				uni.showModal({
+				Dialog.confirm({
 					message: '此操作，对方将会知晓壹童网，请确认，您将要分享的是同行吗？',
 					confirmButtonText: '确定分享',
 					cancelButtonText: '取消',
-					confirmButtonOpenType: 'share'
+					confirmButtonOpenType: 'share',
 				})
 			},
 			share2: function(e) {

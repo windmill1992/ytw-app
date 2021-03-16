@@ -1,8 +1,0 @@
-{
-  "enablePullDownRefresh": false,
-  "navigationBarTitleText": "选择拼包中心",
-  "usingComponents": {
-    "van-dialog": "../../../dist/dialog/index",
-    "van-icon": "../../../dist/icon/index"
-  }
-}

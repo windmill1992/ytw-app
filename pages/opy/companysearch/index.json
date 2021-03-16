@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "添加厂家",
-  "usingComponents": {
-    "van-search": "../../../dist/search/index",
-    "van-button": "../../../dist/button/index",
-    "van-dialog": "../../../dist/dialog/index"
-  }
-}

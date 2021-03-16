@@ -1,8 +1,0 @@
-<image src="{{ url + '/public/static/images/minniapp/pinbao-arg-banner.png' }}" class="banner"></image>
-<view class="container">
-  <view wx:if="{{ isOk }}">
-    <image src="https://yitongwang.oss-cn-hangzhou.aliyuncs.com/miniapp/success.png" class="img1"></image>
-    <view class="orige">恭喜您，{{ mode == '' ? '预约' : '操作' }}成功！</view>
-    <view class="btn" bindtap="navBack2">好的</view>
-  </view>
-</view>

@@ -1,0 +1,113 @@
+page{
+    color: #666;
+}
+.notice{
+    padding: 10rpx 30rpx;
+    font-size: 24rpx;
+    background-color: #FDFBE4;
+}
+.pic-list{
+    margin: 0 auto;
+    padding:20rpx 30rpx 20rpx;
+    margin-bottom: 20rpx;
+    margin-top: 20rpx;
+    width: 710rpx;
+    border-radius: 10rpx;
+    box-sizing: border-box;
+}
+.share-pic{
+    width: 150rpx;
+    height: 150rpx;
+    border: 1px dashed #f3f3f3;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.item{
+    float: left;
+    padding: 0 30rpx; 
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 26rpx;
+    border-bottom: 1rpx solid #f3f3f3;
+    line-height: 80rpx;
+    position: relative;
+    background-color: white;
+}
+.item-name{
+    float: left;
+}
+.item-input{
+    float: left;
+    height: 80rpx;
+    width: 450rpx;
+    margin-left: 20rpx;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.item-right{
+    position: absolute;
+    right: 30rpx;
+}
+.item-desc{
+    display: inline-block;
+    width: 100%;
+    box-sizing:border-box;
+    font-size: 24rpx;
+    line-height: 28rpx;
+    background-color: #EEF2F3;
+    padding: 10rpx;
+}
+.arrow{
+    width: 24rpx;
+    height: 24rpx;
+}
+switch .wx-switch-input{
+    height: 42rpx;
+    border-radius: 4rpx;
+}
+switch .wx-switch-input::before,switch .wx-switch-input::after{
+    height: 40rpx;
+    border-radius: 4rpx;
+}
+.next-btn{
+    float: left;
+    background-color: #ff3b3b;
+    color: white;
+    border-radius: 10rpx;
+    margin: 0 auto;
+    margin-top: 20rpx;
+    width: 710rpx;
+    font-size: 36rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+}
+.formbox{
+  width: 710rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+.last{
+  border-bottom-right-radius:10rpx;
+  border-bottom-left-radius:10rpx;
+}
+.redword{
+  color: #ff3b3b;
+  font-size: 24rpx;
+  margin: 10rpx 0 30rpx 10rpx;
+}
+.bottomword{
+  text-align: center;
+  font-size: 26rpx;
+  margin: 20rpx auto; 
+  color: #333;
+}
+.next_icon {
+    width: 32rpx;
+    height: 32rpx;
+    float: right;
+    margin-top: 24rpx;
+}

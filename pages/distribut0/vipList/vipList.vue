@@ -306,7 +306,6 @@
 				var that = this
 				uni.showModal({
 					title: str + tel + '-吗？',
-					asyncClose: true,
 					success: res => {
 						if (res.confirm) {
 							that.doMember(id, type, status)
@@ -353,7 +352,6 @@
 				this.editName = e.currentTarget.dataset.remark
 				uni.showModal({
 					title: '修改备注(0-8个字)',
-					asyncClose: true,
 					success: res => {
 						request.post(that.url + '/api/Store/updateStoreMemberRemark', {
 							data: {

@@ -1,9 +1,0 @@
-/* webview.wxss */
-/* 功能未开发 */
-page {
-  color: red;
-}
-.defaultPage {
-  text-align: center;
-  padding-top: 100rpx;
-}

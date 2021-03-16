@@ -913,9 +913,9 @@
 				}
 				if (this.userInfo.store_id == 0) {
 					uni.showModal({
-						message: '您还没有店铺，无法使用分销功能。是否前往免费开店？',
-						confirmButtonText: '免费开店',
-						cancelButtonText: '再看看',
+						content: '您还没有店铺，无法使用分销功能。是否前往免费开店？',
+						confirmText: '免费开店',
+						cancelText: '再看看',
 						success: res => {
 							if (res.confirm) {
 								uni.navigateTo({
@@ -928,9 +928,9 @@
 				}
 				if (this.userInfo.store_id != 0 && this.userInfo.is_B != 1) { // 大A
 					uni.showModal({
-						message: '对不起，目前该功能只针对采购商开放，您当前的身份为供应商，暂无法使用该功能！',
-						confirmButtonText: '好的',
-						showCancelButton: false
+						content: '对不起，目前该功能只针对采购商开放，您当前的身份为供应商，暂无法使用该功能！',
+						confirmText: '好的',
+						showCancel: false
 					})
 					return
 				}
@@ -1777,9 +1777,9 @@
 					if (store_id == 0) {
 						that.actionSheetHidden = true;
 						uni.showModal({
-							message: '您还没有店铺，无法使用分享功能。是否前往免费开店？',
-							confirmButtonText: '免费开店',
-							cancelButtonText: '再看看',
+							content: '您还没有店铺，无法使用分享功能。是否前往免费开店？',
+							confirmText: '免费开店',
+							cancelText: '再看看',
 							success: res => {
 								if (res.confirm) {
 									uni.navigateTo({
@@ -1792,7 +1792,6 @@
 						uni.showModal({
 							title: '提示',
 							content: '本次分享，对方将知晓壹童网信息，是否继续',
-							messageAlign: "left",
 							cancelText: '返回',
 							confirmText: '继续',
 							success(res) {
@@ -1840,13 +1839,15 @@
 				if (store_id == 0 && is_B == 0) { // 普通人 看看得了
 					this.actionSheetHidden = true;
 					uni.showModal({
-						message: '您还没有店铺，无法使用分享功能。是否前往免费开店？',
-						confirmButtonText: '免费开店',
-						cancelButtonText: '再看看',
+						content: '您还没有店铺，无法使用分享功能。是否前往免费开店？',
+						confirmText: '免费开店',
+						cancelText: '再看看',
 						success: res => {
-							uni.navigateTo({
-								url: '/pages/newjoin/join4/join4',
-							})
+							if (res.confirm) {
+								uni.navigateTo({
+									url: '/pages/newjoin/join4/join4',
+								})
+							}
 						}
 					})
 					return
@@ -1867,10 +1868,10 @@
 								uni.showModal({
 									title: '提示',
 									content: '请确认分享的是下级采购商吗？',
-									success(res) {
-										if (res.confirm) {
+									success(res1) {
+										if (res1.confirm) {
 											that.haibao(type)
-										} else if (res.cancel) {
+										} else if (res1.cancel) {
 											console.log('用户点击取消')
 										}
 									}
@@ -1905,9 +1906,9 @@
 						uni.hideLoading()
 						if (res.errMsg.indexOf('fail') != -1) {
 							uni.showModal({
-								message: '您的店铺暂无出售中的商品,或当前商品您还没有加入分销，无法分享，您可点击加入分销，分销商品,或发布新商品',
-								confirmButtonText: '好的',
-								showCancelButton: false,
+								content: '您的店铺暂无出售中的商品,或当前商品您还没有加入分销，无法分享，您可点击加入分销，分销商品,或发布新商品',
+								confirmText: '好的',
+								showCancel: false,
 							})
 						}
 					}
@@ -2188,7 +2189,7 @@
 			},
 			siseHelp: function() { //每手几件的弹出
 				uni.showModal({
-					message: "每‘手’即该商品 ··所有尺码各一件·· \n例:某商品所含尺码为-S/M/L/XL/XXL。\n一手则含S至XXL在内所有五个尺码各一件",
+					content: "每‘手’即该商品 ··所有尺码各一件·· \n例:某商品所含尺码为-S/M/L/XL/XXL。\n一手则含S至XXL在内所有五个尺码各一件",
 					showCancel: false,
 				})
 			},

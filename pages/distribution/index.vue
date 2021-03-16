@@ -223,9 +223,9 @@
 							})
 							uni.showModal({
 								title: '分销成功',
+								content: '已展示到您的店铺，快去查看吧！',
 								confirmText: '前往店铺',
 								cancelText: '返回',
-								content: '已展示到您的店铺，快去查看吧！',
 								success(res) {
 									if (res.confirm) {
 										uni.redirectTo({

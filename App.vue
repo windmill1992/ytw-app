@@ -242,4 +242,5 @@
 
 <style>
 	@import url("./static/utils/common.css");
+	@import url("/wxcomponents/vant/dist/common/index.wxss");
 </style>

@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "van-row": "../../../dist/row",
-    "van-col": "../../../dist/col/index"
-  },
-  "navigationBarTitleText": "信息服务"
-}
